@@ -48,90 +48,100 @@
 
     <main>
       <section class="hero">
-        <div class="container reveal hero-content">
-          <h1 class="hero-title">Hi — I'm Amir, a Data Engineer</h1>
-          <p class="lead">I build reliable data platforms, <span id="typed" data-words='["design scalable ETL pipelines","ensure data quality and observability","enable analytics & ML","I build reliable data platforms, ensure data quality and"]'></span></p>
-          <p class="cta-row">
-            <a class="btn primary" href="#projects">See projects</a>
-            <a class="btn ghost" href="resume.html">CV</a>
-          </p>
+            <div class="container reveal hero-content">
+              <h1 class="hero-title">Hi — I'm Amir, a Data Engineer</h1>
+              <p class="lead">I build reliable data platforms, <span id="typed" data-words='["design scalable ETL pipelines","ensure data quality and observability","enable analytics & ML","I build reliable data platforms, ensure data quality and"]'></span></p>
+              <p class="cta-row">
+                <a class="btn primary" href="#projects">See projects</a>
+                <a class="btn ghost" href="resume.html">CV</a>
+              </p>
+            </div>
+          </section>
+
+  <section id="about" class="section reveal alt">
+        <div class="container">
+          <h2>About</h2>
+          <p>I design data architectures and pipelines that move quickly from prototype to production. My work focuses on reliability, observability, and cost-efficient processing at scale.</p>
+          <ul>
+            <li>Experience with batch & streaming systems</li>
+            <li>Infrastructure as code, monitoring, and testing</li>
+            <li>Strong collaboration with analysts, ML engineers and product teams</li>
+          </ul>
         </div>
       </section>
 
-  <section id="about" class="container section reveal">
-        <h2>About</h2>
-        <p>I design data architectures and pipelines that move quickly from prototype to production. My work focuses on reliability, observability, and cost-efficient processing at scale.</p>
-        <ul>
-          <li>Experience with batch & streaming systems</li>
-          <li>Infrastructure as code, monitoring, and testing</li>
-          <li>Strong collaboration with analysts, ML engineers and product teams</li>
-        </ul>
-      </section>
-
-  <section id="skills" class="container section reveal">
-        <h2>Skills</h2>
-        <div class="chips">
-          <span class="chip">Python</span>
-          <span class="chip">SQL</span>
-          <span class="chip">Airflow / Prefect</span>
-          <span class="chip">Spark</span>
-          <span class="chip">Kafka</span>
-          <span class="chip">GCP / AWS</span>
-          <span class="chip">DBT</span>
-          <span class="chip">Docker / Kubernetes</span>
-          <span class="chip">Monitoring (Prometheus, Grafana)</span>
-        </div>
-        <div class="skill-bars">
-          <div class="skill" data-level="95"><span>Python</span><div class="bar"><div class="fill"></div></div></div>
-          <div class="skill" data-level="90"><span>SQL</span><div class="bar"><div class="fill"></div></div></div>
-          <div class="skill" data-level="80"><span>Airflow / Prefect</span><div class="bar"><div class="fill"></div></div></div>
-          <div class="skill" data-level="75"><span>Spark</span><div class="bar"><div class="fill"></div></div></div>
+  <section id="skills" class="section reveal">
+        <div class="container">
+          <h2>Skills</h2>
+          <div class="chips">
+            <span class="chip">Python</span>
+            <span class="chip">SQL</span>
+            <span class="chip">Airflow / Prefect</span>
+            <span class="chip">Spark</span>
+            <span class="chip">Kafka</span>
+            <span class="chip">GCP / AWS</span>
+            <span class="chip">DBT</span>
+            <span class="chip">Docker / Kubernetes</span>
+            <span class="chip">Monitoring (Prometheus, Grafana)</span>
+          </div>
+          <div class="skill-bars">
+            <div class="skill" data-level="95"><span>Python</span><div class="bar"><div class="fill"></div></div></div>
+            <div class="skill" data-level="90"><span>SQL</span><div class="bar"><div class="fill"></div></div></div>
+            <div class="skill" data-level="80"><span>Airflow / Prefect</span><div class="bar"><div class="fill"></div></div></div>
+            <div class="skill" data-level="75"><span>Spark</span><div class="bar"><div class="fill"></div></div></div>
+          </div>
         </div>
       </section>
 
-  <section id="projects" class="container section reveal">
-        <h2>Selected Projects</h2>
-        <div class="cards">
-          <article class="card reveal">
-            <h3>Run/Walk Data Pipeline <a href="https://github.com/mrprogrammingx" class="muted" target="_blank" rel="noopener">(GitHub)</a></h3>
-            <p>Batch pipeline: CSV → Parquet → DuckDB with SQL transformations and materialized tables. Orchestrated with Apache Airflow and exposed reporting via a Streamlit dashboard and Flask API for validation and reporting.</p>
-            <p class="muted">Python, Airflow, DuckDB, Streamlit, Flask</p>
-          </article>
+  <section id="projects" class="section reveal alt">
+        <div class="container">
+          <h2>Selected Projects</h2>
+          <div class="cards">
+            <article class="card reveal">
+              <h3>Run/Walk Data Pipeline <a href="https://github.com/mrprogrammingx" class="muted" target="_blank" rel="noopener">(GitHub)</a></h3>
+              <p>Batch pipeline: CSV → Parquet → DuckDB with SQL transformations and materialized tables. Orchestrated with Apache Airflow and exposed reporting via a Streamlit dashboard and Flask API for validation and reporting.</p>
+              <p class="muted">Python, Airflow, DuckDB, Streamlit, Flask</p>
+            </article>
 
-          <article class="card reveal">
-            <h3>Analytics Platform <a href="https://github.com/mrprogrammingx" class="muted" target="_blank" rel="noopener">(GitHub)</a></h3>
-            <p>End-to-end data platform with ETL pipelines, DuckDB storage, FastAPI, and Streamlit dashboards. Normalized JSONL telemetry into analytical tables and built APIs for reporting.</p>
-            <p class="muted">Python, FastAPI, DuckDB, Streamlit, ETL</p>
-          </article>
+            <article class="card reveal">
+              <h3>Analytics Platform <a href="https://github.com/mrprogrammingx" class="muted" target="_blank" rel="noopener">(GitHub)</a></h3>
+              <p>End-to-end data platform with ETL pipelines, DuckDB storage, FastAPI, and Streamlit dashboards. Normalized JSONL telemetry into analytical tables and built APIs for reporting.</p>
+              <p class="muted">Python, FastAPI, DuckDB, Streamlit, ETL</p>
+            </article>
+          </div>
         </div>
       </section>
 
-  <section id="experience" class="container section reveal">
-        <h2>Experience</h2>
-        <ol class="timeline">
-          <li>
-            <strong>Backend / Data Engineer</strong> — 08/2019 – Present
-            <div class="muted">Multiple Companies: Hiretodo, Ardakan Glass, Paziresh 24, Mahya Pardaz Companies</div>
-            <ul>
-              <li>Built ETL pipelines for collecting, transforming, and validating data.</li>
-              <li>Wrote complex SQL queries (joins, aggregations, window functions) for analysis and reporting.</li>
-              <li>Performed data cleaning and quality checks to ensure accuracy and consistency.</li>
-              <li>Designed optimized MySQL schemas for large datasets.</li>
-              <li>Investigated and resolved data-related issues.</li>
-              <li>Worked in Linux environments using command-line tools for data processing.</li>
-            </ul>
-          </li>
-        </ol>
+  <section id="experience" class="section reveal">
+        <div class="container">
+          <h2>Experience</h2>
+          <ol class="timeline">
+            <li>
+              <strong>Backend / Data Engineer</strong> — 08/2019 – Present
+              <div class="muted">Multiple Companies: Hiretodo, Ardakan Glass, Paziresh 24, Mahya Pardaz Companies</div>
+              <ul>
+                <li>Built ETL pipelines for collecting, transforming, and validating data.</li>
+                <li>Wrote complex SQL queries (joins, aggregations, window functions) for analysis and reporting.</li>
+                <li>Performed data cleaning and quality checks to ensure accuracy and consistency.</li>
+                <li>Designed optimized MySQL schemas for large datasets.</li>
+                <li>Investigated and resolved data-related issues.</li>
+                <li>Worked in Linux environments using command-line tools for data processing.</li>
+              </ul>
+            </li>
+          </ol>
+        </div>
       </section>
 
-  <section id="contact" class="container section reveal">
-        <h2>Contact</h2>
-        <p>Interested in hiring or collaborating? Email me at <a href="mailto:amirrezazare59@gmail.com">amirrezazare59@gmail.com</a>, find my work on <a href="https://github.com/mrprogrammingx" target="_blank" rel="noopener">GitHub</a>, or connect on <a href="https://linkedin.com/in/binahayat00" target="_blank" rel="noopener">LinkedIn</a>.</p>
-        <div class="social contact-social" style="margin-top:12px">
-          <a class="icon-link" href="mailto:amirrezazare59@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="18" height="18"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></a>
-          <a class="icon-link" href="https://linkedin.com/in/binahayat00" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="18" height="18"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 24V7h5v17H0zM8 7h4.7v2.3h.1c.7-1.3 2.4-2.7 4.9-2.7C23 6.6 24 9.1 24 13.5V24h-5v-9.6c0-2.3 0-5.3-3.2-5.3-3.2 0-3.7 2.5-3.7 5.1V24H8V7z"/></svg></a>
-          <a class="icon-link" href="https://github.com/mrprogrammingx" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="18" height="18"><path d="M12 .5C5.7.5.6 5.7.6 12c0 5.1 3.3 9.5 7.9 11 .6.1.8-.3.8-.6v-2.1c-3.2.7-3.8-1.4-3.8-1.4-.5-1.2-1.2-1.6-1.2-1.6-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 .1 1.6.7 2 1.1.1-.9.4-1.5.7-1.8-2.6-.3-5.3-1.3-5.3-6 0-1.3.5-2.4 1.2-3.3-.1-.3-.5-1.6.1-3.3 0 0 1-.3 3.3 1.3 1-.3 2-.4 3-.4s2 .1 3 .4c2.3-1.6 3.3-1.3 3.3-1.3.6 1.7.2 3 .1 3.3.8.9 1.2 2 1.2 3.3 0 4.7-2.7 5.7-5.3 6 .4.3.7 1 .7 2v3c0 .3.2.7.8.6 4.6-1.5 7.9-5.9 7.9-11C23.4 5.7 18.3.5 12 .5z"/></svg></a>
-          <a class="icon-link" href="https://instagram.com/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="18" height="18"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.9.2 2.4.4.6.2 1 .5 1.5 1 .5.5.8.9 1 1.5.2.5.3 1.2.4 2.4.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.2 1.9-.4 2.4-.2.6-.5 1-1 1.5-.5.5-.9.8-1.5 1-.5.2-1.2.3-2.4.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.9-.2-2.4-.4-.6-.2-1-.5-1.5-1-.5-.5-.8-.9-1-1.5-.2-.5-.3-1.2-.4-2.4C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.2-1.9.4-2.4.2-.6.5-1 1-1.5.5-.5.9-.8 1.5-1 .5-.2 1.2-.3 2.4-.4C8.4 2.2 8.8 2.2 12 2.2m0-2.2C8.7 0 8.3 0 7 .1 5.7.1 4.7.3 3.9.6 3.1 1 2.4 1.5 1.7 2.2.9 3 .4 3.7 0 4.5c-.3.8-.5 1.8-.6 3.1C-.1 8.3 0 8.7 0 12s0 3.7.1 5c.1 1.3.3 2.3.6 3.1.4.8.9 1.5 1.7 2.2.7.7 1.4 1.2 2.2 1.7.8.3 1.8.5 3.1.6 1.3.1 1.7.1 5 .1s3.7 0 5-.1c1.3-.1 2.3-.3 3.1-.6.8-.4 1.5-.9 2.2-1.7.7-.7 1.2-1.4 1.7-2.2.3-.8.5-1.8.6-3.1.1-1.3.1-1.7.1-5s0-3.7-.1-5c-.1-1.3-.3-2.3-.6-3.1-.4-.8-.9-1.5-1.7-2.2C20.9 1.5 20.2 1 19.4.6 18.6.3 17.6.1 16.3 0 15 .1 14.6 0 12 0z"/></svg></a>
+  <section id="contact" class="section reveal alt">
+        <div class="container">
+          <h2>Contact</h2>
+          <p>Interested in hiring or collaborating? Email me at <a href="mailto:amirrezazare59@gmail.com">amirrezazare59@gmail.com</a>, find my work on <a href="https://github.com/mrprogrammingx" target="_blank" rel="noopener">GitHub</a>, or connect on <a href="https://linkedin.com/in/binahayat00" target="_blank" rel="noopener">LinkedIn</a>.</p>
+          <div class="social contact-social" style="margin-top:12px">
+            <a class="icon-link" href="mailto:amirrezazare59@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="18" height="18"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></a>
+            <a class="icon-link" href="https://linkedin.com/in/binahayat00" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="18" height="18"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 24V7h5v17H0zM8 7h4.7v2.3h.1c.7-1.3 2.4-2.7 4.9-2.7C23 6.6 24 9.1 24 13.5V24h-5v-9.6c0-2.3 0-5.3-3.2-5.3-3.2 0-3.7 2.5-3.7 5.1V24H8V7z"/></svg></a>
+            <a class="icon-link" href="https://github.com/mrprogrammingx" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="18" height="18"><path d="M12 .5C5.7.5.6 5.7.6 12c0 5.1 3.3 9.5 7.9 11 .6.1.8-.3.8-.6v-2.1c-3.2.7-3.8-1.4-3.8-1.4-.5-1.2-1.2-1.6-1.2-1.6-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 .1 1.6.7 2 1.1.1-.9.4-1.5.7-1.8-2.6-.3-5.3-1.3-5.3-6 0-1.3.5-2.4 1.2-3.3-.1-.3-.5-1.6.1-3.3 0 0 1-.3 3.3 1.3 1-.3 2-.4 3-.4s2 .1 3 .4c2.3-1.6 3.3-1.3 3.3-1.3.6 1.7.2 3 .1 3.3.8.9 1.2 2 1.2 3.3 0 4.7-2.7 5.7-5.3 6 .4.3.7 1 .7 2v3c0 .3.2.7.8.6 4.6-1.5 7.9-5.9 7.9-11C23.4 5.7 18.3.5 12 .5z"/></svg></a>
+            <a class="icon-link" href="https://instagram.com/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="18" height="18"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.9.2 2.4.4.6.2 1 .5 1.5 1 .5.5.8.9 1 1.5.2.5.3 1.2.4 2.4.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.2 1.9-.4 2.4-.2.6-.5 1-1 1.5-.5.5-.9.8-1.5 1-.5.2-1.2.3-2.4.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.9-.2-2.4-.4-.6-.2-1-.5-1.5-1-.5-.5-.8-.9-1-1.5-.2-.5-.3-1.2-.4-2.4C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.2-1.9.4-2.4.2-.6.5-1 1-1.5.5-.5.9-.8 1.5-1 .5-.2 1.2-.3 2.4-.4C8.4 2.2 8.8 2.2 12 2.2m0-2.2C8.7 0 8.3 0 7 .1 5.7.1 4.7.3 3.9.6 3.1 1 2.4 1.5 1.7 2.2.9 3 .4 3.7 0 4.5c-.3.8-.5 1.8-.6 3.1C-.1 8.3 0 8.7 0 12s0 3.7.1 5c.1 1.3.3 2.3.6 3.1.4.8.9 1.5 1.7 2.2.7.7 1.4 1.2 2.2 1.7.8.3 1.8.5 3.1.6 1.3.1 1.7.1 5 .1s3.7 0 5-.1c1.3-.1 2.3-.3 3.1-.6.8-.4 1.5-.9 2.2-1.7.7-.7 1.2-1.4 1.7-2.2.3-.8.5-1.8.6-3.1.1-1.3.1-1.7.1-5s0-3.7-.1-5c-.1-1.3-.3-2.3-.6-3.1-.4-.8-.9-1.5-1.7-2.2C20.9 1.5 20.2 1 19.4.6 18.6.3 17.6.1 16.3 0 15 .1 14.6 0 12 0z"/></svg></a>
+          </div>
         </div>
       </section>
 

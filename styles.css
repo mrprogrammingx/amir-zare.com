@@ -107,6 +107,15 @@ html{scroll-behavior:smooth}
 /* small utility */
 .muted a{color:var(--muted)}
 
+/* Section banding */
+.section{padding:56px 0}
+.section.alt{background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));border-top:1px solid rgba(255,255,255,0.02)}
+.hero{padding:72px 0}
+.site-footer{padding:28px 0}
+
+/* give cards a soft pane feel */
+.card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.03)}
+
 /* Floating decorative blobs (created by JS) */
 .hero { --blob-area: 120px; }
 .hero .blobs {position:absolute;inset:0;pointer-events:none;z-index:0}
