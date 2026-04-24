@@ -50,10 +50,13 @@ body{
 /* fixed phrase in hero lead */
 .hero .lead .fixed{color:var(--accent);font-weight:700}
 .hero h1{font-size:2.8rem;margin:0 0 16px;font-weight:800;line-height:1.02}
+.hero-role{font-size:1.15rem;margin:0 0 12px;color:var(--muted);font-weight:600}
 .cta-row{margin-top:18px}
 .btn{display:inline-block;padding:10px 14px;border-radius:8px;text-decoration:none;color:var(--text);background:transparent;border:1px solid var(--panel-border);margin-right:8px}
 .btn.primary{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#06202a;border:none}
 .btn.ghost{background:transparent;border:1px dashed rgba(2,6,23,0.06)}
+.btn.bold{font-weight:700;border:none;padding:10px 14px;background:transparent;color:var(--accent-2)}
+.btn.bold:hover{background:var(--glass);color:var(--accent)}
 
 .section{padding:30px 0}
 .section h2{margin-top:0}

@@ -53,26 +53,41 @@
     <main>
       <section class="hero">
             <div class="container reveal hero-content">
-              <h1 class="hero-title">Amir Zare — Backend & Data Engineer</h1>
+              <h1 class="hero-title">Amir Zare</h1>
+              <h2 class="hero-role">Backend & Data Engineer</h2>
               <p class="lead"><span class="fixed">I build reliable data platforms,</span>&nbsp;<span id="typed" data-words='["I design production-ready ETL systems that enable data-driven decisions.", "I build streaming pipelines to improve observability.", "I reduce processing costs with efficient data engineering."]'></span></p>
               <div class="chips">Reliable ETL • FastAPI APIs • Observability</div>
               <p class="cta-row">
-                <a class="btn primary" href="#projects">See projects</a>
-                <a class="btn ghost" href="resume.html">Download CV</a>
+                <a class="btn bold" href="https://github.com/mrprogrammingx" target="_blank" rel="noopener">GitHub</a>
+                <a class="btn primary" href="#projects">Projects</a>
+                <a class="btn bold" href="resume.html">Resume</a>
+                <a class="btn bold" href="https://linkedin.com/in/binahayat00" target="_blank" rel="noopener">LinkedIn</a>
               </p>
               <p class="muted" style="margin-top:10px">Available for full-time & contract roles — open to remote / hybrid</p>
             </div>
           </section>
-
-  <section id="about" class="section reveal alt">
+  <section id="projects" class="section reveal alt">
         <div class="container">
-          <h2>About</h2>
-          <p>I design data architectures and pipelines that move quickly from prototype to production. My work focuses on reliability, observability, and cost-efficient processing at scale.</p>
-          <ul>
-            <li>Experience with batch & streaming systems</li>
-            <li>Infrastructure as code, monitoring, and testing</li>
-            <li>Strong collaboration with analysts, ML engineers and product teams</li>
-          </ul>
+          <h2>🥈 Selected Projects</h2>
+          <div class="cards">
+            <article class="card reveal">
+              <h3>Run/Walk Data Pipeline <a href="https://github.com/mrprogrammingx/run-walk-pipeline" class="muted" target="_blank" rel="noopener">(GitHub)</a></h3>
+              <p><strong>Problem:</strong> CSV telemetry ingestion was slow, inconsistent, and hard to query for analytics.</p>
+              <p><strong>Solution:</strong> Built a batch ETL pipeline (CSV → Parquet → DuckDB) orchestrated with Apache Airflow and automated SQL transforms into materialized tables.</p>
+              <p><strong>Impact:</strong> Reduced processing time and enabled daily materialized reports for analysts.</p>
+              <p class="muted"><strong>Tech:</strong> Python, Airflow, DuckDB, Parquet, Streamlit</p>
+              <p class="muted"><strong>Live demo:</strong> <a href="https://amir-zare.com/run-walk" target="_blank" rel="noopener">amir-zare.com/run-walk</a> • <strong>Repo:</strong> <a href="https://github.com/mrprogrammingx/run-walk-pipeline" target="_blank" rel="noopener">GitHub</a></p>
+            </article>
+
+            <article class="card reveal">
+              <h3>Analytics Platform <a href="https://github.com/mrprogrammingx/analytics-platform" class="muted" target="_blank" rel="noopener">(GitHub)</a></h3>
+              <p><strong>Problem:</strong> Disparate telemetry and no centralized analytics API; reporting was manual and slow.</p>
+              <p><strong>Solution:</strong> Built an analytics platform with FastAPI, DuckDB storage, and Streamlit dashboards to normalize JSONL telemetry and provide programmatic APIs for reporting.</p>
+              <p><strong>Impact:</strong> Delivered reproducible dashboards and APIs that reduced manual reporting effort and supported ad-hoc analysis.</p>
+              <p class="muted"><strong>Tech:</strong> Python, FastAPI, DuckDB, Streamlit, JSONL</p>
+              <p class="muted"><strong>Live demo:</strong> <a href="https://amir-zare.com/analytics" target="_blank" rel="noopener">amir-zare.com/analytics</a> • <strong>Repo:</strong> <a href="https://github.com/mrprogrammingx/analytics-platform" target="_blank" rel="noopener">GitHub</a></p>
+            </article>
+          </div>
         </div>
       </section>
 
@@ -99,30 +114,20 @@
         </div>
       </section>
 
-        <section id="projects" class="section reveal alt">
+  <section id="about" class="section reveal alt">
         <div class="container">
-          <h2>Selected Projects</h2>
-          <div class="cards">
-            <article class="card reveal">
-              <h3>Run/Walk Data Pipeline <a href="https://github.com/mrprogrammingx/run-walk-pipeline" class="muted" target="_blank" rel="noopener">(GitHub)</a></h3>
-              <p><strong>Problem:</strong> CSV telemetry ingestion was slow, inconsistent, and hard to query for analytics.</p>
-              <p><strong>Solution:</strong> Built a batch ETL pipeline (CSV → Parquet → DuckDB) orchestrated with Apache Airflow and automated SQL transforms into materialized tables.</p>
-              <p><strong>Impact:</strong> Reduced processing time and enabled daily materialized reports for analysts.</p>
-              <p class="muted"><strong>Tech:</strong> Python, Airflow, DuckDB, Parquet, Streamlit</p>
-              <p class="muted"><strong>Live demo:</strong> <a href="https://amir-zare.com/run-walk" target="_blank" rel="noopener">amir-zare.com/run-walk</a> • <strong>Repo:</strong> <a href="https://github.com/mrprogrammingx/run-walk-pipeline" target="_blank" rel="noopener">GitHub</a></p>
-            </article>
-
-            <article class="card reveal">
-              <h3>Analytics Platform <a href="https://github.com/mrprogrammingx/analytics-platform" class="muted" target="_blank" rel="noopener">(GitHub)</a></h3>
-              <p><strong>Problem:</strong> Disparate telemetry and no centralized analytics API; reporting was manual and slow.</p>
-              <p><strong>Solution:</strong> Built an analytics platform with FastAPI, DuckDB storage, and Streamlit dashboards to normalize JSONL telemetry and provide programmatic APIs for reporting.</p>
-              <p><strong>Impact:</strong> Delivered reproducible dashboards and APIs that reduced manual reporting effort and supported ad-hoc analysis.</p>
-              <p class="muted"><strong>Tech:</strong> Python, FastAPI, DuckDB, Streamlit, JSONL</p>
-              <p class="muted"><strong>Live demo:</strong> <a href="https://amir-zare.com/analytics" target="_blank" rel="noopener">amir-zare.com/analytics</a> • <strong>Repo:</strong> <a href="https://github.com/mrprogrammingx/analytics-platform" target="_blank" rel="noopener">GitHub</a></p>
-            </article>
-          </div>
+          <h2>About</h2>
+          <p>I design data architectures and pipelines that move quickly from prototype to production. My work focuses on reliability, observability, and cost-efficient processing at scale.</p>
+          <ul>
+            <li>Experience with batch & streaming systems</li>
+            <li>Infrastructure as code, monitoring, and testing</li>
+            <li>Strong collaboration with analysts, ML engineers and product teams</li>
+          </ul>
         </div>
       </section>
+
+
+      
 
   <section id="experience" class="section reveal">
         <div class="container">
