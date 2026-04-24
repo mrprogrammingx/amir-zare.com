@@ -24,3 +24,7 @@ Contact:
 
 - Email: amirrezazare59@gmail.com
 - LinkedIn: https://linkedin.com/in/binahayat00
+ 
+Resume:
+
+- The resume is available as `resume.html` in this repository. You can open it locally or host it with the site.

@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Amir Zare — Resume</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+      .resume{max-width:800px;margin:30px auto;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:24px;border-radius:10px}
+      .resume h1{margin:0;font-size:1.6rem}
+      .resume .meta{display:flex;flex-wrap:wrap;gap:12px;margin-top:8px;color:var(--muted)}
+      .resume h2{margin-top:18px}
+      .two-col{display:grid;grid-template-columns:1fr 300px;gap:18px}
+      .section-block{margin-bottom:12px}
+      .skill-list{display:flex;flex-wrap:wrap;gap:6px}
+      .skill-pill{background:var(--glass);padding:6px 8px;border-radius:8px;color:var(--muted);font-size:0.9rem}
+      @media(max-width:900px){.two-col{grid-template-columns:1fr}}
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="resume">
+        <header>
+          <h1>AMIR ZARE</h1>
+          <div class="meta">Data Engineer • <a href="mailto:amirrezazare59@gmail.com">amirrezazare59@gmail.com</a> • <a href="https://linkedin.com/in/binahayat00" target="_blank" rel="noopener">linkedin.com/in/binahayat00</a> • <a href="https://github.com/mrprogrammingx" target="_blank" rel="noopener">github.com/mrprogrammingx</a></div>
+        </header>
+
+        <section class="section-block">
+          <h2>Professional Summary</h2>
+          <p>Data Engineer with 6+ years of backend experience specializing in SQL, ETL workflows, and data validation. Strong in Python and relational databases, with experience building data pipelines, cleaning datasets, and ensuring data quality for analytics.</p>
+        </section>
+
+        <section class="section-block">
+          <h2>Professional Experience</h2>
+          <div class="two-col">
+            <div>
+              <h3>Multiple Companies (Hiretodo, Ardakan Glass, Paziresh 24, Mahya Pardaz Companies)</h3>
+              <div class="muted">08/2019 - Present</div>
+              <p><strong>Backend / Data Engineer</strong></p>
+              <ul>
+                <li>Built ETL pipelines for collecting, transforming, and validating data.</li>
+                <li>Wrote complex SQL queries (joins, aggregations, window functions) for analysis and reporting.</li>
+                <li>Performed data cleaning and quality checks to ensure accuracy and consistency.</li>
+                <li>Designed optimized MySQL schemas for large datasets.</li>
+                <li>Investigated and resolved data-related issues.</li>
+                <li>Worked in Linux environments using command-line tools for data processing.</li>
+              </ul>
+            </div>
+            <aside>
+              <h3>Professional Training</h3>
+              <div class="muted">EPAM Systems — Data Software Engineer</div>
+              <div class="muted">09/2025 - 02/2026</div>
+              <p>Completed intensive Data Engineering program (95% performance score). Designed normalized relational schemas, applied DWH modeling techniques, and implemented optimized SQL workflows.</p>
+            </aside>
+          </div>
+        </section>
+
+        <section class="section-block">
+          <h2>Projects</h2>
+          <ul>
+            <li><strong>Run/Walk Data Pipeline</strong> — Built batch pipeline (CSV → Parquet → DuckDB) with SQL transformations and materialized tables. Orchestrated pipeline using Apache Airflow and exposed data via Streamlit dashboard and Flask API for reporting and validation. (GitHub)</li>
+            <li><strong>Analytics Platform</strong> — Built an end-to-end data platform with ETL pipeline, DuckDB storage, FastAPI, and Streamlit dashboard. Ingested and normalized JSONL telemetry data into analytical tables for querying and reporting. (GitHub)</li>
+          </ul>
+        </section>
+
+        <section class="section-block">
+          <h2>Technical Skills</h2>
+          <div class="skill-list">
+            <span class="skill-pill">Python (Advanced)</span>
+            <span class="skill-pill">SQL (Joins, Window Functions)</span>
+            <span class="skill-pill">MySQL</span>
+            <span class="skill-pill">PostgreSQL</span>
+            <span class="skill-pill">MongoDB</span>
+            <span class="skill-pill">ETL / ELT</span>
+            <span class="skill-pill">Airflow</span>
+            <span class="skill-pill">Docker</span>
+            <span class="skill-pill">AWS / GCP</span>
+            <span class="skill-pill">Pandas / NumPy</span>
+            <span class="skill-pill">TensorFlow</span>
+            <span class="skill-pill">Git / Linux / Shell</span>
+          </div>
+        </section>
+
+        <section class="section-block">
+          <h2>Education</h2>
+          <p><strong>Bachelor of Computer Software Engineering</strong> — Yazd State University (09/2018 – 07/2022)</p>
+          <p>Focus on Algorithms, Data Structures, Statistics, Discrete Mathematics.</p>
+          <p><strong>Machine Learning Program</strong> — TUMO (2026)</p>
+        </section>
+
+        <section class="section-block">
+          <h2>Languages</h2>
+          <ul>
+            <li>English: Advanced - Professional proficiency in speaking and writing.</li>
+            <li>Persian: Native</li>
+            <li>Armenian / Russian / German: Beginner</li>
+          </ul>
+        </section>
+
+        <footer class="muted">Generated from provided resume text.</footer>
+      </div>
+    </div>
+  </body>
+</html>
