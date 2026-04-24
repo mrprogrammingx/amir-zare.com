@@ -90,4 +90,67 @@
   // initialize blobs after a small delay so hero sizing stabilizes
   window.addEventListener('load', ()=>setTimeout(createBlobs,160));
 
+  /* Typing effect for hero */
+  function typeLoop(el){
+    if(!el) return;
+    let words = [];
+    try{ words = JSON.parse(el.dataset.words) }catch(e){}
+    if(!words.length) return;
+    let i=0, pos=0, forward=true;
+    const step = ()=>{
+      const word = words[i%words.length];
+      if(forward){
+        pos++;
+        el.textContent = word.slice(0,pos);
+        if(pos===word.length){ forward=false; setTimeout(step, 900); return }
+      } else {
+        pos--;
+        el.textContent = word.slice(0,pos);
+        if(pos===0){ forward=true; i++; setTimeout(step, 220); return }
+      }
+      setTimeout(step, forward?60:30);
+    };
+    step();
+  }
+  typeLoop(document.getElementById('typed'));
+
+  /* Animate skill bars when skills section revealed */
+  const skillsSec = document.getElementById('skills');
+  if(skillsSec && 'IntersectionObserver' in window){
+    const sIO = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          q('.skill').forEach(s=>{
+            const level = s.dataset.level || 60;
+            const fill = s.querySelector('.fill');
+            fill.style.width = level + '%';
+          });
+          sIO.unobserve(e.target);
+        }
+      });
+    },{threshold:0.2});
+    sIO.observe(skillsSec);
+  }
+
+  /* Theme toggle (persist in localStorage) */
+  const themeBtn = document.getElementById('theme-toggle');
+  function setTheme(t){
+    document.documentElement.setAttribute('data-theme', t);
+    if(themeBtn) themeBtn.textContent = t==='light' ? '🌙' : '🌞';
+    localStorage.setItem('site-theme', t);
+  }
+  const saved = localStorage.getItem('site-theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+  setTheme(saved);
+  if(themeBtn){ themeBtn.addEventListener('click', ()=> setTheme(document.documentElement.getAttribute('data-theme')==='light'?'dark':'light')) }
+
+  /* Scroll progress bar */
+  const prog = document.getElementById('scroll-progress');
+  function updateProgress(){
+    const h = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = h>0 ? (window.scrollY / h) * 100 : 0;
+    prog.style.width = Math.min(100, Math.max(0,pct)) + '%';
+  }
+  window.addEventListener('scroll', debounce(updateProgress, 20));
+  updateProgress();
+
 })();

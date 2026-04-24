@@ -133,3 +133,31 @@ html{scroll-behavior:smooth}
 /* parallax subtle movement for header social icons */
 .social{transition:transform 300ms ease}
 
+/* Scroll progress bar */
+#scroll-progress{position:fixed;left:0;top:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent-2));width:0%;z-index:9999;transition:width 120ms linear}
+
+/* Theme toggle */
+.theme-toggle{background:transparent;border:none;color:var(--muted);font-size:18px;padding:6px;border-radius:8px;cursor:pointer}
+.theme-toggle:hover{color:var(--text)}
+
+/* Typing effect placeholder */
+#typed{font-weight:600;color:var(--accent-2)}
+#typed::after{content:"|";margin-left:6px;opacity:1;animation:blink 900ms steps(2, start) infinite}
+@keyframes blink{50%{opacity:0}}
+
+/* Skill bars */
+.skill-bars{margin-top:16px;display:flex;flex-direction:column;gap:8px}
+.skill{display:flex;flex-direction:column;gap:6px}
+.skill span{font-size:0.95rem;color:var(--muted)}
+.bar{height:10px;background:rgba(255,255,255,0.03);border-radius:999px;overflow:hidden}
+.fill{height:100%;width:0%;background:linear-gradient(90deg,var(--accent),var(--accent-2));transition:width 900ms cubic-bezier(.2,.9,.2,1)}
+
+/* Light theme overrides */
+:root[data-theme='light']{
+  --bg: #f7fbff;
+  --card: #ffffff;
+  --muted: #5b6470;
+  --text: #08121a;
+  --glass: rgba(2,6,23,0.03);
+}
+

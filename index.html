@@ -8,9 +8,12 @@
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
+    <!-- scroll progress bar -->
+    <div id="scroll-progress" aria-hidden="true"></div>
     <header class="site-header">
       <div class="container header-inner">
         <a class="logo" href="#">Amir Zare</a>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">🌙</button>
         <nav class="nav">
           <a href="#about">About</a>
           <a href="#skills">Skills</a>
@@ -47,7 +50,7 @@
       <section class="hero">
         <div class="container reveal hero-content">
           <h1 class="hero-title">Hi — I'm Amir, a Data Engineer</h1>
-          <p class="lead">I build reliable data platforms, design scalable ETL pipelines, and enable analytics & ML with clean, well-tested infrastructure.</p>
+          <p class="lead">I build reliable data platforms, <span id="typed" data-words='["design scalable ETL pipelines","enable analytics & ML","ensure data quality and observability"]'></span></p>
           <p class="cta-row">
             <a class="btn primary" href="#projects">See projects</a>
             <a class="btn ghost" href="resume.html">CV</a>
@@ -77,6 +80,12 @@
           <span class="chip">DBT</span>
           <span class="chip">Docker / Kubernetes</span>
           <span class="chip">Monitoring (Prometheus, Grafana)</span>
+        </div>
+        <div class="skill-bars">
+          <div class="skill" data-level="95"><span>Python</span><div class="bar"><div class="fill"></div></div></div>
+          <div class="skill" data-level="90"><span>SQL</span><div class="bar"><div class="fill"></div></div></div>
+          <div class="skill" data-level="80"><span>Airflow / Prefect</span><div class="bar"><div class="fill"></div></div></div>
+          <div class="skill" data-level="75"><span>Spark</span><div class="bar"><div class="fill"></div></div></div>
         </div>
       </section>
 
