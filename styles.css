@@ -50,7 +50,12 @@ body{
 /* fixed phrase in hero lead */
 .hero .lead .fixed{color:var(--accent);font-weight:700}
 .hero h1{font-size:2.8rem;margin:0 0 16px;font-weight:800;line-height:1.02}
-.hero-role{font-size:1.15rem;margin:0 0 12px;color:var(--muted);font-weight:600}
+.hero-name,.hero-role{font-weight:900;display:inline-block;background:linear-gradient(90deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent;vertical-align:baseline}
+.hero-sep{display:inline-flex;align-items:center;justify-content:center;color:var(--accent-2);margin:0 10px;font-weight:800}
+.hero-sep svg{display:block;width:16px;height:16px;opacity:0.95}
+.hero-sep svg circle{fill:var(--accent-2)}
+.hero h1{font-size:4.2rem;margin:0 0 12px}
+.hero-role{font-size:2.6rem;margin:0;transform:none}
 .cta-row{margin-top:18px}
 .btn{display:inline-block;padding:10px 14px;border-radius:8px;text-decoration:none;color:var(--text);background:transparent;border:1px solid var(--panel-border);margin-right:8px}
 .btn.primary{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#06202a;border:none}
@@ -86,7 +91,8 @@ body{
 @media (max-width:700px){
   .header-inner{padding:12px}
   .nav{display:none}
-  .hero h1{font-size:1.5rem}
+  .hero h1{font-size:2.1rem}
+  .hero-role{font-size:1.05rem;transform:none}
   .container{padding:16px}
 }
 
