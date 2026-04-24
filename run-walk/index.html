@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Run/Walk Data Pipeline — Demo</title>
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="logo" href="/">Amir Zare</a>
+        <nav class="nav">
+          <a href="/">Home</a>
+          <a href="/run-walk">Run/Walk</a>
+          <a href="/resume.html">Resume</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="section">
+        <div class="container">
+          <h2>Run/Walk Data Pipeline</h2>
+          <p class="lead">A small, production-minded batch pipeline that ingests CSV telemetry, converts to Parquet, and exposes fast queries via DuckDB. Built for reproducible analytics and low-cost storage.</p>
+
+          <h3>Project description</h3>
+          <p>This project ingests raw CSV export files from devices, validates and normalizes fields, converts them to partitioned Parquet, and maintains materialized DuckDB tables for fast analytical queries and dashboards. The pipeline is orchestrated with Apache Airflow and the dashboard is a lightweight Streamlit app used by analysts.</p>
+
+          <h3>Key features</h3>
+          <ul>
+            <li>Incremental batch ingestion with idempotent transforms</li>
+            <li>Row-level validation and schema checks with automated alerts</li>
+            <li>Parquet output for compact, columnar storage</li>
+            <li>DuckDB materialized tables for sub-second analytical queries</li>
+            <li>Lightweight dashboard and REST API for ad-hoc reporting</li>
+          </ul>
+
+          <h3>Architecture diagram</h3>
+          <!-- Inline SVG diagram (simple, copyable) -->
+          <div style="max-width:900px;margin:12px 0;padding:18px;border-radius:8px;background:var(--glass);">
+            <svg viewBox="0 0 900 260" width="100%" height="260" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <defs>
+                <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+                  <path d="M0 0 L10 5 L0 10 z" fill="#60a5fa"/>
+                </marker>
+              </defs>
+              <!-- Sources -->
+              <rect x="20" y="30" width="160" height="60" rx="8" fill="#0b1220" stroke="#60a5fa"/>
+              <text x="100" y="62" text-anchor="middle" fill="#9aa4b2" font-size="14">CSV Sources</text>
+
+              <!-- Ingest -->
+              <rect x="220" y="20" width="180" height="90" rx="8" fill="#07101a" stroke="#6ee7b7"/>
+              <text x="310" y="52" text-anchor="middle" fill="#9aa4b2" font-size="14">Ingest & Validate (Airflow)</text>
+
+              <!-- Storage -->
+              <rect x="460" y="30" width="160" height="60" rx="8" fill="#0b1220" stroke="#60a5fa"/>
+              <text x="540" y="62" text-anchor="middle" fill="#9aa4b2" font-size="14">Parquet (GCS/S3)</text>
+
+              <!-- DuckDB -->
+              <rect x="660" y="30" width="200" height="60" rx="8" fill="#07101a" stroke="#6ee7b7"/>
+              <text x="760" y="62" text-anchor="middle" fill="#9aa4b2" font-size="14">DuckDB (Materialized)</text>
+
+              <!-- arrows -->
+              <line x1="180" y1="60" x2="220" y2="60" stroke="#60a5fa" stroke-width="2" marker-end="url(#arrow)"/>
+              <line x1="400" y1="60" x2="460" y2="60" stroke="#6ee7b7" stroke-width="2" marker-end="url(#arrow)"/>
+              <line x1="620" y1="60" x2="660" y2="60" stroke="#60a5fa" stroke-width="2" marker-end="url(#arrow)"/>
+
+              <!-- Dashboard / API -->
+              <rect x="360" y="150" width="180" height="70" rx="8" fill="#0b1220" stroke="#60a5fa"/>
+              <text x="450" y="185" text-anchor="middle" fill="#9aa4b2" font-size="14">Streamlit Dashboard + API</text>
+              <line x1="540" y1="110" x2="540" y2="150" stroke="#60a5fa" stroke-width="2" marker-end="url(#arrow)"/>
+              <line x1="760" y1="90" x2="760" y2="150" stroke="#6ee7b7" stroke-width="2" marker-end="url(#arrow)"/>
+            </svg>
+          </div>
+
+          <h3>Screenshots</h3>
+          <div class="cards">
+            <!-- Placeholder screenshots as inline SVGs to avoid adding image files -->
+            <article class="card">
+              <h4>Dashboard</h4>
+              <div style="height:160px;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#031017, #06202a);border-radius:8px;color:var(--muted);">Dashboard screenshot placeholder</div>
+            </article>
+            <article class="card">
+              <h4>Airflow DAG</h4>
+              <div style="height:160px;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#07101a, #0b1220);border-radius:8px;color:var(--muted);">Airflow DAG screenshot placeholder</div>
+            </article>
+          </div>
+
+          <h3>Repository & Live demo</h3>
+          <p><a href="https://github.com/mrprogrammingx/run-walk-pipeline" target="_blank" rel="noopener">GitHub — run-walk-pipeline</a></p>
+          <p><strong>Live demo:</strong> <a href="/run-walk" target="_blank">amir-zare.com/run-walk</a> (this page)</p>
+
+          <h3>API (optional)</h3>
+          <p>Example: a small read-only endpoint that exposes aggregated metrics.</p>
+          <pre style="background:var(--card-bg);padding:12px;border-radius:8px;color:var(--text);">GET https://amir-zare.com/api/run-walk/summary
+Response: { "date": "2026-04-01", "rows_processed": 124500, "avg_latency_ms": 85 }</pre>
+
+          <h3>How to run locally</h3>
+          <ol>
+            <li>Clone the repository: <code>git clone https://github.com/mrprogrammingx/run-walk-pipeline.git</code></li>
+            <li>Install dependencies (Python) and start Airflow in LocalExecutor or use Docker Compose.</li>
+            <li>Set storage path for Parquet outputs (local or cloud) and run the DAG.</li>
+          </ol>
+
+          <p class="muted">If you want, I can deploy a live demo for this project to your domain and attach a working API endpoint (will require deployment choices: small VM, Cloud Run, or Vercel/Render for the dashboard + a simple API).</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container"><small>© <span id="year"></span> Amir Zare</small></div>
+    </footer>
+
+    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  </body>
+</html>
