@@ -68,18 +68,21 @@
               <p class="muted" style="margin-top:10px">Available for full-time & contract roles — open to remote / hybrid</p>
             </div>
           </section>
-  <section id="projects" class="section reveal alt">
+  <section id="projects" class="section reveal alt visual-hook">
         <div class="container">
           <h2>🥈 Selected Projects</h2>
 
           <!-- Featured project: makes Projects unmistakable on first view -->
           <div class="featured-project reveal">
             <div class="featured-media" aria-hidden="true">
-              <!-- placeholder image; replace with real screenshot when available -->
-              <div class="img-placeholder">Run/Walk</div>
+              <!-- screenshot (place a file at screenshots/run-walk.png) -->
+              <div class="img-placeholder">
+                <img class="img-src" src="screenshots/run-walk.png" alt="Run/Walk screenshot" onerror="this.style.display='none'">
+                <div class="img-fallback">Run/Walk</div>
+              </div>
             </div>
             <div class="featured-content">
-              <h3>Run/Walk Data Pipeline</h3>
+              <h3><span class="proj-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h3l3-8 4 8h4"/></svg></span> Run/Walk Data Pipeline</h3>
               <p class="muted"><strong>Problem:</strong> CSV telemetry ingestion was slow and hard to query, blocking analytics.</p>
               <p><strong>Solution:</strong> Built a production-ready pipeline (CSV → Parquet → DuckDB) orchestrated with Apache Airflow, with automated materialized transforms and daily reports for analysts.</p><br>
               <p><strong>Impact:</strong> Enabled daily materialized reports and sub-second queries for analysts. Converted raw CSV into compressed Parquet to cut storage and speed downstream processing. Automation reduced manual reporting time from hours to minutes and improved data quality visibility.</p>
@@ -96,10 +99,13 @@
 
             <div class="featured-project reveal">
               <div class="featured-media" aria-hidden="true">
-                <div class="img-placeholder">Analytics</div>
+                <div class="img-placeholder">
+                  <img class="img-src" src="screenshots/analytics.png" alt="Analytics screenshot" onerror="this.style.display='none'">
+                  <div class="img-fallback">Analytics</div>
+                </div>
               </div>
               <div class="featured-content">
-                <h3>Analytics Platform</h3>
+                <h3><span class="proj-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 13v6"/><path d="M12 9v10"/><path d="M17 5v14"/></svg></span> Analytics Platform</h3>
                 <p class="muted"><strong>Problem:</strong> Disparate telemetry and no centralized analytics API; reporting was manual and slow.</p>
                 <p><strong>Solution:</strong> Built an analytics platform with FastAPI, DuckDB storage, and Streamlit dashboards to normalize JSONL telemetry and provide programmatic APIs for reporting.</p><br>
                 <p><strong>Impact:</strong> Centralized telemetry and programmatic APIs reduced manual reporting and enabled reproducible dashboards. This enabled faster ad-hoc analysis and integrated programmatic access for downstream services.</p>

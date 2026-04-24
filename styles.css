@@ -81,6 +81,29 @@ body{
 .featured-content h3{margin:0 0 8px}
 .featured-content p{margin:0 0 8px}
 
+.proj-icon{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;margin-right:8px;color:var(--accent-2);vertical-align:middle}
+.proj-icon svg{display:block;width:18px;height:18px}
+
+/* image placeholder: show screenshot if available, otherwise fallback text */
+.img-placeholder{position:relative;overflow:hidden;border-radius:12px}
+.img-placeholder .img-src{width:100%;height:100%;object-fit:cover;display:block;border-radius:12px}
+.img-placeholder .img-fallback{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#06202a;background:linear-gradient(90deg,var(--accent),var(--accent-2));font-weight:700}
+
+/* icon hover: brighten slightly */
+.proj-icon:hover{filter:brightness(1.15);transform:translateY(-2px);transition:all 160ms ease}
+
+/* simple tooltip for SVG diagram elements (uses data-tooltip attribute) */
+[data-tooltip]{position:relative}
+[data-tooltip]::after{content:attr(data-tooltip);position:absolute;left:50%;transform:translateX(-50%);bottom:calc(100% + 8px);background:var(--card-bg);color:var(--muted);padding:6px 8px;border-radius:6px;border:1px solid var(--panel-border);white-space:nowrap;opacity:0;pointer-events:none;transition:opacity 160ms ease,transform 160ms ease}
+[data-tooltip]:hover::after{opacity:1;transform:translateX(-50%) translateY(-4px)}
+
+/* Visual hook: subtle background band for projects and accent strip on featured items */
+.visual-hook{position:relative}
+.visual-hook::before{content:"";position:absolute;left:0;right:0;top:0;height:60%;background:linear-gradient(180deg, rgba(96,165,250,0.03), rgba(110,231,183,0.02));pointer-events:none;z-index:0}
+.visual-hook > .container{position:relative;z-index:2}
+.featured-project::before{content:"";position:absolute;left:12px;top:12px;bottom:12px;width:6px;background:linear-gradient(180deg,var(--accent),var(--accent-2));border-radius:4px;opacity:0.95}
+.featured-project{overflow:visible}
+
 @media (max-width:900px){
   .featured-project{grid-template-columns:1fr;}
   .featured-media .img-placeholder{height:180px}
