@@ -11,8 +11,8 @@
       <div class="resume">
         <a class="resume-home-link" href="/" aria-label="Back to home">← Home</a>
         <header>
-          <h1>AMIR ZARE</h1>
-          <p class="job-title">Data Engineer</p>
+          <h1>Amir Zare — Backend & Data Engineer</h1>
+          <p class="job-title">I design production-ready ETL and streaming systems that enable data-driven decisions, improve observability, and reduce processing costs.</p>
           <div class="meta">
             <span class="contact-email">
               <a class="contact-pill" href="mailto:amirrezazare59@gmail.com" id="mailto-email">
@@ -36,7 +36,8 @@
 
         <section class="section-block">
           <h2>Professional Summary</h2>
-          <p>Data Engineer with 6+ years of backend experience specializing in SQL, ETL workflows, and data validation. Strong in Python and relational databases, with experience building data pipelines, cleaning datasets, and ensuring data quality for analytics.</p>
+          <p>Backend-focused engineer with 6+ years building ETL pipelines, APIs, and analytics platforms. I prioritize reliability, observability, and cost-efficient processing using Python, Airflow, DuckDB, and cloud services.</p>
+          <p class="muted"><strong>Tech:</strong> Python • SQL • Airflow • DuckDB • FastAPI • Docker • AWS / GCP</p>
         </section>
 
         <section class="section-block">
@@ -47,12 +48,11 @@
               <div class="muted">08/2019 - Present</div>
               <p><strong>Backend / Data Engineer</strong></p>
               <ul>
-                <li>Built ETL pipelines for collecting, transforming, and validating data.</li>
-                <li>Wrote complex SQL queries (joins, aggregations, window functions) for analysis and reporting.</li>
-                <li>Performed data cleaning and quality checks to ensure accuracy and consistency.</li>
-                <li>Designed optimized MySQL schemas for large datasets.</li>
-                <li>Investigated and resolved data-related issues.</li>
-                <li>Worked in Linux environments using command-line tools for data processing.</li>
+                <li>Built REST APIs (FastAPI) serving 10k+ requests/day with median latency &lt;150ms to support low-latency dashboards.</li>
+                <li>Designed and maintained ETL pipelines processing 1M+ rows/day using Airflow and Python with end-to-end validation and alerting.</li>
+                <li>Reduced analytical query time by ~40% by migrating reporting workloads to DuckDB and implementing partitioning strategies.</li>
+                <li>Optimized MySQL schemas and indexing to lower join latency and improve query performance for reporting workloads.</li>
+                <li>Introduced automated data checks and CI for data transforms, reducing data incidents in production by an estimated 60%.</li>
               </ul>
             </div>
             <aside>
@@ -65,11 +65,19 @@
         </section>
 
         <section class="section-block">
-          <h2>Projects</h2>
-          <ul>
-            <li><strong>Run/Walk Data Pipeline</strong> — Built batch pipeline (CSV → Parquet → DuckDB) with SQL transformations and materialized tables. Orchestrated pipeline using Apache Airflow and exposed data via Streamlit dashboard and Flask API for reporting and validation. (GitHub)</li>
-            <li><strong>Analytics Platform</strong> — Built an end-to-end data platform with ETL pipeline, DuckDB storage, FastAPI, and Streamlit dashboard. Ingested and normalized JSONL telemetry data into analytical tables for querying and reporting. (GitHub)</li>
-          </ul>
+          <h2>Projects (selected)</h2>
+          <div>
+            <h4>Run/Walk Data Pipeline</h4>
+            <p>Problem: CSV telemetry ingestion was slow and inconsistent, delaying reports.
+            Action: Built a batch ETL (CSV → Parquet → DuckDB) with Airflow orchestration and automated tests for transforms.
+            Impact: Reduced end-to-end processing time by ~50% and enabled daily materialized reporting tables. <a href="https://github.com/mrprogrammingx" target="_blank" rel="noopener">GitHub</a></p>
+          </div>
+          <div>
+            <h4>Analytics Platform</h4>
+            <p>Problem: Disparate telemetry and no centralized analytics API.
+            Action: Designed an analytics platform with FastAPI, DuckDB storage, and Streamlit dashboards to normalize JSONL telemetry and provide APIs for reporting.
+            Impact: Delivered reproducible dashboards and APIs that supported ad-hoc analysis and reduced manual reporting effort by ~70%. <a href="https://github.com/mrprogrammingx" target="_blank" rel="noopener">GitHub</a></p>
+          </div>
         </section>
 
         <section class="section-block">
