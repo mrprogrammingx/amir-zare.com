@@ -15,7 +15,12 @@ python3 -m http.server 8000
 ```
 
 Notes / next steps:
-- Replace placeholder email (amir@example.com) and company names with real values.
+- Replace placeholder company names with real values.
 - Add a real CV/Resume PDF and update the CV link in the header.
 - Consider deploying to GitHub Pages, Netlify, or Vercel for a live site.
 - If you want I can add an automated GitHub Actions workflow to build & deploy.
+
+Contact:
+
+- Email: amirrezazare59@gmail.com
+- LinkedIn: https://linkedin.com/in/binahayat00
