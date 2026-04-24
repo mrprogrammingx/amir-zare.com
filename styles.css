@@ -99,8 +99,18 @@ body{
 
 /* Visual hook: subtle background band for projects and accent strip on featured items */
 .visual-hook{position:relative}
-.visual-hook::before{content:"";position:absolute;left:0;right:0;top:0;height:60%;background:linear-gradient(180deg, rgba(96,165,250,0.03), rgba(110,231,183,0.02));pointer-events:none;z-index:0}
+/* Limit the band to the left side on larger viewports so it doesn't visually overlay right-side content */
+.visual-hook::before{content:"";position:absolute;left:0;top:0;height:68%;/* cap the band so it never overlays right-side content */width:clamp(320px,40vw,620px);background:linear-gradient(90deg, rgba(96,165,250,0.065) 0%, rgba(110,231,183,0.04) 40%, rgba(110,231,183,0.02) 60%, transparent 100%);pointer-events:none;z-index:0;mix-blend-mode:multiply;border-bottom:1px solid rgba(96,165,250,0.03)}
 .visual-hook > .container{position:relative;z-index:2}
+
+/* make the band lighter on small screens so it never overpowers content */
+@media (max-width:900px){
+  /* On small screens the band becomes full-width to avoid awkward clipping at narrow widths */
+  .visual-hook::before{left:50%;right:50%;width:calc(100vw + 48px);transform:translateX(-50%);height:40%;background:linear-gradient(180deg, rgba(96,165,250,0.04), rgba(110,231,183,0.02) 60%, transparent 100%)}
+}
+
+/* light theme: softer band colors */
+:root[data-theme='light'] .visual-hook::before{background:linear-gradient(180deg, rgba(96,165,250,0.02), rgba(110,231,183,0.01) 60%, transparent 100%);border-bottom:1px solid rgba(96,165,250,0.02)}
 .featured-project::before{content:"";position:absolute;left:12px;top:12px;bottom:12px;width:6px;background:linear-gradient(180deg,var(--accent),var(--accent-2));border-radius:4px;opacity:0.95}
 .featured-project{overflow:visible}
 
@@ -246,9 +256,9 @@ html{scroll-behavior:smooth}
 .section{padding:60px 0}
 .section.alt{padding-top:60px;margin-top:0;position:relative;z-index:0}
 /* full-bleed background for alternate sections to avoid edge seams */
-.section.alt::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:calc(100vw + 48px);transform:translateX(-50%);pointer-events:none;z-index:0;
-  /* softer vertical fade into the band to prevent localized color blocks at edges */
-  background: linear-gradient(180deg, rgba(2,6,23,0) 0%, rgba(7,16,26,0.12) 18%, rgba(7,16,26,0.28) 36%, var(--section-alt-bg) 100%);
+.section.alt::before{content:"";position:absolute;left:50%;top:0;height:48%;width:calc(100vw + 48px);transform:translateX(-50%);pointer-events:none;z-index:0;
+  /* limit the band vertically and use much softer dark stops so it doesn't cut through content */
+  background: linear-gradient(180deg, rgba(2,6,23,0) 0%, rgba(7,16,26,0.06) 18%, rgba(7,16,26,0.12) 36%, rgba(7,16,26,0.06) 100%);
 }
 .section.alt > .container{background:transparent;padding:24px;border-radius:0;border:none;box-shadow:none;position:relative;z-index:1}
 
