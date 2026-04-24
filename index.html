@@ -1,1 +1,119 @@
-Hello!
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Amir Zare — Data Engineer</title>
+    <meta name="description" content="Portfolio of Amir Zare — Data Engineer. Pipelines, analytics, data platforms, and machine learning infrastructure." />
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="logo" href="#">Amir Zare</a>
+        <nav class="nav">
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#experience">Experience</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container">
+          <h1>Hi — I'm Amir, a Data Engineer</h1>
+          <p class="lead">I build reliable data platforms, design scalable ETL pipelines, and enable analytics & ML with clean, well-tested infrastructure.</p>
+          <p class="cta-row">
+            <a class="btn primary" href="#projects">See projects</a>
+            <a class="btn" href="mailto:amir@example.com">Contact</a>
+            <a class="btn ghost" href="README.md">CV</a>
+          </p>
+        </div>
+      </section>
+
+      <section id="about" class="container section">
+        <h2>About</h2>
+        <p>I design data architectures and pipelines that move quickly from prototype to production. My work focuses on reliability, observability, and cost-efficient processing at scale.</p>
+        <ul>
+          <li>Experience with batch & streaming systems</li>
+          <li>Infrastructure as code, monitoring, and testing</li>
+          <li>Strong collaboration with analysts, ML engineers and product teams</li>
+        </ul>
+      </section>
+
+      <section id="skills" class="container section">
+        <h2>Skills</h2>
+        <div class="chips">
+          <span class="chip">Python</span>
+          <span class="chip">SQL</span>
+          <span class="chip">Airflow / Prefect</span>
+          <span class="chip">Spark</span>
+          <span class="chip">Kafka</span>
+          <span class="chip">GCP / AWS</span>
+          <span class="chip">DBT</span>
+          <span class="chip">Docker / Kubernetes</span>
+          <span class="chip">Monitoring (Prometheus, Grafana)</span>
+        </div>
+      </section>
+
+      <section id="projects" class="container section">
+        <h2>Selected Projects</h2>
+        <div class="cards">
+          <article class="card">
+            <h3>Data Warehouse Modernization</h3>
+            <p>Migrated legacy ETL to a columnar warehouse, implemented incremental loads, and reduced query cost by 70% while improving freshness.</p>
+            <p class="muted">Python, DBT, BigQuery, Airflow</p>
+          </article>
+
+          <article class="card">
+            <h3>Real-time Event Pipeline</h3>
+            <p>Built a resilient streaming pipeline for user events with exactly-once semantics and observable processing metrics.</p>
+            <p class="muted">Kafka, Spark Structured Streaming, Kubernetes</p>
+          </article>
+
+          <article class="card">
+            <h3>ML Feature Platform</h3>
+            <p>Designed a feature store and automated feature computation to standardize features across experiments and production models.</p>
+            <p class="muted">Feast, Redis, Airflow</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="experience" class="container section">
+        <h2>Experience</h2>
+        <ol class="timeline">
+          <li>
+            <strong>Senior Data Engineer</strong> — 2022–Present
+            <div class="muted">Company name — City</div>
+            <p>Led platform migrations and set up CI/CD for data workflows.</p>
+          </li>
+          <li>
+            <strong>Data Engineer</strong> — 2019–2022
+            <div class="muted">Company name — City</div>
+            <p>Built analytics pipelines and instrumented observability across systems.</p>
+          </li>
+        </ol>
+      </section>
+
+      <section id="contact" class="container section">
+        <h2>Contact</h2>
+        <p>Interested in hiring or collaborating? Email me at <a href="mailto:amir@example.com">amir@example.com</a> or find my work on <a href="https://github.com/mrprogrammingx" target="_blank" rel="noopener">GitHub</a>.</p>
+      </section>
+
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <small>© <span id="year"></span> Amir Zare — Data Engineer. Built with HTML & CSS.</small>
+      </div>
+    </footer>
+
+    <script>
+      // small enhancement: current year
+      document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
