@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Analytics Platform — Demo</title>
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="logo" href="/">Amir Zare</a>
+        <nav class="nav">
+          <a href="/">Home</a>
+          <a href="/run-walk">Run/Walk</a>
+          <a href="/analytics">Analytics</a>
+          <a href="/resume.html">Resume</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="section">
+        <div class="container">
+          <h2>Analytics Platform</h2>
+          <p class="lead">A full-stack analytics platform that normalizes telemetry, exposes fast analytical queries, and provides reproducible dashboards and reporting APIs.</p>
+
+          <h3>Project description</h3>
+          <p>This project collects streaming and batch telemetry, normalizes events into analytical tables, creates pre-aggregations, and exposes both dashboards (Streamlit) and programmatic endpoints (FastAPI) for reporting. Emphasis on reproducibility, testing, and low operational cost using DuckDB for analytical workloads.</p>
+
+          <h3>Key features</h3>
+          <ul>
+            <li>Unified ingestion for JSONL telemetry and batch uploads</li>
+            <li>Automated schema evolution & data validation</li>
+            <li>Pre-aggregations and materialized views in DuckDB for fast queries</li>
+            <li>REST API for aggregated metrics and adapters for BI tools</li>
+            <li>Testing and CI for transforms to prevent regressions</li>
+          </ul>
+
+          <h3>Architecture diagram</h3>
+          <div style="max-width:900px;margin:12px 0;padding:18px;border-radius:8px;background:var(--glass);">
+            <svg viewBox="0 0 900 260" width="100%" height="260" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <defs>
+                <marker id="arrow2" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+                  <path d="M0 0 L10 5 L0 10 z" fill="#6ee7b7"/>
+                </marker>
+              </defs>
+              <rect x="20" y="30" width="160" height="60" rx="8" fill="#0b1220" stroke="#6ee7b7"/>
+              <text x="100" y="62" text-anchor="middle" fill="#9aa4b2" font-size="14">Event Producers</text>
+
+              <rect x="220" y="20" width="180" height="90" rx="8" fill="#07101a" stroke="#60a5fa"/>
+              <text x="310" y="52" text-anchor="middle" fill="#9aa4b2" font-size="14">Ingestion & Normalization</text>
+
+              <rect x="460" y="30" width="160" height="60" rx="8" fill="#0b1220" stroke="#6ee7b7"/>
+              <text x="540" y="62" text-anchor="middle" fill="#9aa4b2" font-size="14">Raw Storage (S3/GCS)</text>
+
+              <rect x="660" y="30" width="200" height="60" rx="8" fill="#07101a" stroke="#60a5fa"/>
+              <text x="760" y="62" text-anchor="middle" fill="#9aa4b2" font-size="14">DuckDB (Pre-agg & Views)</text>
+
+              <line x1="180" y1="60" x2="220" y2="60" stroke="#6ee7b7" stroke-width="2" marker-end="url(#arrow2)"/>
+              <line x1="400" y1="60" x2="460" y2="60" stroke="#60a5fa" stroke-width="2" marker-end="url(#arrow2)"/>
+              <line x1="620" y1="60" x2="660" y2="60" stroke="#6ee7b7" stroke-width="2" marker-end="url(#arrow2)"/>
+
+              <rect x="360" y="150" width="180" height="70" rx="8" fill="#0b1220" stroke="#6ee7b7"/>
+              <text x="450" y="185" text-anchor="middle" fill="#9aa4b2" font-size="14">Dashboard & API (Streamlit + FastAPI)</text>
+              <line x1="540" y1="110" x2="540" y2="150" stroke="#6ee7b7" stroke-width="2" marker-end="url(#arrow2)"/>
+              <line x1="760" y1="90" x2="760" y2="150" stroke="#60a5fa" stroke-width="2" marker-end="url(#arrow2)"/>
+            </svg>
+          </div>
+
+          <h3>Screenshots</h3>
+          <div class="cards">
+            <article class="card">
+              <h4>Normalized Table View</h4>
+              <div style="height:160px;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#031017, #06202a);border-radius:8px;color:var(--muted);">Table screenshot placeholder</div>
+            </article>
+            <article class="card">
+              <h4>API Response</h4>
+              <div style="height:160px;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#07101a, #0b1220);border-radius:8px;color:var(--muted);">API screenshot placeholder</div>
+            </article>
+          </div>
+
+          <h3>Repository & Live demo</h3>
+          <p><a href="https://github.com/mrprogrammingx/analytics-platform" target="_blank" rel="noopener">GitHub — analytics-platform</a></p>
+          <p><strong>Live demo:</strong> <a href="/analytics" target="_blank">amir-zare.com/analytics</a> (this page)</p>
+
+          <h3>API (example)</h3>
+          <pre style="background:var(--card-bg);padding:12px;border-radius:8px;color:var(--text);">GET https://amir-zare.com/api/analytics/overview
+Response: { "date": "2026-04-01", "active_users": 1245, "events_ingested": 985000 }</pre>
+
+          <h3>How to run locally</h3>
+          <ol>
+            <li>Clone: <code>git clone https://github.com/mrprogrammingx/analytics-platform.git</code></li>
+            <li>Install dependencies and run the ingestion + materialization script or the DAG locally.</li>
+            <li>Start the dashboard and API for local exploration.</li>
+          </ol>
+
+          <p class="muted">I can deploy a demo stack (dashboard + API) if you'd like — recommend Cloud Run or Render for minimal ops.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container"><small>© <span id="year"></span> Amir Zare</small></div>
+    </footer>
+
+    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  </body>
+</html>
