@@ -109,6 +109,12 @@ body{
   .visual-hook::before{left:50%;right:50%;width:calc(100vw + 48px);transform:translateX(-50%);height:40%;background:linear-gradient(180deg, rgba(96,165,250,0.04), rgba(110,231,183,0.02) 60%, transparent 100%)}
 }
 
+/* Mobile: avoid the full-bleed band overlay on narrow viewports; use a subtle inset accent instead */
+@media (max-width:700px){
+  .visual-hook::before{display:none}
+  .visual-hook > .container{background-image:linear-gradient(180deg, rgba(96,165,250,0.02), transparent);}
+}
+
 /* light theme: softer band colors */
 :root[data-theme='light'] .visual-hook::before{background:linear-gradient(180deg, rgba(96,165,250,0.02), rgba(110,231,183,0.01) 60%, transparent 100%);border-bottom:1px solid rgba(96,165,250,0.02)}
 .featured-project::before{content:"";position:absolute;left:12px;top:12px;bottom:12px;width:6px;background:linear-gradient(180deg,var(--accent),var(--accent-2));border-radius:4px;opacity:0.95}
