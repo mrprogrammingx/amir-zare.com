@@ -163,14 +163,23 @@ html{scroll-behavior:smooth}
 .muted a{color:var(--muted)}
 
 /* Section banding */
-.section{padding:45px 0}
-.section.alt{padding-top:45px;margin-top:0;position:relative;z-index:0}
+.section{padding:60px 0}
+.section.alt{padding-top:60px;margin-top:0;position:relative;z-index:0}
 /* full-bleed background for alternate sections to avoid edge seams */
 .section.alt::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:calc(100vw + 48px);transform:translateX(-50%);pointer-events:none;z-index:0;
   /* softer vertical fade into the band to prevent localized color blocks at edges */
   background: linear-gradient(180deg, rgba(2,6,23,0) 0%, rgba(7,16,26,0.12) 18%, rgba(7,16,26,0.28) 36%, var(--section-alt-bg) 100%);
 }
 .section.alt > .container{background:transparent;padding:24px;border-radius:0;border:none;box-shadow:none;position:relative;z-index:1}
+
+/* inner container surface to separate sections visually */
+.section > .container{position:relative;z-index:180;padding:22px;background:var(--glass);border-radius:var(--radius);}
+
+/* larger breathing room between sections */
+.section + .section{margin-top:20px}
+
+/* heading separators for clarity */
+.section h2{display:inline-block;margin:0 0 12px;padding-bottom:10px;border-bottom:1px solid var(--panel-border)}
 .hero{padding:72px 0}
 .site-footer{padding:28px 0}
 
@@ -344,4 +353,10 @@ html{scroll-behavior:smooth}
 /* Force Skills to use the full-bleed band so the background fits across the viewport */
 #skills{background:var(--section-alt-bg);position:relative;z-index:0}
 #skills > .container{position:relative;z-index:220;padding-top:42px;padding-bottom:42px}
+
+/* improve link visibility and card spacing */
+a{color:var(--accent-2);text-decoration:none;padding:2px 4px;border-radius:6px}
+a:hover,a:focus{background:var(--glass);text-decoration:underline}
+.card{padding:18px}
+.card:hover{transform:translateY(-8px);box-shadow:0 18px 40px rgba(2,6,23,0.6)}
 
