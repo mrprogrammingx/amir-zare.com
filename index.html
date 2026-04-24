@@ -45,18 +45,17 @@
 
     <main>
       <section class="hero">
-        <div class="container">
-          <h1>Hi — I'm Amir, a Data Engineer</h1>
+        <div class="container reveal hero-content">
+          <h1 class="hero-title">Hi — I'm Amir, a Data Engineer</h1>
           <p class="lead">I build reliable data platforms, design scalable ETL pipelines, and enable analytics & ML with clean, well-tested infrastructure.</p>
           <p class="cta-row">
             <a class="btn primary" href="#projects">See projects</a>
-            <a class="btn" href="mailto:amirrezazare59@gmail.com">Contact</a>
             <a class="btn ghost" href="resume.html">CV</a>
           </p>
         </div>
       </section>
 
-      <section id="about" class="container section">
+  <section id="about" class="container section reveal">
         <h2>About</h2>
         <p>I design data architectures and pipelines that move quickly from prototype to production. My work focuses on reliability, observability, and cost-efficient processing at scale.</p>
         <ul>
@@ -66,7 +65,7 @@
         </ul>
       </section>
 
-      <section id="skills" class="container section">
+  <section id="skills" class="container section reveal">
         <h2>Skills</h2>
         <div class="chips">
           <span class="chip">Python</span>
@@ -81,16 +80,16 @@
         </div>
       </section>
 
-      <section id="projects" class="container section">
+  <section id="projects" class="container section reveal">
         <h2>Selected Projects</h2>
         <div class="cards">
-          <article class="card">
+          <article class="card reveal">
             <h3>Run/Walk Data Pipeline <a href="https://github.com/mrprogrammingx" class="muted" target="_blank" rel="noopener">(GitHub)</a></h3>
             <p>Batch pipeline: CSV → Parquet → DuckDB with SQL transformations and materialized tables. Orchestrated with Apache Airflow and exposed reporting via a Streamlit dashboard and Flask API for validation and reporting.</p>
             <p class="muted">Python, Airflow, DuckDB, Streamlit, Flask</p>
           </article>
 
-          <article class="card">
+          <article class="card reveal">
             <h3>Analytics Platform <a href="https://github.com/mrprogrammingx" class="muted" target="_blank" rel="noopener">(GitHub)</a></h3>
             <p>End-to-end data platform with ETL pipelines, DuckDB storage, FastAPI, and Streamlit dashboards. Normalized JSONL telemetry into analytical tables and built APIs for reporting.</p>
             <p class="muted">Python, FastAPI, DuckDB, Streamlit, ETL</p>
@@ -98,7 +97,7 @@
         </div>
       </section>
 
-      <section id="experience" class="container section">
+  <section id="experience" class="container section reveal">
         <h2>Experience</h2>
         <ol class="timeline">
           <li>
@@ -116,7 +115,7 @@
         </ol>
       </section>
 
-      <section id="contact" class="container section">
+  <section id="contact" class="container section reveal">
         <h2>Contact</h2>
         <p>Interested in hiring or collaborating? Email me at <a href="mailto:amirrezazare59@gmail.com">amirrezazare59@gmail.com</a>, find my work on <a href="https://github.com/mrprogrammingx" target="_blank" rel="noopener">GitHub</a>, or connect on <a href="https://linkedin.com/in/binahayat00" target="_blank" rel="noopener">LinkedIn</a>.</p>
         <div class="social contact-social" style="margin-top:12px">
@@ -139,5 +138,6 @@
       // small enhancement: current year
       document.getElementById('year').textContent = new Date().getFullYear();
     </script>
+    <script src="script.js" defer></script>
   </body>
 </html>
