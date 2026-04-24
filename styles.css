@@ -47,6 +47,8 @@ body{
 
 .hero{padding:88px 0;margin-bottom:8px}
 .hero .lead{color:var(--muted);max-width:720px;font-size:1.05rem;font-weight:500;line-height:1.6}
+/* fixed phrase in hero lead */
+.hero .lead .fixed{color:var(--accent);font-weight:700}
 .hero h1{font-size:2.8rem;margin:0 0 16px;font-weight:800;line-height:1.02}
 .cta-row{margin-top:18px}
 .btn{display:inline-block;padding:10px 14px;border-radius:8px;text-decoration:none;color:var(--text);background:transparent;border:1px solid var(--panel-border);margin-right:8px}
