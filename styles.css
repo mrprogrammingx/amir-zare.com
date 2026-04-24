@@ -161,3 +161,21 @@ html{scroll-behavior:smooth}
   --glass: rgba(2,6,23,0.03);
 }
 
+/* Hero title underline shimmer */
+.hero-title{position:relative}
+.hero-title::after{content:"";position:absolute;left:0;right:0;height:4px;border-radius:999px;background:linear-gradient(90deg,var(--accent),var(--accent-2));bottom:-8px;transform:scaleX(0);transform-origin:left center;transition:transform 520ms cubic-bezier(.2,.9,.2,1)}
+.hero-title.pop::after{transform:scaleX(1)}
+
+/* icon pulse */
+.icon-link::after{content:"";position:absolute;inset:0;border-radius:8px;box-shadow:0 0 0 rgba(96,165,250,0);pointer-events:none}
+.icon-link:hover::after{animation:iconPulse 900ms ease-out}
+@keyframes iconPulse{0%{box-shadow:0 0 0 0 rgba(96,165,250,0.16)}70%{box-shadow:0 8px 24px 8px rgba(96,165,250,0.04)}100%{box-shadow:0 0 0 0 rgba(96,165,250,0)}}
+
+/* chip pop-in */
+.chip.in-chip{transform:scale(1.02);box-shadow:0 10px 24px rgba(2,6,23,0.45)}
+.chip{transition:transform 260ms cubic-bezier(.2,.9,.2,1),box-shadow 260ms}
+
+/* card tilt on hover */
+.card{transform-origin:center;will-change:transform}
+.card:hover{transform:translateY(-10px) rotateX(1.2deg) rotateY(-1deg)}
+

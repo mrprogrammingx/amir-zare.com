@@ -102,7 +102,11 @@
       if(forward){
         pos++;
         el.textContent = word.slice(0,pos);
-        if(pos===word.length){ forward=false; setTimeout(step, 900); return }
+        if(pos===word.length){
+          // pulse hero title briefly
+          const ht = document.querySelector('.hero-title');
+          if(ht){ ht.classList.add('pop'); setTimeout(()=>ht.classList.remove('pop'),700) }
+          forward=false; setTimeout(step, 900); return }
       } else {
         pos--;
         el.textContent = word.slice(0,pos);
@@ -120,11 +124,15 @@
     const sIO = new IntersectionObserver((entries)=>{
       entries.forEach(e=>{
         if(e.isIntersecting){
-          q('.skill').forEach(s=>{
+          q('.skill').forEach((s, idx)=>{
             const level = s.dataset.level || 60;
             const fill = s.querySelector('.fill');
-            fill.style.width = level + '%';
+            // stagger fill
+            setTimeout(()=>{ fill.style.width = level + '%'; }, idx*120);
           });
+          // animate chips with a small stagger
+          const chips = q('.chip');
+          chips.forEach((c, i)=> setTimeout(()=> c.classList.add('in-chip'), 200 + i*80));
           sIO.unobserve(e.target);
         }
       });
