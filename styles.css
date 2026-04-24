@@ -49,6 +49,8 @@ body{
 .hero .lead{color:var(--muted);max-width:720px;font-size:1.05rem;font-weight:500;line-height:1.6}
 /* fixed phrase in hero lead */
 .hero .lead .fixed{color:var(--accent);font-weight:700}
+.hero .hook{font-size:1.15rem;color:var(--text);max-width:800px;margin:8px 0 6px;font-weight:600}
+.hero .hook strong{color:var(--accent-2)}
 .hero h1{font-size:2.8rem;margin:0 0 16px;font-weight:800;line-height:1.02}
 .hero-name,.hero-role{font-weight:900;display:inline-block;background:linear-gradient(90deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent;vertical-align:baseline}
 .hero-sep{display:inline-flex;align-items:center;justify-content:center;color:var(--accent-2);margin:0 10px;font-weight:800}
@@ -69,9 +71,40 @@ body{
 .chip{background:var(--glass);padding:8px 10px;border-radius:999px;color:var(--muted);font-size:0.9rem}
 
 .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:12px}
+.featured-project{display:grid;grid-template-columns:380px 1fr;gap:18px;align-items:center;margin-bottom:18px}
+.img-placeholder{width:100%;height:220px;border-radius:12px;background:linear-gradient(90deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;color:#06202a;font-weight:700;font-size:1.2rem}
+.featured-media .img-placeholder{height:220px}
+
+/* spacing for featured cards to match featured-project block */
+.card.featured{margin-bottom:18px}
+
+/* responsive tweaks: slightly smaller padding and placeholder on narrow viewports */
+@media (max-width:900px){
+  .card.featured{padding:16px}
+  .img-placeholder{height:160px}
+}
+.featured-content h3{margin:0 0 8px}
+.featured-content p{margin:0 0 8px}
+
+@media (max-width:900px){
+  .featured-project{grid-template-columns:1fr;}
+  .featured-media .img-placeholder{height:180px}
+}
 .card{background:var(--card-bg);padding:16px;border-radius:10px;border:1px solid var(--panel-border);transition:transform 240ms ease, box-shadow 240ms ease;transform-origin:center;will-change:transform}
 .card h3{margin:0 0 8px}
 .card:hover{transform:translateY(-10px) rotateX(1.2deg) rotateY(-1deg);box-shadow:0 18px 40px rgba(2,6,23,0.6)}
+.card.featured{grid-column:1 / -1}
+
+/* Shared featured surface used by the large hero feature and featured cards */
+.featured-project, .card.featured{
+  background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+  padding:20px;
+  border-radius:14px;
+  border:1px solid rgba(96,165,250,0.06);
+  box-shadow:0 16px 44px rgba(2,6,23,0.5);
+}
+.proj-cta{margin-top:12px;display:flex;gap:10px}
+.proj-cta .btn{padding:10px 12px}
 .muted{color:var(--muted);font-size:0.9rem}
 
 .timeline{list-style:none;padding-left:0}
@@ -127,6 +160,9 @@ body{
 @media (max-width:700px){
   .social{display:none}
 }
+
+/* header CTAs (desktop only) */
+/* header CTAs removed (buttons kept only in hero) */
 
 /* Keep contact social icons visible on mobile (override header-only hiding) */
 @media (max-width:700px){
@@ -266,6 +302,20 @@ html{scroll-behavior:smooth}
 .skill span{font-size:0.95rem;color:var(--muted)}
 .bar{height:10px;background:var(--glass);border-radius:999px;overflow:hidden}
 .fill{height:100%;width:0%;background:linear-gradient(90deg,var(--accent),var(--accent-2));transition:width 900ms cubic-bezier(.2,.9,.2,1)}
+
+/* Skills grid: main skills + tools/technologies aside */
+.skills-grid{display:grid;grid-template-columns:1fr 340px;gap:20px;align-items:start}
+.skills-grid aside h3{margin-top:0;margin-bottom:8px}
+.pill-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.skill-pill{background:var(--panel-bg);padding:8px 10px;border-radius:8px;color:var(--muted);font-size:0.95rem;border:1px solid var(--panel-border)}
+
+@media (max-width:900px){
+  .skills-grid{grid-template-columns:1fr}
+  .skills-grid aside{margin-top:12px}
+}
+
+/* animate skill fills based on data-level (JS fills these on load) */
+.skill[data-level] .fill{width:0}
 
 /* Light theme overrides */
 :root[data-theme='light']{
