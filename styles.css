@@ -57,3 +57,13 @@ body{
   .hero h1{font-size:1.5rem}
   .container{padding:16px}
 }
+
+/* Social / contact icons */
+.social{display:flex;gap:10px;align-items:center;margin-left:12px}
+.icon-link{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:8px;color:var(--muted);background:transparent;text-decoration:none;border:1px solid rgba(255,255,255,0.02);transition:all 180ms ease}
+.icon-link svg{display:block}
+.icon-link:hover,.icon-link:focus{color:var(--text);transform:translateY(-3px);box-shadow:0 6px 18px rgba(0,0,0,0.45),0 1px 0 rgba(255,255,255,0.02) inset}
+
+@media (max-width:700px){
+  .social{display:none}
+}
