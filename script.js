@@ -46,10 +46,52 @@
     const el = document.querySelector(id);
     if(el){
       e.preventDefault();
-      const headerHeight = document.querySelector('.site-header').offsetHeight || 70;
-      const top = el.getBoundingClientRect().top + window.pageYOffset - headerHeight - 12;
-      window.scrollTo({top, behavior:'smooth'});
+      const debug = document.documentElement.getAttribute('data-debug') === 'true';
+      try{
+        const headerHeight = document.querySelector('.site-header').offsetHeight || 70;
+        const top = (el.offsetTop || (el.getBoundingClientRect().top + window.pageYOffset)) - headerHeight - 12;
+        if(debug) console.log('[nav-debug] anchor', id, 'targetTop', top, 'headerH', headerHeight);
+        // primary: try scrollTo with smooth behavior
+        try{
+          window.scrollTo({top, behavior:'smooth'});
+          // also try scrollIntoView + negative offset adjustment as a robust fallback
+          setTimeout(()=>{
+            try{ el.scrollIntoView({behavior:'smooth', block:'start'}); }catch(e){}
+            // nudge up to account for header
+            try{ window.scrollBy({top: -headerHeight - 12, behavior:'smooth'}); }catch(e){}
+          }, 8);
+        }catch(e){
+          // older browsers may throw; fallback to scrollIntoView and then offset
+          try{ el.scrollIntoView(true); window.scrollBy(0, -headerHeight - 12); }catch(e){}
+        }
+        try{ history.replaceState && history.replaceState(null, '', id); }catch(e){}
+      }catch(err){
+        console.warn('scroll handler fallback', err);
+        location.hash = id;
+      }
     }
+  });
+
+  // Explicit attach: ensure any in-page anchors have a direct handler (some browsers / extensions may block delegated handlers)
+  Array.from(document.querySelectorAll('a[href^="#"]')).forEach(a=>{
+    a.addEventListener('click', (ev)=>{
+      const id = a.getAttribute('href');
+      if(!id || id.length===1) return;
+      const el = document.querySelector(id);
+      if(el){
+        ev.preventDefault();
+        try{
+          const headerHeight = document.querySelector('.site-header').offsetHeight || 70;
+          const top = (el.offsetTop || (el.getBoundingClientRect().top + window.pageYOffset)) - headerHeight - 12;
+          // robust scrolling: try scrollTo, then scrollIntoView + scrollBy nudge
+          try{
+            window.scrollTo({top, behavior:'smooth'});
+            setTimeout(()=>{ try{ el.scrollIntoView({behavior:'smooth', block:'start'}); }catch(e){}; try{ window.scrollBy({top: -headerHeight - 12, behavior:'smooth'}); }catch(e){} }, 8);
+            try{ history.replaceState && history.replaceState(null, '', id); }catch(e){}
+          }catch(e){ try{ el.scrollIntoView(true); window.scrollBy(0, -headerHeight - 12); }catch(e){}; try{ history.replaceState && history.replaceState(null, '', id); }catch(e){} }
+        }catch(e){ console.warn('anchor click fallback', e); location.hash = id }
+      }
+    });
   });
 
   // small debounce util

@@ -5,24 +5,33 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Amir Zare — Resume</title>
     <link rel="stylesheet" href="styles.css">
-    <style>
-      .resume{max-width:800px;margin:30px auto;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:24px;border-radius:10px}
-      .resume h1{margin:0;font-size:1.6rem}
-      .resume .meta{display:flex;flex-wrap:wrap;gap:12px;margin-top:8px;color:var(--muted)}
-      .resume h2{margin-top:18px}
-      .two-col{display:grid;grid-template-columns:1fr 300px;gap:18px}
-      .section-block{margin-bottom:12px}
-      .skill-list{display:flex;flex-wrap:wrap;gap:6px}
-      .skill-pill{background:var(--glass);padding:6px 8px;border-radius:8px;color:var(--muted);font-size:0.9rem}
-      @media(max-width:900px){.two-col{grid-template-columns:1fr}}
-    </style>
   </head>
   <body>
-    <div class="container">
+    <div class="container resume-wrapper">
       <div class="resume">
+        <a class="resume-home-link" href="/" aria-label="Back to home">← Home</a>
         <header>
           <h1>AMIR ZARE</h1>
-          <div class="meta">Data Engineer • <a href="mailto:amirrezazare59@gmail.com">amirrezazare59@gmail.com</a> • <a href="https://linkedin.com/in/binahayat00" target="_blank" rel="noopener">linkedin.com/in/binahayat00</a> • <a href="https://github.com/mrprogrammingx" target="_blank" rel="noopener">github.com/mrprogrammingx</a></div>
+          <p class="job-title">Data Engineer</p>
+          <div class="meta">
+            <span class="contact-email">
+              <a class="contact-pill" href="mailto:amirrezazare59@gmail.com" id="mailto-email">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                <span>amirrezazare59@gmail.com</span>
+              </a>
+              <button class="contact-copy" id="copy-email" title="Copy email" aria-label="Copy email">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+              </button>
+            </span>
+            <a class="contact-pill" href="https://linkedin.com/in/binahayat00" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 24V7h5v17H0zM8 7h4.7v2.3h.1c.7-1.3 2.4-2.7 4.9-2.7C23 6.6 24 9.1 24 13.5V24h-5v-9.6c0-2.3 0-5.3-3.2-5.3-3.2 0-3.7 2.5-3.7 5.1V24H8V7z"/></svg>
+              <span>LinkedIn</span>
+            </a>
+            <a class="contact-pill" href="https://github.com/mrprogrammingx" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.7.5.6 5.7.6 12c0 5.1 3.3 9.5 7.9 11 .6.1.8-.3.8-.6v-2.1c-3.2.7-3.8-1.4-3.8-1.4-.5-1.2-1.2-1.6-1.2-1.6-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 .1 1.6.7 2 1.1.1-.9.4-1.5.7-1.8-2.6-.3-5.3-1.3-5.3-6 0-1.3.5-2.4 1.2-3.3-.1-.3-.5-1.6.1-3.3 0 0 1-.3 3.3 1.3 1-.3 2-.4 3-.4s2 .1 3 .4c2.3-1.6 3.3-1.3 3.3-1.3.6 1.7.2 3 .1 3.3.8.9 1.2 2 1.2 3.3 0 4.7-2.7 5.7-5.3 6 .4.3.7 1 .7 2v3c0 .3.2.7.8.6 4.6-1.5 7.9-5.9 7.9-11C23.4 5.7 18.3.5 12 .5z"/></svg>
+              <span>GitHub</span>
+            </a>
+          </div>
         </header>
 
         <section class="section-block">
@@ -97,8 +106,32 @@
           </ul>
         </section>
 
-        <footer class="muted">Generated from provided resume text.</footer>
+        <footer class="muted"></footer>
       </div>
     </div>
   </body>
+  <script>
+    // copy email button
+    (function(){
+      const btn = document.getElementById('copy-email');
+      const emailLink = document.getElementById('mailto-email');
+      if(!btn || !emailLink) return;
+      btn.addEventListener('click', async function(){
+        const email = 'amirrezazare59@gmail.com';
+        try{
+            await navigator.clipboard.writeText(email);
+            btn.classList.add('copied');
+            // swap icon to check
+            const orig = btn.innerHTML;
+            btn.innerHTML = '<svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M9 16.2l-3.5-3.5L4 14.2 9 19.2 20 8.2 18.6 6.8z"/></svg>';
+            setTimeout(()=>{btn.classList.remove('copied');btn.innerHTML=orig},1600);
+          }catch(e){
+          // fallback: open mailto
+          window.location.href = emailLink.href;
+        }
+      });
+        // prevent mailto link when clicking the copy button
+        document.getElementById('copy-email').addEventListener('click', function(ev){ev.stopPropagation();});
+    })();
+  </script>
 </html>
