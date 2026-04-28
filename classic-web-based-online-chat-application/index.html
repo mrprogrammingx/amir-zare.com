@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Real-Time Chat Application — Demo</title>
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/favicon-32x32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="/favicon-16x16.png" sizes="16x16" type="image/png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
+  <link rel="manifest" href="/site.webmanifest">
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="logo" href="/">Amir Zare</a>
+        <nav class="nav">
+          <a href="/">Home</a>
+          <a href="/run-walk">Run/Walk</a>
+          <a href="/resume.html">Resume</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="section">
+        <div class="container">
+          <h2>Real-Time Chat Application</h2>
+          <p class="lead">A classic, production-minded web chat application built with FastAPI and SQLite (WAL) supporting real-time messaging, presence, and multi-device sessions. Designed for privacy, reliability, and simple deployments.</p>
+
+          <h3>Project description</h3>
+          <p>This project implements a feature-complete web chat including rooms, private messages, file uploads, presence tracking, and moderation tools. The server is a FastAPI app that uses async endpoints and WebSockets for real-time updates; persistent storage uses SQLite with WAL for concurrency. The project comes with Docker files and tests (pytest + Playwright).</p>
+
+          <h3>Key features</h3>
+          <ul>
+            <li>Real-time messaging via WebSockets</li>
+            <li>Multi-device sessions and presence indicators</li>
+            <li>Rooms, private messaging, and basic moderation (mute/kick)</li>
+            <li>Secure JWT-based authentication and session management</li>
+            <li>File upload support with safe storage options</li>
+            <li>Tested with pytest and Playwright for end-to-end flows</li>
+          </ul>
+
+          <h3>Impact</h3>
+          <ul>
+            <li>Provides a small, deployable chat service suitable for demos, internal tooling, or as a starting point for production features.</li>
+            <li>Designed to be containerized and deployed with Docker; easy to scale horizontally behind a WebSocket-aware proxy.</li>
+            <li>Improves developer productivity with tests and clear API contracts for clients.</li>
+          </ul>
+
+          <h3>Architecture diagram</h3>
+          <div style="max-width:900px;margin:12px 0;padding:18px;border-radius:8px;background:var(--glass);color:var(--accent-2);">
+            <svg viewBox="0 0 900 260" width="100%" height="260" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <defs>
+                <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+                  <path d="M0 0 L10 5 L0 10 z" fill="currentColor"/>
+                </marker>
+              </defs>
+
+              <rect data-tooltip="Clients (browsers)" x="20" y="30" width="160" height="60" rx="8" fill="var(--card-bg)" stroke="currentColor"/>
+              <text x="100" y="62" text-anchor="middle" fill="var(--muted)" font-size="14">Clients (Browsers)</text>
+
+              <rect data-tooltip="WebSocket / HTTP API" x="220" y="20" width="220" height="90" rx="8" fill="var(--panel-bg)" stroke="currentColor"/>
+              <text x="330" y="52" text-anchor="middle" fill="var(--muted)" font-size="14">FastAPI (WebSocket + HTTP)</text>
+
+              <rect data-tooltip="SQLite WAL (persistence)" x="500" y="30" width="160" height="60" rx="8" fill="var(--card-bg)" stroke="currentColor"/>
+              <text x="580" y="62" text-anchor="middle" fill="var(--muted)" font-size="14">SQLite (WAL)</text>
+
+              <rect data-tooltip="Redis / Broker (optional)" x="680" y="30" width="160" height="60" rx="8" fill="var(--panel-bg)" stroke="currentColor"/>
+              <text x="760" y="62" text-anchor="middle" fill="var(--muted)" font-size="14">Redis (Pub/Sub) - optional</text>
+
+              <line x1="180" y1="60" x2="220" y2="60" stroke="currentColor" stroke-width="2" marker-end="url(#arrow)"/>
+              <line x1="440" y1="60" x2="500" y2="60" stroke="currentColor" stroke-width="2" marker-end="url(#arrow)"/>
+              <line x1="660" y1="60" x2="680" y2="60" stroke="currentColor" stroke-width="2" marker-end="url(#arrow)"/>
+
+              <rect data-tooltip="Client SDK / Dashboard" x="360" y="150" width="220" height="70" rx="8" fill="var(--card-bg)" stroke="currentColor"/>
+              <text x="470" y="185" text-anchor="middle" fill="var(--muted)" font-size="14">Admin Dashboard / API</text>
+              <line x1="440" y1="110" x2="440" y2="150" stroke="currentColor" stroke-width="2" marker-end="url(#arrow)"/>
+            </svg>
+          </div>
+
+          <h3>Screenshots</h3>
+          <div class="cards">
+            <article class="card">
+              <h4>Chat UI</h4>
+              <div style="height:160px;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#031017, #06202a);border-radius:8px;color:var(--muted);">Chat UI screenshot placeholder</div>
+            </article>
+            <article class="card">
+              <h4>Moderation Panel</h4>
+              <div style="height:160px;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#07101a, #0b1220);border-radius:8px;color:var(--muted);">Moderation panel screenshot placeholder</div>
+            </article>
+          </div>
+
+          <h3>Repository & Live demo</h3>
+          <p><a href="https://github.com/mrprogrammingx/classic-web-based-online-chat-application" target="_blank" rel="noopener">GitHub — classic-web-based-online-chat-application</a></p>
+          <p><strong>Live demo:</strong> <a href="/classic-web-based-online-chat-application" target="_blank">amir-zare.com/classic-web-based-online-chat-application</a></p>
+
+          <h3>How to run locally</h3>
+          <ol>
+            <li>Clone the repository: <code>git clone https://github.com/mrprogrammingx/classic-web-based-online-chat-application.git</code></li>
+            <li>Install dependencies and start the FastAPI server (uvicorn) with the appropriate environment variables.</li>
+            <li>Run the WebSocket-capable server (uvicorn) and open the demo UI in a browser.</li>
+          </ol>
+
+          <p class="muted">If you want, I can deploy a live demo for this chat project to your domain and attach a working WebSocket endpoint (will require deployment choices: small VM, Cloud Run, or a managed container service).</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container"><small>© <span id="year"></span> Amir Zare</small></div>
+    </footer>
+
+    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  </body>
+</html>
