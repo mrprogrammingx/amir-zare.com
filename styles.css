@@ -70,6 +70,11 @@ body{
 .img-placeholder{width:100%;height:220px;border-radius:12px;background:linear-gradient(90deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;color:#06202a;font-weight:700;font-size:1.2rem}
 .featured-media .img-placeholder{height:220px}
 
+.project-card{
+  width: 100%;
+  display: block;      /* Ensures it behaves as a block element */
+  box-sizing: border-box; 
+}
 /* spacing for featured cards to match featured-project block */
 .card.featured{margin-bottom:18px}
 
@@ -80,6 +85,31 @@ body{
 }
 .featured-content h3{margin:0 0 8px}
 .featured-content p{margin:0 0 8px}
+
+/* Fix: when a featured-project appears inside the .cards grid treat it as a compact card
+   so it doesn't inherit the large two-column featured layout which breaks the cards layout.
+   This keeps the big hero featured-project unchanged but makes card entries display
+   as stacked content (image on top, content below) and match the visual card style. */
+.cards .featured-project{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  align-items:stretch;
+  margin:0;
+  padding:12px;
+  background:var(--card-bg);
+  border-radius:12px;
+  border:1px solid var(--panel-border);
+  box-shadow:0 8px 20px rgba(2,6,23,0.28);
+}
+.cards .featured-project .featured-media{width:100%}
+.cards .featured-project .featured-content{width:100%}
+.cards .featured-project .img-placeholder{height:140px}
+
+@media (max-width:900px){
+  /* Slightly smaller image for compact cards on narrow viewports */
+  .cards .featured-project .img-placeholder{height:120px}
+}
 
 .proj-icon{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;margin-right:8px;color:var(--accent-2);vertical-align:middle}
 .proj-icon svg{display:block;width:18px;height:18px}
