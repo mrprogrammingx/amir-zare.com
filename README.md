@@ -22,7 +22,7 @@ Notes / next steps:
 
 Contact:
 
-- Email: amirrezazare59@gmail.com
+- Email: info@amir-zare.com
 - LinkedIn: https://linkedin.com/in/binahayat00
  
 Resume:
