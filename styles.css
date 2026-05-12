@@ -520,3 +520,33 @@ a:hover,a:focus{background:var(--glass);text-decoration:underline}
   .hero .lead { min-height: 6.0rem; }
 }
 
+/* Resume-specific layout classes (moved from inline styles) */
+.resume-top {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.summary-box { min-width: 220px; }
+.no-margin { margin: 0; }
+
+/* spacing utilities used in resume */
+.mt-6 { margin-top: 6px; }
+.mt-8 { margin-top: 8px; }
+.mt-12 { margin-top: 12px; }
+.mt-18 { margin-top: 18px; }
+
+/* skills grid layout (replaces inline flex on resume) */
+.skills-grid {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.skills-grid > div {
+  flex: 1 1 240px; /* grow, shrink, base width */
+  min-width: 240px;
+}
+/* ensure consistent top spacing for h4 inside skills grid */
+.skills-grid h4 { margin-top: 12px; }
+

@@ -198,19 +198,22 @@
   function updateProgress(){
     const h = document.documentElement.scrollHeight - window.innerHeight;
     const pct = h>0 ? (window.scrollY / h) * 100 : 0;
-    prog.style.width = Math.min(100, Math.max(0,pct)) + '%';
+    // prog may be absent on pages that don't include the scroll-progress element (e.g. resume)
+    if (prog) {
+      prog.style.width = Math.min(100, Math.max(0,pct)) + '%';
+    }
   }
   window.addEventListener('scroll', debounce(updateProgress, 20));
   updateProgress();
 
-  // small enhancement: current year (moved from inline HTML)
+  // small enhancement: current year (used by all pages)
   (function setYear() {
     try {
-      var y = document.getElementById('year');
-      if (y) y.textContent = new Date().getFullYear();
+      var el = document.getElementById('year');
+      if (el) el.textContent = new Date().getFullYear();
     } catch (e) {
       // no-op
-      console.error('Failed to set year', e);
+      console.error('setYear error', e);
     }
   })();
 
