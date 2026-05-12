@@ -103,7 +103,28 @@
             <li>Run the WebSocket-capable server (uvicorn) and open the demo UI in a browser.</li>
           </ol>
 
-          <p class="muted">If you want, I can deploy a live demo for this chat project to your domain and attach a working WebSocket endpoint (will require deployment choices: small VM, Cloud Run, or a managed container service).</p>
+          <!-- WebSocket test placeholder (disabled) -->
+          <h3>Quick WebSocket test (placeholder)</h3>
+          <p class="muted">A small test UI is kept here as a placeholder. It's intentionally disabled because there is no deployed WebSocket server on this site. To use a live test, deploy the server and enable the script in this file.</p>
+
+          <div class="card" style="padding:12px;">
+            <label for="wsUrl">WebSocket URL</label>
+            <input id="wsUrl" type="text" value="ws://localhost:8000/ws" style="width:100%;margin:6px 0" disabled />
+            <div style="display:flex;gap:8px;margin-bottom:8px;">
+              <button id="connectBtn" type="button" disabled>Connect (disabled)</button>
+              <button id="disconnectBtn" type="button" disabled>Disconnect</button>
+            </div>
+
+            <div style="display:flex;gap:8px;margin-bottom:8px;">
+              <input id="msgInput" type="text" placeholder="Message to send" style="flex:1" disabled />
+              <button id="sendBtn" type="button" disabled>Send</button>
+            </div>
+
+            <div id="log" style="height:200px;overflow:auto;border:1px solid var(--muted);padding:8px;border-radius:6px;background:var(--panel-bg)">
+              WebSocket test disabled — deploy the server and enable the client script to use this.
+            </div>
+          </div>
+
         </div>
       </section>
     </main>
