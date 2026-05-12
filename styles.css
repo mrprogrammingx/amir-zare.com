@@ -500,3 +500,23 @@ a:hover,a:focus{background:var(--glass);text-decoration:underline}
 .card{padding:18px}
 .card:hover{transform:translateY(-8px);box-shadow:0 18px 40px rgba(2,6,23,0.6)}
 
+/* Ensure stable vertical space for hero typed lead to avoid layout jumps */
+.hero .lead {
+  margin-bottom: 0.8rem;
+  min-height: 3.6rem; /* reserve space so completed typed text won't push content */
+  line-height: 1.2rem;
+}
+
+/* Typed text: allow wrapping but keep measured height stable */
+.hero .lead #typed {
+  display: inline-block;
+  white-space: normal;
+  vertical-align: baseline;
+  max-width: 100%;
+}
+
+/* Small screens: reserve more height because phrases may wrap */
+@media (max-width: 800px) {
+  .hero .lead { min-height: 6.0rem; }
+}
+

@@ -203,4 +203,15 @@
   window.addEventListener('scroll', debounce(updateProgress, 20));
   updateProgress();
 
+  // small enhancement: current year (moved from inline HTML)
+  (function setYear() {
+    try {
+      var y = document.getElementById('year');
+      if (y) y.textContent = new Date().getFullYear();
+    } catch (e) {
+      // no-op
+      console.error('Failed to set year', e);
+    }
+  })();
+
 })();
