@@ -1,150 +1,214 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Amir Zare — Resume</title>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Amir Zare — Resume</title>
+  <meta name="description" content="Resume of Amir Zare — Backend & Data Engineer. Contact, experience, skills, and projects." />
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
-  <link rel="icon" href="/favicon-32x32.png" sizes="32x32" type="image/png">
-  <link rel="icon" href="/favicon-16x16.png" sizes="16x16" type="image/png">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
-  <link rel="manifest" href="/site.webmanifest">
-    <link rel="stylesheet" href="styles.css">
-  </head>
-  <body>
-    <div class="container resume-wrapper">
-      <div class="resume">
-        <a class="resume-home-link" href="/" aria-label="Back to home">← Home</a>
-        <header>
-          <h1>Amir Zare — Backend & Data Engineer</h1>
-          <p class="job-title">I design production-ready ETL and streaming systems that enable data-driven decisions, improve observability, and reduce processing costs.</p>
-          <div class="meta">
-            <span class="contact-email">
-              <a class="contact-pill" href="mailto:info@amir-zare.com" id="mailto-email">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-                <span>info@amir-zare.com</span>
-              </a>
-              <button class="contact-copy" id="copy-email" title="Copy email" aria-label="Copy email">
-                <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
-              </button>
-            </span>
-            <a class="contact-pill" href="https://linkedin.com/in/binahayat00" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 24V7h5v17H0zM8 7h4.7v2.3h.1c.7-1.3 2.4-2.7 4.9-2.7C23 6.6 24 9.1 24 13.5V24h-5v-9.6c0-2.3 0-5.3-3.2-5.3-3.2 0-3.7 2.5-3.7 5.1V24H8V7z"/></svg>
-              <span>LinkedIn</span>
-            </a>
-            <a class="contact-pill" href="https://github.com/mrprogrammingx" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.7.5.6 5.7.6 12c0 5.1 3.3 9.5 7.9 11 .6.1.8-.3.8-.6v-2.1c-3.2.7-3.8-1.4-3.8-1.4-.5-1.2-1.2-1.6-1.2-1.6-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 .1 1.6.7 2 1.1.1-.9.4-1.5.7-1.8-2.6-.3-5.3-1.3-5.3-6 0-1.3.5-2.4 1.2-3.3-.1-.3-.5-1.6.1-3.3 0 0 1-.3 3.3 1.3 1-.3 2-.4 3-.4s2 .1 3 .4c2.3-1.6 3.3-1.3 3.3-1.3.6 1.7.2 3 .1 3.3.8.9 1.2 2 1.2 3.3 0 4.7-2.7 5.7-5.3 6 .4.3.7 1 .7 2v3c0 .3.2.7.8.6 4.6-1.5 7.9-5.9 7.9-11C23.4 5.7 18.3.5 12 .5z"/></svg>
-              <span>GitHub</span>
-            </a>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="/">Amir Zare</a>
+      <nav class="nav">
+        <a href="/">Home</a>
+        <a href="/run-walk">Run/Walk</a>
+        <a href="/resume.html">Resume</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="container">
+        <header style="display:flex;align-items:flex-start;gap:18px;justify-content:space-between;flex-wrap:wrap">
+          <div>
+            <h1 style="margin:0">Amir Zare</h1>
+            <div class="muted">Yerevan, Armenia</div>
+            <div style="margin-top:8px">
+              <span class="muted">+374 77 393 112</span> • <a href="mailto:amirrezazare59@gmail.com">amirrezazare59@gmail.com</a>
+            </div>
+            <div style="margin-top:6px">
+              <a href="https://linkedin.com/in/binahayat00" target="_blank" rel="noopener">linkedin.com/in/binahayat00</a> •
+              <a href="https://github.com/mrprogrammingx" target="_blank" rel="noopener">github.com/mrprogrammingx</a> •
+              <a href="https://amir-zare.com" target="_blank" rel="noopener">amir-zare.com</a>
+            </div>
+          </div>
+          <div style="min-width:220px">
+            <h3 style="margin:0">Professional Summary</h3>
+            <p class="muted" style="margin-top:8px">
+              Software Engineer and Data Engineer with 6+ years of experience building scalable backend systems,
+              enterprise applications, and modern data platforms. Strong backend foundation with growing expertise in
+              data engineering, cloud-native analytics, and AI-enabled applications. Interested in Data Platform
+              Engineering, AI Engineering, and scalable distributed systems.
+            </p>
           </div>
         </header>
 
-        <section class="section-block">
-          <h2>Professional Summary</h2>
-          <p>Backend-focused engineer with 6+ years designing and building ETL pipelines, APIs, and analytics platforms. I prioritize reliability, observability, and cost-efficient processing using Python, Airflow, DuckDB, and cloud services.</p>
-          <p class="muted"><strong>Tech:</strong> Python • SQL • Airflow • DuckDB • FastAPI • Docker • AWS / GCP</p>
-        </section>
+        <hr>
 
-        <section class="section-block">
-          <h2>Professional Experience</h2>
-          <div class="two-col">
-            <div>
-              <h3>Multiple Companies (Hiretodo, Ardakan Glass, Paziresh 24, Mahya Pardaz Companies)</h3>
-              <div class="muted">08/2019 - Present</div>
-              <p><strong>Backend / Data Engineer</strong></p>
-              <ul>
-                <li>Designed and built REST APIs (FastAPI) serving 10k+ requests/day with median latency &lt;150ms to support low-latency dashboards.</li>
-                <li>Designed and maintained ETL pipelines processing 1M+ rows/day using Airflow and Python with end-to-end validation and alerting.</li>
-                <li>Reduced analytical query time by ~40% by migrating reporting workloads to DuckDB and implementing partitioning strategies.</li>
-                <li>Optimized MySQL schemas and indexing to lower join latency and improve query performance for reporting workloads.</li>
-                <li>Introduced automated data checks and CI for data transforms, reducing data incidents in production by an estimated 60%.</li>
-              </ul>
-            </div>
-            <aside>
-              <h3>Professional Training</h3>
-              <div class="muted">EPAM Systems — Data Software Engineer</div>
-              <div class="muted">09/2025 - 02/2026</div>
-              <p>Completed intensive Data Engineering program (95% performance score). Designed normalized relational schemas, applied DWH modeling techniques, and implemented optimized SQL workflows.</p>
-            </aside>
-          </div>
-        </section>
-
-        <section class="section-block">
-          <h2>Projects (selected)</h2>
-          <div>
-            <h4>Run/Walk Data Pipeline</h4>
-            <p><strong>Problem:</strong> CSV telemetry ingestion was slow and inconsistent, delaying reporting.
-            <strong>Solution:</strong> Designed and built a batch ETL (CSV → Parquet → DuckDB) with Airflow orchestration and automated transform tests.
-            <strong>Impact:</strong> Reduced processing time by ~50% and enabled daily materialized reporting tables. <a href="https://github.com/mrprogrammingx/run-walk-pipeline" target="_blank" rel="noopener">GitHub</a> • <a href="https://amir-zare.com/run-walk" target="_blank" rel="noopener">Live</a></p>
-          </div>
-          <div>
-            <h4>Analytics Platform</h4>
-            <p><strong>Problem:</strong> Disparate telemetry and no centralized analytics API.
-            <strong>Solution:</strong> Designed and built an analytics platform with FastAPI, DuckDB storage, and Streamlit dashboards to normalize JSONL telemetry and provide APIs.
-            <strong>Impact:</strong> Reduced manual reporting effort by ~70% and provided reproducible dashboards for analysts. <a href="https://github.com/mrprogrammingx/analytics-platform" target="_blank" rel="noopener">GitHub</a> • <a href="https://amir-zare.com/analytics" target="_blank" rel="noopener">Live</a></p>
-          </div>
-        </section>
-
-        <section class="section-block">
-          <h2>Technical Skills</h2>
-          <div class="skill-list">
-            <span class="skill-pill">Python (Advanced)</span>
-            <span class="skill-pill">SQL (Joins, Window Functions)</span>
-            <span class="skill-pill">MySQL</span>
-            <span class="skill-pill">PostgreSQL</span>
-            <span class="skill-pill">MongoDB</span>
-            <span class="skill-pill">ETL / ELT</span>
-            <span class="skill-pill">Airflow</span>
-            <span class="skill-pill">Docker</span>
-            <span class="skill-pill">AWS / GCP</span>
-            <span class="skill-pill">Pandas / NumPy</span>
-            <span class="skill-pill">TensorFlow</span>
-            <span class="skill-pill">Git / Linux / Shell</span>
-          </div>
-        </section>
-
-        <section class="section-block">
-          <h2>Education</h2>
-          <p><strong>Bachelor of Computer Software Engineering</strong> — Yazd State University (09/2018 – 07/2022)</p>
-          <p>Focus on Algorithms, Data Structures, Statistics, Discrete Mathematics.</p>
-          <p><strong>Machine Learning Program</strong> — TUMO (2026)</p>
-        </section>
-
-        <section class="section-block">
-          <h2>Languages</h2>
+        <section>
+          <h2>Hands-on experience</h2>
           <ul>
-            <li>English: Advanced - Professional proficiency in speaking and writing.</li>
-            <li>Persian: Native</li>
-            <li>Armenian / Russian / German: Beginner</li>
+            <li>End-to-end data pipeline development</li>
+            <li>Workflow orchestration with Apache Airflow</li>
+            <li>Backend system architecture and API development</li>
+            <li>Cloud analytics platforms and modern data stacks</li>
+            <li>RAG systems, embeddings, and AI-assisted workflows</li>
+            <li>Dockerized development environments and CI/CD</li>
+            <li>Large-scale backend systems and enterprise applications</li>
           </ul>
         </section>
 
-        <footer class="muted"></footer>
+        <section style="margin-top:18px">
+          <h2>Technical Skills</h2>
+          <div class="skills-grid" style="display:flex;gap:24px;flex-wrap:wrap">
+            <div style="flex:1;min-width:240px">
+              <h4>Programming</h4>
+              <p class="muted">Python • PHP • SQL • JavaScript</p>
+
+              <h4 style="margin-top:12px">Data Engineering</h4>
+              <p class="muted">Apache Airflow • ETL / ELT • Data Modeling • dbt • Kafka • DuckDB • Parquet</p>
+
+              <h4 style="margin-top:12px">Cloud & Storage</h4>
+              <p class="muted">AWS • GCP • BigQuery • Snowflake (learning) • Azure (exposure)</p>
+            </div>
+
+            <div style="flex:1;min-width:240px">
+              <h4>Backend & APIs</h4>
+              <p class="muted">FastAPI • Flask • Laravel • CakePHP • GraphQL • REST • Service-oriented / Clean Architecture</p>
+
+              <h4 style="margin-top:12px">AI / GenAI</h4>
+              <p class="muted">RAG • Embeddings • LLM integration • Prompt engineering • Amazon Bedrock • AI-assisted analytics</p>
+
+              <h4 style="margin-top:12px">Databases & Tools</h4>
+              <p class="muted">Postgres • MySQL • DuckDB • BigQuery • NoSQL • Docker • Git • Linux • CI/CD • Streamlit</p>
+            </div>
+          </div>
+        </section>
+
+        <section style="margin-top:18px">
+          <h2>Professional Experience</h2>
+
+          <article style="margin-top:12px">
+            <h3>DataLayer — Founder / Software &amp; Data Engineer <small class="muted">Jan 2024 – Present · Yerevan, Armenia</small></h3>
+            <ul>
+              <li>Founded DataLayer to deliver backend, analytics workflows, and data engineering solutions.</li>
+              <li>Designed and implemented ETL/ELT pipelines using Python and Apache Airflow.</li>
+              <li>Built ingestion, transformation, orchestration, and analytics workflows (crypto analytics, business reporting).</li>
+              <li>Developed backend APIs and analytics services with FastAPI and Python; dashboards with Streamlit.</li>
+              <li>Worked with Parquet and DuckDB for efficient analytical processing and local warehouse-style querying.</li>
+              <li>Integrated early AI engineering concepts: embeddings, retrieval workflows, and RAG-inspired analytics.</li>
+              <li>Built Dockerized development environments and reproducible setups.</li>
+            </ul>
+          </article>
+
+          <article style="margin-top:12px">
+            <h3>HireToDo — Software Developer <small class="muted">Dec 2022 – Dec 2023 · Yerevan, Armenia</small></h3>
+            <ul>
+              <li>Backend and platform work for hiring/payment systems using Laravel 9/10 and PHP.</li>
+              <li>Collaborated on frontend integrations (Vue.js / Nuxt.js) and designed GraphQL APIs.</li>
+              <li>Applied clean architecture and SOLID principles; wrote PHPUnit tests for reliability.</li>
+            </ul>
+          </article>
+
+          <article style="margin-top:12px">
+            <h3>Ardakan Float Glass Company — PHP / Laravel Developer <small class="muted">Oct 2021 – Nov 2022</small></h3>
+            <ul>
+              <li>Built enterprise web apps and internal systems with Laravel; optimized database operations for large datasets.</li>
+              <li>Implemented service-oriented architecture and long-term maintainability improvements.</li>
+            </ul>
+          </article>
+
+          <article style="margin-top:12px">
+            <h3>Paziresh24 — PHP Developer <small class="muted">Jun 2021 – Oct 2021</small></h3>
+            <ul>
+              <li>Contributed to backend systems for a high-traffic healthcare platform; supported performance and stability.</li>
+            </ul>
+          </article>
+
+          <article style="margin-top:12px">
+            <h3>Mahya Pardaz Company — Web Developer <small class="muted">Aug 2019 – Jun 2021</small></h3>
+            <ul>
+              <li>Developed and maintained web applications using CakePHP 4; built 15+ custom applications for municipal and enterprise clients.</li>
+              <li>Implemented backend business logic and organization-specific workflows.</li>
+              <li>Mentored junior developers and participated in system design and engineering best practice improvements.</li>
+            </ul>
+          </article>
+        </section>
+
+        <section style="margin-top:18px">
+          <h2>Selected Projects</h2>
+
+          <div style="margin-top:8px">
+            <h4>Crypto Analytics Data Platform (2026)</h4>
+            <p class="muted">Designed an end-to-end crypto analytics platform using Python, Airflow, Parquet, and DuckDB. Building integrations with Snowflake/dbt and adding AI-assisted anomaly detection and RAG-style search.</p>
+            <p><a class="btn" href="#" aria-disabled="true">GitHub Repository</a></p>
+          </div>
+
+          <div style="margin-top:12px">
+            <h4>Classic Web-Based Online Chat Application</h4>
+            <p class="muted">Dockerized chat application with authentication, multi-room support, moderation, AFK detection, multi-tab presence, file sharing, and persistent chat history.</p>
+            <p><a class="btn" href="https://github.com/mrprogrammingx/classic-web-based-online-chat-application" target="_blank" rel="noopener">Repository</a></p>
+          </div>
+        </section>
+
+        <section style="margin-top:18px">
+          <h2>Professional Training & Certifications</h2>
+
+          <div style="margin-top:8px">
+            <h4>Epam Systems — Data Software Engineering Training <small class="muted">Sep 2025 – Jan 2026</small></h4>
+            <p class="muted">Hands-on training on modern backend and data engineering concepts, scalable systems, and production-ready practices.</p>
+          </div>
+
+          <div style="margin-top:8px">
+            <h4>Certifications</h4>
+            <ul>
+              <li>Data Engineering Zoomcamp — DataTalksClub (hands-on program)</li>
+              <li>AWS Skills Centers: AI Practitioner – Foundations</li>
+              <li>Agentic AI on AWS — BeSA Program</li>
+              <li>Apache Airflow 3 Fundamentals — Astronomer (Mar 2026)</li>
+            </ul>
+          </div>
+        </section>
+
+        <section style="margin-top:18px">
+          <h2>Education</h2>
+          <p>Bachelor of Engineering (B.E.) — Computer Software Engineering (2018 – 2022)</p>
+        </section>
+
+        <section style="margin-top:18px">
+          <h2>Languages</h2>
+          <ul>
+            <li>Persian — Native</li>
+            <li>English — Full Professional</li>
+            <li>German — Elementary</li>
+            <li>Russian — Elementary</li>
+          </ul>
+        </section>
+
+        <section style="margin-top:18px">
+          <h2>Professional Interests</h2>
+          <ul>
+            <li>Data Platform Engineering</li>
+            <li>AI Engineering</li>
+            <li>Cloud-native architectures</li>
+            <li>Workflow orchestration systems</li>
+            <li>Distributed systems and scalable backend engineering</li>
+            <li>LLM-powered data applications</li>
+          </ul>
+        </section>
+
       </div>
-    </div>
-  </body>
-  <script>
-    // copy email button
-    (function(){
-      const btn = document.getElementById('copy-email');
-      const emailLink = document.getElementById('mailto-email');
-      if(!btn || !emailLink) return;
-      btn.addEventListener('click', async function(){
-        const email = 'info@amir-zare.com';
-        try{
-            await navigator.clipboard.writeText(email);
-            btn.classList.add('copied');
-            // swap icon to check
-            const orig = btn.innerHTML;
-            btn.innerHTML = '<svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M9 16.2l-3.5-3.5L4 14.2 9 19.2 20 8.2 18.6 6.8z"/></svg>';
-            setTimeout(()=>{btn.classList.remove('copied');btn.innerHTML=orig},1600);
-          }catch(e){
-          // fallback: open mailto
-          window.location.href = emailLink.href;
-        }
-      });
-        // prevent mailto link when clicking the copy button
-        document.getElementById('copy-email').addEventListener('click', function(ev){ev.stopPropagation();});
-    })();
-  </script>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container"><small>© <span id="year"></span> Amir Zare — Data Engineer.</small></div>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
 </html>
