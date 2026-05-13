@@ -550,3 +550,35 @@ a:hover,a:focus{background:var(--glass);text-decoration:underline}
 /* ensure consistent top spacing for h4 inside skills grid */
 .skills-grid h4 { margin-top: 12px; }
 
+/* Mobile: make experience role header stack cleanly and keep dates readable */
+@media (max-width: 700px) {
+  .experience-panel .role-header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .experience-panel .role-title {
+    display: block;
+    font-size: 1rem; /* slightly larger for readability on small screens */
+    line-height: 1.15;
+    word-break: break-word;
+  }
+
+  .experience-panel .role-date {
+    display: block;
+    font-size: .92rem;
+    color: var(--muted);
+    margin: 0; /* remove left/right spacing that can misalign */
+  }
+
+  /* reduce timeline left padding on small screens if present */
+  .experience-panel .timeline {
+    padding-left: 0.5rem;
+  }
+  .experience-panel .timeline li {
+    padding-left: 0;
+  }
+}
+
