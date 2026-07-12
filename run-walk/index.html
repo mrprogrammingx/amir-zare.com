@@ -53,63 +53,47 @@
           </ul>
 
           <h3>Architecture diagram</h3>
-          <!-- Inline SVG diagram (simple, copyable) -->
-          <div style="max-width:900px;margin:12px 0;padding:18px;border-radius:8px;background:var(--glass);color:var(--accent-2);">
-            <svg viewBox="0 0 900 260" width="100%" height="260" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <div class="diagram-panel">
+            <svg viewBox="0 0 900 260" width="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <defs>
-                <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+                <marker id="arrow-rw" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
                   <path d="M0 0 L10 5 L0 10 z" fill="currentColor"/>
                 </marker>
               </defs>
-              <!-- Sources -->
-              <rect x="20" y="30" width="160" height="60" rx="8" fill="var(--card-bg)" stroke="currentColor"><title>Raw device CSV exports</title></rect>
-              <text x="100" y="62" text-anchor="middle" fill="var(--muted)" font-size="14">CSV Sources</text>
+              <!-- top row: uniform boxes at y=30 height=60 -->
+              <rect x="20" y="30" width="113" height="60" rx="8" fill="var(--card-bg)" stroke="currentColor"><title>Raw device CSV exports</title></rect>
+              <text x="76.5" y="62" text-anchor="middle" fill="var(--muted)" font-size="14">CSV Sources</text>
 
-              <!-- Ingest -->
-              <rect x="220" y="20" width="180" height="90" rx="8" fill="var(--panel-bg)" stroke="currentColor"><title>Orchestrated ingestion + validation</title></rect>
-              <text x="310" y="52" text-anchor="middle" fill="var(--muted)" font-size="14">Ingest & Validate (Airflow)</text>
+              <rect x="173" y="30" width="233" height="60" rx="8" fill="var(--panel-bg)" stroke="currentColor"><title>Orchestrated ingestion & validation</title></rect>
+              <text x="289.5" y="62" text-anchor="middle" fill="var(--muted)" font-size="14">Ingest & Validate</text>
 
-              <!-- Storage -->
-              <rect x="460" y="30" width="160" height="60" rx="8" fill="var(--card-bg)" stroke="currentColor"><title>Columnar Parquet storage</title></rect>
-              <text x="540" y="62" text-anchor="middle" fill="var(--muted)" font-size="14">Parquet (GCS/S3)</text>
+              <rect x="446" y="30" width="150" height="60" rx="8" fill="var(--card-bg)" stroke="currentColor"><title>Columnar Parquet storage</title></rect>
+              <text x="521" y="62" text-anchor="middle" fill="var(--muted)" font-size="14">Parquet (GCS/S3)</text>
 
-              <!-- DuckDB -->
-              <rect x="660" y="30" width="200" height="60" rx="8" fill="var(--panel-bg)" stroke="currentColor"><title>Materialized tables for analytics</title></rect>
-              <text x="760" y="62" text-anchor="middle" fill="var(--muted)" font-size="14">DuckDB (Materialized)</text>
+              <rect x="636" y="30" width="188" height="60" rx="8" fill="var(--panel-bg)" stroke="currentColor"><title>Materialized tables for analytics</title></rect>
+              <text x="730" y="62" text-anchor="middle" fill="var(--muted)" font-size="14">DuckDB (Materialized)</text>
 
-              <!-- arrows -->
-              <line x1="180" y1="60" x2="220" y2="60" stroke="currentColor" stroke-width="2" marker-end="url(#arrow)"/>
-              <line x1="400" y1="60" x2="460" y2="60" stroke="currentColor" stroke-width="2" marker-end="url(#arrow)"/>
-              <line x1="620" y1="60" x2="660" y2="60" stroke="currentColor" stroke-width="2" marker-end="url(#arrow)"/>
+              <!-- horizontal arrows between top boxes -->
+              <line x1="133" y1="60" x2="173" y2="60" stroke="currentColor" stroke-width="2" marker-end="url(#arrow-rw)"/>
+              <line x1="406" y1="60" x2="446" y2="60" stroke="currentColor" stroke-width="2" marker-end="url(#arrow-rw)"/>
+              <line x1="596" y1="60" x2="636" y2="60" stroke="currentColor" stroke-width="2" marker-end="url(#arrow-rw)"/>
 
-              <!-- Dashboard / API -->
-              <rect x="360" y="150" width="180" height="70" rx="8" fill="var(--card-bg)" stroke="currentColor"><title>Analyst dashboard and reporting API</title></rect>
-              <text x="450" y="185" text-anchor="middle" fill="var(--muted)" font-size="14">Streamlit Dashboard + API</text>
-              <line x1="540" y1="110" x2="540" y2="150" stroke="currentColor" stroke-width="2" marker-end="url(#arrow)"/>
-              <line x1="760" y1="90" x2="760" y2="150" stroke="currentColor" stroke-width="2" marker-end="url(#arrow)"/>
+              <!-- bottom box (y=170 height=60) containing feeder centers -->
+              <rect x="360" y="170" width="520" height="60" rx="8" fill="var(--card-bg)" stroke="currentColor"><title>Analyst dashboard and reporting API</title></rect>
+              <text x="620" y="200" text-anchor="middle" fill="var(--muted)" font-size="14">Streamlit Dashboard + API</text>
+
+              <!-- vertical feeders from Parquet and DuckDB -->
+              <line x1="521" y1="90" x2="521" y2="170" stroke="currentColor" stroke-width="2" marker-end="url(#arrow-rw)"/>
+              <line x1="730" y1="90" x2="730" y2="170" stroke="currentColor" stroke-width="2" marker-end="url(#arrow-rw)"/>
             </svg>
           </div>
 
-          <h3>Screenshots</h3>
-          <div class="cards">
-            <!-- Placeholder screenshots as inline SVGs to avoid adding image files -->
-            <article class="card">
-              <h4>Dashboard</h4>
-              <div style="height:160px;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#031017, #06202a);border-radius:8px;color:var(--muted);">Dashboard screenshot placeholder</div>
-            </article>
-            <article class="card">
-              <h4>Airflow DAG</h4>
-              <div style="height:160px;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#07101a, #0b1220);border-radius:8px;color:var(--muted);">Airflow DAG screenshot placeholder</div>
-            </article>
-          </div>
-
-          <h3>Repository & Live demo</h3>
+          <h3>Repository</h3>
           <p><a href="https://github.com/mrprogrammingx/run-walk-pipeline" target="_blank" rel="noopener">GitHub — run-walk-pipeline</a></p>
-          <p><strong>Live demo:</strong> <a href="/run-walk" target="_blank">amir-zare.com/run-walk</a> (this page)</p>
 
           <h3>API (optional)</h3>
           <p>Example: a small read-only endpoint that exposes aggregated metrics.</p>
-          <pre style="background:var(--card-bg);padding:12px;border-radius:8px;color:var(--text);">GET https://amir-zare.com/api/run-walk/summary
+          <pre class="code-sample">GET https://amir-zare.com/api/run-walk/summary
 Response: { "date": "2026-04-01", "rows_processed": 124500, "avg_latency_ms": 85 }</pre>
 
           <h3>How to run locally</h3>

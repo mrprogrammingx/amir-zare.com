@@ -53,51 +53,40 @@
           </ul>
 
           <h3>Architecture diagram</h3>
-          <div style="max-width:900px;margin:12px 0;padding:18px;border-radius:8px;background:var(--glass);color:var(--accent-2);">
-            <svg viewBox="0 0 900 260" width="100%" height="260" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <div class="diagram-panel">
+            <svg viewBox="0 0 900 260" width="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <defs>
-                <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+                <marker id="arrow-chat" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
                   <path d="M0 0 L10 5 L0 10 z" fill="currentColor"/>
                 </marker>
               </defs>
 
-              <rect x="20" y="30" width="160" height="60" rx="8" fill="var(--card-bg)" stroke="currentColor"><title>Clients (browsers)</title></rect>
-              <text x="100" y="62" text-anchor="middle" fill="var(--muted)" font-size="14">Clients (Browsers)</text>
+              <rect x="20" y="30" width="165" height="60" rx="8" fill="var(--card-bg)" stroke="currentColor"><title>Clients (browsers)</title></rect>
+              <text x="102.5" y="62" text-anchor="middle" fill="var(--muted)" font-size="14">Clients (Browsers)</text>
 
-              <rect x="220" y="20" width="220" height="90" rx="8" fill="var(--panel-bg)" stroke="currentColor"><title>WebSocket / HTTP API</title></rect>
-              <text x="330" y="52" text-anchor="middle" fill="var(--muted)" font-size="14">FastAPI (WebSocket + HTTP)</text>
+              <rect x="225" y="30" width="225" height="60" rx="8" fill="var(--panel-bg)" stroke="currentColor"><title>FastAPI HTTP + WebSocket API</title></rect>
+              <text x="337.5" y="62" text-anchor="middle" fill="var(--muted)" font-size="14">FastAPI (WebSocket + HTTP)</text>
 
-              <rect x="500" y="30" width="160" height="60" rx="8" fill="var(--card-bg)" stroke="currentColor"><title>SQLite WAL (persistence)</title></rect>
-              <text x="580" y="62" text-anchor="middle" fill="var(--muted)" font-size="14">SQLite (WAL)</text>
+              <rect x="490" y="30" width="120" height="60" rx="8" fill="var(--card-bg)" stroke="currentColor"><title>SQLite (WAL)</title></rect>
+              <text x="550" y="62" text-anchor="middle" fill="var(--muted)" font-size="14">SQLite (WAL)</text>
 
-              <rect x="680" y="30" width="160" height="60" rx="8" fill="var(--panel-bg)" stroke="currentColor"><title>Redis / Broker (optional)</title></rect>
-              <text x="760" y="62" text-anchor="middle" fill="var(--muted)" font-size="14">Redis (Pub/Sub) - optional</text>
+              <rect x="650" y="30" width="225" height="60" rx="8" fill="var(--panel-bg)" stroke="currentColor"><title>Redis / Broker (optional)</title></rect>
+              <text x="762.5" y="62" text-anchor="middle" fill="var(--muted)" font-size="14">Redis (Pub/Sub) - optional</text>
 
-              <line x1="180" y1="60" x2="220" y2="60" stroke="currentColor" stroke-width="2" marker-end="url(#arrow)"/>
-              <line x1="440" y1="60" x2="500" y2="60" stroke="currentColor" stroke-width="2" marker-end="url(#arrow)"/>
-              <line x1="660" y1="60" x2="680" y2="60" stroke="currentColor" stroke-width="2" marker-end="url(#arrow)"/>
+              <line x1="185" y1="60" x2="225" y2="60" stroke="currentColor" stroke-width="2" marker-end="url(#arrow-chat)"/>
+              <line x1="455" y1="60" x2="490" y2="60" stroke="currentColor" stroke-width="2" marker-end="url(#arrow-chat)"/>
+              <line x1="610" y1="60" x2="650" y2="60" stroke="currentColor" stroke-width="2" marker-end="url(#arrow-chat)"/>
 
-              <rect x="360" y="150" width="220" height="70" rx="8" fill="var(--card-bg)" stroke="currentColor"><title>Client SDK / Dashboard</title></rect>
-              <text x="470" y="185" text-anchor="middle" fill="var(--muted)" font-size="14">Admin Dashboard / API</text>
-              <line x1="440" y1="110" x2="440" y2="150" stroke="currentColor" stroke-width="2" marker-end="url(#arrow)"/>
+              <rect x="280" y="170" width="520" height="60" rx="8" fill="var(--card-bg)" stroke="currentColor"><title>Admin dashboard and API</title></rect>
+              <text x="540" y="200" text-anchor="middle" fill="var(--muted)" font-size="14">Admin Dashboard / API</text>
+
+              <!-- vertical feeder from FastAPI down to dashboard -->
+              <line x1="337.5" y1="90" x2="337.5" y2="170" stroke="currentColor" stroke-width="2" marker-end="url(#arrow-chat)"/>
             </svg>
           </div>
 
-          <h3>Screenshots</h3>
-          <div class="cards">
-            <article class="card">
-              <h4>Chat UI</h4>
-              <div style="height:160px;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#031017, #06202a);border-radius:8px;color:var(--muted);">Chat UI screenshot placeholder</div>
-            </article>
-            <article class="card">
-              <h4>Moderation Panel</h4>
-              <div style="height:160px;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#07101a, #0b1220);border-radius:8px;color:var(--muted);">Moderation panel screenshot placeholder</div>
-            </article>
-          </div>
-
-          <h3>Repository & Live demo</h3>
+          <h3>Repository</h3>
           <p><a href="https://github.com/mrprogrammingx/classic-web-based-online-chat-application" target="_blank" rel="noopener">GitHub — classic-web-based-online-chat-application</a></p>
-          <p><strong>Live demo:</strong> <a href="/classic-web-based-online-chat-application" target="_blank">amir-zare.com/classic-web-based-online-chat-application</a></p>
 
           <h3>How to run locally</h3>
           <ol>
