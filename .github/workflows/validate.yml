@@ -1,0 +1,16 @@
+name: validate
+
+on: [push, pull_request]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+      - name: HTML validate
+        run: npx html-validate "**/*.html"
+      - name: Check local links/assets
+        run: node ./tools/check-local-links.js

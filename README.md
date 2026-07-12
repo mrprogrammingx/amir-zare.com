@@ -1,30 +1,24 @@
 # amir-zare.com — Personal site
 
-This is a lightweight static personal site for Amir Zare (Data Engineer).
+This repository contains the static website for amir-zare.com. It's a plain HTML/CSS/JS site (no build step).
 
-Files changed/added in this update:
-- `index.html` — new responsive single-file personal site layout
-- `styles.css` — styling for the site
+Pages included:
+- `index.html` — homepage and project highlights
+- `resume.html` — printable résumé page
+- `analytics/index.html` — analytics project page
+- `run-walk/index.html` — Run/Walk project page
+- `classic-web-based-online-chat-application/index.html` — Chat demo page
 
-Preview locally:
+Local preview:
 
 ```bash
 # from the project folder
 python3 -m http.server 8000
-# then open http://localhost:8000 in your browser
+# open http://localhost:8000 in your browser
 ```
 
-Notes / next steps:
-- Replace placeholder company names with real values.
-- Add a real CV/Resume PDF and update the CV link in the header.
-- Consider deploying to GitHub Pages, Netlify, or Vercel for a live site.
-- If you want I can add an automated GitHub Actions workflow to build & deploy.
+Deployment:
 
-Contact:
+The site is intended to be hosted on GitHub Pages for `amir-zare.com` (CNAME present).
 
-- Email: info@amir-zare.com
-- LinkedIn: https://linkedin.com/in/binahayat00
- 
-Resume:
-
-- The resume is available as `resume.html` in this repository. You can open it locally or host it with the site.
+There are no build tools or dependencies — edit the HTML/CSS/JS directly.

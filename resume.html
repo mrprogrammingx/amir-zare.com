@@ -6,15 +6,22 @@
   <title>Amir Zare — Resume</title>
   <meta name="description" content="Resume of Amir Zare — Backend & Data Engineer. Contact, experience, skills, and projects." />
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/favicon-32x32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="/favicon-16x16.png" sizes="16x16" type="image/png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
+  <link rel="manifest" href="/site.webmanifest">
   <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
   <header class="site-header">
     <div class="container header-inner">
       <a class="logo" href="/">Amir Zare</a>
-      <nav class="nav">
+      <button id="nav-toggle" aria-controls="site-nav" aria-expanded="false" class="nav-toggle" aria-label="Open site navigation">☰</button>
+      <nav id="site-nav" class="nav">
         <a href="/">Home</a>
         <a href="/run-walk">Run/Walk</a>
+        <a href="/analytics">Analytics</a>
+        <a href="/classic-web-based-online-chat-application">Chat</a>
         <a href="/resume.html">Resume</a>
       </nav>
     </div>
@@ -64,7 +71,7 @@
 
         <section class="mt-18">
           <h2>Technical Skills</h2>
-          <div class="skills-grid">
+          <div class="resume-skills-grid">
             <div style="flex:1;min-width:240px">
               <h4>Programming</h4>
               <p class="muted">Python • PHP • SQL • JavaScript</p>
@@ -145,7 +152,7 @@
           <div class="mt-8">
             <h4>Crypto Analytics Data Platform (2026)</h4>
             <p class="muted">Designed an end-to-end crypto analytics platform using Python, Airflow, Parquet, and DuckDB. Building integrations with Snowflake/dbt and adding AI-assisted anomaly detection and RAG-style search.</p>
-            <p><a class="btn" href="#" aria-disabled="true">GitHub Repository</a></p>
+            <p><span class="muted">Repository coming soon</span></p>
           </div>
 
           <div class="mt-12">

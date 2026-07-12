@@ -21,13 +21,15 @@
     <header class="site-header">
       <div class="container header-inner">
         <a class="logo" href="#">Amir Zare</a>
+        <button id="nav-toggle" aria-controls="site-nav" aria-expanded="false" class="nav-toggle" aria-label="Open site navigation">☰</button>
         <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">🌙</button>
-        <nav class="nav">
+        <nav id="site-nav" class="nav">
           <a href="#about">About</a>
           <a href="#skills">Skills</a>
           <a href="#projects">Projects</a>
           <a href="#experience">Experience</a>
           <a href="#contact">Contact</a>
+          <a href="/resume.html">Resume</a>
         </nav>
         <div class="social">
           <!-- LinkedIn -->
@@ -82,11 +84,10 @@
 
         <!-- Run/Walk: lead featured project (image left, content right) -->
         <div class="featured-project reveal">
-          <div class="featured-media" aria-hidden="true">
+          <div class="featured-media">
             <div class="img-placeholder">
-              <img class="img-src" src="images/run-walk.png" alt="Run/Walk screenshot"
-                onload="this.nextElementSibling.style.display='none'" onerror="this.style.display='none'">
-              <div class="img-fallback">Run/Walk</div>
+                <img class="img-src" src="images/run-walk.png" alt="Run/Walk screenshot">
+                <div class="img-fallback" aria-hidden="true">Run/Walk</div>
             </div>
           </div>
           <div class="featured-content">
@@ -104,8 +105,7 @@
               reduced manual reporting time from hours to minutes and improved data quality visibility.</p>
             <p class="muted"><strong>Tech:</strong> Python, Airflow, DuckDB, Parquet, Streamlit</p>
             <p style="margin-top:10px">
-              <a class="btn primary" href="https://amir-zare.com/run-walk" target="_blank" rel="noopener">Live
-                demo</a>
+              <a class="btn primary" href="/run-walk">Live demo</a>
               <a class="btn" href="https://github.com/mrprogrammingx/run-walk-pipeline" target="_blank"
                 rel="noopener">Repository</a>
             </p>
@@ -114,11 +114,10 @@
 
         <!-- Analytics: featured project (same side-by-side layout) -->
         <div class="featured-project reveal">
-          <div class="featured-media" aria-hidden="true">
+          <div class="featured-media">
             <div class="img-placeholder">
-              <img class="img-src" src="images/analytics.png" alt="Analytics screenshot"
-                onload="this.nextElementSibling.style.display='none'" onerror="this.style.display='none'">
-              <div class="img-fallback">Analytics</div>
+              <img class="img-src" src="images/analytics.png" alt="Analytics screenshot">
+              <div class="img-fallback" aria-hidden="true">Analytics</div>
             </div>
           </div>
           <div class="featured-content">
@@ -138,8 +137,7 @@
               access for downstream services.</p>
             <p class="muted"><strong>Tech:</strong> Python, FastAPI, DuckDB, Streamlit, JSONL</p>
             <div style="margin-top:10px">
-              <a class="btn primary" href="https://amir-zare.com/analytics" target="_blank" rel="noopener">Live
-                demo</a>
+              <a class="btn primary" href="/analytics">Live demo</a>
               <a class="btn" href="https://github.com/mrprogrammingx/analytics-platform" target="_blank"
                 rel="noopener">Repository</a>
             </div>
@@ -148,11 +146,10 @@
 
         <!-- Real-Time Chat: featured project (same side-by-side layout) -->
         <div class="featured-project reveal">
-          <div class="featured-media" aria-hidden="true">
+          <div class="featured-media">
             <div class="img-placeholder">
-              <img class="img-src" src="images/chat.png" alt="Real-Time Chat screenshot"
-                onload="this.nextElementSibling.style.display='none'" onerror="this.style.display='none'">
-              <div class="img-fallback">Real-Time Chat</div>
+              <img class="img-src" src="images/chat.png" alt="Real-Time Chat screenshot">
+              <div class="img-fallback" aria-hidden="true">Real-Time Chat</div>
             </div>
           </div>
           <div class="featured-content">
@@ -168,8 +165,7 @@
             <p class="muted"><strong>Tech:</strong> FastAPI, aiosqlite (SQLite WAL), Docker, JWT, JavaScript,
               Playwright</p>
             <p style="margin-top:10px">
-              <a class="btn primary" href="https://amir-zare.com/classic-web-based-online-chat-application"
-                target="_blank" rel="noopener">Live demo</a>
+              <a class="btn primary" href="/classic-web-based-online-chat-application">Live demo</a>
               <a class="btn" href="https://github.com/mrprogrammingx/classic-web-based-online-chat-application"
                 target="_blank" rel="noopener">Repository</a>
             </p>

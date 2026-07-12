@@ -1,4 +1,5 @@
-// Small interactive enhancements: scroll reveal, header shrink, and small debounce util
+// Small interactive enhancements: scroll reveal, header shrink, theme toggle,
+// mobile nav, typing effect, and scroll progress
 
 (function(){
   const q = s => Array.from(document.querySelectorAll(s));
@@ -26,82 +27,40 @@
     reveals.forEach((r, i)=>{ r.style.transitionDelay = (i*40)+'ms'; r.classList.add('in-view') });
   }
 
-  // Header shrink on scroll
+  // Header shrink on scroll (rAF-throttled)
   const header = document.querySelector('.site-header');
-  let lastScroll = 0;
   const onScroll = ()=>{
     const y = window.scrollY || window.pageYOffset;
     if(y>40) header.classList.add('scrolled'); else header.classList.remove('scrolled');
-    lastScroll = y;
   };
-  window.addEventListener('scroll', debounce(onScroll, 50));
-  onScroll();
 
-  // Smooth in-page link animation offset (accounting for header height)
-  document.addEventListener('click', (e)=>{
-    const a = e.target.closest('a[href^="#"]');
-    if(!a) return;
-    const id = a.getAttribute('href');
-    if(id.length===1) return; // just '#'
-    const el = document.querySelector(id);
-    if(el){
-      e.preventDefault();
-      const debug = document.documentElement.getAttribute('data-debug') === 'true';
-      try{
-        const headerHeight = document.querySelector('.site-header').offsetHeight || 70;
-        const top = (el.offsetTop || (el.getBoundingClientRect().top + window.pageYOffset)) - headerHeight - 12;
-        if(debug) console.log('[nav-debug] anchor', id, 'targetTop', top, 'headerH', headerHeight);
-        // primary: try scrollTo with smooth behavior
-        try{
-          window.scrollTo({top, behavior:'smooth'});
-          // also try scrollIntoView + negative offset adjustment as a robust fallback
-          setTimeout(()=>{
-            try{ el.scrollIntoView({behavior:'smooth', block:'start'}); }catch(e){}
-            // nudge up to account for header
-            try{ window.scrollBy({top: -headerHeight - 12, behavior:'smooth'}); }catch(e){}
-          }, 8);
-        }catch(e){
-          // older browsers may throw; fallback to scrollIntoView and then offset
-          try{ el.scrollIntoView(true); window.scrollBy(0, -headerHeight - 12); }catch(e){}
-        }
-        try{ history.replaceState && history.replaceState(null, '', id); }catch(e){}
-      }catch(err){
-        console.warn('scroll handler fallback', err);
-        location.hash = id;
-      }
+  // NOTE: removed JS-based double-handling of in-page anchors. Rely on
+  // CSS `html { scroll-behavior: smooth }` and `scroll-margin-top` in CSS
+  // for header offset. Do not re-add JS scrolling logic.
+
+  /* Scroll progress bar */
+  const prog = document.getElementById('scroll-progress');
+  function updateProgress(){
+    const h = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = h>0 ? (window.scrollY / h) * 100 : 0;
+    // prog may be absent on pages that don't include the scroll-progress element (e.g. resume)
+    if (prog) {
+      prog.style.width = Math.min(100, Math.max(0,pct)) + '%';
     }
-  });
-
-  // Explicit attach: ensure any in-page anchors have a direct handler (some browsers / extensions may block delegated handlers)
-  Array.from(document.querySelectorAll('a[href^="#"]')).forEach(a=>{
-    a.addEventListener('click', (ev)=>{
-      const id = a.getAttribute('href');
-      if(!id || id.length===1) return;
-      const el = document.querySelector(id);
-      if(el){
-        ev.preventDefault();
-        try{
-          const headerHeight = document.querySelector('.site-header').offsetHeight || 70;
-          const top = (el.offsetTop || (el.getBoundingClientRect().top + window.pageYOffset)) - headerHeight - 12;
-          // robust scrolling: try scrollTo, then scrollIntoView + scrollBy nudge
-          try{
-            window.scrollTo({top, behavior:'smooth'});
-            setTimeout(()=>{ try{ el.scrollIntoView({behavior:'smooth', block:'start'}); }catch(e){}; try{ window.scrollBy({top: -headerHeight - 12, behavior:'smooth'}); }catch(e){} }, 8);
-            try{ history.replaceState && history.replaceState(null, '', id); }catch(e){}
-          }catch(e){ try{ el.scrollIntoView(true); window.scrollBy(0, -headerHeight - 12); }catch(e){}; try{ history.replaceState && history.replaceState(null, '', id); }catch(e){} }
-        }catch(e){ console.warn('anchor click fallback', e); location.hash = id }
-      }
-    });
-  });
-
-  // small debounce util
-  function debounce(fn, wait){
-    let t;
-    return function(...args){
-      clearTimeout(t);
-      t = setTimeout(()=>fn.apply(this,args), wait);
-    };
   }
+
+  /* requestAnimationFrame throttling for scroll-driven work */
+  let _tick = false;
+  const _onScrollRaf = () => {
+    if (!_tick) {
+      _tick = true;
+      requestAnimationFrame(() => { onScroll(); updateProgress(); _tick = false; });
+    }
+  };
+  window.addEventListener('scroll', _onScrollRaf, {passive:true});
+  // initial sync
+  onScroll();
+  updateProgress();
 
   /* --- Additional motion: floating blobs and parallax --- */
   function createBlobs(){
@@ -114,18 +73,21 @@
     const b3 = document.createElement('div'); b3.className='blob b3';
     container.appendChild(b1); container.appendChild(b2); container.appendChild(b3);
     hero.appendChild(container);
-
-    // slight parallax movement tied to mouse
+    // slight parallax movement tied to mouse: only nudge the header social
+    // element (blob CSS animation wins for blobs). Throttle with rAF.
+    let mbTick = false;
+    let _mx = 0, _my = 0;
     window.addEventListener('mousemove', (ev)=>{
-      const x = (ev.clientX / window.innerWidth) - 0.5;
-      const y = (ev.clientY / window.innerHeight) - 0.5;
-      // move blobs in opposite directions for depth
-      b1.style.transform = `translate3d(${x * -14}px, ${y * -8}px, 0)`;
-      b2.style.transform = `translate3d(${x * 10}px, ${y * 6}px, 0)`;
-      b3.style.transform = `translate3d(${x * -6}px, ${y * 10}px, 0)`;
-      // also nudge header social a bit
-      const social = document.querySelector('.social');
-      if(social) social.style.transform = `translate3d(${x*6}px, ${y*4}px, 0)`;
+      _mx = (ev.clientX / window.innerWidth) - 0.5;
+      _my = (ev.clientY / window.innerHeight) - 0.5;
+      if(!mbTick){
+        mbTick = true;
+        requestAnimationFrame(()=>{
+          const social = document.querySelector('.social');
+          if(social) social.style.transform = `translate3d(${_mx*6}px, ${_my*4}px, 0)`;
+          mbTick = false;
+        });
+      }
     });
   }
 
@@ -137,6 +99,8 @@
     if(!el) return;
     let words = [];
     try{ words = JSON.parse(el.dataset.words) }catch(e){}
+    // skip empty words to avoid zero-length loops
+    words = words.filter(w => typeof w === 'string' && w.trim().length > 0);
     if(!words.length) return;
     let i=0, pos=0, forward=true;
     const step = ()=>{
@@ -182,30 +146,49 @@
     sIO.observe(skillsSec);
   }
 
-  /* Theme toggle (persist in localStorage) */
+  /* Theme toggle (persist in localStorage) + mobile nav toggle */
   const themeBtn = document.getElementById('theme-toggle');
+  function _safeGetItem(k){ try{ return window.localStorage.getItem(k) }catch(e){ return null } }
+  function _safeSetItem(k,v){ try{ window.localStorage.setItem(k,v) }catch(e){} }
   function setTheme(t){
     document.documentElement.setAttribute('data-theme', t);
     if(themeBtn) themeBtn.textContent = t==='light' ? '🌙' : '🌞';
-    localStorage.setItem('site-theme', t);
+    _safeSetItem('site-theme', t);
   }
-  const saved = localStorage.getItem('site-theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+  const saved = _safeGetItem('site-theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
   setTheme(saved);
   if(themeBtn){ themeBtn.addEventListener('click', ()=> setTheme(document.documentElement.getAttribute('data-theme')==='light'?'dark':'light')) }
 
-  /* Scroll progress bar */
-  const prog = document.getElementById('scroll-progress');
-  function updateProgress(){
-    const h = document.documentElement.scrollHeight - window.innerHeight;
-    const pct = h>0 ? (window.scrollY / h) * 100 : 0;
-    // prog may be absent on pages that don't include the scroll-progress element (e.g. resume)
-    if (prog) {
-      prog.style.width = Math.min(100, Math.max(0,pct)) + '%';
-    }
-  }
-  window.addEventListener('scroll', debounce(updateProgress, 20));
-  updateProgress();
+  // Mobile nav toggle (button added in HTML). Toggles `#site-nav.open` and updates aria state.
+  (function(){
+    const navToggle = document.getElementById('nav-toggle');
+    const siteNav = document.getElementById('site-nav');
+    if(!navToggle || !siteNav) return;
+    navToggle.addEventListener('click', ()=>{
+      const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+      navToggle.setAttribute('aria-expanded', String(!expanded));
+      siteNav.classList.toggle('open', !expanded);
+    });
+    // close on link click
+    Array.from(siteNav.querySelectorAll('a')).forEach(a=> a.addEventListener('click', ()=>{ siteNav.classList.remove('open'); navToggle.setAttribute('aria-expanded','false'); }));
+    // close when clicking outside
+    document.addEventListener('click', (e)=>{ if(!siteNav.contains(e.target) && !navToggle.contains(e.target)){ siteNav.classList.remove('open'); navToggle.setAttribute('aria-expanded','false'); } });
+  })();
 
+  // Handle featured project images: hide fallback when image loads, hide broken images on error.
+  q('.img-placeholder .img-src').forEach(img => {
+    const fallback = img.parentElement && img.parentElement.querySelector('.img-fallback');
+    if (img.complete) {
+      if (img.naturalWidth && img.naturalHeight) {
+        if (fallback) fallback.style.display = 'none';
+      } else {
+        img.style.display = 'none';
+      }
+    } else {
+      img.addEventListener('load', ()=>{ if (fallback) fallback.style.display = 'none'; });
+      img.addEventListener('error', ()=>{ img.style.display = 'none'; });
+    }
+  });
   // small enhancement: current year (used by all pages)
   (function setYear() {
     try {
