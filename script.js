@@ -267,8 +267,10 @@
     const setMode = mode => {
       const m = modes[mode]; if (!m || !qrImg) return;
       qrImg.src = m.src; qrImg.alt = m.alt;
-      document.getElementById('cn-qr-kicker').textContent = m.kicker;
-      document.getElementById('cn-qr-url').textContent = m.url;
+      // Translated pages put their wording on the switch buttons (data-kicker / data-caption).
+      const btn = document.querySelector('[data-qr-mode="' + mode + '"]');
+      document.getElementById('cn-qr-kicker').textContent = (btn && btn.dataset.kicker) || m.kicker;
+      document.getElementById('cn-qr-url').textContent = (btn && btn.dataset.caption) || m.url;
       q('[data-qr-mode]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.qrMode === mode)));
     };
     q('[data-qr-mode]').forEach(b => b.addEventListener('click', () => setMode(b.dataset.qrMode)));
@@ -304,9 +306,16 @@
   const hello = document.getElementById('cn-hello');
   if (hello) {
     const from = new URLSearchParams(location.search).get('from');
-    const msgs = { talk: 'Thanks for coming to my talk 👋', workshop: 'Great to have you in the workshop 👋', card: 'Nice to meet you 👋' };
-    if (from) { hello.textContent = msgs[from] || 'Nice to meet you 👋'; hello.hidden = false; }
+    const d = hello.dataset; // translated greetings come from data-talk / data-workshop / data-default
+    const msgs = { talk: d.talk || 'Thanks for coming to my talk 👋', workshop: d.workshop || 'Great to have you in the workshop 👋' };
+    if (from) { hello.textContent = msgs[from] || d.default || 'Nice to meet you 👋'; hello.hidden = false; }
   }
+
+  // Language menu: close when clicking elsewhere or pressing Escape.
+  q('.lang-sw').forEach(sw => {
+    document.addEventListener('click', e => { if (!sw.contains(e.target)) sw.open = false; });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') sw.open = false; });
+  });
 
   // small enhancement: current year (used by all pages)
   (function setYear() {
