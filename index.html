@@ -8,12 +8,99 @@
   <title>Amir Zare — AI Data Engineer</title>
   <meta name="description"
     content="Portfolio of Amir Zare — AI Data Engineer and Founder of DataLayer. Data pipelines, analytics platforms, A/B testing, and production LLM applications." />
+  <!-- build:seo -->
+  <link rel="canonical" href="https://amir-zare.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Amir Zare">
+  <meta property="og:title" content="Amir Zare — AI Data Engineer">
+  <meta property="og:description" content="Portfolio of Amir Zare — AI Data Engineer and Founder of DataLayer. Data pipelines, analytics platforms, A/B testing, and production LLM applications.">
+  <meta property="og:url" content="https://amir-zare.com/">
+  <meta property="og:image" content="https://amir-zare.com/images/og/home.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Amir Zare — AI Data Engineer">
+  <meta name="twitter:description" content="Portfolio of Amir Zare — AI Data Engineer and Founder of DataLayer. Data pipelines, analytics platforms, A/B testing, and production LLM applications.">
+  <meta name="twitter:image" content="https://amir-zare.com/images/og/home.jpg">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://amir-zare.com/#person",
+      "name": "Amir Zare",
+      "jobTitle": "AI Data Engineer",
+      "description": "Amir Zare is an AI Data Engineer and the founder of DataLayer, based in Yerevan, Armenia. He builds data pipelines, analytics platforms, and production LLM applications.",
+      "url": "https://amir-zare.com/",
+      "image": "https://amir-zare.com/images/amir-portrait.webp",
+      "email": "mailto:info@amir-zare.com",
+      "sameAs": [
+        "https://linkedin.com/in/binahayat00",
+        "https://github.com/mrprogrammingx",
+        "https://www.youtube.com/@AmirZareDev"
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Yerevan",
+        "addressCountry": "AM"
+      },
+      "worksFor": {
+        "@type": "Organization",
+        "@id": "https://usedatalayer.com/#org",
+        "name": "DataLayer",
+        "url": "https://usedatalayer.com"
+      },
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "Yazd University"
+      },
+      "knowsAbout": [
+        "Data engineering",
+        "Apache Airflow",
+        "dbt",
+        "Apache Kafka",
+        "Apache Flink",
+        "BigQuery",
+        "Python",
+        "SQL",
+        "LLM applications",
+        "Retrieval-augmented generation",
+        "Multi-agent systems",
+        "A/B testing",
+        "FastAPI",
+        "Laravel"
+      ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://usedatalayer.com/#org",
+      "name": "DataLayer",
+      "url": "https://usedatalayer.com",
+      "founder": {
+        "@id": "https://amir-zare.com/#person"
+      },
+      "description": "An AI-powered analytics platform for e-commerce sellers."
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://amir-zare.com/#website",
+      "name": "Amir Zare",
+      "url": "https://amir-zare.com/",
+      "publisher": {
+        "@id": "https://amir-zare.com/#person"
+      }
+    }
+  ]
+}
+  </script>
+  <!-- /build:seo -->
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
   <link rel="icon" href="/favicon-32x32.png" sizes="32x32" type="image/png">
   <link rel="icon" href="/favicon-16x16.png" sizes="16x16" type="image/png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
   <link rel="manifest" href="/site.webmanifest">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="/styles.css?v=20261118a">
   </head>
   <body>
     <!-- scroll progress bar -->
@@ -21,513 +108,79 @@
     <header class="site-header">
       <div class="container header-inner">
         <a class="logo" href="#">Amir Zare</a>
-        <button id="nav-toggle" aria-controls="site-nav" aria-expanded="false" class="nav-toggle" aria-label="Open site navigation">☰</button>
-        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">🌙</button>
-        <nav id="site-nav" class="nav">
-          <a href="#about">About</a>
-          <a href="#skills">Skills</a>
-          <a href="#projects">Projects</a>
-          <a href="#experience">Experience</a>
-          <a href="#community">Community</a>
-          <a href="#contact">Contact</a>
-          <a href="/resume.html">Resume</a>
+        <nav id="site-nav" class="nav nav-pill" aria-label="Main">
+          <a href="#" data-section="top" aria-current="true">Home</a>
+          <a href="#projects" data-section="projects">Projects</a>
+          <a href="#experience" data-section="experience">Experience</a>
+          <a href="#community" data-section="community">Community</a>
+          <a href="/resume.html" class="nav-ext" target="_blank" rel="noopener" aria-label="Resume (opens in a new tab)">Resume<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
         </nav>
-        <div class="social">
-          <!-- LinkedIn -->
-          <a class="icon-link" href="https://linkedin.com/in/binahayat00" target="_blank" rel="noopener" aria-label="LinkedIn">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="18" height="18"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 24V7h5v17H0zM8 7h4.7v2.3h.1c.7-1.3 2.4-2.7 4.9-2.7C23 6.6 24 9.1 24 13.5V24h-5v-9.6c0-2.3 0-5.3-3.2-5.3-3.2 0-3.7 2.5-3.7 5.1V24H8V7z"/></svg>
-          </a>
-          <!-- Email -->
-          <a class="icon-link" href="mailto:info@amir-zare.com" aria-label="Email">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="18" height="18"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-          </a>
-          <!-- GitHub -->
-          <a class="icon-link" href="https://github.com/mrprogrammingx" target="_blank" rel="noopener" aria-label="GitHub">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="18" height="18"><path d="M12 .5C5.7.5.6 5.7.6 12c0 5.1 3.3 9.5 7.9 11 .6.1.8-.3.8-.6v-2.1c-3.2.7-3.8-1.4-3.8-1.4-.5-1.2-1.2-1.6-1.2-1.6-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 .1 1.6.7 2 1.1.1-.9.4-1.5.7-1.8-2.6-.3-5.3-1.3-5.3-6 0-1.3.5-2.4 1.2-3.3-.1-.3-.5-1.6.1-3.3 0 0 1-.3 3.3 1.3 1-.3 2-.4 3-.4s2 .1 3 .4c2.3-1.6 3.3-1.3 3.3-1.3.6 1.7.2 3 .1 3.3.8.9 1.2 2 1.2 3.3 0 4.7-2.7 5.7-5.3 6 .4.3.7 1 .7 2v3c0 .3.2.7.8.6 4.6-1.5 7.9-5.9 7.9-11C23.4 5.7 18.3.5 12 .5z"/></svg>
-          </a>
-          <!-- YouTube -->
-          <a class="icon-link" href="https://www.youtube.com/@AmirZareDev" target="_blank" rel="noopener" aria-label="YouTube">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="18" height="18"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.2 3.6-6.2 3.6z"/></svg>
-          </a>
+        <div class="header-actions">
+          <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">🌙</button>
+          <div class="connect" id="connect">
+            <button type="button" class="connect-btn" id="connect-btn" aria-expanded="false" aria-controls="connect-panel">
+              <span class="connect-label">Connect</span>
+              <span class="connect-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></span>
+            </button>
+            <div class="connect-panel" id="connect-panel">
+              <a class="connect-row" href="https://linkedin.com/in/binahayat00" target="_blank" rel="noopener"><span class="connect-dot" data-brand="linkedin" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 24V7h5v17H0zM8 7h4.7v2.3h.1c.7-1.3 2.4-2.7 4.9-2.7C23 6.6 24 9.1 24 13.5V24h-5v-9.6c0-2.3 0-5.3-3.2-5.3-3.2 0-3.7 2.5-3.7 5.1V24H8V7z"/></svg></span><span>LinkedIn</span></a>
+              <a class="connect-row" href="mailto:info@amir-zare.com"><span class="connect-dot" data-brand="email" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></span><span>info@amir-zare.com</span></a>
+              <a class="connect-row" href="https://github.com/mrprogrammingx" target="_blank" rel="noopener"><span class="connect-dot" data-brand="github" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15"><path d="M12 .5C5.7.5.6 5.7.6 12c0 5.1 3.3 9.5 7.9 11 .6.1.8-.3.8-.6v-2.1c-3.2.7-3.8-1.4-3.8-1.4-.5-1.2-1.2-1.6-1.2-1.6-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 .1 1.6.7 2 1.1.1-.9.4-1.5.7-1.8-2.6-.3-5.3-1.3-5.3-6 0-1.3.5-2.4 1.2-3.3-.1-.3-.5-1.6.1-3.3 0 0 1-.3 3.3 1.3 1-.3 2-.4 3-.4s2 .1 3 .4c2.3-1.6 3.3-1.3 3.3-1.3.6 1.7.2 3 .1 3.3.8.9 1.2 2 1.2 3.3 0 4.7-2.7 5.7-5.3 6 .4.3.7 1 .7 2v3c0 .3.2.7.8.6 4.6-1.5 7.9-5.9 7.9-11C23.4 5.7 18.3.5 12 .5z"/></svg></span><span>GitHub</span></a>
+              <a class="connect-row" href="https://www.youtube.com/@AmirZareDev" target="_blank" rel="noopener"><span class="connect-dot" data-brand="youtube" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.2 3.6-6.2 3.6z"/></svg></span><span>YouTube</span></a>
+            </div>
           </div>
+          <button id="nav-toggle" aria-controls="site-nav" aria-expanded="false" class="nav-toggle" aria-label="Open site navigation">☰</button>
         </div>
+      </div>
     </header>
 
   <main>
-    <section class="hero">
-      <div class="container reveal hero-content">
-        <h1 class="hero-title">
-          <span class="hero-name">Amir Zare</span>
-          <span class="hero-role">AI Data Engineer · Founder of DataLayer</span>
+    <section class="hero hero-portrait" aria-labelledby="hero-heading">
+      <div class="hp-stage">
+        <h1 id="hero-heading" class="hp-title">
+          <span class="hp-hello">Hi, I&rsquo;m <span class="hp-name">Amir Zare</span>,</span>
+          <span class="hp-role">AI Data Engineer</span>
+          <svg class="hp-spark" viewBox="0 0 60 60" aria-hidden="true">
+            <path d="M8 22c10-6 22-8 34-6M14 36c6-10 14-17 24-22M30 50c0-12 4-22 12-30" fill="none"
+              stroke="currentColor" stroke-width="3" stroke-linecap="round" />
+          </svg>
         </h1>
-        <p class="hook">7+ years building backend systems, data pipelines, and analytics products — including
-          production LLM applications.</p>
-        <p class="lead">
-          <span class="fixed">I design and build reliable data platforms that</span>&nbsp;
-          <span id="typed"
-            data-words='[
-              "enable data-driven decisions with production-ready ETL systems.",
-              "turn raw sales exports into actionable dashboards at DataLayer.",
-              "reduce processing costs with efficient data engineering.",
-              "put LLMs to work safely, with deterministic guardrails.",
-              "measure what matters with rigorous A/B test analysis."
-            ]'>enable data-driven decisions with production-ready ETL systems.</span>
-        </p>
-        <div class="chips">Airflow &amp; dbt • FastAPI APIs • LLM apps • A/B testing</div>
-        <p class="cta-row">
-          <a class="btn primary" href="resume.html" aria-label="View Resume">View Resume</a>
-          <a class="btn" href="https://github.com/mrprogrammingx" target="_blank" rel="noopener"
-            aria-label="View GitHub profile">GitHub</a>
-          <a class="btn primary" href="#contact" aria-label="Contact Me">Contact Me</a>
-        </p>
-        <p class="muted" style="margin-top:10px">Available for full-time & contract roles — open to remote / hybrid</p>
-        <p class="muted" style="margin-top:6px">
-          <a href="https://usedatalayer.com" target="_blank" rel="noopener">DataLayer</a> — Top 30 Startup &amp; Top 8
-          Data Startup in Armenia (F6S, 2026) · $170K+ in non-dilutive startup credits
-        </p>
-      </div>
-    </section>
-    <section id="projects" class="section reveal alt visual-hook">
-      <div class="container">
-        <h2>🥈 Selected Projects</h2>
 
-        <!-- DataLayer Evolution Agent: lead featured project -->
-        <div class="featured-project reveal">
-          <div class="featured-media">
-            <div class="img-placeholder">
-              <img class="img-src" src="images/evolution-agent.webp"
-                alt="DataLayer Evolution Agent: AI teammate for research, strategy, experiments, and automation"
-                loading="lazy" width="1000" height="667">
-              <div class="img-fallback" aria-hidden="true">Growth Agent</div>
-            </div>
-          </div>
-          <div class="featured-content">
-            <h3><span class="proj-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none"
-                  stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M12 2a7 7 0 0 1 7 7c0 2.4-1.2 4.5-3 5.7V17a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2v-2.3C6.2 13.5 5 11.4 5 9a7 7 0 0 1 7-7z" />
-                  <path d="M9 21h6" />
-                </svg></span> DataLayer Evolution Agent — LLM Growth Intelligence</h3>
-            <p class="muted"><strong>Problem:</strong> Growth decisions at DataLayer relied on manually checking
-              product, marketing, and lead data across scattered sources.</p>
-            <p><strong>Solution:</strong> A production daily batch job that pulls data from the internal database, GA4,
-              Search Console, and Reddit, and synthesizes it via LLM into one prioritized "Growth Brief" emailed to the
-              team each morning — with metrics precomputed in code and anti-overclaiming guardrails so the model can't
-              claim false causation.</p><br>
-            <p><strong>Impact:</strong> Live in production against real company data. Least-privilege database roles,
-              graceful degradation when a source fails, and a structured 8-angle review that fixed 10 bugs
-              pre-production. Extended to find leads and draft outreach emails, each reviewed before sending.</p>
-            <p class="muted"><strong>Tech:</strong> Python, Flask, PostgreSQL, APScheduler, Docker, LLM via OpenRouter</p>
-            <p style="margin-top:10px">
-              <a class="btn primary" href="https://usedatalayer.com/products/evolution-agent" target="_blank"
-                rel="noopener">Live product</a>
-              <a class="btn" href="https://github.com/mrprogrammingx/datalayer-growth-agent" target="_blank"
-                rel="noopener">Repository</a>
-            </p>
+        <div class="hp-visual">
+          <div class="hp-circle" aria-hidden="true"></div>
+          <img class="hp-photo" src="images/amir-portrait.webp"
+            alt="Amir Zare, smiling with arms crossed, wearing glasses and a navy sweater"
+            width="1000" height="1340" fetchpriority="high">
+          <div class="hp-actions">
+            <a class="hp-btn primary" href="#projects">Projects <span aria-hidden="true">&#8599;</span></a>
+            <a class="hp-btn" href="#contact">Hire me</a>
           </div>
         </div>
 
-        <!-- FlowFleet: featured project -->
-        <div class="featured-project reveal">
-          <div class="featured-media">
-            <div class="img-placeholder">
-              <img class="img-src img-contain dark" src="images/flowfleet.webp"
-                alt="FlowFleet: real-time streaming for logistics, with a live fleet dashboard built on Kafka, Flink, Kubernetes, and PostgreSQL"
-                loading="lazy" width="1000" height="750">
-              <div class="img-fallback" aria-hidden="true">FlowFleet</div>
-            </div>
-          </div>
-          <div class="featured-content">
-            <h3><span class="proj-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none"
-                  stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M1 3h15v13H1z" />
-                  <path d="M16 8h4l3 3v5h-7V8z" />
-                  <circle cx="5.5" cy="18.5" r="2.5" />
-                  <circle cx="18.5" cy="18.5" r="2.5" />
-                </svg></span> FlowFleet — Real-Time Logistics Data Platform</h3>
-            <p class="muted"><strong>Problem:</strong> A delivery company needs live driver locations, geofencing, and
-              analytics from operational data, without losing or duplicating events when things fail.</p>
-            <p><strong>Solution:</strong> A production-style streaming platform built in 8 phases: change data capture
-              from PostgreSQL/PostGIS with Debezium, Kafka topics with Avro and Schema Registry, Apache Flink jobs in
-              Java 21 (event-time windows, watermarks, broadcast-state geofencing), and idempotent sinks to TimescaleDB,
-              ClickHouse, and BigQuery.</p><br>
-            <p><strong>Impact:</strong> Load-tested from 1k to 50k events/second with p50/p95/p99 latency histograms,
-              then tuned with the Flink autoscaler and consumer HPA. Engineered for failure with a dead-letter queue,
-              late-data handling, and checkpoint/savepoint recovery. Deployed on Kubernetes with Helm and Argo CD,
-              observed with Prometheus and Grafana.</p>
-            <p class="muted"><strong>Tech:</strong> Java 21, Debezium, Kafka, Avro, Apache Flink, TimescaleDB, ClickHouse,
-              BigQuery, Kubernetes, Helm, Argo CD, Prometheus, Grafana</p>
-            <p style="margin-top:10px">
-              <a class="btn primary" href="https://github.com/mrprogrammingx/real-time-logistics-data-platform"
-                target="_blank" rel="noopener">Repository</a>
-            </p>
-          </div>
+        <div class="hp-side hp-left">
+          <svg class="hp-quote" viewBox="0 0 32 24" aria-hidden="true">
+            <path d="M0 24V13C0 5.8 4 1.3 11 0l1.4 3.2C8.6 4.6 7 7 6.8 10H12v14H0zm18 0V13c0-7.2 4-11.7 11-13l1.4 3.2C26.6 4.6 25 7 24.8 10H30v14H18z"
+              fill="currentColor" />
+          </svg>
+          <p>I build data pipelines, analytics platforms, and production LLM apps. Founder of
+            <a href="https://usedatalayer.com" target="_blank" rel="noopener">DataLayer</a>.</p>
+          <p class="hp-note">Open to full-time &amp; contract roles · remote / hybrid</p>
         </div>
 
-        <!-- A/B Test Analysis: featured project -->
-        <div class="featured-project reveal">
-          <div class="featured-media">
-            <div class="img-placeholder">
-              <img class="img-src img-contain" src="images/ab-test.webp"
-                alt="Bar charts of 1-day and 7-day retention for gate 30 vs gate 40 with 95% confidence intervals"
-                loading="lazy" width="900" height="360">
-              <div class="img-fallback" aria-hidden="true">A/B Testing</div>
-            </div>
-          </div>
-          <div class="featured-content">
-            <h3><span class="proj-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none"
-                  stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M6 3v7l-3 8a2 2 0 0 0 2 3h14a2 2 0 0 0 2-3l-3-8V3" />
-                  <path d="M4 3h16" />
-                </svg></span> A/B Test Analysis — Cookie Cats Gate Experiment</h3>
-            <p class="muted"><strong>Problem:</strong> Does moving a mobile game's first progress gate from level 30 to
-              40 help or hurt retention? Gut feeling isn't an answer — the data had to decide.</p>
-            <p><strong>Solution:</strong> Analyzed the public experiment (90,189 players) with full validity checks:
-              sample ratio mismatch, outlier handling with rank tests, power analysis, and Holm–Bonferroni correction
-              for multiple comparisons.</p><br>
-            <p><strong>Impact:</strong> Found a statistically significant 0.82 pp (4.3% relative) drop in 7-day
-              retention from moving the gate (95% CI −1.33 to −0.31 pp, adjusted p = 0.0047) and recommended keeping it
-              at level 30. Published an interactive Tableau dashboard.</p>
-            <p class="muted"><strong>Tech:</strong> Python, pandas, SciPy, statsmodels, Tableau</p>
-            <p style="margin-top:10px">
-              <a class="btn primary"
-                href="https://public.tableau.com/app/profile/amir.zare8388/viz/CookieCatsABTestGatePlacement/Dashboard1"
-                target="_blank" rel="noopener">Tableau dashboard</a>
-              <a class="btn" href="https://github.com/mrprogrammingx/cookie-cats-ab-test" target="_blank"
-                rel="noopener">Repository</a>
-            </p>
-          </div>
-        </div>
-
-        <!-- Crypto Analytics Lakehouse: featured project -->
-        <div class="featured-project reveal">
-          <div class="featured-media">
-            <div class="img-placeholder">
-              <img class="img-src img-contain dark" src="images/crypto-lakehouse.webp"
-                alt="Architecture: Binance WebSocket to Kafka to Parquet on GCS with PySpark, into BigQuery and DuckDB, modeled in dbt bronze, silver, gold"
-                loading="lazy" width="900" height="675">
-              <div class="img-fallback" aria-hidden="true">Crypto Lakehouse</div>
-            </div>
-          </div>
-          <div class="featured-content">
-            <h3><span class="proj-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none"
-                  stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                  <ellipse cx="12" cy="5" rx="8" ry="3" />
-                  <path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5" />
-                  <path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3" />
-                </svg></span> Crypto Analytics Lakehouse</h3>
-            <p class="muted"><strong>Problem:</strong> Crypto market data arrives constantly and raw; analysts need
-              trustworthy, modeled, analytics-ready datasets.</p>
-            <p><strong>Solution:</strong> An end-to-end lakehouse with hourly Spark ingestion running on GitHub
-              Actions, modeled in dbt as a 4-layer medallion pipeline (staging, bronze, silver, gold) with not_null and
-              unique tests in CI against DuckDB and BigQuery, and GCP infrastructure provisioned with Terraform.</p><br>
-            <p><strong>Impact:</strong> Automated, tested, documented pipelines — dbt docs published on GitHub Pages —
-              feeding dashboards for market trend analysis. Extending with Snowflake and AI-assisted anomaly
-              detection.</p>
-            <p class="muted"><strong>Tech:</strong> Python, Spark, Kafka, dbt, DuckDB, BigQuery, Terraform, GitHub Actions</p>
-            <p style="margin-top:10px">
-              <a class="btn primary" href="https://github.com/mrprogrammingx/crypto-analytics-platform" target="_blank"
-                rel="noopener">Repository</a>
-            </p>
-          </div>
-        </div>
-
-        <!-- Run/Walk: featured project (image left, content right) -->
-        <div class="featured-project reveal">
-          <div class="featured-media">
-            <div class="img-placeholder">
-                <img class="img-src" src="images/run-walk.png" alt="Run/Walk screenshot">
-                <div class="img-fallback" aria-hidden="true">Run/Walk</div>
-            </div>
-          </div>
-          <div class="featured-content">
-            <h3><span class="proj-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none"
-                  stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M3 12h3l3-8 4 8h4" />
-                </svg></span> Run/Walk Data Pipeline</h3>
-            <p class="muted"><strong>Problem:</strong> CSV telemetry ingestion was slow and hard to query, blocking
-              analytics.</p>
-            <p><strong>Solution:</strong> Designed and built a production-ready pipeline (CSV → Parquet → DuckDB)
-              orchestrated with Apache Airflow, with automated materialized transforms and daily reports for analysts.
-            </p><br>
-            <p><strong>Impact:</strong> Enabled daily materialized reports and sub-second queries for analysts.
-              Converted raw CSV into compressed Parquet to cut storage and speed downstream processing. Automation
-              reduced manual reporting time from hours to minutes and improved data quality visibility.</p>
-            <p class="muted"><strong>Tech:</strong> Python, Airflow, DuckDB, Parquet, Streamlit</p>
-            <p style="margin-top:10px">
-              <a class="btn primary" href="/run-walk">Case study</a>
-              <a class="btn" href="https://github.com/mrprogrammingx/run-walk-pipeline" target="_blank"
-                rel="noopener">Repository</a>
-            </p>
-          </div>
-        </div>
-
-        <!-- Analytics: featured project (same side-by-side layout) -->
-        <div class="featured-project reveal">
-          <div class="featured-media">
-            <div class="img-placeholder">
-              <img class="img-src" src="images/analytics.png" alt="Analytics screenshot">
-              <div class="img-fallback" aria-hidden="true">Analytics</div>
-            </div>
-          </div>
-          <div class="featured-content">
-            <h3><span class="proj-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none"
-                  stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M3 3v18h18" />
-                  <path d="M7 13v6" />
-                  <path d="M12 9v10" />
-                  <path d="M17 5v14" />
-                </svg></span> Claude Code Analytics Platform</h3>
-            <p class="muted"><strong>Problem:</strong> Disparate telemetry and no centralized analytics API;
-              reporting was manual and slow.</p>
-            <p><strong>Solution:</strong> Designed and built an analytics platform with FastAPI, DuckDB storage, and
-              Streamlit dashboards to normalize JSONL telemetry and provide programmatic APIs for reporting.</p><br>
-            <p><strong>Impact:</strong> Centralized telemetry and programmatic APIs reduced manual reporting and
-              enabled reproducible dashboards. This enabled faster ad-hoc analysis and integrated programmatic
-              access for downstream services.</p>
-            <p class="muted"><strong>Tech:</strong> Python, FastAPI, DuckDB, Streamlit, JSONL</p>
-            <div style="margin-top:10px">
-              <a class="btn primary" href="/analytics">Case study</a>
-              <a class="btn" href="https://github.com/mrprogrammingx/analytics-platform" target="_blank"
-                rel="noopener">Repository</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Real-Time Chat: featured project (same side-by-side layout) -->
-        <div class="featured-project reveal">
-          <div class="featured-media">
-            <div class="img-placeholder">
-              <img class="img-src" src="images/chat.png" alt="Real-Time Chat screenshot">
-              <div class="img-fallback" aria-hidden="true">Real-Time Chat</div>
-            </div>
-          </div>
-          <div class="featured-content">
-            <h3><span class="proj-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none"
-                  stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-                </svg></span> Real-Time Chat Application with FastAPI</h3>
-            <p class="muted"><strong>Problem:</strong> Need for a production-ready, low-latency web chat supporting
-              concurrent users with secure sessions and moderation.</p>
-            <p><strong>Solution:</strong> A production-style web chat built with FastAPI and SQLite (WAL) supporting
-              multi-device sessions, real-time presence, rooms, private messaging, file sharing, and moderation.
-              Docker-ready and tested with pytest & Playwright.</p>
-            <p class="muted"><strong>Tech:</strong> FastAPI, aiosqlite (SQLite WAL), Docker, JWT, JavaScript,
-              Playwright</p>
-            <p style="margin-top:10px">
-              <a class="btn primary" href="/classic-web-based-online-chat-application">Case study</a>
-              <a class="btn" href="https://github.com/mrprogrammingx/classic-web-based-online-chat-application"
-                target="_blank" rel="noopener">Repository</a>
-            </p>
-          </div>
-        </div>
-
-        <h3 style="margin-top:24px">More projects</h3>
-        <div class="cards">
-          <div class="card reveal">
-            <div class="img-placeholder card-media">
-              <img class="img-src" src="images/ai-phone-assistant.webp"
-                alt="Demo Barbershop booking site, where callers can also book through the AI phone assistant"
-                loading="lazy" width="900" height="475">
-              <div class="img-fallback" aria-hidden="true">AI Phone Assistant</div>
-            </div>
-            <h3>AI Phone Assistant — Voice Booking Agent</h3>
-            <p class="muted">An AI voice agent that answers a barbershop's phone and calls seven live tools on my
-              FastAPI booking system to check times, book, cancel, and join a consent-based waitlist. Atomic booking
-              lock against double-booking, retry-safe requests, and 1,720 tests including property and mutation
-              checks.</p>
-            <p class="muted"><strong>Tech:</strong> Python, FastAPI, SQLite, React, Hypothesis, Suisse Line voice AI</p>
-            <p style="margin-top:10px"><a class="btn" href="https://github.com/mrprogrammingx/ai-phone-assistant"
-                target="_blank" rel="noopener">Repository</a></p>
-          </div>
-          <div class="card reveal">
-            <div class="img-placeholder card-media">
-              <img class="img-src img-contain dark" src="images/job-hunter.webp"
-                alt="7-Agent AI Job Search Platform with a live agent stream" loading="lazy" width="900" height="675">
-              <div class="img-fallback" aria-hidden="true">Job Hunter</div>
-            </div>
-            <h3>Job Hunter — 7-Agent AI Job Search Platform</h3>
-            <p class="muted">Multi-agent platform where 7 specialized AI agents handle job discovery, resume tailoring,
-              cover letters, company research, outreach, interview prep, and tracking. SSE streaming for real-time
-              agent status.</p>
-            <p class="muted"><strong>Tech:</strong> FastAPI, Next.js, JWT, SQLite/PostgreSQL</p>
-            <p style="margin-top:10px"><a class="btn" href="https://github.com/mrprogrammingx/job-hunter"
-                target="_blank" rel="noopener">Repository</a></p>
-          </div>
-          <div class="card reveal">
-            <div class="img-placeholder card-media">
-              <img class="img-src img-top" src="images/agentpages.webp"
-                alt="AgentPages home page: static websites, published by AI agents" loading="lazy" width="900" height="675">
-              <div class="img-fallback" aria-hidden="true">AgentPages</div>
-            </div>
-            <h3>AgentPages — Site Publishing API for AI Agents</h3>
-            <p class="muted">HTTP API that lets AI agents publish static websites: send files as JSON, get a live URL.
-              Untrusted pages served from a separate origin inside a CSP sandbox, with tests that verify the isolation
-              guarantees.</p>
-            <p class="muted"><strong>Tech:</strong> Python, FastAPI, SQLite, CSP · Private repository</p>
-            <p style="margin-top:10px"><a class="btn primary" href="https://agentpages-sites.amir-zare.com/"
-                target="_blank" rel="noopener">Live demo</a> <a class="btn"
-                href="https://agentpages-sites.amir-zare.com/s/tgzpvjmfzujwjk3d/" target="_blank"
-                rel="noopener">Sample site</a></p>
-          </div>
-          <div class="card reveal">
-            <div class="img-placeholder card-media">
-              <img class="img-src img-top" src="images/voice-narrator.webp"
-                alt="Voice Narrator app showing a generated narration waveform and sentence list" loading="lazy"
-                width="900" height="538">
-              <div class="img-fallback" aria-hidden="true">Voice Narrator</div>
-            </div>
-            <h3>Voice Narrator — Local Voice Cloning</h3>
-            <p class="muted">Fully local voice-cloning narration tool for programming tutorials: a two-stage TTS +
-              voice-conversion pipeline, batch processing, and a pronunciation dictionary. No recurring fees; recordings
-              never leave the machine.</p>
-            <p class="muted"><strong>Tech:</strong> Python, Chatterbox TTS, PyTorch, ffmpeg</p>
-            <p style="margin-top:10px"><a class="btn" href="https://github.com/mrprogrammingx/voice-cloner"
-                target="_blank" rel="noopener">Repository</a></p>
-          </div>
-          <div class="card reveal">
-            <div class="img-placeholder card-media">
-              <img class="img-src img-contain dark" style="background:#070707" src="images/barbershop-queue.webp"
-                alt="Parsa Barber booking site home page: Sharp. Bold. Timeless." loading="lazy" width="900"
-                height="717">
-              <div class="img-fallback" aria-hidden="true">Barbershop Queue</div>
-            </div>
-            <h3>Barbershop Queue — Booking &amp; Queue Management</h3>
-            <p class="muted">Full-stack booking and walk-in queue system: FastAPI backend, React admin panel with
-              session-cookie auth, animated marketing site, and switchable email providers with a dry-run mode.</p>
-            <p class="muted"><strong>Tech:</strong> FastAPI, SQLAlchemy, React, Tailwind</p>
-            <p style="margin-top:10px"><a class="btn primary" href="https://barbershop-queue.onrender.com/"
-                target="_blank" rel="noopener">Live demo</a> <a class="btn"
-                href="https://github.com/mrprogrammingx/barbershop-queue" target="_blank" rel="noopener">Repository</a></p>
-          </div>
-          <div class="card reveal">
-            <div class="img-placeholder card-media">
-              <img class="img-src" src="images/laravel-queue.webp"
-                alt="Laravel queue pipeline for 1M items: response time cut from 8.4s to 1.2s with Redis queue workers"
-                loading="lazy" width="900" height="507">
-              <div class="img-fallback" aria-hidden="true">Laravel Queue</div>
-            </div>
-            <h3>Laravel Queue Pipeline — 1M Items</h3>
-            <p class="muted">Benchmarked synchronous vs. queue-based processing over 200K orders and 1M items. Moved
-              invoice and PDF generation to Redis queue workers monitored with Horizon, removing request timeouts.</p>
-            <p class="muted"><strong>Tech:</strong> PHP, Laravel, Redis, Horizon, DomPDF</p>
-            <p style="margin-top:10px"><a class="btn" href="https://github.com/mrprogrammingx/Queue-sample"
-                target="_blank" rel="noopener">Repository</a></p>
-          </div>
-          <div class="card reveal">
-            <div class="img-placeholder card-media">
-              <img class="img-src img-top" src="images/evidencehub.webp"
-                alt="Locust load test charts: about 290 requests per second, 0% failures, low p50 and p95 response times"
-                loading="lazy" width="900" height="577">
-              <div class="img-fallback" aria-hidden="true">EvidenceHub</div>
-            </div>
-            <h3>EvidenceHub — MySQL Performance &amp; Sharding <small class="muted">(in progress)</small></h3>
-            <p class="muted">Migrating a deliberately poor legacy MySQL schema to an optimized 4-shard design, where every
-              performance claim is backed by a measured benchmark. 8 critical queries with latency SLOs (p95 under
-              50 ms), a Locust + EXPLAIN ANALYZE harness, and data scaling to 20M rows.</p>
-            <p class="muted"><strong>Tech:</strong> Python 3.12, MySQL 8, Redis, SQLAlchemy, Alembic, Locust, Docker
-              Compose</p>
-            <p style="margin-top:10px"><a class="btn" href="https://github.com/mrprogrammingx/EvidenceHub"
-                target="_blank" rel="noopener">Repository</a></p>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <section id="skills" class="section reveal">
-      <div class="container">
-        <h2>Skills</h2>
-        <div class="skills-grid">
-          <div>
-            <div class="chips">
-              <span class="chip">Python</span>
-              <span class="chip">SQL</span>
-              <span class="chip">Apache Airflow</span>
-              <span class="chip">dbt</span>
-              <span class="chip">Spark</span>
-              <span class="chip">Kafka</span>
-              <span class="chip">Apache Flink</span>
-              <span class="chip">BigQuery</span>
-              <span class="chip">Docker</span>
-              <span class="chip">A/B Testing</span>
-            </div>
-            <div class="skill-bars">
-              <div class="skill" data-level="95"><span>Python</span>
-                <div class="bar">
-                  <div class="fill"></div>
-                </div>
-              </div>
-              <div class="skill" data-level="90"><span>SQL</span>
-                <div class="bar">
-                  <div class="fill"></div>
-                </div>
-              </div>
-              <div class="skill" data-level="85"><span>Apache Airflow</span>
-                <div class="bar">
-                  <div class="fill"></div>
-                </div>
-              </div>
-              <div class="skill" data-level="80"><span>dbt</span>
-                <div class="bar">
-                  <div class="fill"></div>
-                </div>
-              </div>
-              <div class="skill" data-level="75"><span>Spark</span>
-                <div class="bar">
-                  <div class="fill"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <aside>
-            <h3>Tools</h3>
-            <div class="pill-list">
-              <span class="skill-pill">Apache Airflow</span>
-              <span class="skill-pill">dbt</span>
-              <span class="skill-pill">Docker</span>
-              <span class="skill-pill">Git</span>
-              <span class="skill-pill">Terraform</span>
-              <span class="skill-pill">pytest</span>
-              <span class="skill-pill">Streamlit</span>
-              <span class="skill-pill">Tableau</span>
-              <span class="skill-pill">GitHub Actions</span>
-              <span class="skill-pill">Kubernetes / Helm</span>
-              <span class="skill-pill">Argo CD</span>
-              <span class="skill-pill">Prometheus / Grafana</span>
-            </div>
-
-            <h3 style="margin-top:14px">Technologies</h3>
-            <div class="pill-list">
-              <span class="skill-pill">DuckDB</span>
-              <span class="skill-pill">Parquet</span>
-              <span class="skill-pill">Kafka</span>
-              <span class="skill-pill">Flink</span>
-              <span class="skill-pill">Debezium (CDC)</span>
-              <span class="skill-pill">ClickHouse</span>
-              <span class="skill-pill">BigQuery</span>
-              <span class="skill-pill">Snowflake</span>
-              <span class="skill-pill">Postgres / MySQL</span>
-              <span class="skill-pill">FastAPI</span>
-              <span class="skill-pill">REST / GraphQL</span>
-            </div>
-
-            <h3 style="margin-top:14px">AI / GenAI</h3>
-            <div class="pill-list">
-              <span class="skill-pill">RAG</span>
-              <span class="skill-pill">Embeddings</span>
-              <span class="skill-pill">LLM integration</span>
-              <span class="skill-pill">Prompt engineering</span>
-              <span class="skill-pill">Amazon Bedrock</span>
-              <span class="skill-pill">Multi-agent systems</span>
-            </div>
-          </aside>
+        <div class="hp-side hp-right">
+          <p class="hp-rating" role="img" aria-label="Rated 5.0 out of 5 on F6S">
+            <span class="hp-stars" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.8L10 14.8l-5.2 2.8 1-5.8L1.5 7.7l5.9-.8z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.8L10 14.8l-5.2 2.8 1-5.8L1.5 7.7l5.9-.8z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.8L10 14.8l-5.2 2.8 1-5.8L1.5 7.7l5.9-.8z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.8L10 14.8l-5.2 2.8 1-5.8L1.5 7.7l5.9-.8z"/></svg><svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.8L10 14.8l-5.2 2.8 1-5.8L1.5 7.7l5.9-.8z"/></svg></span>
+            <span class="hp-score" aria-hidden="true">5.0</span>
+          </p>
+          <p class="hp-badge">F6S · #2 in Data Analytics, Armenia</p>
+          <p class="hp-stat">7+ Years</p>
+          <p class="hp-stat-label">Experience</p>
         </div>
       </div>
     </section>
-
     <section id="about" class="section reveal alt">
       <div class="container">
-        <h2>About</h2>
+        <h2 class="grad-title about-title">About Me</h2>
         <div class="about-grid">
           <div class="about-photo-frame">
             <img
@@ -538,133 +191,461 @@
               loading="lazy"
             />
           </div>
-          <div>
-            <p class="about-lead">Software &amp; Data Engineer with 7+ years building backend systems, data pipelines, and analytics products.</p>
+          <div class="about-body">
+            <p class="about-lead">Software &amp; Data Engineer building data platforms and AI-powered products</p>
             <p>I founded <a href="https://usedatalayer.com" target="_blank" rel="noopener">DataLayer</a>, an AI-powered
               analytics platform for e-commerce sellers. I design reliable, cost-efficient data pipelines that move
               quickly from prototype to production, and I ship LLM applications with deterministic guardrails.</p>
-            <ul>
-              <li>End-to-end ETL/ELT pipeline design and workflow orchestration (Apache Airflow, dbt)</li>
-              <li>Analytics engineering: data modeling, A/B test analysis, dashboards</li>
-              <li>Production LLM systems: RAG, embeddings, and multi-agent workflows</li>
-              <li>Cloud-native deployments, infrastructure-as-code, and CI/CD</li>
-              <li>Mentoring ML students at TUMO Labs and teaching Python on YouTube</li>
+            <p>Over 7+ years I&rsquo;ve grown from enterprise backend engineering in PHP and Laravel to modern data
+              platforms &mdash; Airflow, dbt, Kafka, Flink, BigQuery &mdash; and production AI systems. I also mentor
+              ML students at TUMO Labs and teach Python on YouTube.</p>
+            <ul class="about-traits">
+              <li><span class="trait-icon t-blue"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 8l-5 4 5 4"/><path d="M16 8l5 4-5 4"/></svg></span>Fluent in Python &amp; SQL</li>
+              <li><span class="trait-icon t-green"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 15c-1 1-1.5 4-1.5 4s3-.5 4-1.5"/><path d="M9 15l-3-3c1-4 5-9 12-9 0 7-5 11-9 12z"/><circle cx="14.5" cy="9.5" r="1.5"/></svg></span>Founder mindset</li>
+              <li><span class="trait-icon t-blue"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="3"/><path d="M10 9l5 3-5 3z"/></svg></span>Teaching on YouTube</li>
             </ul>
+            <blockquote class="about-quote">&ldquo;Turning raw data into real decisions &mdash; reliably, and in production.&rdquo;</blockquote>
+            <p class="sec-more"><a href="/about/">More about me &rarr;</a></p>
           </div>
         </div>
       </div>
     </section>
 
+    <section id="skills" class="section reveal">
+      <div class="container">
+        <h2 class="grad-title">The Skillset</h2>
+        <p class="cm-sub">Data platforms, AI systems, and the backend that ships them.</p>
+        <div class="sk-grid">
+          <article class="sk-card">
+            <h3 class="sk-head"><span class="sk-badge t-green"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h11l-3-3"/><path d="M20 17H9l3 3"/></svg></span>Data Engineering</h3>
+            <div class="sk-pipe" aria-hidden="true">
+              <span class="sk-node">Kafka</span><span class="sk-link"></span><span class="sk-node">Spark · Flink</span><span class="sk-link"></span><span class="sk-node">dbt</span><span class="sk-link"></span><span class="sk-node">BigQuery</span>
+              <span class="sk-pulse"></span>
+            </div>
+            <ul class="sk-chips"><li class="hot">Apache Airflow</li><li class="hot">dbt</li><li>Spark</li><li>Kafka</li><li>Flink</li><li>Debezium (CDC)</li><li>DuckDB</li><li>Parquet</li><li>BigQuery</li><li>Snowflake</li><li>ClickHouse</li><li>Postgres / MySQL</li><li>Streamlit</li><li>Tableau</li><li>A/B testing</li></ul>
+          </article>
+          <article class="sk-card">
+            <h3 class="sk-head"><span class="sk-badge"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 8l-5 4 5 4"/><path d="M16 8l5 4-5 4"/></svg></span>Programming</h3>
+            <div class="sk-tiles">
+              <div class="sk-tile skill" data-level="95"><span class="sk-mono" style="--c:#fbbf24">Py</span><span>Python</span><div class="bar"><div class="fill"></div></div></div>
+              <div class="sk-tile skill" data-level="90"><span class="sk-mono" style="--c:#60a5fa">SQL</span><span>SQL</span><div class="bar"><div class="fill"></div></div></div>
+              <div class="sk-tile skill" data-level="85"><span class="sk-mono" style="--c:#a78bfa">PHP</span><span>PHP</span><div class="bar"><div class="fill"></div></div></div>
+              <div class="sk-tile skill" data-level="70"><span class="sk-mono" style="--c:#facc15">JS</span><span>JavaScript</span><div class="bar"><div class="fill"></div></div></div>
+            </div>
+            <ul class="sk-chips"><li class="hot">FastAPI</li><li>Laravel</li><li>Flask</li><li>CakePHP</li><li>REST / GraphQL</li><li>PHPUnit</li><li>pytest</li><li>Clean architecture</li></ul>
+          </article>
+          <article class="sk-card sk-violet">
+            <h3 class="sk-head"><span class="sk-badge t-violet"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4a3 3 0 0 0-3 3v1a3 3 0 0 0 0 6v1a3 3 0 0 0 6 0V4z"/><path d="M15 4a3 3 0 0 1 3 3v1a3 3 0 0 1 0 6v1a3 3 0 0 1-6 0"/></svg></span>AI &amp; GenAI</h3>
+            <svg class="sk-net" viewBox="0 0 240 72" aria-hidden="true">
+              <g class="sk-edges"><path d="M30 14L120 36M30 36L120 36M30 58L120 36M30 14L120 14M30 58L120 58M120 14L210 36M120 36L210 36M120 58L210 36"/></g>
+              <g class="sk-nodes"><circle cx="30" cy="14" r="6"/><circle cx="30" cy="36" r="6"/><circle cx="30" cy="58" r="6"/><circle cx="120" cy="14" r="6"/><circle cx="120" cy="36" r="7"/><circle cx="120" cy="58" r="6"/></g>
+              <circle class="sk-out" cx="210" cy="36" r="8"/>
+            </svg>
+            <ul class="sk-chips"><li class="hot">RAG</li><li class="hot">Multi-agent systems</li><li>Embeddings</li><li>LLM integration</li><li>Prompt engineering</li><li>Amazon Bedrock</li><li>scikit-learn</li><li>PyTorch</li></ul>
+          </article>
+          <article class="sk-card">
+            <h3 class="sk-head"><span class="sk-badge"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="6" rx="2"/><rect x="3" y="14" width="18" height="6" rx="2"/><path d="M7 7h.01M7 17h.01"/></svg></span>Infrastructure &amp; Tooling</h3>
+            <div class="sk-tiles">
+              <div class="sk-tile"><span class="sk-mono sk-glyph" style="--c:#38bdf8"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 13h18v3a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4z"/><path d="M6 10h3v3H6zM9 10h3v3H9zM12 10h3v3h-3zM9 7h3v3H9z"/></svg></span><span>Docker</span></div>
+              <div class="sk-tile"><span class="sk-mono sk-glyph" style="--c:#60a5fa"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><circle cx="12" cy="12" r="3"/></svg></span><span>Kubernetes</span></div>
+              <div class="sk-tile"><span class="sk-mono sk-glyph" style="--c:#a78bfa"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4l6 3.5v7L4 11z"/><path d="M11 8l6 3.5v7L11 15z"/><path d="M18 4l2 1.2v7L18 11z"/></svg></span><span>Terraform</span></div>
+              <div class="sk-tile"><span class="sk-mono sk-glyph" style="--c:#6ee7b7"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 18a4 4 0 0 1-.5-8A6 6 0 0 1 18 9a4.5 4.5 0 0 1-.5 9z"/></svg></span><span>AWS / GCP</span></div>
+            </div>
+            <ul class="sk-chips"><li>GitHub Actions</li><li>Argo CD</li><li>Helm</li><li>Prometheus</li><li>Grafana</li><li>Git</li><li>Linux</li></ul>
+          </article>
+        </div>
+        <p class="sk-links"><a href="https://github.com/mrprogrammingx" target="_blank" rel="noopener">View GitHub &#8599;</a><span aria-hidden="true">&amp;</span><a href="/resume.html">Full resume &#8599;</a></p>
+      </div>
+    </section>
 
+    <section id="projects" class="section reveal alt visual-hook">
+      <div class="container">
+        <h2>🥈 Selected Projects</h2>
 
+        <article class="featured-project reveal">
+          <div class="featured-media">
+            <div class="img-placeholder">
+              <img class="img-src" src="images/evolution-agent.webp" alt="DataLayer Evolution Agent: AI teammate for research, strategy, experiments, and automation" loading="lazy" width="1000" height="667">
+              <div class="img-fallback" aria-hidden="true">Growth Agent</div>
+            </div>
+          </div>
+          <div class="featured-content">
+            <h3><span class="proj-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 1 7 7c0 2.4-1.2 4.5-3 5.7V17a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2v-2.3C6.2 13.5 5 11.4 5 9a7 7 0 0 1 7-7z" /><path d="M9 21h6" /></svg></span> <a class="proj-link" href="/projects/datalayer-evolution-agent/">DataLayer Evolution Agent — LLM Growth Intelligence</a></h3>
+            <p class="proj-summary">An LLM system that turns product, marketing, and lead data into one prioritized growth brief every morning.</p>
+            <ul class="proj-chips"><li>Live in production</li><li>4 data sources</li><li>10 bugs caught pre-launch</li></ul>
+            <ul class="proj-tags"><li>Python</li><li>Flask</li><li>PostgreSQL</li><li>LLM via OpenRouter</li><li class="proj-tag-more" title="APScheduler, Docker">+2</li></ul>
+            <div class="proj-actions"><button type="button" class="btn proj-more" aria-expanded="false" aria-controls="d-evolution"><span>Read more</span><svg class="btn-icon chev" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><a class="btn primary" href="https://usedatalayer.com/products/evolution-agent" target="_blank" rel="noopener">Live product</a><a class="btn" href="https://github.com/mrprogrammingx/datalayer-growth-agent" target="_blank" rel="noopener"><svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="14" height="14"><path d="M12 .5C5.7.5.6 5.7.6 12c0 5.1 3.3 9.5 7.9 11 .6.1.8-.3.8-.6v-2.1c-3.2.7-3.8-1.4-3.8-1.4-.5-1.2-1.2-1.6-1.2-1.6-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 .1 1.6.7 2 1.1.1-.9.4-1.5.7-1.8-2.6-.3-5.3-1.3-5.3-6 0-1.3.5-2.4 1.2-3.3-.1-.3-.5-1.6.1-3.3 0 0 1-.3 3.3 1.3 1-.3 2-.4 3-.4s2 .1 3 .4c2.3-1.6 3.3-1.3 3.3-1.3.6 1.7.2 3 .1 3.3.8.9 1.2 2 1.2 3.3 0 4.7-2.7 5.7-5.3 6 .4.3.7 1 .7 2v3c0 .3.2.7.8.6 4.6-1.5 7.9-5.9 7.9-11C23.4 5.7 18.3.5 12 .5z"/></svg>Repository</a></div>
+            <div class="proj-details" id="d-evolution" hidden><p><strong>Problem:</strong> Growth decisions at DataLayer relied on manually checking product, marketing, and lead data across scattered sources.</p><p><strong>Solution:</strong> A production daily batch job that pulls data from the internal database, GA4, Search Console, and Reddit, and synthesizes it via LLM into one prioritized "Growth Brief" emailed to the team each morning — with metrics precomputed in code and anti-overclaiming guardrails so the model can't claim false causation.</p><p><strong>Impact:</strong> Live in production against real company data. Least-privilege database roles, graceful degradation when a source fails, and a structured 8-angle review that fixed 10 bugs pre-production. Extended to find leads and draft outreach emails, each reviewed before sending.</p><p class="muted"><strong>Tech:</strong> Python, Flask, PostgreSQL, LLM via OpenRouter, APScheduler, Docker</p></div>
+          </div>
+        </article>
+
+        <article class="featured-project reveal">
+          <div class="featured-media">
+            <div class="img-placeholder">
+              <img class="img-src img-contain dark" src="images/flowfleet.webp" alt="FlowFleet: real-time streaming for logistics, with a live fleet dashboard built on Kafka, Flink, Kubernetes, and PostgreSQL" loading="lazy" width="1000" height="750">
+              <div class="img-fallback" aria-hidden="true">FlowFleet</div>
+            </div>
+          </div>
+          <div class="featured-content">
+            <h3><span class="proj-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1 3h15v13H1z" /><path d="M16 8h4l3 3v5h-7V8z" /><circle cx="5.5" cy="18.5" r="2.5" /><circle cx="18.5" cy="18.5" r="2.5" /></svg></span> <a class="proj-link" href="/projects/flowfleet/">FlowFleet — Real-Time Logistics Data Platform</a></h3>
+            <p class="proj-summary">A real-time logistics streaming platform: change data capture from PostgreSQL into Kafka and Flink, deployed on Kubernetes.</p>
+            <ul class="proj-chips"><li>Load-tested to 50k events/sec</li><li>p50/p95/p99 latency tracked</li><li>Built in 8 phases</li></ul>
+            <ul class="proj-tags"><li>Kafka</li><li>Apache Flink</li><li>Debezium</li><li>Kubernetes</li><li class="proj-tag-more" title="Java 21, Avro, TimescaleDB, ClickHouse, BigQuery, Helm, Argo CD, Prometheus, Grafana">+9</li></ul>
+            <div class="proj-actions"><button type="button" class="btn proj-more" aria-expanded="false" aria-controls="d-flowfleet"><span>Read more</span><svg class="btn-icon chev" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><a class="btn" href="https://github.com/mrprogrammingx/real-time-logistics-data-platform" target="_blank" rel="noopener"><svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="14" height="14"><path d="M12 .5C5.7.5.6 5.7.6 12c0 5.1 3.3 9.5 7.9 11 .6.1.8-.3.8-.6v-2.1c-3.2.7-3.8-1.4-3.8-1.4-.5-1.2-1.2-1.6-1.2-1.6-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 .1 1.6.7 2 1.1.1-.9.4-1.5.7-1.8-2.6-.3-5.3-1.3-5.3-6 0-1.3.5-2.4 1.2-3.3-.1-.3-.5-1.6.1-3.3 0 0 1-.3 3.3 1.3 1-.3 2-.4 3-.4s2 .1 3 .4c2.3-1.6 3.3-1.3 3.3-1.3.6 1.7.2 3 .1 3.3.8.9 1.2 2 1.2 3.3 0 4.7-2.7 5.7-5.3 6 .4.3.7 1 .7 2v3c0 .3.2.7.8.6 4.6-1.5 7.9-5.9 7.9-11C23.4 5.7 18.3.5 12 .5z"/></svg>Repository</a></div>
+            <div class="proj-details" id="d-flowfleet" hidden><p><strong>Problem:</strong> A delivery company needs live driver locations, geofencing, and analytics from operational data, without losing or duplicating events when things fail.</p><p><strong>Solution:</strong> A production-style streaming platform built in 8 phases: change data capture from PostgreSQL/PostGIS with Debezium, Kafka topics with Avro and Schema Registry, Apache Flink jobs in Java 21 (event-time windows, watermarks, broadcast-state geofencing), and idempotent sinks to TimescaleDB, ClickHouse, and BigQuery.</p><p><strong>Impact:</strong> Load-tested from 1k to 50k events/second with p50/p95/p99 latency histograms, then tuned with the Flink autoscaler and consumer HPA. Engineered for failure with a dead-letter queue, late-data handling, and checkpoint/savepoint recovery. Deployed on Kubernetes with Helm and Argo CD, observed with Prometheus and Grafana.</p><p class="muted"><strong>Tech:</strong> Kafka, Apache Flink, Debezium, Kubernetes, Java 21, Avro, TimescaleDB, ClickHouse, BigQuery, Helm, Argo CD, Prometheus, Grafana</p></div>
+          </div>
+        </article>
+
+        <article class="featured-project reveal">
+          <div class="featured-media">
+            <div class="img-placeholder">
+              <img class="img-src img-contain" src="images/ab-test.webp" alt="Bar charts of 1-day and 7-day retention for gate 30 vs gate 40 with 95% confidence intervals" loading="lazy" width="900" height="360">
+              <div class="img-fallback" aria-hidden="true">A/B Testing</div>
+            </div>
+          </div>
+          <div class="featured-content">
+            <h3><span class="proj-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3v7l-3 8a2 2 0 0 0 2 3h14a2 2 0 0 0 2-3l-3-8V3" /><path d="M4 3h16" /></svg></span> <a class="proj-link" href="/projects/cookie-cats-ab-test/">A/B Test Analysis — Cookie Cats Gate Experiment</a></h3>
+            <p class="proj-summary">Did moving a mobile game's first progress gate hurt retention? A rigorous analysis of a 90,189-player experiment.</p>
+            <ul class="proj-chips"><li>90,189 players</li><li>−0.82 pp 7-day retention</li><li>Adjusted p = 0.0047</li></ul>
+            <ul class="proj-tags"><li>Python</li><li>pandas</li><li>SciPy</li><li>statsmodels</li><li class="proj-tag-more" title="Tableau">+1</li></ul>
+            <div class="proj-actions"><button type="button" class="btn proj-more" aria-expanded="false" aria-controls="d-abtest"><span>Read more</span><svg class="btn-icon chev" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><a class="btn primary" href="https://public.tableau.com/app/profile/amir.zare8388/viz/CookieCatsABTestGatePlacement/Dashboard1" target="_blank" rel="noopener">Tableau dashboard</a><a class="btn" href="https://github.com/mrprogrammingx/cookie-cats-ab-test" target="_blank" rel="noopener"><svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="14" height="14"><path d="M12 .5C5.7.5.6 5.7.6 12c0 5.1 3.3 9.5 7.9 11 .6.1.8-.3.8-.6v-2.1c-3.2.7-3.8-1.4-3.8-1.4-.5-1.2-1.2-1.6-1.2-1.6-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 .1 1.6.7 2 1.1.1-.9.4-1.5.7-1.8-2.6-.3-5.3-1.3-5.3-6 0-1.3.5-2.4 1.2-3.3-.1-.3-.5-1.6.1-3.3 0 0 1-.3 3.3 1.3 1-.3 2-.4 3-.4s2 .1 3 .4c2.3-1.6 3.3-1.3 3.3-1.3.6 1.7.2 3 .1 3.3.8.9 1.2 2 1.2 3.3 0 4.7-2.7 5.7-5.3 6 .4.3.7 1 .7 2v3c0 .3.2.7.8.6 4.6-1.5 7.9-5.9 7.9-11C23.4 5.7 18.3.5 12 .5z"/></svg>Repository</a></div>
+            <div class="proj-details" id="d-abtest" hidden><p><strong>Problem:</strong> Does moving a mobile game's first progress gate from level 30 to 40 help or hurt retention? Gut feeling isn't an answer — the data had to decide.</p><p><strong>Solution:</strong> Analyzed the public experiment (90,189 players) with full validity checks: sample ratio mismatch, outlier handling with rank tests, power analysis, and Holm–Bonferroni correction for multiple comparisons.</p><p><strong>Impact:</strong> Found a statistically significant 0.82 pp (4.3% relative) drop in 7-day retention from moving the gate (95% CI −1.33 to −0.31 pp, adjusted p = 0.0047) and recommended keeping it at level 30. Published an interactive Tableau dashboard.</p><p class="muted"><strong>Tech:</strong> Python, pandas, SciPy, statsmodels, Tableau</p></div>
+          </div>
+        </article>
+
+        <article class="featured-project reveal">
+          <div class="featured-media">
+            <div class="img-placeholder">
+              <img class="img-src img-contain dark" src="images/crypto-lakehouse.webp" alt="Architecture: Binance WebSocket to Kafka to Parquet on GCS with PySpark, into BigQuery and DuckDB, modeled in dbt bronze, silver, gold" loading="lazy" width="900" height="675">
+              <div class="img-fallback" aria-hidden="true">Crypto Lakehouse</div>
+            </div>
+          </div>
+          <div class="featured-content">
+            <h3><span class="proj-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3" /><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5" /><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3" /></svg></span> <a class="proj-link" href="/projects/crypto-analytics-lakehouse/">Crypto Analytics Lakehouse</a></h3>
+            <p class="proj-summary">A crypto market lakehouse: hourly Spark ingestion, modeled in dbt as a tested medallion pipeline.</p>
+            <ul class="proj-chips"><li>Hourly ingestion</li><li>dbt tests in CI</li><li>Terraform on GCP</li></ul>
+            <ul class="proj-tags"><li>Spark</li><li>dbt</li><li>BigQuery</li><li>DuckDB</li><li class="proj-tag-more" title="Python, Kafka, Terraform, GitHub Actions">+4</li></ul>
+            <div class="proj-actions"><button type="button" class="btn proj-more" aria-expanded="false" aria-controls="d-crypto"><span>Read more</span><svg class="btn-icon chev" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><a class="btn" href="https://github.com/mrprogrammingx/crypto-analytics-platform" target="_blank" rel="noopener"><svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="14" height="14"><path d="M12 .5C5.7.5.6 5.7.6 12c0 5.1 3.3 9.5 7.9 11 .6.1.8-.3.8-.6v-2.1c-3.2.7-3.8-1.4-3.8-1.4-.5-1.2-1.2-1.6-1.2-1.6-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 .1 1.6.7 2 1.1.1-.9.4-1.5.7-1.8-2.6-.3-5.3-1.3-5.3-6 0-1.3.5-2.4 1.2-3.3-.1-.3-.5-1.6.1-3.3 0 0 1-.3 3.3 1.3 1-.3 2-.4 3-.4s2 .1 3 .4c2.3-1.6 3.3-1.3 3.3-1.3.6 1.7.2 3 .1 3.3.8.9 1.2 2 1.2 3.3 0 4.7-2.7 5.7-5.3 6 .4.3.7 1 .7 2v3c0 .3.2.7.8.6 4.6-1.5 7.9-5.9 7.9-11C23.4 5.7 18.3.5 12 .5z"/></svg>Repository</a></div>
+            <div class="proj-details" id="d-crypto" hidden><p><strong>Problem:</strong> Crypto market data arrives constantly and raw; analysts need trustworthy, modeled, analytics-ready datasets.</p><p><strong>Solution:</strong> An end-to-end lakehouse with hourly Spark ingestion running on GitHub Actions, modeled in dbt as a 4-layer medallion pipeline (staging, bronze, silver, gold) with not_null and unique tests in CI against DuckDB and BigQuery, and GCP infrastructure provisioned with Terraform.</p><p><strong>Impact:</strong> Automated, tested, documented pipelines — dbt docs published on GitHub Pages — feeding dashboards for market trend analysis. Extending with Snowflake and AI-assisted anomaly detection.</p><p class="muted"><strong>Tech:</strong> Spark, dbt, BigQuery, DuckDB, Python, Kafka, Terraform, GitHub Actions</p></div>
+          </div>
+        </article>
+
+        <article class="featured-project reveal">
+          <div class="featured-media">
+            <div class="img-placeholder">
+              <img class="img-src" src="images/run-walk.png" alt="Run/Walk screenshot" loading="lazy">
+              <div class="img-fallback" aria-hidden="true">Run/Walk</div>
+            </div>
+          </div>
+          <div class="featured-content">
+            <h3><span class="proj-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h3l3-8 4 8h4" /></svg></span> <a class="proj-link" href="/run-walk">Run/Walk Data Pipeline</a></h3>
+            <p class="proj-summary">A batch pipeline that turns raw CSV activity data into fast DuckDB analytics, orchestrated by Airflow.</p>
+            <ul class="proj-chips"><li>Sub-second queries</li><li>Daily automated reports</li></ul>
+            <ul class="proj-tags"><li>Python</li><li>Airflow</li><li>DuckDB</li><li>Parquet</li><li class="proj-tag-more" title="Streamlit">+1</li></ul>
+            <div class="proj-actions"><button type="button" class="btn proj-more" aria-expanded="false" aria-controls="d-runwalk"><span>Read more</span><svg class="btn-icon chev" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><a class="btn primary" href="/run-walk">Case study</a><a class="btn" href="https://github.com/mrprogrammingx/run-walk-pipeline" target="_blank" rel="noopener"><svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="14" height="14"><path d="M12 .5C5.7.5.6 5.7.6 12c0 5.1 3.3 9.5 7.9 11 .6.1.8-.3.8-.6v-2.1c-3.2.7-3.8-1.4-3.8-1.4-.5-1.2-1.2-1.6-1.2-1.6-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 .1 1.6.7 2 1.1.1-.9.4-1.5.7-1.8-2.6-.3-5.3-1.3-5.3-6 0-1.3.5-2.4 1.2-3.3-.1-.3-.5-1.6.1-3.3 0 0 1-.3 3.3 1.3 1-.3 2-.4 3-.4s2 .1 3 .4c2.3-1.6 3.3-1.3 3.3-1.3.6 1.7.2 3 .1 3.3.8.9 1.2 2 1.2 3.3 0 4.7-2.7 5.7-5.3 6 .4.3.7 1 .7 2v3c0 .3.2.7.8.6 4.6-1.5 7.9-5.9 7.9-11C23.4 5.7 18.3.5 12 .5z"/></svg>Repository</a></div>
+            <div class="proj-details" id="d-runwalk" hidden><p><strong>Problem:</strong> CSV telemetry ingestion was slow and hard to query, blocking analytics.</p><p><strong>Solution:</strong> Designed and built a production-ready pipeline (CSV → Parquet → DuckDB) orchestrated with Apache Airflow, with automated materialized transforms and daily reports for analysts.</p><p><strong>Impact:</strong> Enabled daily materialized reports and sub-second queries for analysts. Converted raw CSV into compressed Parquet to cut storage and speed downstream processing. Automation reduced manual reporting time from hours to minutes and improved data quality visibility.</p><p class="muted"><strong>Tech:</strong> Python, Airflow, DuckDB, Parquet, Streamlit</p></div>
+          </div>
+        </article>
+
+        <article class="featured-project reveal">
+          <div class="featured-media">
+            <div class="img-placeholder">
+              <img class="img-src" src="images/analytics.png" alt="Analytics screenshot" loading="lazy">
+              <div class="img-fallback" aria-hidden="true">Analytics</div>
+            </div>
+          </div>
+          <div class="featured-content">
+            <h3><span class="proj-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18" /><path d="M7 13v6" /><path d="M12 9v10" /><path d="M17 5v14" /></svg></span> <a class="proj-link" href="/analytics">Claude Code Analytics Platform</a></h3>
+            <p class="proj-summary">An analytics platform that turns AI coding telemetry into dashboards, analytics APIs, and forecasts.</p>
+            <ul class="proj-chips"><li>Analytics APIs</li><li>Usage forecasting</li><li>CI-tested</li></ul>
+            <ul class="proj-tags"><li>Python</li><li>FastAPI</li><li>DuckDB</li><li>Streamlit</li><li class="proj-tag-more" title="JSONL">+1</li></ul>
+            <div class="proj-actions"><button type="button" class="btn proj-more" aria-expanded="false" aria-controls="d-analytics"><span>Read more</span><svg class="btn-icon chev" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><a class="btn primary" href="/analytics">Case study</a><a class="btn" href="https://github.com/mrprogrammingx/claude-code-analytics-platform" target="_blank" rel="noopener"><svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="14" height="14"><path d="M12 .5C5.7.5.6 5.7.6 12c0 5.1 3.3 9.5 7.9 11 .6.1.8-.3.8-.6v-2.1c-3.2.7-3.8-1.4-3.8-1.4-.5-1.2-1.2-1.6-1.2-1.6-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 .1 1.6.7 2 1.1.1-.9.4-1.5.7-1.8-2.6-.3-5.3-1.3-5.3-6 0-1.3.5-2.4 1.2-3.3-.1-.3-.5-1.6.1-3.3 0 0 1-.3 3.3 1.3 1-.3 2-.4 3-.4s2 .1 3 .4c2.3-1.6 3.3-1.3 3.3-1.3.6 1.7.2 3 .1 3.3.8.9 1.2 2 1.2 3.3 0 4.7-2.7 5.7-5.3 6 .4.3.7 1 .7 2v3c0 .3.2.7.8.6 4.6-1.5 7.9-5.9 7.9-11C23.4 5.7 18.3.5 12 .5z"/></svg>Repository</a></div>
+            <div class="proj-details" id="d-analytics" hidden><p><strong>Problem:</strong> Disparate telemetry and no centralized analytics API; reporting was manual and slow.</p><p><strong>Solution:</strong> Designed and built an analytics platform with FastAPI, DuckDB storage, and Streamlit dashboards to normalize JSONL telemetry and provide programmatic APIs for reporting.</p><p><strong>Impact:</strong> Centralized telemetry and programmatic APIs reduced manual reporting and enabled reproducible dashboards. This enabled faster ad-hoc analysis and integrated programmatic access for downstream services.</p><p class="muted"><strong>Tech:</strong> Python, FastAPI, DuckDB, Streamlit, JSONL</p></div>
+          </div>
+        </article>
+
+        <article class="featured-project reveal">
+          <div class="featured-media">
+            <div class="img-placeholder">
+              <img class="img-src" src="images/chat.png" alt="Real-Time Chat screenshot" loading="lazy">
+              <div class="img-fallback" aria-hidden="true">Real-Time Chat</div>
+            </div>
+          </div>
+          <div class="featured-content">
+            <h3><span class="proj-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" /></svg></span> <a class="proj-link" href="/classic-web-based-online-chat-application">Real-Time Chat Application with FastAPI</a></h3>
+            <p class="proj-summary">A real-time web chat with rooms, private messages, presence, file sharing, and moderation.</p>
+            <ul class="proj-chips"><li>Multi-device sessions</li><li>Tested with Playwright</li></ul>
+            <ul class="proj-tags"><li>FastAPI</li><li>SQLite (WAL)</li><li>Docker</li><li>JWT</li><li class="proj-tag-more" title="JavaScript, Playwright">+2</li></ul>
+            <div class="proj-actions"><button type="button" class="btn proj-more" aria-expanded="false" aria-controls="d-chat"><span>Read more</span><svg class="btn-icon chev" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><a class="btn primary" href="/classic-web-based-online-chat-application">Case study</a><a class="btn" href="https://github.com/mrprogrammingx/classic-web-based-online-chat-application" target="_blank" rel="noopener"><svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="14" height="14"><path d="M12 .5C5.7.5.6 5.7.6 12c0 5.1 3.3 9.5 7.9 11 .6.1.8-.3.8-.6v-2.1c-3.2.7-3.8-1.4-3.8-1.4-.5-1.2-1.2-1.6-1.2-1.6-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 .1 1.6.7 2 1.1.1-.9.4-1.5.7-1.8-2.6-.3-5.3-1.3-5.3-6 0-1.3.5-2.4 1.2-3.3-.1-.3-.5-1.6.1-3.3 0 0 1-.3 3.3 1.3 1-.3 2-.4 3-.4s2 .1 3 .4c2.3-1.6 3.3-1.3 3.3-1.3.6 1.7.2 3 .1 3.3.8.9 1.2 2 1.2 3.3 0 4.7-2.7 5.7-5.3 6 .4.3.7 1 .7 2v3c0 .3.2.7.8.6 4.6-1.5 7.9-5.9 7.9-11C23.4 5.7 18.3.5 12 .5z"/></svg>Repository</a></div>
+            <div class="proj-details" id="d-chat" hidden><p><strong>Problem:</strong> Need for a production-ready, low-latency web chat supporting concurrent users with secure sessions and moderation.</p><p><strong>Solution:</strong> A production-style web chat built with FastAPI and SQLite (WAL) supporting multi-device sessions, real-time presence, rooms, private messaging, file sharing, and moderation. Docker-ready and tested with pytest and Playwright.</p><p class="muted"><strong>Tech:</strong> FastAPI, SQLite (WAL), Docker, JWT, JavaScript, Playwright</p></div>
+          </div>
+        </article>
+
+        <h3 style="margin-top:24px">More projects</h3>
+        <div class="cards">
+
+          <article class="card reveal">
+            <div class="img-placeholder card-media">
+              <img class="img-src" src="images/ai-phone-assistant.webp" alt="Demo Barbershop booking site, where callers can also book through the AI phone assistant" loading="lazy" width="900" height="475">
+              <div class="img-fallback" aria-hidden="true">AI Phone Assistant</div>
+            </div>
+            <h3><a class="proj-link" href="/projects/ai-phone-assistant/">AI Phone Assistant — Voice Booking Agent</a></h3>
+            <p class="proj-summary">An AI voice agent that answers a barbershop's phone and books appointments through seven live tools.</p>
+            <ul class="proj-chips"><li>1,720 tests</li><li>No double-bookings</li></ul>
+            <ul class="proj-tags"><li>Python</li><li>FastAPI</li><li>SQLite</li><li class="proj-tag-more" title="React, Hypothesis, Suisse Line voice AI">+3</li></ul>
+            <div class="proj-actions"><button type="button" class="btn proj-more" aria-expanded="false" aria-controls="d-phone"><span>Read more</span><svg class="btn-icon chev" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><a class="btn" href="https://github.com/mrprogrammingx/ai-phone-assistant" target="_blank" rel="noopener"><svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="14" height="14"><path d="M12 .5C5.7.5.6 5.7.6 12c0 5.1 3.3 9.5 7.9 11 .6.1.8-.3.8-.6v-2.1c-3.2.7-3.8-1.4-3.8-1.4-.5-1.2-1.2-1.6-1.2-1.6-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 .1 1.6.7 2 1.1.1-.9.4-1.5.7-1.8-2.6-.3-5.3-1.3-5.3-6 0-1.3.5-2.4 1.2-3.3-.1-.3-.5-1.6.1-3.3 0 0 1-.3 3.3 1.3 1-.3 2-.4 3-.4s2 .1 3 .4c2.3-1.6 3.3-1.3 3.3-1.3.6 1.7.2 3 .1 3.3.8.9 1.2 2 1.2 3.3 0 4.7-2.7 5.7-5.3 6 .4.3.7 1 .7 2v3c0 .3.2.7.8.6 4.6-1.5 7.9-5.9 7.9-11C23.4 5.7 18.3.5 12 .5z"/></svg>Repository</a></div>
+            <div class="proj-details" id="d-phone" hidden><p><strong>Details:</strong> Callers check times, book, cancel, and join a consent-based waitlist while the agent calls seven live tools on my FastAPI booking system. Atomic booking lock against double-booking, retry-safe requests, and 1,720 tests including property and mutation checks.</p><p class="muted"><strong>Tech:</strong> Python, FastAPI, SQLite, React, Hypothesis, Suisse Line voice AI</p></div>
+          </article>
+
+          <article class="card reveal">
+            <div class="img-placeholder card-media">
+              <img class="img-src img-contain dark" src="images/job-hunter.webp" alt="7-Agent AI Job Search Platform with a live agent stream" loading="lazy" width="900" height="675">
+              <div class="img-fallback" aria-hidden="true">Job Hunter</div>
+            </div>
+            <h3><a class="proj-link" href="/projects/job-hunter/">Job Hunter — 7-Agent AI Job Search Platform</a></h3>
+            <p class="proj-summary">Seven AI agents that find jobs, tailor resumes, and prep interviews, with every step streamed live.</p>
+            <ul class="proj-chips"><li>7 agents</li><li>Live SSE streaming</li></ul>
+            <ul class="proj-tags"><li>FastAPI</li><li>Next.js</li><li>JWT</li><li class="proj-tag-more" title="SQLite/PostgreSQL">+1</li></ul>
+            <div class="proj-actions"><button type="button" class="btn proj-more" aria-expanded="false" aria-controls="d-jobhunter"><span>Read more</span><svg class="btn-icon chev" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><a class="btn" href="https://github.com/mrprogrammingx/job-hunter" target="_blank" rel="noopener"><svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="14" height="14"><path d="M12 .5C5.7.5.6 5.7.6 12c0 5.1 3.3 9.5 7.9 11 .6.1.8-.3.8-.6v-2.1c-3.2.7-3.8-1.4-3.8-1.4-.5-1.2-1.2-1.6-1.2-1.6-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 .1 1.6.7 2 1.1.1-.9.4-1.5.7-1.8-2.6-.3-5.3-1.3-5.3-6 0-1.3.5-2.4 1.2-3.3-.1-.3-.5-1.6.1-3.3 0 0 1-.3 3.3 1.3 1-.3 2-.4 3-.4s2 .1 3 .4c2.3-1.6 3.3-1.3 3.3-1.3.6 1.7.2 3 .1 3.3.8.9 1.2 2 1.2 3.3 0 4.7-2.7 5.7-5.3 6 .4.3.7 1 .7 2v3c0 .3.2.7.8.6 4.6-1.5 7.9-5.9 7.9-11C23.4 5.7 18.3.5 12 .5z"/></svg>Repository</a></div>
+            <div class="proj-details" id="d-jobhunter" hidden><p><strong>Details:</strong> Multi-agent platform where 7 specialized AI agents handle job discovery, resume tailoring, cover letters, company research, outreach, interview prep, and tracking. SSE streaming for real-time agent status.</p><p class="muted"><strong>Tech:</strong> FastAPI, Next.js, JWT, SQLite/PostgreSQL</p></div>
+          </article>
+
+          <article class="card reveal">
+            <div class="img-placeholder card-media">
+              <img class="img-src img-top" src="images/agentpages.webp" alt="AgentPages home page: static websites, published by AI agents" loading="lazy" width="900" height="675">
+              <div class="img-fallback" aria-hidden="true">AgentPages</div>
+            </div>
+            <h3><a class="proj-link" href="/projects/agentpages/">AgentPages — Site Publishing API for AI Agents</a></h3>
+            <p class="proj-summary">An API that lets AI agents publish static websites and get a live URL back.</p>
+            <ul class="proj-chips"><li>CSP-sandboxed sites</li><li>Private repo</li></ul>
+            <ul class="proj-tags"><li>Python</li><li>FastAPI</li><li>SQLite</li><li class="proj-tag-more" title="CSP">+1</li></ul>
+            <div class="proj-actions"><button type="button" class="btn proj-more" aria-expanded="false" aria-controls="d-agentpages"><span>Read more</span><svg class="btn-icon chev" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><a class="btn primary" href="https://agentpages-sites.amir-zare.com/" target="_blank" rel="noopener">Live demo</a><a class="btn" href="https://agentpages-sites.amir-zare.com/s/tgzpvjmfzujwjk3d/" target="_blank" rel="noopener">Sample site</a></div>
+            <div class="proj-details" id="d-agentpages" hidden><p><strong>Details:</strong> An agent sends site files as JSON and gets a live URL. Untrusted pages are served from a separate origin inside a CSP sandbox, with tests that verify the isolation guarantees.</p><p class="muted"><strong>Tech:</strong> Python, FastAPI, SQLite, CSP</p></div>
+          </article>
+
+          <article class="card reveal">
+            <div class="img-placeholder card-media">
+              <img class="img-src img-top" src="images/voice-narrator.webp" alt="Voice Narrator app showing a generated narration waveform and sentence list" loading="lazy" width="900" height="538">
+              <div class="img-fallback" aria-hidden="true">Voice Narrator</div>
+            </div>
+            <h3><a class="proj-link" href="/projects/voice-narrator/">Voice Narrator — Local Voice Cloning</a></h3>
+            <p class="proj-summary">Local voice cloning for tutorial narration — no fees, and no audio ever leaves the machine.</p>
+            <ul class="proj-chips"><li>Runs fully local</li></ul>
+            <ul class="proj-tags"><li>Python</li><li>PyTorch</li><li>Chatterbox TTS</li><li class="proj-tag-more" title="ffmpeg">+1</li></ul>
+            <div class="proj-actions"><button type="button" class="btn proj-more" aria-expanded="false" aria-controls="d-voice"><span>Read more</span><svg class="btn-icon chev" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><a class="btn" href="https://github.com/mrprogrammingx/voice-cloner" target="_blank" rel="noopener"><svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="14" height="14"><path d="M12 .5C5.7.5.6 5.7.6 12c0 5.1 3.3 9.5 7.9 11 .6.1.8-.3.8-.6v-2.1c-3.2.7-3.8-1.4-3.8-1.4-.5-1.2-1.2-1.6-1.2-1.6-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 .1 1.6.7 2 1.1.1-.9.4-1.5.7-1.8-2.6-.3-5.3-1.3-5.3-6 0-1.3.5-2.4 1.2-3.3-.1-.3-.5-1.6.1-3.3 0 0 1-.3 3.3 1.3 1-.3 2-.4 3-.4s2 .1 3 .4c2.3-1.6 3.3-1.3 3.3-1.3.6 1.7.2 3 .1 3.3.8.9 1.2 2 1.2 3.3 0 4.7-2.7 5.7-5.3 6 .4.3.7 1 .7 2v3c0 .3.2.7.8.6 4.6-1.5 7.9-5.9 7.9-11C23.4 5.7 18.3.5 12 .5z"/></svg>Repository</a></div>
+            <div class="proj-details" id="d-voice" hidden><p><strong>Details:</strong> A two-stage TTS + voice-conversion pipeline, batch processing, and a pronunciation dictionary for programming tutorials.</p><p class="muted"><strong>Tech:</strong> Python, PyTorch, Chatterbox TTS, ffmpeg</p></div>
+          </article>
+
+          <article class="card reveal">
+            <div class="img-placeholder card-media">
+              <img class="img-src img-contain dark" style="background:#070707" src="images/barbershop-queue.webp" alt="Parsa Barber booking site home page: Sharp. Bold. Timeless." loading="lazy" width="900" height="717">
+              <div class="img-fallback" aria-hidden="true">Barbershop Queue</div>
+            </div>
+            <h3><a class="proj-link" href="/projects/barbershop-queue/">Barbershop Queue — Booking & Queue Management</a></h3>
+            <p class="proj-summary">A booking and walk-in queue system with a React admin panel and an animated marketing site.</p>
+            <ul class="proj-chips"><li>Live demo</li></ul>
+            <ul class="proj-tags"><li>FastAPI</li><li>SQLAlchemy</li><li>React</li><li class="proj-tag-more" title="Tailwind">+1</li></ul>
+            <div class="proj-actions"><button type="button" class="btn proj-more" aria-expanded="false" aria-controls="d-barbershop"><span>Read more</span><svg class="btn-icon chev" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><a class="btn primary" href="https://barbershop-queue.onrender.com/" target="_blank" rel="noopener">Live demo</a><a class="btn" href="https://github.com/mrprogrammingx/barbershop-queue" target="_blank" rel="noopener"><svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="14" height="14"><path d="M12 .5C5.7.5.6 5.7.6 12c0 5.1 3.3 9.5 7.9 11 .6.1.8-.3.8-.6v-2.1c-3.2.7-3.8-1.4-3.8-1.4-.5-1.2-1.2-1.6-1.2-1.6-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 .1 1.6.7 2 1.1.1-.9.4-1.5.7-1.8-2.6-.3-5.3-1.3-5.3-6 0-1.3.5-2.4 1.2-3.3-.1-.3-.5-1.6.1-3.3 0 0 1-.3 3.3 1.3 1-.3 2-.4 3-.4s2 .1 3 .4c2.3-1.6 3.3-1.3 3.3-1.3.6 1.7.2 3 .1 3.3.8.9 1.2 2 1.2 3.3 0 4.7-2.7 5.7-5.3 6 .4.3.7 1 .7 2v3c0 .3.2.7.8.6 4.6-1.5 7.9-5.9 7.9-11C23.4 5.7 18.3.5 12 .5z"/></svg>Repository</a></div>
+            <div class="proj-details" id="d-barbershop" hidden><p><strong>Details:</strong> FastAPI backend, React admin panel with session-cookie auth, animated marketing site, and switchable email providers with a dry-run mode.</p><p class="muted"><strong>Tech:</strong> FastAPI, SQLAlchemy, React, Tailwind</p></div>
+          </article>
+
+          <article class="card reveal">
+            <div class="img-placeholder card-media">
+              <img class="img-src" src="images/laravel-queue.webp" alt="Laravel queue pipeline for 1M items: response time cut from 8.4s to 1.2s with Redis queue workers" loading="lazy" width="900" height="507">
+              <div class="img-fallback" aria-hidden="true">Laravel Queue</div>
+            </div>
+            <h3><a class="proj-link" href="/projects/laravel-queue-pipeline/">Laravel Queue Pipeline — 1M Items</a></h3>
+            <p class="proj-summary">Benchmarking synchronous vs. queued processing on 1M items to eliminate request timeouts.</p>
+            <ul class="proj-chips"><li>8.4s → 1.2s responses</li><li>1M items</li></ul>
+            <ul class="proj-tags"><li>PHP</li><li>Laravel</li><li>Redis</li><li class="proj-tag-more" title="Horizon, DomPDF">+2</li></ul>
+            <div class="proj-actions"><button type="button" class="btn proj-more" aria-expanded="false" aria-controls="d-laravelqueue"><span>Read more</span><svg class="btn-icon chev" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><a class="btn" href="https://github.com/mrprogrammingx/Queue-sample" target="_blank" rel="noopener"><svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="14" height="14"><path d="M12 .5C5.7.5.6 5.7.6 12c0 5.1 3.3 9.5 7.9 11 .6.1.8-.3.8-.6v-2.1c-3.2.7-3.8-1.4-3.8-1.4-.5-1.2-1.2-1.6-1.2-1.6-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 .1 1.6.7 2 1.1.1-.9.4-1.5.7-1.8-2.6-.3-5.3-1.3-5.3-6 0-1.3.5-2.4 1.2-3.3-.1-.3-.5-1.6.1-3.3 0 0 1-.3 3.3 1.3 1-.3 2-.4 3-.4s2 .1 3 .4c2.3-1.6 3.3-1.3 3.3-1.3.6 1.7.2 3 .1 3.3.8.9 1.2 2 1.2 3.3 0 4.7-2.7 5.7-5.3 6 .4.3.7 1 .7 2v3c0 .3.2.7.8.6 4.6-1.5 7.9-5.9 7.9-11C23.4 5.7 18.3.5 12 .5z"/></svg>Repository</a></div>
+            <div class="proj-details" id="d-laravelqueue" hidden><p><strong>Details:</strong> Benchmarked synchronous vs. queue-based processing over 200K orders and 1M items. Moved invoice and PDF generation to Redis queue workers monitored with Horizon, removing request timeouts.</p><p class="muted"><strong>Tech:</strong> PHP, Laravel, Redis, Horizon, DomPDF</p></div>
+          </article>
+
+          <article class="card reveal">
+            <div class="img-placeholder card-media">
+              <img class="img-src img-top" src="images/evidencehub.webp" alt="Locust load test charts: about 290 requests per second, 0% failures, low p50 and p95 response times" loading="lazy" width="900" height="577">
+              <div class="img-fallback" aria-hidden="true">EvidenceHub</div>
+            </div>
+            <h3><a class="proj-link" href="/projects/evidencehub/">EvidenceHub — MySQL Performance &amp; Sharding <small class="muted">(in progress)</small></a></h3>
+            <p class="proj-summary">Migrating a poor legacy MySQL schema to a sharded design, with every performance claim benchmarked.</p>
+            <ul class="proj-chips"><li>p95 &lt; 50 ms SLOs</li><li>20M-row dataset</li></ul>
+            <ul class="proj-tags"><li>Python 3.12</li><li>MySQL 8</li><li>Redis</li><li class="proj-tag-more" title="Locust, SQLAlchemy, Alembic, Docker Compose">+4</li></ul>
+            <div class="proj-actions"><button type="button" class="btn proj-more" aria-expanded="false" aria-controls="d-evidencehub"><span>Read more</span><svg class="btn-icon chev" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><a class="btn" href="https://github.com/mrprogrammingx/EvidenceHub" target="_blank" rel="noopener"><svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="14" height="14"><path d="M12 .5C5.7.5.6 5.7.6 12c0 5.1 3.3 9.5 7.9 11 .6.1.8-.3.8-.6v-2.1c-3.2.7-3.8-1.4-3.8-1.4-.5-1.2-1.2-1.6-1.2-1.6-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 .1 1.6.7 2 1.1.1-.9.4-1.5.7-1.8-2.6-.3-5.3-1.3-5.3-6 0-1.3.5-2.4 1.2-3.3-.1-.3-.5-1.6.1-3.3 0 0 1-.3 3.3 1.3 1-.3 2-.4 3-.4s2 .1 3 .4c2.3-1.6 3.3-1.3 3.3-1.3.6 1.7.2 3 .1 3.3.8.9 1.2 2 1.2 3.3 0 4.7-2.7 5.7-5.3 6 .4.3.7 1 .7 2v3c0 .3.2.7.8.6 4.6-1.5 7.9-5.9 7.9-11C23.4 5.7 18.3.5 12 .5z"/></svg>Repository</a></div>
+            <div class="proj-details" id="d-evidencehub" hidden><p><strong>Details:</strong> Migrating a deliberately poor legacy MySQL schema to an optimized 4-shard design. 8 critical queries with latency SLOs (p95 under 50 ms), a Locust + EXPLAIN ANALYZE harness, and data scaling to 20M rows.</p><p class="muted"><strong>Tech:</strong> Python 3.12, MySQL 8, Redis, Locust, SQLAlchemy, Alembic, Docker Compose</p></div>
+          </article>
+        </div>
+
+        <p class="sec-more"><a href="/projects/">All projects with full write-ups &rarr;</a></p>
+      </div>
+    </section>
 
     <section id="experience" class="section reveal">
       <div class="container">
-        <div class="experience-panel">
-          <h2>Experience</h2>
-          <ol class="timeline">
-            <li>
-              <div class="role-header">
-                <strong class="role-title">TUMO Labs — ML Mentor / Volunteer Instructor</strong>
-                <span class="role-date">Aug 2026 – Present · Yerevan, Armenia</span>
-              </div>
-              <ul>
-                <li>Present to and mentor fellow ML students, guiding their learning with hands-on support.</li>
-              </ul>
-            </li>
-
-            <li>
-              <div class="role-header">
-                <strong class="role-title"><a href="https://usedatalayer.com" target="_blank" rel="noopener">DataLayer</a> — Founder / Software &amp; Data Engineer</strong>
-                <span class="role-date">Jan 2024 – Present · Yerevan, Armenia</span>
-              </div>
-              <ul>
-                <li>Founded and lead an AI-powered analytics startup that turns e-commerce sellers' raw sales exports into actionable dashboards (customer segmentation, anomaly and churn detection).</li>
-                <li>Ranked Top 30 Startup, Top 8 Data Startup, and Top 15 SaaS Startup in Armenia (F6S, 2026); featured in NEWS.am Tech.</li>
-                <li>Secured $170K+ in non-dilutive credits (Microsoft for Startups, Google for Startups, E2B, DigitalOcean); leading pre-seed fundraising.</li>
-                <li>Designed ETL/ELT pipelines, APIs, and analytics services with Python, FastAPI, and Apache Airflow; Parquet and DuckDB for analytical processing.</li>
-                <li>Shipped the Evolution Agent, a production LLM system that writes a daily prioritized growth brief from internal and marketing data.</li>
-              </ul>
-            </li>
-
-            <li>
-              <div class="role-header">
-                <strong class="role-title">HireToDo — Software Developer</strong>
-                <span class="role-date">Dec 2022 – Dec 2023 · Yerevan, Armenia</span>
-              </div>
-              <ul>
-                <li>Worked on backend and platform features for a hiring and payment platform using Laravel 9/10.</li>
-                <li>Collaborated on frontend integrations (Vue.js / Nuxt.js) and designed GraphQL APIs.</li>
-                <li>Applied clean architecture and SOLID principles; wrote PHPUnit tests to improve reliability.</li>
-              </ul>
-            </li>
-
-            <li>
-              <div class="role-header">
-                <strong class="role-title">Ardakan Float Glass Company — PHP / Laravel Developer</strong>
-                <span class="role-date">Oct 2021 – Nov 2022</span>
-              </div>
-              <ul>
-                <li>Developed enterprise web applications and internal business systems using Laravel.</li>
-                <li>Optimized database operations and handled large datasets (200k+ product records).</li>
-                <li>Implemented service-oriented architecture and maintainability improvements.</li>
-              </ul>
-            </li>
-
-            <li>
-              <div class="role-header">
-                <strong class="role-title">Paziresh24 — PHP Developer</strong>
-                <span class="role-date">Jun 2021 – Oct 2021</span>
-              </div>
-              <ul>
-                <li>Contributed to backend systems for a high-traffic healthcare platform and supported stability.</li>
-                <li>Worked on performance optimizations and production application maintenance.</li>
-              </ul>
-            </li>
-
-            <li>
-              <div class="role-header">
-                <strong class="role-title">Mahya Pardaz Company — Web Developer (CakePHP)</strong>
-                <span class="role-date">Aug 2019 – Jun 2021</span>
-              </div>
-              <ul>
-                <li>Built and maintained 15+ custom municipal and enterprise applications using CakePHP 4.</li>
-                <li>Implemented backend business logic, mentored junior developers, and improved engineering practices.</li>
-              </ul>
-            </li>
-          </ol>
+        <div class="xp-intro">
+          <h2 class="xp-title">Experience Timeline</h2>
+          <p class="xp-sub">From enterprise backend engineering to data platforms and AI</p>
         </div>
+        <ol class="xp-timeline">
+          <li class="xp-item">
+            <article class="xp-card">
+              <header class="xp-head">
+                <span class="xp-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 9L12 4 2 9l10 5 10-5z"/><path d="M6 11.5v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5"/></svg></span>
+                <div>
+                  <h3 class="xp-role">ML Mentor / Volunteer Instructor</h3>
+                  <p class="xp-org">TUMO Labs</p>
+                </div>
+              </header>
+              <p class="xp-date">Aug 2026 – Present · Yerevan, Armenia</p>
+              <p class="xp-text">Mentor and present to machine learning students, guiding hands-on projects after leading a 4-student team through the TUMO Labs ML program.</p>
+              <ul class="xp-tags"><li>Machine Learning</li><li>Mentoring</li><li>scikit-learn</li><li>PyTorch</li></ul>
+            </article>
+          </li>
+
+          <li class="xp-item">
+            <article class="xp-card">
+              <header class="xp-head">
+                <span class="xp-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15c-1 1-1.5 4-1.5 4s3-.5 4-1.5"/><path d="M9 15l-3-3c1-4 5-9 12-9 0 7-5 11-9 12z"/><circle cx="14.5" cy="9.5" r="1.5"/></svg></span>
+                <div>
+                  <h3 class="xp-role">Founder / Software &amp; Data Engineer</h3>
+                  <p class="xp-org"><a href="https://usedatalayer.com" target="_blank" rel="noopener">DataLayer</a></p>
+                </div>
+              </header>
+              <p class="xp-date">Jan 2024 – Present · Yerevan, Armenia</p>
+              <p class="xp-text">Founded and lead an AI-powered analytics startup that turns e-commerce sellers’ sales exports into dashboards with segmentation, anomaly, and churn detection. Ranked #2 in Data Analytics and #6 among software companies in Armenia by F6S; secured $170K+ in startup credits.</p>
+              <ul class="xp-tags"><li>Python</li><li>FastAPI</li><li>Airflow</li><li>DuckDB</li><li>LLM apps</li></ul>
+            </article>
+          </li>
+
+          <li class="xp-item">
+            <article class="xp-card">
+              <header class="xp-head">
+                <span class="xp-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M3 13h18"/></svg></span>
+                <div>
+                  <h3 class="xp-role">Software Developer</h3>
+                  <p class="xp-org">HireToDo</p>
+                </div>
+              </header>
+              <p class="xp-date">Dec 2022 – Dec 2023 · Yerevan, Armenia</p>
+              <p class="xp-text">Built backend and platform features for a hiring and payments platform: GraphQL APIs on Laravel 9/10, Vue and Nuxt integrations, clean architecture, and PHPUnit tests.</p>
+              <ul class="xp-tags"><li>Laravel</li><li>GraphQL</li><li>Vue.js</li><li>PHPUnit</li></ul>
+            </article>
+          </li>
+
+          <li class="xp-item">
+            <article class="xp-card">
+              <header class="xp-head">
+                <span class="xp-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v16"/><path d="M16 9h2a2 2 0 0 1 2 2v10"/><path d="M8 7h4M8 11h4M8 15h4M2 21h20"/></svg></span>
+                <div>
+                  <h3 class="xp-role">PHP / Laravel Developer</h3>
+                  <p class="xp-org">Ardakan Float Glass Company</p>
+                </div>
+              </header>
+              <p class="xp-date">Oct 2021 – Nov 2022</p>
+              <p class="xp-text">Developed enterprise web applications and internal systems handling 200,000+ product records, with optimized database operations and a service-oriented architecture.</p>
+              <ul class="xp-tags"><li>Laravel</li><li>MySQL</li><li>Reporting systems</li></ul>
+            </article>
+          </li>
+
+          <li class="xp-item">
+            <article class="xp-card">
+              <header class="xp-head">
+                <span class="xp-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3-7 4 14 3-7h4"/></svg></span>
+                <div>
+                  <h3 class="xp-role">PHP Developer</h3>
+                  <p class="xp-org">Paziresh24</p>
+                </div>
+              </header>
+              <p class="xp-date">Jun 2021 – Oct 2021</p>
+              <p class="xp-text">Worked on backend systems for a high-traffic healthcare platform with 500K+ app downloads, supporting performance and stability improvements.</p>
+              <ul class="xp-tags"><li>PHP</li><li>Performance</li><li>High traffic</li></ul>
+            </article>
+          </li>
+
+          <li class="xp-item">
+            <article class="xp-card">
+              <header class="xp-head">
+                <span class="xp-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 8l-5 4 5 4"/><path d="M16 8l5 4-5 4"/><path d="M14 4l-4 16"/></svg></span>
+                <div>
+                  <h3 class="xp-role">Web Developer</h3>
+                  <p class="xp-org">Mahya Pardaz Company</p>
+                </div>
+              </header>
+              <p class="xp-date">Aug 2019 – Jun 2021</p>
+              <p class="xp-text">Built 15+ custom applications for municipal and enterprise clients with CakePHP 4, and mentored junior developers in PHP fundamentals.</p>
+              <ul class="xp-tags"><li>CakePHP</li><li>PHP</li><li>Mentoring</li></ul>
+            </article>
+          </li>
+        </ol>
       </div>
     </section>
 
     <section id="community" class="section reveal">
       <div class="container">
-        <h2>Community &amp; Events</h2>
-        <p class="section-sub">
-          Active in Yerevan's data &amp; AI community — teaching, workshops, conferences, and meetups through 2026.
-        </p>
-        <div class="cards" style="margin-bottom:18px">
-          <div class="card">
-            <h3>GDG Yerevan — Multi-Agent Workshop</h3>
-            <p class="muted">Designed and delivered a hands-on workshop: participants built three AI agents with Google
-              ADK, then an orchestrator coordinating them over the A2A protocol. <span>Jun 2026</span></p>
-            <p style="margin-top:10px"><a class="btn" href="https://github.com/mrprogrammingx/adk-cloud-workshop"
-                target="_blank" rel="noopener">Workshop repo</a></p>
-          </div>
-          <div class="card">
-            <h3>Python Course on YouTube</h3>
-            <p class="muted">A weekly Python course with code for every lesson, narrated with my own local
-              voice-cloning tool — plus videos on AI projects. <span>Oct 2026 – Present</span></p>
-            <p style="margin-top:10px"><a class="btn" href="https://www.youtube.com/@AmirZareDev" target="_blank"
-                rel="noopener">Watch on YouTube</a></p>
-          </div>
-          <div class="card">
-            <h3>TUMO Labs — ML Mentor</h3>
-            <p class="muted">Mentoring and presenting to fellow machine-learning students after leading a 4-student
-              team through the TUMO Labs ML program. <span>Aug 2026 – Present</span></p>
-          </div>
+        <h2 class="grad-title">Community &amp; Events</h2>
+        <p class="cm-sub">Teaching, workshops, and meetups in Yerevan&rsquo;s data &amp; AI scene.</p>
+        <div class="cm-top">
+          <article class="cm-card">
+            <a class="cm-media cm-yt" href="https://www.youtube.com/watch?v=zKLMBSJcoj0" target="_blank" rel="noopener" aria-label="Watch: Stop Installing the Wrong Python Version">
+              <img src="images/yt-python-version.webp" alt="Video thumbnail: Which Python version? 3.13 crossed out, 3.15 checked, with Amir looking puzzled" width="960" height="540" loading="lazy">
+              <span class="cm-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+            </a>
+            <div class="cm-info">
+              <p class="cm-meta"><svg viewBox="0 0 24 24" width="16" height="16" fill="#ff4d4d" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.2 3.6-6.2 3.6z"/></svg>Python course · Oct 2026 – Present</p>
+              <h3>Weekly Python lessons</h3>
+              <p class="cm-text">Latest: <a href="https://www.youtube.com/watch?v=zKLMBSJcoj0" target="_blank" rel="noopener">Stop Installing the Wrong Python Version</a>. Code for every lesson, plus videos on AI projects.</p>
+              <div class="cm-actions">
+                <a class="btn primary" href="https://www.youtube.com/@AmirZareDev" target="_blank" rel="noopener">Watch on YouTube &#8599;</a>
+                <a class="btn" href="https://github.com/mrprogrammingx/python-course-youtube" target="_blank" rel="noopener"><svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="14" height="14"><path d="M12 .5C5.7.5.6 5.7.6 12c0 5.1 3.3 9.5 7.9 11 .6.1.8-.3.8-.6v-2.1c-3.2.7-3.8-1.4-3.8-1.4-.5-1.2-1.2-1.6-1.2-1.6-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 .1 1.6.7 2 1.1.1-.9.4-1.5.7-1.8-2.6-.3-5.3-1.3-5.3-6 0-1.3.5-2.4 1.2-3.3-.1-.3-.5-1.6.1-3.3 0 0 1-.3 3.3 1.3 1-.3 2-.4 3-.4s2 .1 3 .4c2.3-1.6 3.3-1.3 3.3-1.3.6 1.7.2 3 .1 3.3.8.9 1.2 2 1.2 3.3 0 4.7-2.7 5.7-5.3 6 .4.3.7 1 .7 2v3c0 .3.2.7.8.6 4.6-1.5 7.9-5.9 7.9-11C23.4 5.7 18.3.5 12 .5z"/></svg>Code</a>
+                <a class="btn sponsor-btn" href="https://github.com/sponsors/mrprogrammingx" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.7 4.5c2.1 0 3.6 1.2 4.3 2.4h2c.7-1.2 2.2-2.4 4.3-2.4 3.7 0 5.8 3.9 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg>Sponsor</a>
+              </div>
+            </div>
+          </article>
+          <article class="cm-card">
+            <a class="cm-media cm-gdg" href="https://github.com/mrprogrammingx/adk-cloud-workshop" target="_blank" rel="noopener" aria-label="GDG Yerevan multi-agent workshop repository">
+              <img src="images/gdg-workshop-room.webp" alt="GDG Yerevan multi-agent workshop at Yandex Armenia: participants on laptops in front of a slide about agent memory" width="960" height="640" loading="lazy">
+            </a>
+            <div class="cm-info">
+              <p class="cm-meta"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6M15 14.5c2.8 0 5 2.2 5 5"/></svg>GDG Yerevan · June 2026</p>
+              <h3>Multi-Agent Workshop</h3>
+              <p class="cm-text">Participants built three AI agents with Google ADK, then an orchestrator that coordinates them over the A2A protocol.</p>
+              <dl class="cm-stats"><div><dt>Agents</dt><dd>3</dd></div><div><dt>Orchestrator</dt><dd>1</dd></div><div><dt>Protocol</dt><dd>A2A</dd></div></dl>
+              <div class="cm-actions">
+                <a class="btn" href="https://github.com/mrprogrammingx/adk-cloud-workshop" target="_blank" rel="noopener"><svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="14" height="14"><path d="M12 .5C5.7.5.6 5.7.6 12c0 5.1 3.3 9.5 7.9 11 .6.1.8-.3.8-.6v-2.1c-3.2.7-3.8-1.4-3.8-1.4-.5-1.2-1.2-1.6-1.2-1.6-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 .1 1.6.7 2 1.1.1-.9.4-1.5.7-1.8-2.6-.3-5.3-1.3-5.3-6 0-1.3.5-2.4 1.2-3.3-.1-.3-.5-1.6.1-3.3 0 0 1-.3 3.3 1.3 1-.3 2-.4 3-.4s2 .1 3 .4c2.3-1.6 3.3-1.3 3.3-1.3.6 1.7.2 3 .1 3.3.8.9 1.2 2 1.2 3.3 0 4.7-2.7 5.7-5.3 6 .4.3.7 1 .7 2v3c0 .3.2.7.8.6 4.6-1.5 7.9-5.9 7.9-11C23.4 5.7 18.3.5 12 .5z"/></svg>Workshop repo</a>
+              </div>
+            </div>
+          </article>
         </div>
+        <h3 class="cm-label">Events &amp; meetups</h3>
         <div class="community-track" role="group" aria-label="Photos from tech events">
+
+          <figure class="community-card wide">
+            <img src="images/event-pitch-stage.webp"
+                 alt="Amir on stage with a microphone, pitching DataLayer in front of a slide and QR code"
+                 loading="lazy" width="900" height="870" />
+            <figcaption>Pitching DataLayer<span>2026</span></figcaption>
+          </figure>
+
+          <figure class="community-card">
+            <img src="images/event-pitch-outdoor.webp"
+                 alt="Amir speaking into a microphone at an outdoor startup event, pitching DataLayer"
+                 loading="lazy" width="900" height="1351" />
+            <figcaption>DataLayer pitch, outdoors<span>2026</span></figcaption>
+          </figure>
+
+          <figure class="community-card">
+            <img src="images/event-freedom.webp"
+                 alt="Amir at the Freedom 'The Moment of Opportunity 2026' conference backdrop"
+                 loading="lazy" width="900" height="1200" />
+            <figcaption>Freedom: The Moment of Opportunity<span>2026</span></figcaption>
+          </figure>
+
+          <figure class="community-card wide">
+            <img src="images/event-gdg-workshop.webp"
+                 alt="Amir engaged in the GDG Yerevan multi-agent workshop, seated among participants"
+                 loading="lazy" width="900" height="600" />
+            <figcaption>GDG Yerevan workshop<span>June 2026</span></figcaption>
+          </figure>
 
           <figure class="community-card wide">
             <img src="images/event-candid.webp"
@@ -709,32 +690,75 @@
           </figure>
 
         </div>
+        <p class="cm-foot"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 9L12 4 2 9l10 5 10-5z"/><path d="M6 11.5v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5"/></svg>ML Mentor at TUMO Labs · Hackathon: <a href="https://github.com/mrprogrammingx/band-of-agents-hackathon" target="_blank" rel="noopener">lablab.ai multi-agent job assistant</a></p>
+        <p class="sec-more"><a href="/community/">All community activity &rarr;</a></p>
       </div>
     </section>
 
-    <section id="contact" class="section reveal">
-        <div class="container">
-          <div class="contact-panel">
-            <h2>Contact</h2>
-            <p>Interested in hiring or collaborating? Email me at <a href="mailto:info@amir-zare.com">info@amir-zare.com</a>, or connect using the icons below.</p>
-            <div class="social contact-social" style="margin-top:12px">
-              <a class="icon-link" href="mailto:info@amir-zare.com" aria-label="Email"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="18" height="18"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></a>
-              <a class="icon-link" href="https://linkedin.com/in/binahayat00" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="18" height="18"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 24V7h5v17H0zM8 7h4.7v2.3h.1c.7-1.3 2.4-2.7 4.9-2.7C23 6.6 24 9.1 24 13.5V24h-5v-9.6c0-2.3 0-5.3-3.2-5.3-3.2 0-3.7 2.5-3.7 5.1V24H8V7z"/></svg></a>
-              <a class="icon-link" href="https://github.com/mrprogrammingx" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="18" height="18"><path d="M12 .5C5.7.5.6 5.7.6 12c0 5.1 3.3 9.5 7.9 11 .6.1.8-.3.8-.6v-2.1c-3.2.7-3.8-1.4-3.8-1.4-.5-1.2-1.2-1.6-1.2-1.6-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 .1 1.6.7 2 1.1.1-.9.4-1.5.7-1.8-2.6-.3-5.3-1.3-5.3-6 0-1.3.5-2.4 1.2-3.3-.1-.3-.5-1.6.1-3.3 0 0 1-.3 3.3 1.3 1-.3 2-.4 3-.4s2 .1 3 .4c2.3-1.6 3.3-1.3 3.3-1.3.6 1.7.2 3 .1 3.3.8.9 1.2 2 1.2 3.3 0 4.7-2.7 5.7-5.3 6 .4.3.7 1 .7 2v3c0 .3.2.7.8.6 4.6-1.5 7.9-5.9 7.9-11C23.4 5.7 18.3.5 12 .5z"/></svg></a>
-              <a class="icon-link" href="https://www.youtube.com/@AmirZareDev" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="18" height="18"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.2 3.6-6.2 3.6z"/></svg></a>
+    <section id="contact" class="cta-stage" aria-labelledby="cta-title">
+      <div class="cta-light" aria-hidden="true"><span class="cta-src"></span><span class="cta-beam"></span><span class="cta-pool"></span></div>
+      <div class="cta-inner">
+        <h2 id="cta-title" class="cta-title">Let&rsquo;s build <span>something together</span></h2>
+        <p class="cta-sub">Open to full-time and contract roles · remote / hybrid</p>
+        <div class="cta-actions">
+          <a class="cta-btn primary" href="mailto:info@amir-zare.com">Email me <span aria-hidden="true">&#8599;</span></a>
+          <div class="connect connect--up connect--plain" id="connect-footer">
+            <button type="button" class="connect-btn" aria-expanded="false" aria-controls="connect-panel-footer">
+              <span class="connect-label">Connect <span aria-hidden="true">&#8599;</span></span>
+            </button>
+            <div class="connect-panel" id="connect-panel-footer">
+                <a class="connect-row" href="https://linkedin.com/in/binahayat00" target="_blank" rel="noopener"><span class="connect-dot" data-brand="linkedin" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 24V7h5v17H0zM8 7h4.7v2.3h.1c.7-1.3 2.4-2.7 4.9-2.7C23 6.6 24 9.1 24 13.5V24h-5v-9.6c0-2.3 0-5.3-3.2-5.3-3.2 0-3.7 2.5-3.7 5.1V24H8V7z"/></svg></span><span>LinkedIn</span></a>
+                <a class="connect-row" href="mailto:info@amir-zare.com"><span class="connect-dot" data-brand="email" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></span><span>info@amir-zare.com</span></a>
+                <a class="connect-row" href="https://github.com/mrprogrammingx" target="_blank" rel="noopener"><span class="connect-dot" data-brand="github" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15"><path d="M12 .5C5.7.5.6 5.7.6 12c0 5.1 3.3 9.5 7.9 11 .6.1.8-.3.8-.6v-2.1c-3.2.7-3.8-1.4-3.8-1.4-.5-1.2-1.2-1.6-1.2-1.6-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 .1 1.6.7 2 1.1.1-.9.4-1.5.7-1.8-2.6-.3-5.3-1.3-5.3-6 0-1.3.5-2.4 1.2-3.3-.1-.3-.5-1.6.1-3.3 0 0 1-.3 3.3 1.3 1-.3 2-.4 3-.4s2 .1 3 .4c2.3-1.6 3.3-1.3 3.3-1.3.6 1.7.2 3 .1 3.3.8.9 1.2 2 1.2 3.3 0 4.7-2.7 5.7-5.3 6 .4.3.7 1 .7 2v3c0 .3.2.7.8.6 4.6-1.5 7.9-5.9 7.9-11C23.4 5.7 18.3.5 12 .5z"/></svg></span><span>GitHub</span></a>
+                <a class="connect-row" href="https://www.youtube.com/@AmirZareDev" target="_blank" rel="noopener"><span class="connect-dot" data-brand="youtube" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.2 3.6-6.2 3.6z"/></svg></span><span>YouTube</span></a>
             </div>
           </div>
+          <a class="cta-btn" href="/resume.html">View resume</a>
         </div>
-      </section>
+      </div>
+    </section>
   </main>
 
-  <footer class="site-footer">
+  <footer class="site-footer footer-rich">
     <div class="container">
-      <small>© <span id="year"></span> Amir Zare — AI Data Engineer. Built with HTML & CSS.</small>
+      <div class="footer-line" aria-hidden="true"></div>
+      <div class="footer-cols">
+        <div class="footer-brand">
+          <a class="logo" href="/">Amir Zare</a>
+          <p>AI Data Engineer and founder of DataLayer. Turning raw data into real decisions.</p>
+          <p class="footer-loc"><span class="footer-dot" aria-hidden="true"></span>Based in Yerevan, Armenia</p>
+        </div>
+        <nav aria-label="Footer">
+          <h3>Navigation</h3>
+          <a href="/">Home</a>
+          <a href="/about/">About</a>
+          <a href="/projects/">Projects</a>
+          <a href="/community/">Community</a>
+          <a href="/resume.html" target="_blank" rel="noopener" aria-label="Resume (opens in a new tab)">Resume &#8599;</a>
+        </nav>
+        <div>
+          <h3>Connect</h3>
+          <a href="https://linkedin.com/in/binahayat00" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 24V7h5v17H0zM8 7h4.7v2.3h.1c.7-1.3 2.4-2.7 4.9-2.7C23 6.6 24 9.1 24 13.5V24h-5v-9.6c0-2.3 0-5.3-3.2-5.3-3.2 0-3.7 2.5-3.7 5.1V24H8V7z"/></svg>LinkedIn</a>
+          <a href="https://github.com/mrprogrammingx" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15"><path d="M12 .5C5.7.5.6 5.7.6 12c0 5.1 3.3 9.5 7.9 11 .6.1.8-.3.8-.6v-2.1c-3.2.7-3.8-1.4-3.8-1.4-.5-1.2-1.2-1.6-1.2-1.6-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 .1 1.6.7 2 1.1.1-.9.4-1.5.7-1.8-2.6-.3-5.3-1.3-5.3-6 0-1.3.5-2.4 1.2-3.3-.1-.3-.5-1.6.1-3.3 0 0 1-.3 3.3 1.3 1-.3 2-.4 3-.4s2 .1 3 .4c2.3-1.6 3.3-1.3 3.3-1.3.6 1.7.2 3 .1 3.3.8.9 1.2 2 1.2 3.3 0 4.7-2.7 5.7-5.3 6 .4.3.7 1 .7 2v3c0 .3.2.7.8.6 4.6-1.5 7.9-5.9 7.9-11C23.4 5.7 18.3.5 12 .5z"/></svg>GitHub</a>
+          <a href="https://www.youtube.com/@AmirZareDev" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.2 3.6-6.2 3.6z"/></svg>YouTube</a>
+          <a href="mailto:info@amir-zare.com"><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>Email</a>
+          <a class="footer-sponsor" href="https://github.com/sponsors/mrprogrammingx" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.7 4.5c2.1 0 3.6 1.2 4.3 2.4h2c.7-1.2 2.2-2.4 4.3-2.4 3.7 0 5.8 3.9 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg>Sponsor</a>
+        </div>
+        <div>
+          <h3>Built</h3>
+          <a href="https://usedatalayer.com" target="_blank" rel="noopener">DataLayer &#8599;</a>
+          <a href="https://usedatalayer.com/products/evolution-agent" target="_blank" rel="noopener">Evolution Agent &#8599;</a>
+          <a href="/projects/flowfleet/">FlowFleet</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <small>© <span id="year"></span> Amir Zare — AI Data Engineer</small>
+        <a href="#" class="footer-top">Back to top <span aria-hidden="true">&#8593;</span></a>
+      </div>
     </div>
   </footer>
 
-  <script src="/script.js" defer></script>
+  <script src="/script.js?v=20261118a" defer></script>
 </body>
 
 </html>

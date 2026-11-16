@@ -20,7 +20,9 @@
           io.unobserve(el);
         }
       });
-    },{threshold:0.12});
+    // A ratio threshold never fires for sections taller than the viewport divided by the ratio
+    // (the projects section is ~9000px tall on phones), so trigger on the first visible pixels.
+    },{threshold:0, rootMargin:'0px 0px -60px 0px'});
     reveals.forEach(r=>io.observe(r));
   } else {
     // fallback
@@ -83,7 +85,7 @@
       if(!mbTick){
         mbTick = true;
         requestAnimationFrame(()=>{
-          const social = document.querySelector('.social');
+          const social = document.querySelector('.site-header .social');
           if(social) social.style.transform = `translate3d(${_mx*6}px, ${_my*4}px, 0)`;
           mbTick = false;
         });
@@ -189,6 +191,51 @@
       img.addEventListener('error', ()=>{ img.style.display = 'none'; });
     }
   });
+  // Project "Read more" toggles: show/hide the full Problem / Solution / Impact details in place.
+  q('.proj-more').forEach(btn => {
+    const panel = document.getElementById(btn.getAttribute('aria-controls'));
+    const label = btn.querySelector('span');
+    if (!panel) return;
+    btn.addEventListener('click', () => {
+      const open = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!open));
+      panel.hidden = open;
+      if (label) label.textContent = open ? 'Read more' : 'Show less';
+    });
+  });
+
+  // "Connect" buttons (header and footer): open the social links panel on click/tap (hover is CSS-only).
+  q('.connect').forEach(wrap => {
+    const btn = wrap.querySelector('.connect-btn');
+    if (!btn) return;
+    const setOpen = open => { wrap.classList.toggle('open', open); btn.setAttribute('aria-expanded', String(open)); };
+    btn.addEventListener('click', () => setOpen(!wrap.classList.contains('open')));
+    document.addEventListener('click', e => { if (!wrap.contains(e.target)) setOpen(false); });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && wrap.classList.contains('open')) { setOpen(false); btn.focus(); }
+    });
+  });
+
+  // Pill nav: mark the link for the section currently in view.
+  (function(){
+    const links = q('.nav-pill a[data-section]');
+    if (!links.length) return;
+    const sections = links.map(a => a.dataset.section === 'top' ? null : document.getElementById(a.dataset.section));
+    let ticking = false;
+    const update = () => {
+      ticking = false;
+      const y = 140;
+      let active = 0;
+      sections.forEach((s, i) => { if (s && s.getBoundingClientRect().top <= y) active = i; });
+      links.forEach((a, i) => { if (i === active) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current'); });
+    };
+    window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+    update();
+  })();
+
+  // Resume "Save as PDF" button: opens the browser print dialog (print styles lay out an A4 page).
+  q('[data-print]').forEach(b => b.addEventListener('click', () => window.print()));
+
   // small enhancement: current year (used by all pages)
   (function setYear() {
     try {

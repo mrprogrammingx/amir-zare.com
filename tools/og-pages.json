@@ -1,0 +1,128 @@
+[
+  {
+    "slug": "home",
+    "title": "Amir Zare",
+    "subtitle": "AI Data Engineer · Founder of DataLayer",
+    "image": "/images/amir-portrait.webp",
+    "fit": "portrait"
+  },
+  {
+    "slug": "about",
+    "title": "About Amir Zare",
+    "subtitle": "7+ years in backend, data platforms, and production AI",
+    "image": "/images/amir-portrait.webp",
+    "fit": "portrait"
+  },
+  {
+    "slug": "projects",
+    "title": "Projects",
+    "subtitle": "Streaming platforms, lakehouses, analytics, and AI agents",
+    "image": "/images/flowfleet.webp",
+    "fit": "contain"
+  },
+  {
+    "slug": "community",
+    "title": "Community & Events",
+    "subtitle": "Teaching, workshops, and meetups in Yerevan",
+    "image": "/images/gdg-workshop-room.webp",
+    "fit": "cover"
+  },
+  {
+    "slug": "datalayer-evolution-agent",
+    "title": "DataLayer Evolution Agent",
+    "subtitle": "LLM growth intelligence, live in production",
+    "image": "/images/evolution-agent.webp",
+    "fit": "cover"
+  },
+  {
+    "slug": "flowfleet",
+    "title": "FlowFleet",
+    "subtitle": "Real-time logistics data platform",
+    "image": "/images/flowfleet.webp",
+    "fit": "contain"
+  },
+  {
+    "slug": "cookie-cats-ab-test",
+    "title": "A/B Test Analysis: Cookie Cats",
+    "subtitle": "Does moving a game's progress gate hurt retention?",
+    "image": "/images/ab-test.webp",
+    "fit": "contain"
+  },
+  {
+    "slug": "crypto-analytics-lakehouse",
+    "title": "Crypto Analytics Lakehouse",
+    "subtitle": "From real-time trades to analytics-ready models",
+    "image": "/images/crypto-lakehouse.webp",
+    "fit": "contain"
+  },
+  {
+    "slug": "run-walk",
+    "title": "Run/Walk Data Pipeline",
+    "subtitle": "Batch telemetry pipeline: CSV → Parquet → DuckDB",
+    "image": "/images/run-walk.png",
+    "fit": "cover"
+  },
+  {
+    "slug": "analytics",
+    "title": "Claude Code Analytics Platform",
+    "subtitle": "Analytics and forecasting for AI coding telemetry",
+    "image": "/images/analytics.png",
+    "fit": "cover"
+  },
+  {
+    "slug": "classic-web-based-online-chat-application",
+    "title": "Real-Time Chat Application",
+    "subtitle": "Rooms, presence, and moderation over WebSockets",
+    "image": "/images/chat.png",
+    "fit": "cover"
+  },
+  {
+    "slug": "ai-phone-assistant",
+    "title": "AI Phone Assistant",
+    "subtitle": "A voice agent that books barbershop appointments",
+    "image": "/images/ai-phone-assistant.webp",
+    "fit": "cover"
+  },
+  {
+    "slug": "job-hunter",
+    "title": "Job Hunter",
+    "subtitle": "A 7-agent AI job search platform",
+    "image": "/images/job-hunter.webp",
+    "fit": "contain"
+  },
+  {
+    "slug": "agentpages",
+    "title": "AgentPages",
+    "subtitle": "A static-site publishing API for AI agents",
+    "image": "/images/agentpages.webp",
+    "fit": "cover"
+  },
+  {
+    "slug": "voice-narrator",
+    "title": "Voice Narrator",
+    "subtitle": "Local voice cloning for tutorial production",
+    "image": "/images/voice-narrator.webp",
+    "fit": "cover"
+  },
+  {
+    "slug": "barbershop-queue",
+    "title": "Barbershop Queue",
+    "subtitle": "Booking and walk-in queue management",
+    "image": "/images/barbershop-queue.webp",
+    "fit": "contain"
+  },
+  {
+    "slug": "laravel-queue-pipeline",
+    "title": "Laravel Queue Pipeline",
+    "subtitle": "Benchmarking sync vs. queued processing on 1M items",
+    "image": "/images/laravel-queue.webp",
+    "fit": "cover"
+  },
+  {
+    "slug": "evidencehub",
+    "title": "EvidenceHub",
+    "subtitle": "MySQL performance and sharding, backed by benchmarks",
+    "image": "/images/evidencehub.webp",
+    "fit": "cover"
+  }
+]
