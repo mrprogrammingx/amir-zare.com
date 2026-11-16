@@ -13,7 +13,7 @@
   <link rel="icon" href="/favicon-16x16.png" sizes="16x16" type="image/png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
   <link rel="manifest" href="/site.webmanifest">
-    <link rel="stylesheet" href="/styles.css?v=20261116o">
+    <link rel="stylesheet" href="/styles.css?v=20261116p">
   </head>
   <body>
     <!-- scroll progress bar -->
@@ -438,80 +438,101 @@
 
     <section id="experience" class="section reveal">
       <div class="container">
-        <div class="experience-panel">
-          <h2>Experience</h2>
-          <ol class="timeline">
-            <li>
-              <div class="role-header">
-                <strong class="role-title">TUMO Labs — ML Mentor / Volunteer Instructor</strong>
-                <span class="role-date">Aug 2026 – Present · Yerevan, Armenia</span>
-              </div>
-              <ul>
-                <li>Present to and mentor fellow ML students, guiding their learning with hands-on support.</li>
-              </ul>
-            </li>
-
-            <li>
-              <div class="role-header">
-                <strong class="role-title"><a href="https://usedatalayer.com" target="_blank" rel="noopener">DataLayer</a> — Founder / Software &amp; Data Engineer</strong>
-                <span class="role-date">Jan 2024 – Present · Yerevan, Armenia</span>
-              </div>
-              <ul>
-                <li>Founded and lead an AI-powered analytics startup that turns e-commerce sellers' raw sales exports into actionable dashboards (customer segmentation, anomaly and churn detection).</li>
-                <li>Ranked #2 in Data Analytics and #6 among software companies in Armenia by F6S; featured in NEWS.am Tech.</li>
-                <li>Secured $170K+ in non-dilutive credits (Microsoft for Startups, Google for Startups, E2B, DigitalOcean); leading pre-seed fundraising.</li>
-                <li>Designed ETL/ELT pipelines, APIs, and analytics services with Python, FastAPI, and Apache Airflow; Parquet and DuckDB for analytical processing.</li>
-                <li>Shipped the Evolution Agent, a production LLM system that writes a daily prioritized growth brief from internal and marketing data.</li>
-              </ul>
-            </li>
-
-            <li>
-              <div class="role-header">
-                <strong class="role-title">HireToDo — Software Developer</strong>
-                <span class="role-date">Dec 2022 – Dec 2023 · Yerevan, Armenia</span>
-              </div>
-              <ul>
-                <li>Worked on backend and platform features for a hiring and payment platform using Laravel 9/10.</li>
-                <li>Collaborated on frontend integrations (Vue.js / Nuxt.js) and designed GraphQL APIs.</li>
-                <li>Applied clean architecture and SOLID principles; wrote PHPUnit tests to improve reliability.</li>
-              </ul>
-            </li>
-
-            <li>
-              <div class="role-header">
-                <strong class="role-title">Ardakan Float Glass Company — PHP / Laravel Developer</strong>
-                <span class="role-date">Oct 2021 – Nov 2022</span>
-              </div>
-              <ul>
-                <li>Developed enterprise web applications and internal business systems using Laravel.</li>
-                <li>Optimized database operations and handled large datasets (200k+ product records).</li>
-                <li>Implemented service-oriented architecture and maintainability improvements.</li>
-              </ul>
-            </li>
-
-            <li>
-              <div class="role-header">
-                <strong class="role-title">Paziresh24 — PHP Developer</strong>
-                <span class="role-date">Jun 2021 – Oct 2021</span>
-              </div>
-              <ul>
-                <li>Contributed to backend systems for a high-traffic healthcare platform and supported stability.</li>
-                <li>Worked on performance optimizations and production application maintenance.</li>
-              </ul>
-            </li>
-
-            <li>
-              <div class="role-header">
-                <strong class="role-title">Mahya Pardaz Company — Web Developer (CakePHP)</strong>
-                <span class="role-date">Aug 2019 – Jun 2021</span>
-              </div>
-              <ul>
-                <li>Built and maintained 15+ custom municipal and enterprise applications using CakePHP 4.</li>
-                <li>Implemented backend business logic, mentored junior developers, and improved engineering practices.</li>
-              </ul>
-            </li>
-          </ol>
+        <div class="xp-intro">
+          <h2 class="xp-title">Experience Timeline</h2>
+          <p class="xp-sub">From enterprise backend engineering to data platforms and AI</p>
         </div>
+        <ol class="xp-timeline">
+          <li class="xp-item">
+            <article class="xp-card">
+              <header class="xp-head">
+                <span class="xp-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 9L12 4 2 9l10 5 10-5z"/><path d="M6 11.5v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5"/></svg></span>
+                <div>
+                  <h3 class="xp-role">ML Mentor / Volunteer Instructor</h3>
+                  <p class="xp-org">TUMO Labs</p>
+                </div>
+              </header>
+              <p class="xp-date">Aug 2026 – Present · Yerevan, Armenia</p>
+              <p class="xp-text">Mentor and present to machine learning students, guiding hands-on projects after leading a 4-student team through the TUMO Labs ML program.</p>
+              <ul class="xp-tags" aria-label="Skills"><li>Machine Learning</li><li>Mentoring</li><li>scikit-learn</li><li>PyTorch</li></ul>
+            </article>
+          </li>
+
+          <li class="xp-item">
+            <article class="xp-card">
+              <header class="xp-head">
+                <span class="xp-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15c-1 1-1.5 4-1.5 4s3-.5 4-1.5"/><path d="M9 15l-3-3c1-4 5-9 12-9 0 7-5 11-9 12z"/><circle cx="14.5" cy="9.5" r="1.5"/></svg></span>
+                <div>
+                  <h3 class="xp-role">Founder / Software &amp; Data Engineer</h3>
+                  <p class="xp-org"><a href="https://usedatalayer.com" target="_blank" rel="noopener">DataLayer</a></p>
+                </div>
+              </header>
+              <p class="xp-date">Jan 2024 – Present · Yerevan, Armenia</p>
+              <p class="xp-text">Founded and lead an AI-powered analytics startup that turns e-commerce sellers’ sales exports into dashboards with segmentation, anomaly, and churn detection. Ranked #2 in Data Analytics and #6 among software companies in Armenia by F6S; secured $170K+ in startup credits.</p>
+              <ul class="xp-tags" aria-label="Skills"><li>Python</li><li>FastAPI</li><li>Airflow</li><li>DuckDB</li><li>LLM apps</li></ul>
+            </article>
+          </li>
+
+          <li class="xp-item">
+            <article class="xp-card">
+              <header class="xp-head">
+                <span class="xp-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M3 13h18"/></svg></span>
+                <div>
+                  <h3 class="xp-role">Software Developer</h3>
+                  <p class="xp-org">HireToDo</p>
+                </div>
+              </header>
+              <p class="xp-date">Dec 2022 – Dec 2023 · Yerevan, Armenia</p>
+              <p class="xp-text">Built backend and platform features for a hiring and payments platform: GraphQL APIs on Laravel 9/10, Vue and Nuxt integrations, clean architecture, and PHPUnit tests.</p>
+              <ul class="xp-tags" aria-label="Skills"><li>Laravel</li><li>GraphQL</li><li>Vue.js</li><li>PHPUnit</li></ul>
+            </article>
+          </li>
+
+          <li class="xp-item">
+            <article class="xp-card">
+              <header class="xp-head">
+                <span class="xp-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v16"/><path d="M16 9h2a2 2 0 0 1 2 2v10"/><path d="M8 7h4M8 11h4M8 15h4M2 21h20"/></svg></span>
+                <div>
+                  <h3 class="xp-role">PHP / Laravel Developer</h3>
+                  <p class="xp-org">Ardakan Float Glass Company</p>
+                </div>
+              </header>
+              <p class="xp-date">Oct 2021 – Nov 2022</p>
+              <p class="xp-text">Developed enterprise web applications and internal systems handling 200,000+ product records, with optimized database operations and a service-oriented architecture.</p>
+              <ul class="xp-tags" aria-label="Skills"><li>Laravel</li><li>MySQL</li><li>Reporting systems</li></ul>
+            </article>
+          </li>
+
+          <li class="xp-item">
+            <article class="xp-card">
+              <header class="xp-head">
+                <span class="xp-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3-7 4 14 3-7h4"/></svg></span>
+                <div>
+                  <h3 class="xp-role">PHP Developer</h3>
+                  <p class="xp-org">Paziresh24</p>
+                </div>
+              </header>
+              <p class="xp-date">Jun 2021 – Oct 2021</p>
+              <p class="xp-text">Worked on backend systems for a high-traffic healthcare platform with 500K+ app downloads, supporting performance and stability improvements.</p>
+              <ul class="xp-tags" aria-label="Skills"><li>PHP</li><li>Performance</li><li>High traffic</li></ul>
+            </article>
+          </li>
+
+          <li class="xp-item">
+            <article class="xp-card">
+              <header class="xp-head">
+                <span class="xp-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 8l-5 4 5 4"/><path d="M16 8l5 4-5 4"/><path d="M14 4l-4 16"/></svg></span>
+                <div>
+                  <h3 class="xp-role">Web Developer</h3>
+                  <p class="xp-org">Mahya Pardaz Company</p>
+                </div>
+              </header>
+              <p class="xp-date">Aug 2019 – Jun 2021</p>
+              <p class="xp-text">Built 15+ custom applications for municipal and enterprise clients with CakePHP 4, and mentored junior developers in PHP fundamentals.</p>
+              <ul class="xp-tags" aria-label="Skills"><li>CakePHP</li><li>PHP</li><li>Mentoring</li></ul>
+            </article>
+          </li>
+        </ol>
       </div>
     </section>
 
