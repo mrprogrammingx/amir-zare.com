@@ -126,6 +126,40 @@
           </div>
         </div>
 
+        <!-- FlowFleet: featured project -->
+        <div class="featured-project reveal">
+          <div class="featured-media">
+            <div class="img-placeholder">
+              <div class="img-fallback" aria-hidden="true">FlowFleet</div>
+            </div>
+          </div>
+          <div class="featured-content">
+            <h3><span class="proj-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none"
+                  stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M1 3h15v13H1z" />
+                  <path d="M16 8h4l3 3v5h-7V8z" />
+                  <circle cx="5.5" cy="18.5" r="2.5" />
+                  <circle cx="18.5" cy="18.5" r="2.5" />
+                </svg></span> FlowFleet — Real-Time Logistics Data Platform</h3>
+            <p class="muted"><strong>Problem:</strong> A delivery company needs live driver locations, geofencing, and
+              analytics from operational data, without losing or duplicating events when things fail.</p>
+            <p><strong>Solution:</strong> A production-style streaming platform built in 8 phases: change data capture
+              from PostgreSQL/PostGIS with Debezium, Kafka topics with Avro and Schema Registry, Apache Flink jobs in
+              Java 21 (event-time windows, watermarks, broadcast-state geofencing), and idempotent sinks to TimescaleDB,
+              ClickHouse, and BigQuery.</p><br>
+            <p><strong>Impact:</strong> Load-tested from 1k to 50k events/second with p50/p95/p99 latency histograms,
+              then tuned with the Flink autoscaler and consumer HPA. Engineered for failure with a dead-letter queue,
+              late-data handling, and checkpoint/savepoint recovery. Deployed on Kubernetes with Helm and Argo CD,
+              observed with Prometheus and Grafana.</p>
+            <p class="muted"><strong>Tech:</strong> Java 21, Debezium, Kafka, Avro, Apache Flink, TimescaleDB, ClickHouse,
+              BigQuery, Kubernetes, Helm, Argo CD, Prometheus, Grafana</p>
+            <p style="margin-top:10px">
+              <a class="btn primary" href="https://github.com/mrprogrammingx/real-time-logistics-data-platform"
+                target="_blank" rel="noopener">Repository</a>
+            </p>
+          </div>
+        </div>
+
         <!-- A/B Test Analysis: featured project -->
         <div class="featured-project reveal">
           <div class="featured-media">
@@ -368,6 +402,19 @@
             <p style="margin-top:10px"><a class="btn" href="https://github.com/mrprogrammingx/Queue-sample"
                 target="_blank" rel="noopener">Repository</a></p>
           </div>
+          <div class="card reveal">
+            <div class="img-placeholder card-media">
+              <div class="img-fallback" aria-hidden="true">EvidenceHub</div>
+            </div>
+            <h3>EvidenceHub — MySQL Performance &amp; Sharding <small class="muted">(in progress)</small></h3>
+            <p class="muted">Migrating a deliberately poor legacy MySQL schema to an optimized 4-shard design, where every
+              performance claim is backed by a measured benchmark. 8 critical queries with latency SLOs (p95 under
+              50 ms), a Locust + EXPLAIN ANALYZE harness, and data scaling to 20M rows.</p>
+            <p class="muted"><strong>Tech:</strong> Python 3.12, MySQL 8, Redis, SQLAlchemy, Alembic, Locust, Docker
+              Compose</p>
+            <p style="margin-top:10px"><a class="btn" href="https://github.com/mrprogrammingx/EvidenceHub"
+                target="_blank" rel="noopener">Repository</a></p>
+          </div>
         </div>
 
       </div>
@@ -385,6 +432,7 @@
               <span class="chip">dbt</span>
               <span class="chip">Spark</span>
               <span class="chip">Kafka</span>
+              <span class="chip">Apache Flink</span>
               <span class="chip">BigQuery</span>
               <span class="chip">Docker</span>
               <span class="chip">A/B Testing</span>
@@ -429,6 +477,9 @@
               <span class="skill-pill">Streamlit</span>
               <span class="skill-pill">Tableau</span>
               <span class="skill-pill">GitHub Actions</span>
+              <span class="skill-pill">Kubernetes / Helm</span>
+              <span class="skill-pill">Argo CD</span>
+              <span class="skill-pill">Prometheus / Grafana</span>
             </div>
 
             <h3 style="margin-top:14px">Technologies</h3>
@@ -436,6 +487,9 @@
               <span class="skill-pill">DuckDB</span>
               <span class="skill-pill">Parquet</span>
               <span class="skill-pill">Kafka</span>
+              <span class="skill-pill">Flink</span>
+              <span class="skill-pill">Debezium (CDC)</span>
+              <span class="skill-pill">ClickHouse</span>
               <span class="skill-pill">BigQuery</span>
               <span class="skill-pill">Snowflake</span>
               <span class="skill-pill">Postgres / MySQL</span>

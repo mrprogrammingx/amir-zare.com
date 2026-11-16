@@ -180,7 +180,7 @@
 
           <div class="mt-12">
             <h4>AI Phone Assistant — Voice Booking Agent for a Barbershop (2026)</h4>
-            <p class="muted">Built for Suisse IT's Challenge A on Suisse Line's AI voice agent: callers book, find, or cancel appointments while the agent calls seven live tools on my FastAPI booking system, the single source of truth. Designed a Smart Cancellation Waitlist (consent first, ordered offers, first confirmed booking wins). Atomic booking lock tested with 12 simultaneous bookings, retry-safe booking, constant-time path-token auth with log redaction, HMAC-signed webhook fallback, and no names or numbers in logs. 1,720 automated tests including Hypothesis property tests and mutation checks. <em>Tech: Python, FastAPI, SQLite, React, Hypothesis.</em></p>
+            <p class="muted">Built for Suisse IT's Challenge A on Suisse Line's voice agent platform: callers check services and availability, book, find and cancel appointments, and join a waitlist. A FastAPI booking backend exposes seven live tools during calls, with one database as the single source of truth for the website, staff dashboard, and phone channel. Atomic booking lock verified with 12 simultaneous requests; idempotent booking and cancellation so the agent can safely retry; a structured ok/error-code contract and a read-back step before any booking. Shipped a Smart Cancellation Waitlist (consent first, oldest-first time-limited offers, first confirmed booking wins, 30-day retention). Token-scoped routes, request-size limits, only the assistant exposed through a Cloudflare tunnel, and no names or numbers in logs. <em>Tech: Python, FastAPI, SQLite, Suisse Line AI voice agent, Cloudflare Tunnel, Pytest.</em></p>
             <p><a href="https://github.com/mrprogrammingx/ai-phone-assistant" target="_blank" rel="noopener">Repository</a></p>
           </div>
 
@@ -207,6 +207,18 @@
             <h4>A/B Test Analysis — Cookie Cats Gate Experiment (2026)</h4>
             <p class="muted">Analyzed a 90,189-player mobile-game experiment. Found a significant 0.82 pp (4.3% relative) drop in 7-day retention when moving the gate to level 40 (95% CI −1.33 to −0.31 pp; Holm-adjusted p = 0.0047). SRM check, rank tests, power analysis, and Holm–Bonferroni correction.</p>
             <p><a href="https://github.com/mrprogrammingx/cookie-cats-ab-test" target="_blank" rel="noopener">Repository</a> • <a href="https://public.tableau.com/app/profile/amir.zare8388/viz/CookieCatsABTestGatePlacement/Dashboard1" target="_blank" rel="noopener">Tableau Dashboard</a></p>
+          </div>
+
+          <div class="mt-12">
+            <h4>FlowFleet — Real-Time Logistics Data Platform (2026)</h4>
+            <p class="muted">Production-style real-time streaming platform for a fictional delivery company, delivered in 8 phases with working code, tests, and architecture notes. Change data capture from PostgreSQL/PostGIS with Debezium (snapshot vs. streaming, tombstones, slot and connector recovery); Kafka topics with Avro and Schema Registry and a high-volume driver-location simulator; Apache Flink jobs in Java 21 with keyed state, event-time windows, watermarks, timers, side outputs, and broadcast-state geofencing with JTS. Sinks to TimescaleDB and ClickHouse with batching, retries, and idempotent writes, plus BigQuery. Dead-letter queue, late-data handling, checkpoint/savepoint recovery, and backpressure experiments. Deployed on Kubernetes with Helm, the Flink Kubernetes Operator, and Argo CD; load-tested from 1k to 50k events/second with p50/p95/p99 latency histograms, tuned with the Flink autoscaler and consumer HPA; observed with Prometheus and Grafana. <em>Tech: Java 21, Spring Boot, PostgreSQL/PostGIS, Debezium, Kafka, Avro, Schema Registry, Flink, TimescaleDB, ClickHouse, BigQuery, Kubernetes, Helm, Argo CD, Prometheus, Grafana.</em></p>
+            <p><a href="https://github.com/mrprogrammingx/real-time-logistics-data-platform" target="_blank" rel="noopener">Repository</a></p>
+          </div>
+
+          <div class="mt-12">
+            <h4>EvidenceHub — MySQL Performance &amp; Sharding Platform (2026, in progress)</h4>
+            <p class="muted">Reference platform migrating a deliberately poor legacy MySQL schema to an optimized, sharded design, with every performance claim backed by a measured benchmark. 4-shard MySQL 8 cluster with a catalog database and Redis in Docker Compose, a data generator scaling to 20M rows, 8 mission-critical queries with latency SLOs (p95 under 50 ms), and a Locust + EXPLAIN ANALYZE harness that produced the baseline report. mypy --strict, Ruff, Pytest/Hypothesis, CI with full-history secret scanning, and architecture decision records. Roadmap: online schema migration, resharding, Kafka with DLQ, Redis-cached FastAPI, and a Spark/Iceberg warehouse on Airflow. <em>Tech: Python 3.12, MySQL 8, Redis, SQLAlchemy, Alembic, Locust, Pytest, GitHub Actions.</em></p>
+            <p><a href="https://github.com/mrprogrammingx/EvidenceHub" target="_blank" rel="noopener">Repository</a></p>
           </div>
 
           <div class="mt-12">
