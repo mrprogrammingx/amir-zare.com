@@ -204,18 +204,17 @@
     });
   });
 
-  // Header "Connect" button: opens the social links panel on click/tap (hover is CSS-only).
-  (function(){
-    const wrap = document.getElementById('connect');
-    const btn = document.getElementById('connect-btn');
-    if (!wrap || !btn) return;
+  // "Connect" buttons (header and footer): open the social links panel on click/tap (hover is CSS-only).
+  q('.connect').forEach(wrap => {
+    const btn = wrap.querySelector('.connect-btn');
+    if (!btn) return;
     const setOpen = open => { wrap.classList.toggle('open', open); btn.setAttribute('aria-expanded', String(open)); };
     btn.addEventListener('click', () => setOpen(!wrap.classList.contains('open')));
     document.addEventListener('click', e => { if (!wrap.contains(e.target)) setOpen(false); });
     document.addEventListener('keydown', e => {
       if (e.key === 'Escape' && wrap.classList.contains('open')) { setOpen(false); btn.focus(); }
     });
-  })();
+  });
 
   // Pill nav: mark the link for the section currently in view.
   (function(){
