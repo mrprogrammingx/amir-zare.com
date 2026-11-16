@@ -95,6 +95,9 @@
         <div class="featured-project reveal">
           <div class="featured-media">
             <div class="img-placeholder">
+              <img class="img-src" src="images/evolution-agent.webp"
+                alt="DataLayer Evolution Agent: AI teammate for research, strategy, experiments, and automation"
+                loading="lazy" width="1000" height="667">
               <div class="img-fallback" aria-hidden="true">Growth Agent</div>
             </div>
           </div>
@@ -127,6 +130,9 @@
         <div class="featured-project reveal">
           <div class="featured-media">
             <div class="img-placeholder">
+              <img class="img-src img-contain" src="images/ab-test.webp"
+                alt="Bar charts of 1-day and 7-day retention for gate 30 vs gate 40 with 95% confidence intervals"
+                loading="lazy" width="900" height="360">
               <div class="img-fallback" aria-hidden="true">A/B Testing</div>
             </div>
           </div>
@@ -159,6 +165,9 @@
         <div class="featured-project reveal">
           <div class="featured-media">
             <div class="img-placeholder">
+              <img class="img-src img-contain dark" src="images/crypto-lakehouse.webp"
+                alt="Architecture: Binance WebSocket to Kafka to Parquet on GCS with PySpark, into BigQuery and DuckDB, modeled in dbt bronze, silver, gold"
+                loading="lazy" width="900" height="675">
               <div class="img-fallback" aria-hidden="true">Crypto Lakehouse</div>
             </div>
           </div>
@@ -278,6 +287,11 @@
         <h3 style="margin-top:24px">More projects</h3>
         <div class="cards">
           <div class="card reveal">
+            <div class="img-placeholder card-media">
+              <img class="img-src img-contain dark" src="images/job-hunter.webp"
+                alt="7-Agent AI Job Search Platform with a live agent stream" loading="lazy" width="900" height="675">
+              <div class="img-fallback" aria-hidden="true">Job Hunter</div>
+            </div>
             <h3>Job Hunter — 7-Agent AI Job Search Platform</h3>
             <p class="muted">Multi-agent platform where 7 specialized AI agents handle job discovery, resume tailoring,
               cover letters, company research, outreach, interview prep, and tracking. SSE streaming for real-time
@@ -287,6 +301,11 @@
                 target="_blank" rel="noopener">Repository</a></p>
           </div>
           <div class="card reveal">
+            <div class="img-placeholder card-media">
+              <img class="img-src img-top" src="images/agentpages.webp"
+                alt="AgentPages home page: static websites, published by AI agents" loading="lazy" width="900" height="675">
+              <div class="img-fallback" aria-hidden="true">AgentPages</div>
+            </div>
             <h3>AgentPages — Site Publishing API for AI Agents</h3>
             <p class="muted">HTTP API that lets AI agents publish static websites: send files as JSON, get a live URL.
               Untrusted pages served from a separate origin inside a CSP sandbox, with tests that verify the isolation
@@ -294,6 +313,12 @@
             <p class="muted"><strong>Tech:</strong> Python, FastAPI, SQLite, CSP · Private repository</p>
           </div>
           <div class="card reveal">
+            <div class="img-placeholder card-media">
+              <img class="img-src img-top" src="images/voice-narrator.webp"
+                alt="Voice Narrator app showing a generated narration waveform and sentence list" loading="lazy"
+                width="900" height="538">
+              <div class="img-fallback" aria-hidden="true">Voice Narrator</div>
+            </div>
             <h3>Voice Narrator — Local Voice Cloning</h3>
             <p class="muted">Fully local voice-cloning narration tool for programming tutorials: a two-stage TTS +
               voice-conversion pipeline, batch processing, and a pronunciation dictionary. No recurring fees; recordings
@@ -303,11 +328,28 @@
                 target="_blank" rel="noopener">Repository</a></p>
           </div>
           <div class="card reveal">
+            <div class="img-placeholder card-media">
+              <div class="img-fallback" aria-hidden="true">Barbershop Queue</div>
+            </div>
             <h3>Barbershop Queue — Booking &amp; Queue Management</h3>
             <p class="muted">Full-stack booking and walk-in queue system: FastAPI backend, React admin panel with
               session-cookie auth, animated marketing site, and switchable email providers with a dry-run mode.</p>
             <p class="muted"><strong>Tech:</strong> FastAPI, SQLAlchemy, React, Tailwind</p>
             <p style="margin-top:10px"><a class="btn" href="https://github.com/mrprogrammingx/barbershop-queue"
+                target="_blank" rel="noopener">Repository</a></p>
+          </div>
+          <div class="card reveal">
+            <div class="img-placeholder card-media">
+              <img class="img-src" src="images/laravel-queue.webp"
+                alt="Laravel queue pipeline for 1M items: response time cut from 8.4s to 1.2s with Redis queue workers"
+                loading="lazy" width="900" height="507">
+              <div class="img-fallback" aria-hidden="true">Laravel Queue</div>
+            </div>
+            <h3>Laravel Queue Pipeline — 1M Items</h3>
+            <p class="muted">Benchmarked synchronous vs. queue-based processing over 200K orders and 1M items. Moved
+              invoice and PDF generation to Redis queue workers monitored with Horizon, removing request timeouts.</p>
+            <p class="muted"><strong>Tech:</strong> PHP, Laravel, Redis, Horizon, DomPDF</p>
+            <p style="margin-top:10px"><a class="btn" href="https://github.com/mrprogrammingx/Queue-sample"
                 target="_blank" rel="noopener">Repository</a></p>
           </div>
         </div>
