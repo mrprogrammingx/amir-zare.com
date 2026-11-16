@@ -56,6 +56,27 @@
     "fit": "contain"
   },
   {
+    "slug": "run-walk",
+    "title": "Run/Walk Data Pipeline",
+    "subtitle": "Batch telemetry pipeline: CSV → Parquet → DuckDB",
+    "image": "/images/run-walk.png",
+    "fit": "cover"
+  },
+  {
+    "slug": "analytics",
+    "title": "Claude Code Analytics Platform",
+    "subtitle": "Analytics and forecasting for AI coding telemetry",
+    "image": "/images/analytics.png",
+    "fit": "cover"
+  },
+  {
+    "slug": "classic-web-based-online-chat-application",
+    "title": "Real-Time Chat Application",
+    "subtitle": "Rooms, presence, and moderation over WebSockets",
+    "image": "/images/chat.png",
+    "fit": "cover"
+  },
+  {
     "slug": "ai-phone-assistant",
     "title": "AI Phone Assistant",
     "subtitle": "A voice agent that books barbershop appointments",

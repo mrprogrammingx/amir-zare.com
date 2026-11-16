@@ -18,7 +18,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "tools"))
 from content import ABOUT, CASE_STUDIES, COMMUNITY, PROJECTS, SITE  # noqa: E402
 
-CSS_VERSION = "20261117v"
+CSS_VERSION = "20261117w"
 JS_VERSION = "20261116d"
 LASTMOD = "2026-11-16"
 
@@ -251,25 +251,78 @@ def img_class(fit):
 
 # ---------------------------------------------------------------- pages
 
+def ppath(p):
+    return p.get("path", f"/projects/{p['slug']}/")
+
+
+ALL = PROJECTS[:4] + CASE_STUDIES + PROJECTS[4:]
+
+FEATURE_ICON = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg>'
+
+
+def arch_html(a):
+    flow = []
+    for i, node in enumerate(a["flow"]):
+        if i:
+            flow.append(f'<span class="arch-link" aria-hidden="true"><span class="arch-dot" style="--d:{(i - 1) * 0.7:.1f}s"></span></span>')
+        flow.append(f'<span class="arch-node">{node}</span>')
+    outs = "".join(f'<span class="arch-node out">{o}</span>' for o in a["out"])
+    labels = " &rarr; ".join(plain(n) for n in a["flow"]) + "; serves " + ", ".join(plain(o) for o in a["out"])
+    return f'''<section class="cs-sec">
+          <h2>Architecture</h2>
+          <div class="arch" role="img" aria-label="{esc(labels)}">
+            <div class="arch-flow">{"".join(flow)}</div>
+            <div class="arch-down" aria-hidden="true"><span class="arch-dot v"></span></div>
+            <div class="arch-out"><span class="arch-out-label">Serves</span>{outs}</div>
+          </div>
+        </section>'''
+
+
+def features_html(features):
+    cards = "".join(f'<div class="cs-feat"><span class="cs-feat-icon">{FEATURE_ICON}</span><h3>{t}</h3><p>{d}</p></div>' for t, d in features)
+    return f'''<section class="cs-sec">
+          <h2>Key features</h2>
+          <div class="cs-feat-grid">{cards}</div>
+        </section>'''
+
+
+def gallery_html(items):
+    figs = "".join(f'<figure class="cs-shot"><img src="{src}" alt="{esc(alt)}" loading="lazy"><figcaption>{alt}</figcaption></figure>' for src, alt in items)
+    return f'''<section class="cs-sec">
+          <h2>Screens</h2>
+          <div class="cs-gallery">{figs}</div>
+        </section>'''
+
+
+def run_html(steps):
+    lis = "".join(
+        f'<li><span class="cs-num">{i + 1}</span><div class="cs-step"><p>{t}</p>'
+        + (f'<pre class="code-sample"><code>{esc(code)}</code></pre>' if code else "") + "</div></li>"
+        for i, (t, code) in enumerate(steps))
+    return f'''<section class="cs-sec">
+          <h2>Run it locally</h2>
+          <ol class="cs-steps">{lis}</ol>
+        </section>'''
+
+
 def all_project_cards():
-    """Cards for the projects hub: generated pages first, then hand-written case studies."""
-    cards = [(p["title"], f"/projects/{p['slug']}/", p["image"], p["summary"], p["category"], p["year"], p.get("image_fit", "cover"))
-             for p in PROJECTS]
-    cards += [(c["title"], c["url"], c["image"], c["summary"], c["category"], c["year"], "cover") for c in CASE_STUDIES]
-    return cards
+    """Cards for the projects hub, in display order."""
+    return [(p["title"], ppath(p), p["image"], p["summary"], p["category"], p["year"], p.get("image_fit", "cover")) for p in ALL]
 
 
 def project_page(p):
-    path = f"/projects/{p['slug']}/"
+    path = ppath(p)
     trail = [("Home", "/"), ("Projects", "/projects/"), (p["title"], path)]
     built = "".join(f"<li>{b}</li>" for b in p["built"])
     impact = "".join(f"<li>{b}</li>" for b in p["impact"])
     note = f'<p class="pg-note">{p["note"]}</p>' if p.get("note") else ""
-    others = [q for q in PROJECTS if q["slug"] != p["slug"]]
-    idx = PROJECTS.index(p)
+    others = [q for q in ALL if q["slug"] != p["slug"]]
+    idx = ALL.index(p)
     more = [others[(idx + k) % len(others)] for k in range(3)]
+    extras_top = (arch_html(p["arch"]) if p.get("arch") else "") + (features_html(p["features"]) if p.get("features") else "")
+    extras_bottom = (gallery_html(p["gallery"]) if p.get("gallery") else "") + (run_html(p["run"]) if p.get("run") else "")
     more_html = "".join(
-        f'<a class="pg-mini" href="/projects/{q["slug"]}/"><span class="pg-mini-cat">{q["category"]}</span>'
+        f'<a class="pg-mini" href="{ppath(q)}"><span class="pg-mini-cat">{q["category"]}</span>'
         f'<span class="pg-mini-title">{q["title"]}</span><span class="pg-mini-sub">{q["subtitle"]}</span></a>' for q in more)
     body = f'''    <article class="section pg">
       <div class="container">
@@ -286,6 +339,7 @@ def project_page(p):
         <figure class="pg-figure{img_class(p.get("image_fit", "cover"))}">
           <img src="{p["image"]}" alt="{esc(plain(p["title"]))}: {esc(plain(p["subtitle"]))}" loading="eager">
         </figure>
+        {extras_top}
         <div class="pg-grid">
           <section class="pg-block wide">
             <h2>The problem</h2>
@@ -304,6 +358,7 @@ def project_page(p):
             {chips(p["tech"])}
           </section>
         </div>
+        {extras_bottom}
         <section class="pg-more">
           <h2>More projects</h2>
           <div class="pg-mini-grid">{more_html}</div>
@@ -524,28 +579,25 @@ def llms_txt():
              f"- [Projects]({SITE['url']}/projects/): all projects with problem, approach, and results",
              f"- [Community]({SITE['url']}/community/): YouTube Python course, GDG Yerevan workshop, mentoring, and events",
              f"- [Resume]({SITE['url']}/resume.html): full resume", "", "## Projects", ""]
-    for p in PROJECTS:
-        lines.append(f"- [{plain(p['title'])}]({SITE['url']}/projects/{p['slug']}/): {plain(p['summary'])}")
-    for c in CASE_STUDIES:
-        lines.append(f"- [{plain(c['title'])}]({SITE['url']}{c['url']}): {plain(c['summary'])}")
+    for p in ALL:
+        lines.append(f"- [{plain(p['title'])}]({SITE['url']}{ppath(p)}): {plain(p['summary'])}")
     lines += ["", "## Contact", "", f"- Email: {SITE['email']}"] + [f"- {u}" for u in SITE["same_as"]] + [""]
     return "\n".join(lines)
 
 
 def outputs():
     files = {}
-    for p in PROJECTS:
-        files[f"projects/{p['slug']}/index.html"] = project_page(p)
+    for p in ALL:
+        files[ppath(p).strip("/") + "/index.html"] = project_page(p)
     files["projects/index.html"] = projects_hub()
     files["about/index.html"] = about_page()
     files["community/index.html"] = community_page()
     files["index.html"] = sync_existing("index.html", home=True)
-    for existing in ["resume.html", "run-walk/index.html", "analytics/index.html", "classic-web-based-online-chat-application/index.html"]:
+    for existing in ["resume.html"]:
         files[existing] = sync_existing(existing)
     paths = [("/", "weekly", "1.0"), ("/about/", "monthly", "0.9"), ("/projects/", "weekly", "0.9"), ("/community/", "monthly", "0.8"),
              ("/resume.html", "monthly", "0.8")]
-    paths += [(f"/projects/{p['slug']}/", "monthly", "0.7") for p in PROJECTS]
-    paths += [(c["url"], "monthly", "0.6") for c in CASE_STUDIES]
+    paths += [(ppath(p), "monthly", "0.7") for p in ALL]
     files["sitemap.xml"] = sitemap(paths)
     files["robots.txt"] = f"User-agent: *\nAllow: /\n\nSitemap: {SITE['url']}/sitemap.xml\n"
     files["llms.txt"] = llms_txt()
@@ -560,7 +612,7 @@ def og_specs():
              {"slug": "projects", "title": "Projects", "subtitle": "Streaming platforms, lakehouses, analytics, and AI agents", "image": "/images/flowfleet.webp", "fit": "contain"},
              {"slug": "community", "title": "Community & Events", "subtitle": "Teaching, workshops, and meetups in Yerevan", "image": "/images/gdg-workshop-room.webp", "fit": "cover"}]
     specs += [{"slug": p["slug"], "title": plain(p["title"]), "subtitle": plain(p["subtitle"]), "image": p["image"],
-               "fit": "contain" if p.get("image_fit", "").startswith("contain") else "cover"} for p in PROJECTS]
+               "fit": "contain" if p.get("image_fit", "").startswith("contain") else "cover"} for p in ALL]
     return specs
 
 

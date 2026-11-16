@@ -1,23 +1,133 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Real-Time Chat Application — Demo</title>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="index, follow">
+  <title>Real-Time Chat Application | Amir Zare</title>
+  <meta name="description" content="A production-minded web chat built with FastAPI and SQLite (WAL): real-time messaging over WebSockets, presence, multi-device sessions, file sharing, and moderation, packaged with Docker and end-to-end tests.">
+  <link rel="canonical" href="https://amir-zare.com/classic-web-based-online-chat-application/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Amir Zare">
+  <meta property="og:title" content="Real-Time Chat Application | Amir Zare">
+  <meta property="og:description" content="A production-minded web chat built with FastAPI and SQLite (WAL): real-time messaging over WebSockets, presence, multi-device sessions, file sharing, and moderation, packaged with Docker and end-to-end tests.">
+  <meta property="og:url" content="https://amir-zare.com/classic-web-based-online-chat-application/">
+  <meta property="og:image" content="https://amir-zare.com/images/og/classic-web-based-online-chat-application.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Real-Time Chat Application | Amir Zare">
+  <meta name="twitter:description" content="A production-minded web chat built with FastAPI and SQLite (WAL): real-time messaging over WebSockets, presence, multi-device sessions, file sharing, and moderation, packaged with Docker and end-to-end tests.">
+  <meta name="twitter:image" content="https://amir-zare.com/images/og/classic-web-based-online-chat-application.jpg">
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
   <link rel="icon" href="/favicon-32x32.png" sizes="32x32" type="image/png">
   <link rel="icon" href="/favicon-16x16.png" sizes="16x16" type="image/png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
   <link rel="manifest" href="/site.webmanifest">
-    <link rel="stylesheet" href="/styles.css?v=20261117v">
-  </head>
-  <body>
-    <header class="site-header">
+  <link rel="stylesheet" href="/styles.css?v=20261117w">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareSourceCode",
+      "name": "Real-Time Chat Application",
+      "headline": "Rooms, presence, and moderation over WebSockets",
+      "description": "A production-minded web chat built with FastAPI and SQLite (WAL): real-time messaging over WebSockets, presence, multi-device sessions, file sharing, and moderation, packaged with Docker and end-to-end tests.",
+      "url": "https://amir-zare.com/classic-web-based-online-chat-application/",
+      "image": "https://amir-zare.com/images/og/classic-web-based-online-chat-application.jpg",
+      "dateCreated": "2026",
+      "author": {
+        "@id": "https://amir-zare.com/#person"
+      },
+      "keywords": "Python, FastAPI, WebSockets, SQLite (WAL), aiosqlite, JWT, JavaScript, Docker, pytest, Playwright",
+      "codeRepository": "https://github.com/mrprogrammingx/classic-web-based-online-chat-application",
+      "programmingLanguage": [
+        "Python",
+        "JavaScript"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://amir-zare.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Projects",
+          "item": "https://amir-zare.com/projects/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Real-Time Chat Application",
+          "item": "https://amir-zare.com/classic-web-based-online-chat-application/"
+        }
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://amir-zare.com/#person",
+      "name": "Amir Zare",
+      "jobTitle": "AI Data Engineer",
+      "description": "Amir Zare is an AI Data Engineer and the founder of DataLayer, based in Yerevan, Armenia. He builds data pipelines, analytics platforms, and production LLM applications.",
+      "url": "https://amir-zare.com/",
+      "image": "https://amir-zare.com/images/amir-portrait.webp",
+      "email": "mailto:info@amir-zare.com",
+      "sameAs": [
+        "https://linkedin.com/in/binahayat00",
+        "https://github.com/mrprogrammingx",
+        "https://www.youtube.com/@AmirZareDev"
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Yerevan",
+        "addressCountry": "AM"
+      },
+      "worksFor": {
+        "@type": "Organization",
+        "@id": "https://usedatalayer.com/#org",
+        "name": "DataLayer",
+        "url": "https://usedatalayer.com"
+      },
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "Yazd University"
+      },
+      "knowsAbout": [
+        "Data engineering",
+        "Apache Airflow",
+        "dbt",
+        "Apache Kafka",
+        "Apache Flink",
+        "BigQuery",
+        "Python",
+        "SQL",
+        "LLM applications",
+        "Retrieval-augmented generation",
+        "Multi-agent systems",
+        "A/B testing",
+        "FastAPI",
+        "Laravel"
+      ]
+    }
+  ]
+}
+  </script>
+</head>
+<body class="subpage">
+  <div id="scroll-progress" aria-hidden="true"></div>
+  <header class="site-header">
       <div class="container header-inner">
         <a class="logo" href="/">Amir Zare</a>
         <nav id="site-nav" class="nav nav-pill" aria-label="Main">
           <a href="/">Home</a>
-          <a href="/projects/">Projects</a>
+          <a href="/projects/" aria-current="page">Projects</a>
           <a href="/#experience">Experience</a>
           <a href="/community/">Community</a>
           <a href="/resume.html" class="nav-ext" target="_blank" rel="noopener" aria-label="Resume (opens in a new tab)">Resume<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
@@ -40,103 +150,67 @@
         </div>
       </div>
     </header>
+  <main>
+    <article class="section pg">
+      <div class="container">
+        <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li><a href="/projects/">Projects</a></li><li aria-current="page">Real-Time Chat Application</li></ol></nav>
+        <header class="pg-head">
+          <p class="pg-eyebrow">Backend · 2026 · Open source</p>
+          <h1 class="pg-title">Real-Time Chat Application</h1>
+          <p class="pg-subtitle">Rooms, presence, and moderation over WebSockets</p>
+          <p class="pg-lead">A production-minded web chat built with FastAPI and SQLite (WAL): real-time messaging over WebSockets, presence, multi-device sessions, file sharing, and moderation, packaged with Docker and end-to-end tests.</p>
+          <ul class="sk-chips"><li class="hot">WebSockets</li><li class="hot">Multi-device sessions</li><li class="hot">pytest + Playwright</li></ul>
+          <div class="pg-actions"><a class="cta-btn primary" href="https://github.com/mrprogrammingx/classic-web-based-online-chat-application" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M12 .5C5.7.5.6 5.7.6 12c0 5.1 3.3 9.5 7.9 11 .6.1.8-.3.8-.6v-2.1c-3.2.7-3.8-1.4-3.8-1.4-.5-1.2-1.2-1.6-1.2-1.6-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 .1 1.6.7 2 1.1.1-.9.4-1.5.7-1.8-2.6-.3-5.3-1.3-5.3-6 0-1.3.5-2.4 1.2-3.3-.1-.3-.5-1.6.1-3.3 0 0 1-.3 3.3 1.3 1-.3 2-.4 3-.4s2 .1 3 .4c2.3-1.6 3.3-1.3 3.3-1.3.6 1.7.2 3 .1 3.3.8.9 1.2 2 1.2 3.3 0 4.7-2.7 5.7-5.3 6 .4.3.7 1 .7 2v3c0 .3.2.7.8.6 4.6-1.5 7.9-5.9 7.9-11C23.4 5.7 18.3.5 12 .5z"/></svg>Repository <span aria-hidden="true">&#8599;</span></a></div>
 
-    <main>
-      <section class="section">
-        <div class="container">
-          <h2>Real-Time Chat Application</h2>
-          <p class="lead">A classic, production-minded web chat application built with FastAPI and SQLite (WAL) supporting real-time messaging, presence, and multi-device sessions. Designed for privacy, reliability, and simple deployments.</p>
-
-          <h3>Project description</h3>
-          <p>This project implements a feature-complete web chat including rooms, private messages, file uploads, presence tracking, and moderation tools. The server is a FastAPI app that uses async endpoints and WebSockets for real-time updates; persistent storage uses SQLite with WAL for concurrency. The project comes with Docker files and tests (pytest + Playwright).</p>
-
-          <h3>Key features</h3>
-          <ul>
-            <li>Real-time messaging via WebSockets</li>
-            <li>Multi-device sessions and presence indicators</li>
-            <li>Rooms, private messaging, and basic moderation (mute/kick)</li>
-            <li>Secure JWT-based authentication and session management</li>
-            <li>File upload support with safe storage options</li>
-            <li>Tested with pytest and Playwright for end-to-end flows</li>
-          </ul>
-
-          <h3>Impact</h3>
-          <ul>
-            <li>Provides a small, deployable chat service suitable for demos, internal tooling, or as a starting point for production features.</li>
-            <li>Designed to be containerized and deployed with Docker; easy to scale horizontally behind a WebSocket-aware proxy.</li>
-            <li>Improves developer productivity with tests and clear API contracts for clients.</li>
-          </ul>
-
-          <h3>Architecture diagram</h3>
-          <div class="diagram-panel">
-            <svg viewBox="0 0 900 260" width="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <defs>
-                <marker id="arrow-chat" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
-                  <path d="M0 0 L10 5 L0 10 z" fill="currentColor"/>
-                </marker>
-              </defs>
-
-              <rect x="20" y="30" width="165" height="60" rx="8" fill="var(--card-bg)" stroke="currentColor"><title>Clients (browsers)</title></rect>
-              <text x="102.5" y="62" text-anchor="middle" fill="var(--muted)" font-size="14">Clients (Browsers)</text>
-
-              <rect x="225" y="30" width="225" height="60" rx="8" fill="var(--panel-bg)" stroke="currentColor"><title>FastAPI HTTP + WebSocket API</title></rect>
-              <text x="337.5" y="62" text-anchor="middle" fill="var(--muted)" font-size="14">FastAPI (WebSocket + HTTP)</text>
-
-              <rect x="490" y="30" width="120" height="60" rx="8" fill="var(--card-bg)" stroke="currentColor"><title>SQLite (WAL)</title></rect>
-              <text x="550" y="62" text-anchor="middle" fill="var(--muted)" font-size="14">SQLite (WAL)</text>
-
-              <rect x="650" y="30" width="225" height="60" rx="8" fill="var(--panel-bg)" stroke="currentColor"><title>Redis / Broker (optional)</title></rect>
-              <text x="762.5" y="62" text-anchor="middle" fill="var(--muted)" font-size="14">Redis (Pub/Sub) - optional</text>
-
-              <line x1="185" y1="60" x2="225" y2="60" stroke="currentColor" stroke-width="2" marker-end="url(#arrow-chat)"/>
-              <line x1="455" y1="60" x2="490" y2="60" stroke="currentColor" stroke-width="2" marker-end="url(#arrow-chat)"/>
-              <line x1="610" y1="60" x2="650" y2="60" stroke="currentColor" stroke-width="2" marker-end="url(#arrow-chat)"/>
-
-              <rect x="280" y="170" width="520" height="60" rx="8" fill="var(--card-bg)" stroke="currentColor"><title>Admin dashboard and API</title></rect>
-              <text x="540" y="200" text-anchor="middle" fill="var(--muted)" font-size="14">Admin Dashboard / API</text>
-
-              <!-- vertical feeder from FastAPI down to dashboard -->
-              <line x1="337.5" y1="90" x2="337.5" y2="170" stroke="currentColor" stroke-width="2" marker-end="url(#arrow-chat)"/>
-            </svg>
+        </header>
+        <figure class="pg-figure">
+          <img src="/images/chat.png" alt="Real-Time Chat Application: Rooms, presence, and moderation over WebSockets" loading="eager">
+        </figure>
+        <section class="cs-sec">
+          <h2>Architecture</h2>
+          <div class="arch" role="img" aria-label="Browsers &amp;rarr; FastAPI (HTTP + WebSocket) &amp;rarr; SQLite (WAL); serves Admin dashboard, File storage">
+            <div class="arch-flow"><span class="arch-node">Browsers</span><span class="arch-link" aria-hidden="true"><span class="arch-dot" style="--d:0.0s"></span></span><span class="arch-node">FastAPI (HTTP + WebSocket)</span><span class="arch-link" aria-hidden="true"><span class="arch-dot" style="--d:0.7s"></span></span><span class="arch-node">SQLite (WAL)</span></div>
+            <div class="arch-down" aria-hidden="true"><span class="arch-dot v"></span></div>
+            <div class="arch-out"><span class="arch-out-label">Serves</span><span class="arch-node out">Admin dashboard</span><span class="arch-node out">File storage</span></div>
           </div>
-
-          <h3>Repository</h3>
-          <p><a href="https://github.com/mrprogrammingx/classic-web-based-online-chat-application" target="_blank" rel="noopener">GitHub — classic-web-based-online-chat-application</a></p>
-
-          <h3>How to run locally</h3>
-          <ol>
-            <li>Clone the repository: <code>git clone https://github.com/mrprogrammingx/classic-web-based-online-chat-application.git</code></li>
-            <li>Install dependencies and start the FastAPI server (uvicorn) with the appropriate environment variables.</li>
-            <li>Run the WebSocket-capable server (uvicorn) and open the demo UI in a browser.</li>
-          </ol>
-
-          <!-- WebSocket test placeholder (disabled) -->
-          <h3>Quick WebSocket test (placeholder)</h3>
-          <p class="muted">A small test UI is kept here as a placeholder. It's intentionally disabled because there is no deployed WebSocket server on this site. To use a live test, deploy the server and enable the script in this file.</p>
-
-          <div class="card" style="padding:12px;">
-            <label for="wsUrl">WebSocket URL</label>
-            <input id="wsUrl" type="text" value="ws://localhost:8000/ws" style="width:100%;margin:6px 0" disabled />
-            <div style="display:flex;gap:8px;margin-bottom:8px;">
-              <button id="connectBtn" type="button" disabled>Connect (disabled)</button>
-              <button id="disconnectBtn" type="button" disabled>Disconnect</button>
-            </div>
-
-            <div style="display:flex;gap:8px;margin-bottom:8px;">
-              <input id="msgInput" type="text" placeholder="Message to send" style="flex:1" disabled />
-              <button id="sendBtn" type="button" disabled>Send</button>
-            </div>
-
-            <div id="log" style="height:200px;overflow:auto;border:1px solid var(--muted);padding:8px;border-radius:6px;background:var(--panel-bg)">
-              WebSocket test disabled — deploy the server and enable the client script to use this.
-            </div>
-          </div>
-
+        </section><section class="cs-sec">
+          <h2>Key features</h2>
+          <div class="cs-feat-grid"><div class="cs-feat"><span class="cs-feat-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></span><h3>Real-time messaging</h3><p>WebSocket updates for rooms and private messages.</p></div><div class="cs-feat"><span class="cs-feat-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></span><h3>Presence</h3><p>Multi-device sessions, multi-tab presence, AFK detection, and unread indicators.</p></div><div class="cs-feat"><span class="cs-feat-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></span><h3>Moderation</h3><p>Roles, bans, and room administration.</p></div><div class="cs-feat"><span class="cs-feat-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></span><h3>Secure sessions</h3><p>JWT-based authentication and session management.</p></div><div class="cs-feat"><span class="cs-feat-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></span><h3>File sharing</h3><p>File and image uploads with access-control rules.</p></div><div class="cs-feat"><span class="cs-feat-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></span><h3>Tested</h3><p>pytest and Playwright end-to-end tests, Docker-ready.</p></div></div>
+        </section>
+        <div class="pg-grid">
+          <section class="pg-block wide">
+            <h2>The problem</h2>
+            <p>Teams need a small, reliable chat service with secure sessions and moderation that is easy to deploy and test.</p>
+          </section>
+          <section class="pg-block wide">
+            <h2>What I built</h2>
+            <ul class="pg-list"><li>A FastAPI server with async endpoints and WebSockets for real-time updates.</li><li>Authentication, multi-room chat, private messaging, and session management.</li><li>Moderation with bans, roles, and room administration.</li><li>AFK detection, multi-tab presence logic, unread indicators, and persistent chat history.</li><li>A Docker Compose setup for a reproducible local environment.</li></ul>
+          </section>
+          <section class="pg-block">
+            <h2>Results</h2>
+            <ul class="pg-list"><li>A small, deployable chat service for demos, internal tooling, or as a base for production features.</li><li>Container-ready and able to scale behind a WebSocket-aware proxy.</li></ul>
+          </section>
+          <section class="pg-block">
+            <h2>Tech stack</h2>
+            <ul class="sk-chips"><li>Python</li><li>FastAPI</li><li>WebSockets</li><li>SQLite (WAL)</li><li>aiosqlite</li><li>JWT</li><li>JavaScript</li><li>Docker</li><li>pytest</li><li>Playwright</li></ul>
+          </section>
         </div>
-      </section>
-    </main>
-
-    <footer class="site-footer footer-rich">
+        <section class="cs-sec">
+          <h2>Screens</h2>
+          <div class="cs-gallery"><figure class="cs-shot"><img src="/images/chat-rooms.webp" alt="Chat rooms list" loading="lazy"><figcaption>Chat rooms list</figcaption></figure><figure class="cs-shot"><img src="/images/chat-manage-room.webp" alt="Managing a chat room" loading="lazy"><figcaption>Managing a chat room</figcaption></figure><figure class="cs-shot"><img src="/images/chat-admin.webp" alt="Admin panel" loading="lazy"><figcaption>Admin panel</figcaption></figure></div>
+        </section><section class="cs-sec">
+          <h2>Run it locally</h2>
+          <ol class="cs-steps"><li><span class="cs-num">1</span><div class="cs-step"><p>Clone the repository</p><pre class="code-sample"><code>git clone https://github.com/mrprogrammingx/classic-web-based-online-chat-application.git</code></pre></div></li><li><span class="cs-num">2</span><div class="cs-step"><p>Install the dependencies and set the environment variables</p></div></li><li><span class="cs-num">3</span><div class="cs-step"><p>Start the server with uvicorn and open the app in a browser</p></div></li></ol>
+        </section>
+        <section class="pg-more">
+          <h2>More projects</h2>
+          <div class="pg-mini-grid"><a class="pg-mini" href="/projects/ai-phone-assistant/"><span class="pg-mini-cat">AI / Agents</span><span class="pg-mini-title">AI Phone Assistant</span><span class="pg-mini-sub">A voice agent that books barbershop appointments</span></a><a class="pg-mini" href="/projects/job-hunter/"><span class="pg-mini-cat">AI / Agents</span><span class="pg-mini-title">Job Hunter</span><span class="pg-mini-sub">A 7-agent AI job search platform</span></a><a class="pg-mini" href="/projects/agentpages/"><span class="pg-mini-cat">AI / Agents</span><span class="pg-mini-title">AgentPages</span><span class="pg-mini-sub">A static-site publishing API for AI agents</span></a></div>
+          <p class="pg-back"><a href="/projects/">All projects &rarr;</a></p>
+        </section>
+      </div>
+    </article>
+  </main>
+  <footer class="site-footer footer-rich">
     <div class="container">
       <div class="footer-line" aria-hidden="true"></div>
       <div class="footer-cols">
@@ -173,7 +247,6 @@
       </div>
     </div>
   </footer>
-    <script src="/script.js?v=20261116d" defer></script>
-  </body>
+  <script src="/script.js?v=20261116d" defer></script>
+</body>
 </html>
-

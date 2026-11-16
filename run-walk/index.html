@@ -1,23 +1,133 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Run/Walk Data Pipeline — Demo</title>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="index, follow">
+  <title>Run/Walk Data Pipeline | Amir Zare</title>
+  <meta name="description" content="An end-to-end batch pipeline that turns raw activity CSV files into fast, analytics-ready DuckDB tables, orchestrated by Apache Airflow and served through a Streamlit dashboard and a JSON API.">
+  <link rel="canonical" href="https://amir-zare.com/run-walk/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Amir Zare">
+  <meta property="og:title" content="Run/Walk Data Pipeline | Amir Zare">
+  <meta property="og:description" content="An end-to-end batch pipeline that turns raw activity CSV files into fast, analytics-ready DuckDB tables, orchestrated by Apache Airflow and served through a Streamlit dashboard and a JSON API.">
+  <meta property="og:url" content="https://amir-zare.com/run-walk/">
+  <meta property="og:image" content="https://amir-zare.com/images/og/run-walk.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Run/Walk Data Pipeline | Amir Zare">
+  <meta name="twitter:description" content="An end-to-end batch pipeline that turns raw activity CSV files into fast, analytics-ready DuckDB tables, orchestrated by Apache Airflow and served through a Streamlit dashboard and a JSON API.">
+  <meta name="twitter:image" content="https://amir-zare.com/images/og/run-walk.jpg">
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
   <link rel="icon" href="/favicon-32x32.png" sizes="32x32" type="image/png">
   <link rel="icon" href="/favicon-16x16.png" sizes="16x16" type="image/png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
   <link rel="manifest" href="/site.webmanifest">
-    <link rel="stylesheet" href="/styles.css?v=20261117v">
-  </head>
-  <body>
-    <header class="site-header">
+  <link rel="stylesheet" href="/styles.css?v=20261117w">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareSourceCode",
+      "name": "Run/Walk Data Pipeline",
+      "headline": "Batch telemetry pipeline: CSV → Parquet → DuckDB",
+      "description": "An end-to-end batch pipeline that turns raw activity CSV files into fast, analytics-ready DuckDB tables, orchestrated by Apache Airflow and served through a Streamlit dashboard and a JSON API.",
+      "url": "https://amir-zare.com/run-walk/",
+      "image": "https://amir-zare.com/images/og/run-walk.jpg",
+      "dateCreated": "2026",
+      "author": {
+        "@id": "https://amir-zare.com/#person"
+      },
+      "keywords": "Python, Apache Airflow, DuckDB, Parquet, SQL, Streamlit, Flask, Docker Compose, Pytest",
+      "codeRepository": "https://github.com/mrprogrammingx/run-walk-pipeline",
+      "programmingLanguage": [
+        "Python",
+        "SQL"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://amir-zare.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Projects",
+          "item": "https://amir-zare.com/projects/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Run/Walk Data Pipeline",
+          "item": "https://amir-zare.com/run-walk/"
+        }
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://amir-zare.com/#person",
+      "name": "Amir Zare",
+      "jobTitle": "AI Data Engineer",
+      "description": "Amir Zare is an AI Data Engineer and the founder of DataLayer, based in Yerevan, Armenia. He builds data pipelines, analytics platforms, and production LLM applications.",
+      "url": "https://amir-zare.com/",
+      "image": "https://amir-zare.com/images/amir-portrait.webp",
+      "email": "mailto:info@amir-zare.com",
+      "sameAs": [
+        "https://linkedin.com/in/binahayat00",
+        "https://github.com/mrprogrammingx",
+        "https://www.youtube.com/@AmirZareDev"
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Yerevan",
+        "addressCountry": "AM"
+      },
+      "worksFor": {
+        "@type": "Organization",
+        "@id": "https://usedatalayer.com/#org",
+        "name": "DataLayer",
+        "url": "https://usedatalayer.com"
+      },
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "Yazd University"
+      },
+      "knowsAbout": [
+        "Data engineering",
+        "Apache Airflow",
+        "dbt",
+        "Apache Kafka",
+        "Apache Flink",
+        "BigQuery",
+        "Python",
+        "SQL",
+        "LLM applications",
+        "Retrieval-augmented generation",
+        "Multi-agent systems",
+        "A/B testing",
+        "FastAPI",
+        "Laravel"
+      ]
+    }
+  ]
+}
+  </script>
+</head>
+<body class="subpage">
+  <div id="scroll-progress" aria-hidden="true"></div>
+  <header class="site-header">
       <div class="container header-inner">
         <a class="logo" href="/">Amir Zare</a>
         <nav id="site-nav" class="nav nav-pill" aria-label="Main">
           <a href="/">Home</a>
-          <a href="/projects/">Projects</a>
+          <a href="/projects/" aria-current="page">Projects</a>
           <a href="/#experience">Experience</a>
           <a href="/community/">Community</a>
           <a href="/resume.html" class="nav-ext" target="_blank" rel="noopener" aria-label="Resume (opens in a new tab)">Resume<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
@@ -40,90 +150,64 @@
         </div>
       </div>
     </header>
+  <main>
+    <article class="section pg">
+      <div class="container">
+        <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li><a href="/projects/">Projects</a></li><li aria-current="page">Run/Walk Data Pipeline</li></ol></nav>
+        <header class="pg-head">
+          <p class="pg-eyebrow">Data engineering · 2026 · Open source</p>
+          <h1 class="pg-title">Run/Walk Data Pipeline</h1>
+          <p class="pg-subtitle">Batch telemetry pipeline: CSV &rarr; Parquet &rarr; DuckDB</p>
+          <p class="pg-lead">An end-to-end batch pipeline that turns raw activity CSV files into fast, analytics-ready DuckDB tables, orchestrated by Apache Airflow and served through a Streamlit dashboard and a JSON API.</p>
+          <ul class="sk-chips"><li class="hot">Sub-second analytical queries</li><li class="hot">Airflow-orchestrated</li><li class="hot">Parquet data lake</li></ul>
+          <div class="pg-actions"><a class="cta-btn primary" href="https://github.com/mrprogrammingx/run-walk-pipeline" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M12 .5C5.7.5.6 5.7.6 12c0 5.1 3.3 9.5 7.9 11 .6.1.8-.3.8-.6v-2.1c-3.2.7-3.8-1.4-3.8-1.4-.5-1.2-1.2-1.6-1.2-1.6-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 .1 1.6.7 2 1.1.1-.9.4-1.5.7-1.8-2.6-.3-5.3-1.3-5.3-6 0-1.3.5-2.4 1.2-3.3-.1-.3-.5-1.6.1-3.3 0 0 1-.3 3.3 1.3 1-.3 2-.4 3-.4s2 .1 3 .4c2.3-1.6 3.3-1.3 3.3-1.3.6 1.7.2 3 .1 3.3.8.9 1.2 2 1.2 3.3 0 4.7-2.7 5.7-5.3 6 .4.3.7 1 .7 2v3c0 .3.2.7.8.6 4.6-1.5 7.9-5.9 7.9-11C23.4 5.7 18.3.5 12 .5z"/></svg>Repository <span aria-hidden="true">&#8599;</span></a></div>
 
-    <main>
-      <section class="section">
-        <div class="container">
-          <h2>Run/Walk Data Pipeline</h2>
-          <p class="lead">A small, production-minded batch pipeline that ingests CSV telemetry, converts to Parquet, and exposes fast queries via DuckDB. Designed and built for reproducible analytics and low-cost storage.</p>
-
-          <h3>Project description</h3>
-          <p>This project ingests raw CSV export files from devices, validates and normalizes fields, converts them to partitioned Parquet, and maintains materialized DuckDB tables for fast analytical queries and dashboards. The pipeline is orchestrated with Apache Airflow and the dashboard is a lightweight Streamlit app used by analysts.</p>
-
-          <h3>Key features</h3>
-          <ul>
-            <li>Incremental batch ingestion with idempotent transforms</li>
-            <li>Row-level validation and schema checks with automated alerts</li>
-            <li>Parquet output for compact, columnar storage</li>
-            <li>DuckDB materialized tables for sub-second analytical queries</li>
-            <li>Lightweight dashboard and REST API for ad-hoc reporting</li>
-          </ul>
-
-          <h3>Impact</h3>
-          <ul>
-            <li>Enabled daily materialized reports that analysts can query in seconds instead of waiting for slow CSV loads.</li>
-            <li>Significantly reduced storage and I/O by converting raw CSV to compressed Parquet, lowering ongoing storage costs and speeding downstream processing.</li>
-            <li>Turned manual reporting workflows into automated APIs and dashboards, cutting analyst time to insight from hours or days down to minutes.</li>
-            <li>Improved observability with validation alerts and monitoring so data quality issues are caught earlier and incidents are resolved faster.</li>
-          </ul>
-
-          <h3>Architecture diagram</h3>
-          <div class="diagram-panel">
-            <svg viewBox="0 0 900 260" width="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <defs>
-                <marker id="arrow-rw" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
-                  <path d="M0 0 L10 5 L0 10 z" fill="currentColor"/>
-                </marker>
-              </defs>
-              <!-- top row: uniform boxes at y=30 height=60 -->
-              <rect x="20" y="30" width="113" height="60" rx="8" fill="var(--card-bg)" stroke="currentColor"><title>Raw device CSV exports</title></rect>
-              <text x="76.5" y="62" text-anchor="middle" fill="var(--muted)" font-size="14">CSV Sources</text>
-
-              <rect x="173" y="30" width="233" height="60" rx="8" fill="var(--panel-bg)" stroke="currentColor"><title>Orchestrated ingestion & validation</title></rect>
-              <text x="289.5" y="62" text-anchor="middle" fill="var(--muted)" font-size="14">Ingest & Validate</text>
-
-              <rect x="446" y="30" width="150" height="60" rx="8" fill="var(--card-bg)" stroke="currentColor"><title>Columnar Parquet storage</title></rect>
-              <text x="521" y="62" text-anchor="middle" fill="var(--muted)" font-size="14">Parquet (GCS/S3)</text>
-
-              <rect x="636" y="30" width="188" height="60" rx="8" fill="var(--panel-bg)" stroke="currentColor"><title>Materialized tables for analytics</title></rect>
-              <text x="730" y="62" text-anchor="middle" fill="var(--muted)" font-size="14">DuckDB (Materialized)</text>
-
-              <!-- horizontal arrows between top boxes -->
-              <line x1="133" y1="60" x2="173" y2="60" stroke="currentColor" stroke-width="2" marker-end="url(#arrow-rw)"/>
-              <line x1="406" y1="60" x2="446" y2="60" stroke="currentColor" stroke-width="2" marker-end="url(#arrow-rw)"/>
-              <line x1="596" y1="60" x2="636" y2="60" stroke="currentColor" stroke-width="2" marker-end="url(#arrow-rw)"/>
-
-              <!-- bottom box (y=170 height=60) containing feeder centers -->
-              <rect x="360" y="170" width="520" height="60" rx="8" fill="var(--card-bg)" stroke="currentColor"><title>Analyst dashboard and reporting API</title></rect>
-              <text x="620" y="200" text-anchor="middle" fill="var(--muted)" font-size="14">Streamlit Dashboard + API</text>
-
-              <!-- vertical feeders from Parquet and DuckDB -->
-              <line x1="521" y1="90" x2="521" y2="170" stroke="currentColor" stroke-width="2" marker-end="url(#arrow-rw)"/>
-              <line x1="730" y1="90" x2="730" y2="170" stroke="currentColor" stroke-width="2" marker-end="url(#arrow-rw)"/>
-            </svg>
+        </header>
+        <figure class="pg-figure">
+          <img src="/images/run-walk.png" alt="Run/Walk Data Pipeline: Batch telemetry pipeline: CSV → Parquet → DuckDB" loading="eager">
+        </figure>
+        <section class="cs-sec">
+          <h2>Architecture</h2>
+          <div class="arch" role="img" aria-label="CSV sources &amp;rarr; Airflow: ingest &amp; validate &amp;rarr; Parquet data lake &amp;rarr; DuckDB warehouse; serves Streamlit dashboard, Flask JSON API">
+            <div class="arch-flow"><span class="arch-node">CSV sources</span><span class="arch-link" aria-hidden="true"><span class="arch-dot" style="--d:0.0s"></span></span><span class="arch-node">Airflow: ingest &amp; validate</span><span class="arch-link" aria-hidden="true"><span class="arch-dot" style="--d:0.7s"></span></span><span class="arch-node">Parquet data lake</span><span class="arch-link" aria-hidden="true"><span class="arch-dot" style="--d:1.4s"></span></span><span class="arch-node">DuckDB warehouse</span></div>
+            <div class="arch-down" aria-hidden="true"><span class="arch-dot v"></span></div>
+            <div class="arch-out"><span class="arch-out-label">Serves</span><span class="arch-node out">Streamlit dashboard</span><span class="arch-node out">Flask JSON API</span></div>
           </div>
-
-          <h3>Repository</h3>
-          <p><a href="https://github.com/mrprogrammingx/run-walk-pipeline" target="_blank" rel="noopener">GitHub — run-walk-pipeline</a></p>
-
-          <h3>API (optional)</h3>
-          <p>Example: a small read-only endpoint that exposes aggregated metrics.</p>
-          <pre class="code-sample">GET https://amir-zare.com/api/run-walk/summary
-Response: { "date": "2026-04-01", "rows_processed": 124500, "avg_latency_ms": 85 }</pre>
-
-          <h3>How to run locally</h3>
-          <ol>
-            <li>Clone the repository: <code>git clone https://github.com/mrprogrammingx/run-walk-pipeline.git</code></li>
-            <li>Install dependencies (Python) and start Airflow in LocalExecutor or use Docker Compose.</li>
-            <li>Set storage path for Parquet outputs (local or cloud) and run the DAG.</li>
-          </ol>
-
-          <p class="muted">If you want, I can deploy a live demo for this project to your domain and attach a working API endpoint (will require deployment choices: small VM, Cloud Run, or Vercel/Render for the dashboard + a simple API).</p>
+        </section><section class="cs-sec">
+          <h2>Key features</h2>
+          <div class="cs-feat-grid"><div class="cs-feat"><span class="cs-feat-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></span><h3>Incremental ingestion</h3><p>Batch ingestion with idempotent transforms, so re-runs are safe.</p></div><div class="cs-feat"><span class="cs-feat-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></span><h3>Validation</h3><p>Row-level validation and schema checks catch bad data early.</p></div><div class="cs-feat"><span class="cs-feat-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></span><h3>Columnar storage</h3><p>Raw CSV converted to compressed Parquet for smaller, faster reads.</p></div><div class="cs-feat"><span class="cs-feat-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></span><h3>Materialized tables</h3><p>DuckDB summary tables answer analytical queries in under a second.</p></div><div class="cs-feat"><span class="cs-feat-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></span><h3>Dashboards &amp; API</h3><p>A Streamlit dashboard and lightweight JSON endpoints for ad-hoc reporting.</p></div><div class="cs-feat"><span class="cs-feat-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></span><h3>Tested</h3><p>Pytest and CI-oriented sample dataset generation.</p></div></div>
+        </section>
+        <div class="pg-grid">
+          <section class="pg-block wide">
+            <h2>The problem</h2>
+            <p>CSV telemetry ingestion was slow and hard to query, blocking analytics.</p>
+          </section>
+          <section class="pg-block wide">
+            <h2>What I built</h2>
+            <ul class="pg-list"><li>Airflow DAGs that orchestrate dataset download, ingestion, and transformation stages.</li><li>Ingestion that converts raw CSV activity datasets into optimized Parquet files inside a local data lake.</li><li>SQL transformations that materialize summary tables in DuckDB: <code>daily_user_summary</code>, <code>daily_activity_counts</code>, and <code>daily_wrist_counts</code>.</li><li>Interactive Streamlit dashboards for activity trends and user behavior, plus REST-style JSON endpoints in Flask.</li><li>A Docker Compose development environment that includes the Airflow services.</li></ul>
+          </section>
+          <section class="pg-block">
+            <h2>Results</h2>
+            <ul class="pg-list"><li>Daily materialized reports that analysts can query in seconds instead of waiting for slow CSV loads.</li><li>Smaller storage and less I/O by moving from raw CSV to compressed Parquet.</li><li>Manual reporting replaced by automated dashboards and APIs.</li></ul>
+          </section>
+          <section class="pg-block">
+            <h2>Tech stack</h2>
+            <ul class="sk-chips"><li>Python</li><li>Apache Airflow</li><li>DuckDB</li><li>Parquet</li><li>SQL</li><li>Streamlit</li><li>Flask</li><li>Docker Compose</li><li>Pytest</li></ul>
+          </section>
         </div>
-      </section>
-    </main>
-
-    <footer class="site-footer footer-rich">
+        <section class="cs-sec">
+          <h2>Run it locally</h2>
+          <ol class="cs-steps"><li><span class="cs-num">1</span><div class="cs-step"><p>Clone the repository</p><pre class="code-sample"><code>git clone https://github.com/mrprogrammingx/run-walk-pipeline.git</code></pre></div></li><li><span class="cs-num">2</span><div class="cs-step"><p>Install the Python dependencies and start Airflow, locally or with Docker Compose</p></div></li><li><span class="cs-num">3</span><div class="cs-step"><p>Set the storage path for the Parquet outputs and trigger the DAG</p></div></li></ol>
+        </section>
+        <section class="pg-more">
+          <h2>More projects</h2>
+          <div class="pg-mini-grid"><a class="pg-mini" href="/analytics/"><span class="pg-mini-cat">Data engineering</span><span class="pg-mini-title">Claude Code Analytics Platform</span><span class="pg-mini-sub">Analytics and forecasting for AI coding telemetry</span></a><a class="pg-mini" href="/classic-web-based-online-chat-application/"><span class="pg-mini-cat">Backend</span><span class="pg-mini-title">Real-Time Chat Application</span><span class="pg-mini-sub">Rooms, presence, and moderation over WebSockets</span></a><a class="pg-mini" href="/projects/ai-phone-assistant/"><span class="pg-mini-cat">AI / Agents</span><span class="pg-mini-title">AI Phone Assistant</span><span class="pg-mini-sub">A voice agent that books barbershop appointments</span></a></div>
+          <p class="pg-back"><a href="/projects/">All projects &rarr;</a></p>
+        </section>
+      </div>
+    </article>
+  </main>
+  <footer class="site-footer footer-rich">
     <div class="container">
       <div class="footer-line" aria-hidden="true"></div>
       <div class="footer-cols">
@@ -160,7 +244,6 @@ Response: { "date": "2026-04-01", "rows_processed": 124500, "avg_latency_ms": 85
       </div>
     </div>
   </footer>
-
-    <script src="/script.js?v=20261116d" defer></script>
-  </body>
+  <script src="/script.js?v=20261116d" defer></script>
+</body>
 </html>
