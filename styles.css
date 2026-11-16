@@ -813,3 +813,39 @@ a:hover,a:focus{background:var(--glass);text-decoration:underline}
   .connect-arrow{width:34px;height:34px}
 }
 @media (prefers-reduced-motion: reduce){ .connect-arrow,.connect-panel{transition:none} }
+
+/* Hero fills the screen height below the header: the photo scales with the viewport height
+   (capped so the circle never reaches the side blocks), and the title + photo sit on the bottom edge. */
+@media (min-width:901px){
+  .hero.hero-portrait{display:flex;flex-direction:column;min-height:calc(100vh - 68px);min-height:calc(100svh - 68px)}
+  .hp-stage{flex:1;width:100%;max-width:1440px;display:flex;flex-direction:column;justify-content:flex-end}
+  .hp-visual{--pw:clamp(320px, min(calc((min(100vw, 1440px) - 600px) / 1.35), calc((100svh - 170px) / 1.34)), 680px);
+    width:var(--pw);margin:calc(var(--pw) * -0.3) auto 0}
+}
+@media (min-width:901px){
+  .hp-stage{max-width:1600px}
+  .hp-visual{--pw:clamp(320px, min(calc((min(100vw, 1600px) - 600px) / 1.35), calc((100svh - 170px) / 1.34)), 720px)}
+  .hp-role{font-size:clamp(2.6rem, min(8vw, 11svh), 7.5rem)}
+  .hp-hello{font-size:clamp(1.9rem, min(5vw, 6.5svh), 4.4rem)}
+}
+@media (min-width:901px){
+  .hp-stage{max-width:2000px}
+  .hp-visual{--pw:clamp(320px, min(calc((min(100vw, 2000px) - 600px) / 1.35), calc((100svh - 170px) / 1.34)), 960px)}
+}
+@media (min-width:901px){
+  .hp-stage{--pw:clamp(320px, min(calc((min(100vw, 2000px) - 600px) / 1.35), calc((100svh - 170px) / 1.34)), 960px)}
+  .hp-visual{--pw:inherit}
+  .hp-left{left:max(24px, calc(50% - var(--pw) * .675 - 290px))}
+  .hp-right{right:max(24px, calc(50% - var(--pw) * .675 - 290px))}
+}
+@media (min-width:901px){
+  .hp-stage{--sw:240px;--pw:clamp(320px, min(calc((min(100vw, 2000px) - 2 * (var(--sw) + 64px)) / 1.35), calc((100svh - 170px) / 1.34)), 960px)}
+  .hp-left{width:var(--sw);left:max(24px, calc(50% - var(--pw) * .675 - var(--sw) - 50px))}
+  .hp-right{width:calc(var(--sw) + 30px);right:max(24px, calc(50% - var(--pw) * .675 - var(--sw) - 50px))}
+}
+@media (min-width:901px) and (max-width:1180px){
+  .hp-stage{--sw:190px}
+  .hp-left{font-size:.9rem}
+  .hp-stat{font-size:2rem}
+  .hp-badge{font-size:.8rem}
+}
