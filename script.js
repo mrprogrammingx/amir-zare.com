@@ -258,7 +258,48 @@
   if (qrDialog && qrDialog.showModal) {
     q('[data-qr-open]').forEach(b => b.addEventListener('click', () => qrDialog.showModal()));
     qrDialog.addEventListener('click', e => { if (e.target === qrDialog) qrDialog.close(); });
+    // Two codes: "page" opens /connect; "contact" is a vCard that phones offer to "Add contact" (no download).
+    const modes = {
+      page: { src: '/images/qr-connect.svg', alt: 'QR code linking to amir-zare.com/connect', kicker: 'Scan to connect', url: 'amir-zare.com/connect' },
+      contact: { src: '/images/qr-contact.svg', alt: 'QR code that adds Amir Zare to your contacts', kicker: 'Scan to save my contact', url: 'Adds me to your contacts' }
+    };
+    const qrImg = document.getElementById('cn-qr-img');
+    const setMode = mode => {
+      const m = modes[mode]; if (!m || !qrImg) return;
+      qrImg.src = m.src; qrImg.alt = m.alt;
+      document.getElementById('cn-qr-kicker').textContent = m.kicker;
+      document.getElementById('cn-qr-url').textContent = m.url;
+      q('[data-qr-mode]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.qrMode === mode)));
+    };
+    q('[data-qr-mode]').forEach(b => b.addEventListener('click', () => setMode(b.dataset.qrMode)));
+    qrDialog.addEventListener('close', () => setMode('page')); // always reopen on the page QR
   }
+  // /connect "Save my contact": the smoothest path per device, never a visible download on phones.
+  //  - Android: an intent link opens the Contacts app's "Create contact" screen, prefilled (falls back to the .vcf).
+  //  - iPhone/iPad: open the .vcf without `download`, so Safari shows the contact card with "Create New Contact".
+  //  - Computers: keep the normal .vcf download.
+  q('[data-save-contact]').forEach(btn => {
+    const ua = navigator.userAgent || '';
+    const isAndroid = /Android/i.test(ua);
+    const isIOS = /iPhone|iPad|iPod/i.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    if (isIOS) { btn.removeAttribute('download'); return; }
+    if (!isAndroid) return;
+    btn.addEventListener('click', e => {
+      let phone = '';
+      try { phone = atob(btn.dataset.p).split('').reverse().join(''); } catch (err) { return; } // fall back to the .vcf
+      const fallback = new URL(btn.getAttribute('href'), location.href).href;
+      const extras = {
+        'S.name': 'Amir Zare', 'S.phone': phone, 'i.phone_type': '2', 'S.email': 'info@amir-zare.com', 'i.email_type': '2',
+        'S.company': 'DataLayer', 'S.job_title': 'AI Data Engineer, Founder of DataLayer',
+        'S.notes': 'Website: amir-zare.com\nTelegram: t.me/MrProgrammingX\nLinkedIn: linkedin.com/in/binahayat00\nGitHub: github.com/mrprogrammingx',
+        'S.browser_fallback_url': fallback
+      };
+      const parts = Object.entries(extras).map(([k, v]) => k + '=' + (k[0] === 'i' ? v : encodeURIComponent(v)));
+      e.preventDefault();
+      location.href = 'intent:#Intent;action=android.intent.action.INSERT;type=vnd.android.cursor.dir/raw_contact;' + parts.join(';') + ';end';
+    });
+  });
+
   // /connect?from=talk (or any ?from=...) greets people who scanned a QR on a slide, badge or card.
   const hello = document.getElementById('cn-hello');
   if (hello) {

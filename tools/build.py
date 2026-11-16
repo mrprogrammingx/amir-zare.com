@@ -19,8 +19,8 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "tools"))
 from content import ABOUT, CASE_STUDIES, COMMUNITY, PROJECTS, SITE  # noqa: E402
 
-CSS_VERSION = "20261118i"
-JS_VERSION = "20261118c"
+CSS_VERSION = "20261118j"
+JS_VERSION = "20261118e"
 LASTMOD = "2026-11-16"
 
 ICONS = {
@@ -728,10 +728,15 @@ def vcard():
     lines = ["BEGIN:VCARD", "VERSION:3.0", "N:Zare;Amir;;;", "FN:Amir Zare", "ORG:DataLayer",
              "TITLE:AI Data Engineer · Founder of DataLayer", "EMAIL;TYPE=INTERNET,WORK:info@amir-zare.com",
              "TEL;TYPE=CELL:+37477393112", "ADR;TYPE=WORK:;;;Yerevan;;;Armenia",
-             "URL:https://amir-zare.com", "X-SOCIALPROFILE;TYPE=linkedin:https://linkedin.com/in/binahayat00",
-             "X-SOCIALPROFILE;TYPE=telegram:https://t.me/MrProgrammingX",
-             "X-SOCIALPROFILE;TYPE=github:https://github.com/mrprogrammingx",
-             "NOTE:We met — let's stay in touch. LinkedIn: linkedin.com/in/binahayat00",
+             # Labeled URL fields (itemN.URL + itemN.X-ABLabel) are the form both iPhone and Android Contacts keep;
+             # X-SOCIALPROFILE alone is dropped for services the phone doesn't know (Telegram, GitHub).
+             "item1.URL:https://amir-zare.com", "item1.X-ABLabel:Website",
+             "item2.URL:https://linkedin.com/in/binahayat00", "item2.X-ABLabel:LinkedIn",
+             "item3.URL:https://t.me/MrProgrammingX", "item3.X-ABLabel:Telegram",
+             "item4.URL:https://github.com/mrprogrammingx", "item4.X-ABLabel:GitHub",
+             "X-SOCIALPROFILE;TYPE=linkedin;x-user=binahayat00:https://linkedin.com/in/binahayat00",
+             "X-SOCIALPROFILE;TYPE=telegram;x-user=MrProgrammingX:https://t.me/MrProgrammingX",
+             "NOTE:We met — let's stay in touch. Telegram: @MrProgrammingX · LinkedIn: linkedin.com/in/binahayat00",
              f"PHOTO;ENCODING=b;TYPE=JPEG:{photo}", "END:VCARD"]
     return "\n".join(lines) + "\n"
 
@@ -777,7 +782,7 @@ def connect_page():
     <p class="cn-meta">Founder of DataLayer · Yerevan, Armenia</p>
     <p class="cn-hello" id="cn-hello" hidden></p>
     <div class="cn-actions">
-      {row("/connect/amir-zare.vcf", contact, "Save my contact", primary=True, ext=False, extra=' download="Amir-Zare.vcf"')}
+      {row("/connect/amir-zare.vcf", contact, "Save my contact", primary=True, ext=False, extra=' download="Amir-Zare.vcf" data-save-contact data-p="MjExMzkzNzc0NzMr"')}
       {row("https://linkedin.com/in/binahayat00", brand_icon("linkedin", 20), "Connect on LinkedIn")}
       {row("https://t.me/MrProgrammingX", brand_icon("telegram", 20), "Message on Telegram")}
       {row("mailto:info@amir-zare.com", brand_icon("email", 20), "Email me", ext=False)}
@@ -792,10 +797,14 @@ def connect_page():
     <button type="button" class="cn-qr-open" data-qr-open>{qr}<span>Show my QR</span></button>
   </main>
   <dialog class="cn-qr" id="cn-qr">
-    <p class="cn-qr-kicker">Scan to connect</p>
-    <img src="/images/qr-connect.svg" alt="QR code linking to amir-zare.com/connect" width="260" height="260">
+    <div class="cn-qr-switch">
+      <button type="button" data-qr-mode="page" aria-pressed="true">Open my page</button>
+      <button type="button" data-qr-mode="contact" aria-pressed="false">Save my contact</button>
+    </div>
+    <p class="cn-qr-kicker" id="cn-qr-kicker">Scan to connect</p>
+    <img id="cn-qr-img" src="/images/qr-connect.svg" alt="QR code linking to amir-zare.com/connect" width="260" height="260">
     <p class="cn-qr-name">Amir Zare</p>
-    <p class="cn-qr-url">amir-zare.com/connect</p>
+    <p class="cn-qr-url" id="cn-qr-url">amir-zare.com/connect</p>
     <form method="dialog"><button class="cn-qr-close">Close</button></form>
   </dialog>
   <script src="/script.js?v={JS_VERSION}" defer></script>
