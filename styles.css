@@ -1146,3 +1146,4 @@ section[id]{scroll-margin-top:108px}
 }
 .sk-tile.skill .sk-mono{color:var(--c);font-size:.8rem}
 :root[data-theme='light'] .sk-tile .sk-mono,:root[data-theme='light'] .sk-tile.skill .sk-mono{color:color-mix(in srgb,var(--c) 65%,#000)}
+.sk-pulse{animation-duration:7s}
