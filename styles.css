@@ -1057,3 +1057,6 @@ a:hover,a:focus{background:var(--glass);text-decoration:underline}
 #contact.cta-stage::after{top:-340px;height:340px;background:linear-gradient(180deg,rgba(6,11,20,0) 0,rgba(6,11,20,.55) 45%,#060b14 100%)}
 :root[data-theme='light'] #contact.cta-stage{background:#e3ebf7}
 :root[data-theme='light'] #contact.cta-stage::after{background:linear-gradient(180deg,rgba(227,235,247,0) 0,rgba(227,235,247,.55) 45%,#e3ebf7 100%)}
+/* Sharp edge again, placed ~90px above the lamp (solid band, no fade) */
+#contact.cta-stage::after{top:-90px;height:90px;background:#060b14}
+:root[data-theme='light'] #contact.cta-stage::after{background:#e3ebf7}
