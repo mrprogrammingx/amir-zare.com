@@ -1321,3 +1321,22 @@ section[id]{scroll-margin-top:108px}
   .arch-dot{display:none}
   .cs-feat:hover{transform:none}
 }
+
+/* ---------- Sponsorship ---------- */
+.footer-cols a.footer-sponsor svg{color:#f472b6;opacity:1}
+.footer-cols a.footer-sponsor:hover{color:#f9a8d4}
+.sponsor-btn{border-color:rgba(244,114,182,.45);color:var(--text)}
+.sponsor-btn svg{color:#f472b6;flex:none}
+.sponsor-btn:hover,.sponsor-btn:focus-visible{background:rgba(244,114,182,.12);border-color:rgba(244,114,182,.7)}
+.sponsor-card{display:flex;align-items:center;gap:18px;margin-top:18px;padding:20px;border-radius:16px;
+  background:linear-gradient(120deg,rgba(244,114,182,.10),rgba(96,165,250,.06));border:1px solid rgba(244,114,182,.35)}
+.sponsor-card h2{margin:0 0 6px;font-size:1.2rem;border:0;padding:0;display:block}
+.sponsor-card p{margin:0;color:var(--text);line-height:1.6}
+.sponsor-card > div{flex:1}
+.sponsor-heart{flex:none;width:46px;height:46px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;
+  color:#f472b6;background:rgba(244,114,182,.14);border:1px solid rgba(244,114,182,.4);animation:sponsor-beat 2.4s ease-in-out infinite}
+.sponsor-heart svg{width:22px;height:22px}
+@keyframes sponsor-beat{0%,100%{transform:scale(1)}12%{transform:scale(1.12)}24%{transform:scale(1)}36%{transform:scale(1.08)}48%{transform:scale(1)}}
+@media (max-width:700px){ .sponsor-card{flex-direction:column;align-items:flex-start} }
+@media (prefers-reduced-motion: reduce){ .sponsor-heart{animation:none} }
+.cm-actions .sponsor-btn{display:inline-flex;align-items:center;gap:6px}

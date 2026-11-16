@@ -35,3 +35,4 @@ Amir has 7+ years of experience, from enterprise backend engineering (PHP, Larav
 - https://linkedin.com/in/binahayat00
 - https://github.com/mrprogrammingx
 - https://www.youtube.com/@AmirZareDev
+- Sponsor: https://github.com/sponsors/mrprogrammingx
