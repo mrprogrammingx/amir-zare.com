@@ -19,7 +19,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "tools"))
 from content import ABOUT, CASE_STUDIES, COMMUNITY, PROJECTS, SITE  # noqa: E402
 
-CSS_VERSION = "20261118g"
+CSS_VERSION = "20261118i"
 JS_VERSION = "20261118c"
 LASTMOD = "2026-11-16"
 
@@ -41,6 +41,21 @@ ARROW = '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="cur
 
 def esc(text):
     return html.escape(text, quote=True)
+
+
+def meta_desc(text, limit=160):
+    """Search-result-sized description: whole sentences up to `limit` characters, else a clean word cut."""
+    t = re.sub(r"\s+", " ", plain(text)).strip()
+    if len(t) <= limit:
+        return t
+    out = ""
+    for sent in re.split(r"(?<=[.!?])\s+", t):
+        if len(out) + len(sent) + 1 > limit:
+            break
+        out = (out + " " + sent).strip()
+    if len(out) >= 80:
+        return out
+    return t[:limit - 1].rsplit(" ", 1)[0].rstrip(",;:—-") + "…"
 
 
 def plain(text):
@@ -157,6 +172,16 @@ def footer(telegram=True):
 
 # ---------------------------------------------------------------- SEO helpers
 
+PRESS = {"url": "https://tech.news.am/en/news/7656", "outlet": "NEWS.am Tech", "label": "From Excel to AI",
+         "headline": "From Excel to AI: A startup by specialists who relocated from Iran to Armenia helps businesses make sense of their data",
+         "date": "2026-08-26", "date_text": "Aug 26, 2026", "where": "Interview at Seaside Startup Summit Armenia 2026"}
+PRESS_LD = {"@type": "NewsArticle", "headline": PRESS["headline"], "url": PRESS["url"], "datePublished": PRESS["date"],
+            "publisher": {"@type": "Organization", "name": "NEWS.am Tech", "url": "https://tech.news.am/"},
+            "about": [{"@id": "https://amir-zare.com/#person"}, {"@id": "https://usedatalayer.com/#org"}]}
+NEWS_ICON = ('<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" '
+             'stroke-linejoin="round" aria-hidden="true"><path d="M4 4h13v15a2 2 0 0 0 2 2H6a2 2 0 0 1-2-2z"/><path d="M17 8h3v11a2 2 0 0 1-2 2"/>'
+             '<path d="M8 8h5M8 12h5M8 16h3"/></svg>')
+
 PERSON = {
     "@type": "Person", "@id": SITE["url"] + "/#person", "name": SITE["name"], "jobTitle": SITE["headline"],
     "description": SITE["description"], "url": SITE["url"] + "/", "image": SITE["url"] + SITE["portrait"],
@@ -164,11 +189,13 @@ PERSON = {
     "address": {"@type": "PostalAddress", "addressLocality": "Yerevan", "addressCountry": "AM"},
     "worksFor": {"@type": "Organization", "@id": "https://usedatalayer.com/#org", "name": "DataLayer", "url": "https://usedatalayer.com"},
     "alumniOf": {"@type": "CollegeOrUniversity", "name": "Yazd University"},
+    "subjectOf": PRESS_LD,
     "knowsAbout": ["Data engineering", "Apache Airflow", "dbt", "Apache Kafka", "Apache Flink", "BigQuery", "Python", "SQL",
                    "LLM applications", "Retrieval-augmented generation", "Multi-agent systems", "A/B testing", "FastAPI", "Laravel"],
 }
 ORG = {"@type": "Organization", "@id": "https://usedatalayer.com/#org", "name": "DataLayer", "url": "https://usedatalayer.com",
-       "founder": {"@id": SITE["url"] + "/#person"}, "description": "An AI-powered analytics platform for e-commerce sellers."}
+       "founder": {"@id": SITE["url"] + "/#person"}, "description": "An AI-powered analytics platform for e-commerce sellers.",
+       "subjectOf": PRESS_LD}
 
 
 def breadcrumbs(trail):
@@ -392,9 +419,9 @@ def project_page(p):
         work["programmingLanguage"] = [t for t in p["tech"] if t.split()[0] in ("Python", "Java", "PHP", "SQL", "TypeScript", "JavaScript")]
     graph = [work, breadcrumbs(trail), PERSON]
     title = f"{plain(p['title'])} — {plain(p['subtitle'])} | Amir Zare"
-    if len(title) > 70:
+    if len(title) > 62:
         title = f"{plain(p['title'])} | Amir Zare"
-    return page(title, plain(p["summary"]), path, body, og_image(p["slug"]), graph, active="projects", og_type="article")
+    return page(title, meta_desc(p["summary"]), path, body, og_image(p["slug"]), graph, active="projects", og_type="article")
 
 
 def projects_hub():
@@ -430,6 +457,31 @@ def projects_hub():
                 path, body, og_image("projects"), graph, active="projects")
 
 
+# Plain question-and-answer facts: shown on /about/, marked up as FAQPage, and repeated in llms.txt,
+# so search engines and AI answer engines can quote them directly.
+FAQ = [
+    ("Who is Amir Zare?",
+     "Amir Zare is an AI Data Engineer and the founder of DataLayer, based in Yerevan, Armenia. He has 7+ years of experience "
+     "building backend systems, data pipelines, analytics platforms, and production LLM applications."),
+    ("What does Amir Zare specialize in?",
+     "Data pipelines and orchestration (Apache Airflow, dbt, Kafka, Flink), analytics engineering (BigQuery, DuckDB, advanced SQL, "
+     "A/B test analysis), production AI (RAG, embeddings, multi-agent systems), and backend APIs with Python/FastAPI and PHP/Laravel."),
+    ("What is DataLayer?",
+     "DataLayer is an AI-powered analytics platform for e-commerce sellers, founded by Amir Zare in 2024. It turns raw sales exports "
+     "into dashboards with customer segmentation, anomaly detection, and churn detection. F6S ranks it #2 in Data Analytics and #6 "
+     "among software companies in Armenia."),
+    ("Is Amir Zare available for work?",
+     "Yes. Amir is an Armenian permanent resident based in Yerevan and is open to data engineering, analytics engineering, and AI "
+     "engineering roles and projects."),
+    ("Does Amir Zare teach or speak at events?",
+     "Yes. He runs a weekly Python course on YouTube, designed and delivered a multi-agent workshop (Google ADK + A2A) for GDG Yerevan, "
+     "and mentors machine learning students at TUMO Labs."),
+    ("How can I contact Amir Zare?",
+     "By email at info@amir-zare.com, on LinkedIn (linkedin.com/in/binahayat00), or on Telegram (@MrProgrammingX). "
+     "His digital contact card is at amir-zare.com/connect."),
+]
+
+
 def about_page():
     path = "/about/"
     trail = [("Home", "/"), ("About", path)]
@@ -440,6 +492,8 @@ def about_page():
     dl = "".join(f"<li>{t}</li>" for t in ABOUT["datalayer"])
     edu = "".join(f"<li><strong>{n}</strong> &mdash; {d}</li>" for n, d in ABOUT["education"])
     certs = "".join(f"<li>{c}</li>" for c in ABOUT["certs"])
+    faq = "".join(f'<details class="ab-q"{" open" if i == 0 else ""}><summary>{esc(q)}</summary><p>{esc(a)}</p></details>'
+                  for i, (q, a) in enumerate(FAQ))
     body = f'''    <section class="section pg">
       <div class="container">
         {crumbs_html(trail)}
@@ -469,6 +523,15 @@ def about_page():
           <h2>Founder of DataLayer</h2>
           <p><a href="https://usedatalayer.com" target="_blank" rel="noopener">DataLayer</a> turns e-commerce sellers&rsquo; raw sales exports into actionable dashboards with customer segmentation, anomaly detection, and churn detection.</p>
           <ul class="pg-list">{dl}</ul>
+          <a class="press-card" href="{PRESS["url"]}" target="_blank" rel="noopener">
+            <span class="press-ic">{NEWS_ICON}</span>
+            <span class="press-body">
+              <span class="press-kicker">Featured in {PRESS["outlet"]}</span>
+              <span class="press-title">{PRESS["label"]}: how DataLayer helps businesses make sense of their data</span>
+              <span class="press-meta">{PRESS["date_text"]} &middot; {PRESS["where"]}</span>
+            </span>
+            <span class="press-go">Read the interview <span aria-hidden="true">&#8599;</span></span>
+          </a>
         </section>
         <div class="pg-grid">
           <section class="pg-block">
@@ -484,11 +547,17 @@ def about_page():
           <h2>Languages</h2>
           {chips(ABOUT["languages"])}
         </section>
+        <section class="pg-sec" id="faq">
+          <h2>Frequently asked questions</h2>
+          <div class="ab-faq">{faq}</div>
+        </section>
         <p class="pg-back"><a href="/projects/">See my projects &rarr;</a> &nbsp; <a href="/community/">Community &amp; teaching &rarr;</a></p>
       </div>
     </section>'''
     graph = [{"@type": "ProfilePage", "name": "About Amir Zare", "url": SITE["url"] + path, "mainEntity": {"@id": SITE["url"] + "/#person"}},
-             PERSON, ORG, breadcrumbs(trail)]
+             PERSON, ORG, breadcrumbs(trail),
+             {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}}
+                                                 for q, a in FAQ]}]
     return page("About Amir Zare — AI Data Engineer & Founder of DataLayer",
                 "Amir Zare is an AI Data Engineer and the founder of DataLayer in Yerevan, Armenia, with 7+ years building backend systems, data pipelines, and production AI.",
                 path, body, og_image("about"), graph, og_type="profile")
@@ -557,11 +626,27 @@ def community_page():
 
 # ---------------------------------------------------------------- existing pages
 
+HOME_TITLE = "Amir Zare — AI Data Engineer & Founder of DataLayer"
+
+
 def home_seo():
     desc = "Portfolio of Amir Zare — AI Data Engineer and Founder of DataLayer. Data pipelines, analytics platforms, A/B testing, and production LLM applications."
     graph = [PERSON, ORG, {"@type": "WebSite", "@id": SITE["url"] + "/#website", "name": "Amir Zare", "url": SITE["url"] + "/",
                            "publisher": {"@id": SITE["url"] + "/#person"}}]
-    return seo_tags("Amir Zare — AI Data Engineer", desc, "/", og_image("home")) + "\n  " + jsonld(graph)
+    return seo_tags(HOME_TITLE, desc, "/", og_image("home")) + "\n  " + jsonld(graph)
+
+
+RESUME_TITLE = "Amir Zare — Resume | AI Data Engineer"
+RESUME_DESC = ("Resume of Amir Zare, AI Data Engineer and founder of DataLayer in Yerevan: 7+ years in data pipelines, "
+               "analytics, backend systems, and production LLM apps.")
+
+
+def resume_seo():
+    trail = [("Home", "/"), ("Resume", "/resume.html")]
+    graph = [{"@type": "ProfilePage", "name": RESUME_TITLE, "url": SITE["url"] + "/resume.html", "description": RESUME_DESC,
+              "mainEntity": {"@id": SITE["url"] + "/#person"}}, PERSON, ORG, breadcrumbs(trail)]
+    return (seo_tags(RESUME_TITLE, RESUME_DESC, "/resume.html", og_image("resume"), "profile")
+            + "\n  " + jsonld(graph))
 
 
 def replace_block(src, start_pat, end_pat, new):
@@ -581,6 +666,11 @@ def sync_existing(path, home=False):
     out = re.sub(r'src="/script\.js"', f'src="/script.js?v={JS_VERSION}"', out)
     if home:
         out = replace_block(out, r"<!-- build:seo -->", r"<!-- /build:seo -->", "<!-- build:seo -->\n  " + home_seo() + "\n  <!-- /build:seo -->")
+        out = re.sub(r"<title>.*?</title>", f"<title>{esc(HOME_TITLE)}</title>", out, count=1)
+    if path == "resume.html":
+        out = replace_block(out, r"<!-- build:seo -->", r"<!-- /build:seo -->", "<!-- build:seo -->\n  " + resume_seo() + "\n  <!-- /build:seo -->")
+        out = re.sub(r"<title>.*?</title>", f"<title>{esc(RESUME_TITLE)}</title>", out, count=1)
+        out = re.sub(r'<meta name="description" content="[^"]*"', f'<meta name="description" content="{esc(RESUME_DESC)}"', out, count=1)
     return out
 
 
@@ -607,7 +697,21 @@ def llms_txt():
              f"- [About]({SITE['url']}/about/): background, focus areas, career journey, education, and certifications",
              f"- [Projects]({SITE['url']}/projects/): all projects with problem, approach, and results",
              f"- [Community]({SITE['url']}/community/): YouTube Python course, GDG Yerevan workshop, mentoring, and events",
-             f"- [Resume]({SITE['url']}/resume.html): full resume", "", "## Projects", ""]
+             f"- [Resume]({SITE['url']}/resume.html): full resume",
+             f"- [Contact card]({SITE['url']}/connect/): email, LinkedIn, Telegram, and a downloadable contact card", "",
+             "## Press", "",
+             f"- [{PRESS['outlet']}: {PRESS['headline']}]({PRESS['url']}) ({PRESS['date']}): interview with Amir Zare about DataLayer at Seaside Startup Summit Armenia 2026", "",
+             "## Key facts", "",
+             "- Name: Amir Zare",
+             "- Role: AI Data Engineer; Founder of DataLayer (since January 2024)",
+             "- Location: Yerevan, Armenia (Armenian permanent resident)",
+             "- Experience: 7+ years (backend engineering since 2019, data and AI platforms since 2024)",
+             "- Core skills: Python, SQL, Apache Airflow, dbt, Kafka, Flink, Spark, BigQuery, DuckDB, FastAPI, Laravel, RAG, multi-agent systems, A/B testing",
+             "- Education: B.E. in Computer Software Engineering, Yazd University (2018-2022); Machine Learning program, TUMO Labs (2026)",
+             "- Teaching: weekly Python course on YouTube (@AmirZareDev); GDG Yerevan multi-agent workshop; ML mentor at TUMO Labs",
+             "- Languages: Persian (native), English (full professional), German, Armenian, Russian (elementary)",
+             "- Availability: open to data engineering, analytics engineering, and AI engineering roles", "",
+             "## Frequently asked questions", ""] + [f"### {q}\n\n{a}\n" for q, a in FAQ] + ["## Projects", ""]
     for p in ALL:
         lines.append(f"- [{plain(p['title'])}]({SITE['url']}{ppath(p)}): {plain(p['summary'])}")
     lines += ["", "## Contact", "", f"- Email: {SITE['email']}"] + [f"- {u}" for u in SITE["same_as"]] + [f"- Sponsor: {SPONSOR_URL}", ""]
@@ -701,8 +805,30 @@ def connect_page():
     return "\n".join(line.rstrip() for line in doc.split("\n"))
 
 
+def not_found_page():
+    body = f'''    <section class="section pg nf">
+      <div class="container">
+        <p class="nf-code" aria-hidden="true">404</p>
+        <h1 class="grad-title">This page doesn&rsquo;t exist</h1>
+        <p class="cm-sub">The link may be old or mistyped. Here are the places people usually look for:</p>
+        <div class="pg-actions">
+          <a class="cta-btn primary" href="/">Home</a>
+          <a class="cta-btn" href="/projects/">Projects</a>
+          <a class="cta-btn" href="/about/">About</a>
+          <a class="cta-btn" href="/community/">Community</a>
+          <a class="cta-btn" href="/connect/">Contact card</a>
+        </div>
+      </div>
+    </section>'''
+    doc = page("Page not found | Amir Zare", "This page doesn't exist. Find Amir Zare's projects, about page, and contact details.",
+               "/404.html", body, og_image("home"), [PERSON])
+    doc = doc.replace('<meta name="robots" content="index, follow">', '<meta name="robots" content="noindex">')
+    return re.sub(r'\s*<link rel="canonical" href="[^"]*">', "", doc, count=1)
+
+
 def outputs():
     files = {}
+    files["404.html"] = not_found_page()
     files["connect/index.html"] = connect_page()
     files["connect/amir-zare.vcf"] = vcard()
     for p in ALL:
@@ -717,7 +843,11 @@ def outputs():
              ("/resume.html", "monthly", "0.8")]
     paths += [(ppath(p), "monthly", "0.7") for p in ALL]
     files["sitemap.xml"] = sitemap(paths)
-    files["robots.txt"] = f"User-agent: *\nAllow: /\nDisallow: /connect/amir-zare.vcf\n\nSitemap: {SITE['url']}/sitemap.xml\n"
+    bots = ["*", "Googlebot", "Bingbot", "GPTBot", "OAI-SearchBot", "ChatGPT-User", "ClaudeBot", "Claude-SearchBot", "Claude-User",
+            "PerplexityBot", "Perplexity-User", "Google-Extended", "Applebot-Extended", "CCBot"]
+    files["robots.txt"] = ("# Search engines and AI answer engines are welcome to read and cite this site.\n"
+                           + "".join(f"User-agent: {b}\n" for b in bots)
+                           + f"Allow: /\nDisallow: /connect/amir-zare.vcf\n\nSitemap: {SITE['url']}/sitemap.xml\n")
     files["llms.txt"] = llms_txt()
     files["tools/og-pages.json"] = json.dumps(og_specs(), ensure_ascii=False, indent=2) + "\n"
     return files
@@ -728,6 +858,7 @@ def og_specs():
     specs = [{"slug": "home", "title": "Amir Zare", "subtitle": "AI Data Engineer · Founder of DataLayer", "image": "/images/amir-portrait.webp", "fit": "portrait"},
              {"slug": "about", "title": "About Amir Zare", "subtitle": "7+ years in backend, data platforms, and production AI", "image": "/images/amir-portrait.webp", "fit": "portrait"},
              {"slug": "projects", "title": "Projects", "subtitle": "Streaming platforms, lakehouses, analytics, and AI agents", "image": "/images/flowfleet.webp", "fit": "contain"},
+             {"slug": "resume", "title": "Resume", "subtitle": "AI Data Engineer · 7+ years in data, backend, and AI", "image": "/images/amir-portrait.webp", "fit": "portrait"},
              {"slug": "community", "title": "Community & Events", "subtitle": "Teaching, workshops, and meetups in Yerevan", "image": "/images/gdg-workshop-room.webp", "fit": "cover"}]
     specs += [{"slug": p["slug"], "title": plain(p["title"]), "subtitle": plain(p["subtitle"]), "image": p["image"],
                "fit": "contain" if p.get("image_fit", "").startswith("contain") else "cover"} for p in ALL]

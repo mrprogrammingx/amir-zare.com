@@ -21,6 +21,13 @@
     "fit": "contain"
   },
   {
+    "slug": "resume",
+    "title": "Resume",
+    "subtitle": "AI Data Engineer · 7+ years in data, backend, and AI",
+    "image": "/images/amir-portrait.webp",
+    "fit": "portrait"
+  },
+  {
     "slug": "community",
     "title": "Community & Events",
     "subtitle": "Teaching, workshops, and meetups in Yerevan",
@@ -66,14 +73,14 @@
     "slug": "analytics",
     "title": "Claude Code Analytics Platform",
     "subtitle": "Analytics and forecasting for AI coding telemetry",
-    "image": "/images/analytics.png",
+    "image": "/images/analytics.webp",
     "fit": "cover"
   },
   {
     "slug": "classic-web-based-online-chat-application",
     "title": "Real-Time Chat Application",
     "subtitle": "Rooms, presence, and moderation over WebSockets",
-    "image": "/images/chat.png",
+    "image": "/images/chat.webp",
     "fit": "cover"
   },
   {

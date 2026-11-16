@@ -11,6 +11,49 @@ Amir has 7+ years of experience, from enterprise backend engineering (PHP, Larav
 - [Projects](https://amir-zare.com/projects/): all projects with problem, approach, and results
 - [Community](https://amir-zare.com/community/): YouTube Python course, GDG Yerevan workshop, mentoring, and events
 - [Resume](https://amir-zare.com/resume.html): full resume
+- [Contact card](https://amir-zare.com/connect/): email, LinkedIn, Telegram, and a downloadable contact card
+
+## Press
+
+- [NEWS.am Tech: From Excel to AI: A startup by specialists who relocated from Iran to Armenia helps businesses make sense of their data](https://tech.news.am/en/news/7656) (2026-08-26): interview with Amir Zare about DataLayer at Seaside Startup Summit Armenia 2026
+
+## Key facts
+
+- Name: Amir Zare
+- Role: AI Data Engineer; Founder of DataLayer (since January 2024)
+- Location: Yerevan, Armenia (Armenian permanent resident)
+- Experience: 7+ years (backend engineering since 2019, data and AI platforms since 2024)
+- Core skills: Python, SQL, Apache Airflow, dbt, Kafka, Flink, Spark, BigQuery, DuckDB, FastAPI, Laravel, RAG, multi-agent systems, A/B testing
+- Education: B.E. in Computer Software Engineering, Yazd University (2018-2022); Machine Learning program, TUMO Labs (2026)
+- Teaching: weekly Python course on YouTube (@AmirZareDev); GDG Yerevan multi-agent workshop; ML mentor at TUMO Labs
+- Languages: Persian (native), English (full professional), German, Armenian, Russian (elementary)
+- Availability: open to data engineering, analytics engineering, and AI engineering roles
+
+## Frequently asked questions
+
+### Who is Amir Zare?
+
+Amir Zare is an AI Data Engineer and the founder of DataLayer, based in Yerevan, Armenia. He has 7+ years of experience building backend systems, data pipelines, analytics platforms, and production LLM applications.
+
+### What does Amir Zare specialize in?
+
+Data pipelines and orchestration (Apache Airflow, dbt, Kafka, Flink), analytics engineering (BigQuery, DuckDB, advanced SQL, A/B test analysis), production AI (RAG, embeddings, multi-agent systems), and backend APIs with Python/FastAPI and PHP/Laravel.
+
+### What is DataLayer?
+
+DataLayer is an AI-powered analytics platform for e-commerce sellers, founded by Amir Zare in 2024. It turns raw sales exports into dashboards with customer segmentation, anomaly detection, and churn detection. F6S ranks it #2 in Data Analytics and #6 among software companies in Armenia.
+
+### Is Amir Zare available for work?
+
+Yes. Amir is an Armenian permanent resident based in Yerevan and is open to data engineering, analytics engineering, and AI engineering roles and projects.
+
+### Does Amir Zare teach or speak at events?
+
+Yes. He runs a weekly Python course on YouTube, designed and delivered a multi-agent workshop (Google ADK + A2A) for GDG Yerevan, and mentors machine learning students at TUMO Labs.
+
+### How can I contact Amir Zare?
+
+By email at info@amir-zare.com, on LinkedIn (linkedin.com/in/binahayat00), or on Telegram (@MrProgrammingX). His digital contact card is at amir-zare.com/connect.
 
 ## Projects
 
