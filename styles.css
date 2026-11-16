@@ -1569,3 +1569,7 @@ body.cn-body::before{display:none}
 :root[data-theme='light'] .press-kicker,:root[data-theme='light'] .press-ic{color:#b45309}
 @media (max-width:700px){ .press-card{flex-wrap:wrap} .press-go{width:100%;padding-left:60px} }
 @media (prefers-reduced-motion: reduce){ .press-card:hover{transform:none} }
+/* /connect QR dialog: switch between the page QR and the contact (vCard) QR */
+.cn-qr-switch{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin:0 0 16px;padding:4px;border-radius:12px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1)}
+.cn-qr-switch button{padding:9px 6px;border:0;border-radius:9px;cursor:pointer;font:600 .85rem/1.1 Inter,ui-sans-serif,system-ui,sans-serif;color:#9aa4b2;background:none}
+.cn-qr-switch button[aria-pressed="true"]{color:#04342c;background:linear-gradient(90deg,#6ee7b7,#60a5fa)}
