@@ -20,7 +20,9 @@
           io.unobserve(el);
         }
       });
-    },{threshold:0.12});
+    // A ratio threshold never fires for sections taller than the viewport divided by the ratio
+    // (the projects section is ~9000px tall on phones), so trigger on the first visible pixels.
+    },{threshold:0, rootMargin:'0px 0px -60px 0px'});
     reveals.forEach(r=>io.observe(r));
   } else {
     // fallback

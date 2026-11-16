@@ -13,7 +13,7 @@
   <link rel="icon" href="/favicon-16x16.png" sizes="16x16" type="image/png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
   <link rel="manifest" href="/site.webmanifest">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="/styles.css?v=20261116c">
   </head>
   <body>
     <!-- scroll progress bar -->
@@ -54,37 +54,43 @@
     </header>
 
   <main>
-    <section class="hero">
-      <div class="container reveal hero-content">
-        <h1 class="hero-title">
-          <span class="hero-name">Amir Zare</span>
-          <span class="hero-role">AI Data Engineer · Founder of DataLayer</span>
+    <section class="hero hero-portrait" aria-labelledby="hero-heading">
+      <div class="hp-stage">
+        <h1 id="hero-heading" class="hp-title">
+          <span class="hp-hello">Hi, I&rsquo;m <span class="hp-name">Amir Zare</span>,</span>
+          <span class="hp-role">AI Data Engineer</span>
         </h1>
-        <p class="hook">7+ years building backend systems, data pipelines, and analytics products — including
-          production LLM applications.</p>
-        <p class="lead">
-          <span class="fixed">I design and build reliable data platforms that</span>&nbsp;
-          <span id="typed"
-            data-words='[
-              "enable data-driven decisions with production-ready ETL systems.",
-              "turn raw sales exports into actionable dashboards at DataLayer.",
-              "reduce processing costs with efficient data engineering.",
-              "put LLMs to work safely, with deterministic guardrails.",
-              "measure what matters with rigorous A/B test analysis."
-            ]'>enable data-driven decisions with production-ready ETL systems.</span>
-        </p>
-        <div class="chips">Airflow &amp; dbt • FastAPI APIs • LLM apps • A/B testing</div>
-        <p class="cta-row">
-          <a class="btn primary" href="resume.html" aria-label="View Resume">View Resume</a>
-          <a class="btn" href="https://github.com/mrprogrammingx" target="_blank" rel="noopener"
-            aria-label="View GitHub profile">GitHub</a>
-          <a class="btn primary" href="#contact" aria-label="Contact Me">Contact Me</a>
-        </p>
-        <p class="muted" style="margin-top:10px">Available for full-time & contract roles — open to remote / hybrid</p>
-        <p class="muted" style="margin-top:6px">
-          <a href="https://usedatalayer.com" target="_blank" rel="noopener">DataLayer</a> — ranked #2 in Data Analytics and #6 among
-          software companies in Armenia by F6S · $170K+ in non-dilutive startup credits
-        </p>
+        <svg class="hp-spark" viewBox="0 0 60 60" aria-hidden="true">
+          <path d="M8 22c10-6 22-8 34-6M14 36c6-10 14-17 24-22M30 50c0-12 4-22 12-30" fill="none"
+            stroke="currentColor" stroke-width="3" stroke-linecap="round" />
+        </svg>
+
+        <div class="hp-visual">
+          <div class="hp-circle" aria-hidden="true"></div>
+          <img class="hp-photo" src="images/amir-portrait.webp"
+            alt="Amir Zare, smiling with arms crossed, wearing glasses and a navy sweater"
+            width="1000" height="1340" fetchpriority="high">
+          <div class="hp-actions">
+            <a class="hp-btn primary" href="#projects">Projects <span aria-hidden="true">&#8599;</span></a>
+            <a class="hp-btn" href="#contact">Hire me</a>
+          </div>
+        </div>
+
+        <div class="hp-side hp-left">
+          <svg class="hp-quote" viewBox="0 0 32 24" aria-hidden="true">
+            <path d="M0 24V13C0 5.8 4 1.3 11 0l1.4 3.2C8.6 4.6 7 7 6.8 10H12v14H0zm18 0V13c0-7.2 4-11.7 11-13l1.4 3.2C26.6 4.6 25 7 24.8 10H30v14H18z"
+              fill="currentColor" />
+          </svg>
+          <p>I build data pipelines, analytics platforms, and production LLM apps. Founder of
+            <a href="https://usedatalayer.com" target="_blank" rel="noopener">DataLayer</a>.</p>
+          <p class="hp-note">Open to full-time &amp; contract roles · remote / hybrid</p>
+        </div>
+
+        <div class="hp-side hp-right">
+          <p class="hp-badge">F6S: #2 in Data Analytics in Armenia</p>
+          <p class="hp-stat">7+ Years</p>
+          <p class="hp-stat-label">Experience</p>
+        </div>
       </div>
     </section>
     <section id="projects" class="section reveal alt visual-hook">
@@ -734,7 +740,7 @@
     </div>
   </footer>
 
-  <script src="/script.js" defer></script>
+  <script src="/script.js?v=20261116" defer></script>
 </body>
 
 </html>

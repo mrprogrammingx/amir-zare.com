@@ -678,3 +678,55 @@ a:hover,a:focus{background:var(--glass);text-decoration:underline}
   }
 }
 
+
+/* ---------- Portrait hero: title, cutout photo over a gradient circle, side proof blocks ---------- */
+.hero.hero-portrait{padding:28px 0 0;overflow:hidden}
+.hp-stage{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:0 24px;text-align:center}
+.hero .hp-title{position:relative;z-index:1;margin:0;font-weight:800;letter-spacing:-0.02em;line-height:1.02;color:var(--text)}
+.hp-hello{display:block;font-size:clamp(1.9rem,5vw,3.6rem)}
+.hp-name{background:linear-gradient(90deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hp-role{display:block;font-size:clamp(2.6rem,8vw,6rem)}
+.hp-spark{position:absolute;top:clamp(36px,6vw,70px);left:calc(50% - clamp(260px,30vw,380px));width:48px;height:48px;color:var(--accent);opacity:.75;transform:rotate(-20deg)}
+
+/* the photo's transparent headroom lets the head rise into the title line */
+.hp-visual{position:relative;z-index:2;isolation:isolate;width:min(440px,80vw);margin:clamp(-150px,-11vw,-70px) auto 0}
+.hp-circle{position:absolute;z-index:-1;left:50%;top:30%;width:135%;aspect-ratio:1;transform:translateX(-50%);border-radius:50%;
+  background:linear-gradient(160deg,var(--accent),var(--accent-2));box-shadow:0 0 80px rgba(96,165,250,.25)}
+.hp-photo{display:block;width:100%;height:auto;position:relative}
+.hp-actions{position:absolute;z-index:3;left:50%;bottom:9%;transform:translateX(-50%);display:flex;gap:6px;padding:6px;border-radius:999px;
+  background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+  box-shadow:0 10px 30px rgba(2,6,23,.35);white-space:nowrap}
+.hp-btn{padding:12px 22px;border-radius:999px;color:#fff;font-weight:600;font-size:1rem;text-decoration:none}
+.hp-btn:hover,.hp-btn:focus{background:rgba(255,255,255,.12);text-decoration:none}
+.hp-btn.primary{background:#0b1426;color:#fff}
+.hp-btn.primary:hover,.hp-btn.primary:focus{background:#13213a}
+
+.hp-side{position:absolute;z-index:3;top:52%;width:240px;margin:0}
+.hp-side p{margin:0}
+.hp-left{left:24px;text-align:left;color:var(--muted);font-size:.98rem;line-height:1.5}
+.hp-left p{color:var(--text)}
+.hp-left .hp-note{margin-top:10px;color:var(--muted);font-size:.85rem}
+.hp-quote{width:30px;height:22px;color:var(--accent-2);margin-bottom:12px}
+.hp-right{right:24px;text-align:right}
+.hp-badge{display:inline-block;color:var(--accent);font-weight:600;font-size:.85rem;margin-bottom:6px!important}
+.hp-stat{font-size:clamp(2rem,3.4vw,2.8rem);font-weight:800;line-height:1.05;color:var(--text)}
+.hp-stat-label{color:var(--muted);font-size:.95rem}
+
+@media (max-width:900px){
+  .hp-stage{display:flex;flex-direction:column;align-items:center;padding:0 16px}
+  .hp-title{order:1}
+  .hp-spark{display:none}
+  .hp-side{position:static;width:auto;max-width:520px;text-align:center}
+  .hp-left{order:2;margin-top:18px}
+  .hp-quote{display:none}
+  .hp-right{order:3;margin-top:14px;display:flex;align-items:baseline;justify-content:center;gap:8px;flex-wrap:wrap}
+  .hp-badge{flex-basis:100%;margin-bottom:2px!important}
+  .hp-stat{font-size:1.6rem}
+  .hp-visual{order:4;margin-top:12px;width:min(380px,82vw)}
+}
+@media (max-width:520px){
+  .hero.hero-portrait{padding-top:16px}
+  .hp-btn{padding:10px 16px;font-size:.92rem}
+}
+.hp-left a{padding:0}
+:root[data-theme='light'] .hp-badge{color:#047857}
