@@ -1026,3 +1026,9 @@ a:hover,a:focus{background:var(--glass);text-decoration:underline}
 .footer-brand .logo{display:inline-block;color:var(--accent);font-weight:700}
 .footer-brand .logo:hover{color:var(--accent)}
 :root[data-theme='light'] .footer-brand .logo{color:#059669}
+/* Footer sits on its own darker band, with the gradient line on its top edge */
+.site-footer.footer-rich{position:relative;background:#060b14;padding:44px 0 18px}
+.site-footer.footer-rich::before{content:"";position:absolute;left:0;right:0;top:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(110,231,183,.6),rgba(96,165,250,.6),transparent)}
+.site-footer.footer-rich .footer-line{display:none}
+:root[data-theme='light'] .site-footer.footer-rich{background:#e3ebf7}
