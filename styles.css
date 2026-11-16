@@ -1050,3 +1050,5 @@ a:hover,a:focus{background:var(--glass);text-decoration:underline}
 :root[data-theme='light'] #contact.cta-stage::after{background:linear-gradient(180deg,rgba(227,235,247,0),rgba(227,235,247,.5))}
 #contact.cta-stage{overflow:visible}
 #contact .cta-light{overflow:hidden}
+#contact.cta-stage{margin-top:110px}
+@media (max-width:700px){ #contact.cta-stage{margin-top:70px} }
