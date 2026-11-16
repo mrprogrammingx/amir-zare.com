@@ -13,8 +13,10 @@ SITE = {
     "location": "Yerevan, Armenia",
     "same_as": [
         "https://linkedin.com/in/binahayat00",
+        "https://t.me/MrProgrammingX",
         "https://github.com/mrprogrammingx",
         "https://www.youtube.com/@AmirZareDev",
+        "https://t.me/amirzarecom",
     ],
     "portrait": "/images/amir-portrait.webp",
 }
@@ -67,7 +69,7 @@ CASE_STUDIES = [
         "title": "Claude Code Analytics Platform",
         "subtitle": "Analytics and forecasting for AI coding telemetry",
         "year": "2026", "category": "Data engineering", "status": "Open source",
-        "image": "/images/analytics.png", "image_fit": "cover",
+        "image": "/images/analytics.webp", "image_fit": "cover",
         "summary": "A complete analytics platform for AI telemetry monitoring: JSONL telemetry is normalized into a DuckDB warehouse and served through Streamlit dashboards, FastAPI analytics endpoints, and machine-learning forecasts.",
         "highlights": ["Analytics APIs", "Usage forecasting", "One-command run", "CI-tested"],
         "problem": "Telemetry was scattered and there was no central analytics API, so reporting was manual and slow.",
@@ -105,7 +107,7 @@ CASE_STUDIES = [
         "title": "Real-Time Chat Application",
         "subtitle": "Rooms, presence, and moderation over WebSockets",
         "year": "2026", "category": "Backend", "status": "Open source",
-        "image": "/images/chat.png", "image_fit": "cover",
+        "image": "/images/chat.webp", "image_fit": "cover",
         "summary": "A production-minded web chat built with FastAPI and SQLite (WAL): real-time messaging over WebSockets, presence, multi-device sessions, file sharing, and moderation, packaged with Docker and end-to-end tests.",
         "highlights": ["WebSockets", "Multi-device sessions", "pytest + Playwright"],
         "problem": "Teams need a small, reliable chat service with secure sessions and moderation that is easy to deploy and test.",
@@ -404,7 +406,7 @@ ABOUT = {
     "datalayer": [
         "Ranked #2 in Data Analytics and #6 among software companies in Armenia by F6S, with a 5.0 rating.",
         "Secured $170K+ in non-dilutive startup credits from Microsoft for Startups, Google for Startups, E2B, and DigitalOcean.",
-        "Featured in NEWS.am Tech; now leading pre-seed fundraising.",
+        "Featured in <a href=\"https://tech.news.am/en/news/7656\" target=\"_blank\" rel=\"noopener\">NEWS.am Tech</a>; now leading pre-seed fundraising.",
     ],
     "education": [
         ("Yazd University", "Bachelor of Engineering, Computer Software Engineering (2018 &ndash; 2022)"),
