@@ -18,9 +18,22 @@ import sys
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "tools"))
 from content import ABOUT, CASE_STUDIES, COMMUNITY, PROJECTS, SITE  # noqa: E402
+from i18n import CONNECT_EN, FEATURED, LANG_NAME, LANG_ORDER, LANG_SHORT, NAME, OG_LOCALE, RTL, T, UI  # noqa: E402
 
-CSS_VERSION = "20261118j"
-JS_VERSION = "20261118e"
+LOCAL_LANGS = [lang for lang in LANG_ORDER if lang != "en"]
+LOCAL_PAGES = {"home": "/", "about": "/about/", "community": "/community/", "connect": "/connect/"}
+
+
+def lpath(lang, key):
+    """URL of a translatable page in a language: /about/ (English) or /ru/about/."""
+    return ("" if lang == "en" else "/" + lang) + LOCAL_PAGES[key]
+
+
+def alts_for(key):
+    return {lang: lpath(lang, key) for lang in LANG_ORDER}
+
+CSS_VERSION = "20261118k"
+JS_VERSION = "20261118f"
 LASTMOD = "2026-11-16"
 
 ICONS = {
@@ -69,7 +82,7 @@ def brand_icon(name, size=15):
 
 # ---------------------------------------------------------------- shared header / footer
 
-def connect_rows(indent):
+def connect_rows(indent, lang="en"):
     rows = [
         ("linkedin", "LinkedIn", "https://linkedin.com/in/binahayat00", True),
         ("telegram", "Telegram", "https://t.me/MrProgrammingX", True),
@@ -82,14 +95,36 @@ def connect_rows(indent):
         tgt = ' target="_blank" rel="noopener"' if ext else ""
         out.append(f'{indent}<a class="connect-row" href="{href}"{tgt}><span class="connect-dot" data-brand="{brand}" aria-hidden="true">'
                    f'{brand_icon(brand)}</span><span>{esc(label)}</span></a>')
-    out.append(f'{indent}<a class="connect-row connect-row-qr" href="/connect/"><span class="connect-dot" data-brand="qr" aria-hidden="true">'
-               f'{QR_ICON}</span><span>My QR / digital card</span></a>')
+    out.append(f'{indent}<a class="connect-row connect-row-qr" href="{lpath(lang, "connect")}"><span class="connect-dot" data-brand="qr" aria-hidden="true">'
+               f'{QR_ICON}</span><span>{UI[lang]["my_qr"]}</span></a>')
     return "\n".join(out)
 
 
-def header(home, active=None):
+GLOBE = ('<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" '
+         'stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg>')
+
+
+def lang_switcher(lang, alts):
+    """Language menu, shown only on pages that have translations (alts); untranslated pages get none."""
+    if not alts:
+        return ""
+    links = "".join(
+        f'<a href="{alts[code]}" lang="{code}" hreflang="{code}"'
+        f'{" aria-current=\"true\"" if code == lang else ""}><span>{LANG_SHORT[code]}</span>{LANG_NAME[code]}</a>'
+        for code in LANG_ORDER)
+    return (f'<details class="lang-sw"><summary aria-label="{UI[lang]["language"]}: {LANG_NAME[lang]}">{GLOBE}'
+            f'<span>{LANG_SHORT[lang]}</span></summary><div class="lang-menu">{links}</div></details>')
+
+
+def header(home, active=None, lang="en", alts=None):
     """home=True renders in-page anchors with section tracking; otherwise links to pages."""
-    if home:
+    u = UI[lang]
+    if lang != "en":
+        links = [(u["home"], lpath(lang, "home"), "home"), (u["projects"], "/projects/", "projects"),
+                 (u["experience"], lpath(lang, "home") + "#experience", "experience"), (u["community"], lpath(lang, "community"), "community")]
+        items = [f'          <a href="{h}"{" aria-current=\"page\"" if s == active else ""}>{t}</a>' for t, h, s in links]
+        logo = lpath(lang, "home")
+    elif home:
         links = [("Home", "#", "top"), ("Projects", "#projects", "projects"), ("Experience", "#experience", "experience"),
                  ("Community", "#community", "community")]
         items = [f'          <a href="{h}" data-section="{s}"{" aria-current=\"true\"" if s == "top" else ""}>{t}</a>' for t, h, s in links]
@@ -99,23 +134,25 @@ def header(home, active=None):
                  ("Community", "/community/", "community")]
         items = [f'          <a href="{h}"{" aria-current=\"page\"" if s == active else ""}>{t}</a>' for t, h, s in links]
         logo = "/"
-    items.append(f'          <a href="/resume.html" class="nav-ext" target="_blank" rel="noopener" aria-label="Resume (opens in a new tab)">Resume{ARROW}</a>')
+    items.append(f'          <a href="/resume.html" class="nav-ext" target="_blank" rel="noopener" aria-label="{u["resume"]} ({u["new_tab"]})">{u["resume"]}{ARROW}</a>')
     nav = "\n".join(items)
+    sw = lang_switcher(lang, alts)
+    sw_line = f"          {sw}\n" if sw else ""
     return f'''<header class="site-header">
       <div class="container header-inner">
-        <a class="logo" href="{logo}">Amir Zare</a>
+        <a class="logo" href="{logo}">{NAME[lang]}</a>
         <nav id="site-nav" class="nav nav-pill" aria-label="Main">
 {nav}
         </nav>
         <div class="header-actions">
-          <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">🌙</button>
+{sw_line}          <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">🌙</button>
           <div class="connect" id="connect">
             <button type="button" class="connect-btn" id="connect-btn" aria-expanded="false" aria-controls="connect-panel">
-              <span class="connect-label">Connect</span>
+              <span class="connect-label">{u["connect"]}</span>
               <span class="connect-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></span>
             </button>
             <div class="connect-panel" id="connect-panel">
-{connect_rows("              ")}
+{connect_rows("              ", lang)}
             </div>
           </div>
           <button id="nav-toggle" aria-controls="site-nav" aria-expanded="false" class="nav-toggle" aria-label="Open site navigation">☰</button>
@@ -124,47 +161,48 @@ def header(home, active=None):
     </header>'''
 
 
-def footer(telegram=True):
+def footer(telegram=True, lang="en"):
+    u = UI[lang]
     built = "\n".join(f'          <a href="{h}" target="_blank" rel="noopener">{t} &#8599;</a>' for t, h in [
         ("DataLayer", "https://usedatalayer.com"),
         ("Evolution Agent", "https://usedatalayer.com/products/evolution-agent"),
     ]) + '\n          <a href="/projects/flowfleet/">FlowFleet</a>'
     tg = ('          <a href="https://t.me/MrProgrammingX" target="_blank" rel="noopener">' + brand_icon("telegram") + "Telegram</a>\n"
-          f'          <a href="{TG_CHANNEL}" target="_blank" rel="noopener">' + brand_icon("telegram") + "Telegram channel</a>\n") if telegram else ""
+          f'          <a href="{TG_CHANNEL}" target="_blank" rel="noopener">' + brand_icon("telegram") + u["telegram_channel"] + "</a>\n") if telegram else ""
     return f'''<footer class="site-footer footer-rich">
     <div class="container">
       <div class="footer-line" aria-hidden="true"></div>
       <div class="footer-cols">
         <div class="footer-brand">
-          <a class="logo" href="/">Amir Zare</a>
-          <p>AI Data Engineer and founder of DataLayer. Turning raw data into real decisions.</p>
-          <p class="footer-loc"><span class="footer-dot" aria-hidden="true"></span>Based in {SITE["location"]}</p>
+          <a class="logo" href="{lpath(lang, "home")}">{NAME[lang]}</a>
+          <p>{u["tagline"]}</p>
+          <p class="footer-loc"><span class="footer-dot" aria-hidden="true"></span>{u["based_in"]}</p>
         </div>
         <nav aria-label="Footer">
-          <h3>Navigation</h3>
-          <a href="/">Home</a>
-          <a href="/about/">About</a>
-          <a href="/projects/">Projects</a>
-          <a href="/community/">Community</a>
-          <a href="/resume.html" target="_blank" rel="noopener" aria-label="Resume (opens in a new tab)">Resume &#8599;</a>
+          <h3>{u["navigation"]}</h3>
+          <a href="{lpath(lang, "home")}">{u["home"]}</a>
+          <a href="{lpath(lang, "about")}">{u["about"]}</a>
+          <a href="/projects/">{u["projects"]}{(" " + u["english"]) if u["english"] else ""}</a>
+          <a href="{lpath(lang, "community")}">{u["community"]}</a>
+          <a href="/resume.html" target="_blank" rel="noopener" aria-label="{u["resume"]} ({u["new_tab"]})">{u["resume"]} &#8599;</a>
         </nav>
         <div>
-          <h3>Connect</h3>
+          <h3>{u["connect_h"]}</h3>
           <a href="https://linkedin.com/in/binahayat00" target="_blank" rel="noopener">{brand_icon("linkedin")}LinkedIn</a>
 {tg}          <a href="https://github.com/mrprogrammingx" target="_blank" rel="noopener">{brand_icon("github")}GitHub</a>
           <a href="https://www.youtube.com/@AmirZareDev" target="_blank" rel="noopener">{brand_icon("youtube")}YouTube</a>
-          <a href="mailto:{SITE["email"]}">{brand_icon("email")}Email</a>
-          <a class="footer-sponsor" href="{SPONSOR_URL}" target="_blank" rel="noopener">{HEART}Sponsor</a>
-          <a href="/connect/">{QR_ICON}Digital card</a>
+          <a href="mailto:{SITE["email"]}">{brand_icon("email")}{u["email"]}</a>
+          <a class="footer-sponsor" href="{SPONSOR_URL}" target="_blank" rel="noopener">{HEART}{u["sponsor"]}</a>
+          <a href="{lpath(lang, "connect")}">{QR_ICON}{u["digital_card"]}</a>
         </div>
         <div>
-          <h3>Built</h3>
+          <h3>{u["built_h"]}</h3>
 {built}
         </div>
       </div>
       <div class="footer-bottom">
-        <small>© <span id="year"></span> Amir Zare — AI Data Engineer</small>
-        <a href="#" class="footer-top">Back to top <span aria-hidden="true">&#8593;</span></a>
+        <small>© <span id="year"></span> {NAME[lang]} — {u["role"]}</small>
+        <a href="#" class="footer-top">{u["back_to_top"]} <span aria-hidden="true">&#8593;</span></a>
       </div>
     </div>
   </footer>'''
@@ -208,10 +246,20 @@ def jsonld(graph):
     return f'<script type="application/ld+json">\n{data}\n  </script>'
 
 
-def seo_tags(title, description, path, image, og_type="website"):
+def hreflang_tags(alts):
+    if not alts:
+        return ""
+    tags = [f'<link rel="alternate" hreflang="{code}" href="{SITE["url"]}{alts[code]}">' for code in LANG_ORDER if code in alts]
+    tags.append(f'<link rel="alternate" hreflang="x-default" href="{SITE["url"]}{alts["en"]}">')
+    return "\n  " + "\n  ".join(tags)
+
+
+def seo_tags(title, description, path, image, og_type="website", alts=None, lang="en"):
     url = SITE["url"] + path
     img = SITE["url"] + image
-    return f'''<link rel="canonical" href="{url}">
+    locales = "".join(f'\n  <meta property="og:locale:alternate" content="{OG_LOCALE[c]}">' for c in LANG_ORDER if alts and c in alts and c != lang)
+    return f'''<link rel="canonical" href="{url}">{hreflang_tags(alts)}
+  <meta property="og:locale" content="{OG_LOCALE[lang]}">{locales}
   <meta property="og:type" content="{og_type}">
   <meta property="og:site_name" content="Amir Zare">
   <meta property="og:title" content="{esc(title)}">
@@ -226,17 +274,23 @@ def seo_tags(title, description, path, image, og_type="website"):
   <meta name="twitter:image" content="{img}">'''
 
 
-def page(title, description, path, body, og_image, graph, active=None, og_type="website"):
+FA_FONT = ('<link rel="preconnect" href="https://fonts.googleapis.com">\n  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n'
+           '  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&amp;display=swap">\n  ')
+
+
+def page(title, description, path, body, og_image, graph, active=None, og_type="website", lang="en", alts=None):
+    dir_attr = ' dir="rtl"' if lang in RTL else ""
+    font = FA_FONT if lang == "fa" else ""
     doc = f'''<!doctype html>
-<html lang="en">
+<html lang="{lang}"{dir_attr}>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="robots" content="index, follow">
   <title>{esc(title)}</title>
   <meta name="description" content="{esc(description)}">
-  {seo_tags(title, description, path, og_image, og_type)}
-  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  {seo_tags(title, description, path, og_image, og_type, alts, lang)}
+  {font}<link rel="icon" href="/favicon.ico" type="image/x-icon">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/favicon-32x32.png" sizes="32x32" type="image/png">
   <link rel="icon" href="/favicon-16x16.png" sizes="16x16" type="image/png">
@@ -247,11 +301,11 @@ def page(title, description, path, body, og_image, graph, active=None, og_type="
 </head>
 <body class="subpage">
   <div id="scroll-progress" aria-hidden="true"></div>
-  {header(home=False, active=active)}
+  {header(home=False, active=active, lang=lang, alts=alts)}
   <main>
 {body}
   </main>
-  {footer()}
+  {footer(lang=lang)}
   <script src="/script.js?v={JS_VERSION}" defer></script>
 </body>
 </html>
@@ -560,7 +614,7 @@ def about_page():
                                                  for q, a in FAQ]}]
     return page("About Amir Zare — AI Data Engineer & Founder of DataLayer",
                 "Amir Zare is an AI Data Engineer and the founder of DataLayer in Yerevan, Armenia, with 7+ years building backend systems, data pipelines, and production AI.",
-                path, body, og_image("about"), graph, og_type="profile")
+                path, body, og_image("about"), graph, og_type="profile", alts=alts_for("about"))
 
 
 def community_page():
@@ -621,7 +675,7 @@ def community_page():
               "about": {"@id": SITE["url"] + "/#person"}}, workshop, breadcrumbs(trail), PERSON]
     return page("Community & Events — Teaching, Workshops & Talks | Amir Zare",
                 "Amir Zare's community work in Yerevan: a weekly Python course on YouTube, a GDG Yerevan multi-agent workshop, ML mentoring at TUMO Labs, hackathons, and events.",
-                path, body, og_image("community"), graph, active="community")
+                path, body, og_image("community"), graph, active="community", alts=alts_for("community"))
 
 
 # ---------------------------------------------------------------- existing pages
@@ -633,7 +687,7 @@ def home_seo():
     desc = "Portfolio of Amir Zare — AI Data Engineer and Founder of DataLayer. Data pipelines, analytics platforms, A/B testing, and production LLM applications."
     graph = [PERSON, ORG, {"@type": "WebSite", "@id": SITE["url"] + "/#website", "name": "Amir Zare", "url": SITE["url"] + "/",
                            "publisher": {"@id": SITE["url"] + "/#person"}}]
-    return seo_tags(HOME_TITLE, desc, "/", og_image("home")) + "\n  " + jsonld(graph)
+    return seo_tags(HOME_TITLE, desc, "/", og_image("home"), alts=alts_for("home")) + "\n  " + jsonld(graph)
 
 
 RESUME_TITLE = "Amir Zare — Resume | AI Data Engineer"
@@ -658,7 +712,7 @@ def replace_block(src, start_pat, end_pat, new):
 
 def sync_existing(path, home=False):
     src = (ROOT / path).read_text()
-    out = replace_block(src, r'<header class="site-header">', r"</header>", header(home=home) if home else header(home=False))
+    out = replace_block(src, r'<header class="site-header">', r"</header>", header(home=home, alts=alts_for("home") if home else None))
     out = replace_block(out, r'<footer class="site-footer[^"]*">', r"</footer>", footer(telegram=path != "resume.html"))
     out = re.sub(r"styles\.css\?v=[0-9a-z]+", f"styles.css?v={CSS_VERSION}", out)
     out = re.sub(r'href="(?:/)?styles\.css"', f'href="/styles.css?v={CSS_VERSION}"', out)
@@ -698,7 +752,9 @@ def llms_txt():
              f"- [Projects]({SITE['url']}/projects/): all projects with problem, approach, and results",
              f"- [Community]({SITE['url']}/community/): YouTube Python course, GDG Yerevan workshop, mentoring, and events",
              f"- [Resume]({SITE['url']}/resume.html): full resume",
-             f"- [Contact card]({SITE['url']}/connect/): email, LinkedIn, Telegram, and a downloadable contact card", "",
+             f"- [Contact card]({SITE['url']}/connect/): email, LinkedIn, Telegram, and a downloadable contact card",
+             "- Translations of Home, About, Community, and Contact card: "
+             + ", ".join(f"[{LANG_NAME[c]}]({SITE['url']}{lpath(c, 'home')})" for c in LOCAL_LANGS), "",
              "## Press", "",
              f"- [{PRESS['outlet']}: {PRESS['headline']}]({PRESS['url']}) ({PRESS['date']}): interview with Amir Zare about DataLayer at Seaside Startup Summit Armenia 2026", "",
              "## Key facts", "",
@@ -741,8 +797,10 @@ def vcard():
     return "\n".join(lines) + "\n"
 
 
-def connect_page():
+def connect_page(lang="en"):
     """Phone-first digital business card that the event QR code opens."""
+    c = CONNECT_EN if lang == "en" else T[lang]["connect"]
+    u = UI[lang]
     def row(href, icon, label, primary=False, ext=True, extra=""):
         attrs = ' target="_blank" rel="noopener"' if ext else ""
         return f'<a class="cn-btn{" cn-primary" if primary else ""}" href="{href}"{attrs}{extra}>{icon}<span>{label}</span></a>'
@@ -751,14 +809,16 @@ def connect_page():
     qr = I('<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3M21 14v.01M14 21h3M21 18v3M17.5 17.5v3.5"/>')
     globe = I('<circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/>')
     rocket = I('<path d="M4 15c-1 1-1.5 4-1.5 4s3-.5 4-1.5"/><path d="M9 15l-3-3c1-4 5-9 12-9 0 7-5 11-9 12z"/><circle cx="14.5" cy="9.5" r="1.5"/>')
-    title = "Connect with Amir Zare — AI Data Engineer"
-    desc = "Save Amir Zare's contact, connect on LinkedIn, or email. AI Data Engineer and founder of DataLayer, Yerevan."
-    graph = [{"@type": "ProfilePage", "url": SITE["url"] + "/connect/", "name": title,
+    title, desc, path = c["title"], c["desc"], lpath(lang, "connect")
+    alts = alts_for("connect")
+    langs = " ".join(f'<a href="{alts[code]}" lang="{code}" hreflang="{code}"{" aria-current=\"true\"" if code == lang else ""}>{LANG_SHORT[code]}</a>'
+                     for code in LANG_ORDER)
+    graph = [{"@type": "ProfilePage", "url": SITE["url"] + path, "name": title, "inLanguage": lang,
               "mainEntity": {"@type": "Person", "name": "Amir Zare", "jobTitle": "AI Data Engineer", "url": SITE["url"],
                              "image": SITE["url"] + "/images/amir-contact.jpg", "email": "mailto:info@amir-zare.com",
                              "sameAs": ["https://linkedin.com/in/binahayat00", "https://t.me/MrProgrammingX", "https://github.com/mrprogrammingx", "https://www.youtube.com/@AmirZareDev"]}}]
     doc = f'''<!doctype html>
-<html lang="en">
+<html lang="{lang}"{' dir="rtl"' if lang in RTL else ""}>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
@@ -766,8 +826,8 @@ def connect_page():
   <meta name="theme-color" content="#0b1220">
   <title>{esc(title)}</title>
   <meta name="description" content="{esc(desc)}">
-  {seo_tags(title, desc, "/connect/", og_image("home"))}
-  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  {seo_tags(title, desc, path, og_image("home"), alts=alts, lang=lang)}
+  {FA_FONT if lang == "fa" else ""}<link rel="icon" href="/favicon.ico" type="image/x-icon">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
   <link rel="stylesheet" href="/styles.css?v={CSS_VERSION}">
@@ -775,37 +835,38 @@ def connect_page():
 </head>
 <body class="cn-body">
   <main class="cn-card">
-    <img class="cn-photo" src="/images/amir-contact.jpg" alt="Amir Zare" width="120" height="120">
-    <p class="cn-status"><span class="rs-pulse" aria-hidden="true"></span>Available for work</p>
-    <h1 class="cn-name">Amir Zare</h1>
-    <p class="cn-role">AI Data Engineer</p>
-    <p class="cn-meta">Founder of DataLayer · Yerevan, Armenia</p>
-    <p class="cn-hello" id="cn-hello" hidden></p>
+    <img class="cn-photo" src="/images/amir-contact.jpg" alt="{NAME[lang]}" width="120" height="120">
+    <p class="cn-status"><span class="rs-pulse" aria-hidden="true"></span>{c["available"]}</p>
+    <h1 class="cn-name">{NAME[lang]}</h1>
+    <p class="cn-role">{u["role"]}</p>
+    <p class="cn-meta">{c["meta"]}</p>
+    <p class="cn-hello" id="cn-hello" hidden data-talk="{esc(c["hello_talk"])}" data-workshop="{esc(c["hello_workshop"])}" data-default="{esc(c["hello"])}"></p>
     <div class="cn-actions">
-      {row("/connect/amir-zare.vcf", contact, "Save my contact", primary=True, ext=False, extra=' download="Amir-Zare.vcf" data-save-contact data-p="MjExMzkzNzc0NzMr"')}
-      {row("https://linkedin.com/in/binahayat00", brand_icon("linkedin", 20), "Connect on LinkedIn")}
-      {row("https://t.me/MrProgrammingX", brand_icon("telegram", 20), "Message on Telegram")}
-      {row("mailto:info@amir-zare.com", brand_icon("email", 20), "Email me", ext=False)}
+      {row("/connect/amir-zare.vcf", contact, c["save"], primary=True, ext=False, extra=' download="Amir-Zare.vcf" data-save-contact data-p="MjExMzkzNzc0NzMr"')}
+      {row("https://linkedin.com/in/binahayat00", brand_icon("linkedin", 20), c["linkedin"])}
+      {row("https://t.me/MrProgrammingX", brand_icon("telegram", 20), c["telegram"])}
+      {row("mailto:info@amir-zare.com", brand_icon("email", 20), c["email"], ext=False)}
       <div class="cn-row3">
-        {row("/", globe, "Site", ext=False)}
-        {row("https://github.com/mrprogrammingx", brand_icon("github", 20), "Code")}
-        {row("https://www.youtube.com/@AmirZareDev", brand_icon("youtube", 20), "Videos")}
-        {row(TG_CHANNEL, brand_icon("telegram", 20), "Channel")}
+        {row(lpath(lang, "home"), globe, c["site"], ext=False)}
+        {row("https://github.com/mrprogrammingx", brand_icon("github", 20), c["code"])}
+        {row("https://www.youtube.com/@AmirZareDev", brand_icon("youtube", 20), c["videos"])}
+        {row(TG_CHANNEL, brand_icon("telegram", 20), c["channel"])}
       </div>
-      {row("https://usedatalayer.com", rocket, "DataLayer: analytics for sellers")}
+      {row("https://usedatalayer.com", rocket, c["datalayer"])}
     </div>
-    <button type="button" class="cn-qr-open" data-qr-open>{qr}<span>Show my QR</span></button>
+    <button type="button" class="cn-qr-open" data-qr-open>{qr}<span>{c["show_qr"]}</span></button>
+    <nav class="cn-langs" aria-label="{u["language"]}">{langs}</nav>
   </main>
   <dialog class="cn-qr" id="cn-qr">
     <div class="cn-qr-switch">
-      <button type="button" data-qr-mode="page" aria-pressed="true">Open my page</button>
-      <button type="button" data-qr-mode="contact" aria-pressed="false">Save my contact</button>
+      <button type="button" data-qr-mode="page" aria-pressed="true" data-kicker="{esc(c["scan_connect"])}" data-caption="amir-zare.com/connect">{c["qr_page"]}</button>
+      <button type="button" data-qr-mode="contact" aria-pressed="false" data-kicker="{esc(c["scan_contact"])}" data-caption="{esc(c["adds"])}">{c["qr_contact"]}</button>
     </div>
-    <p class="cn-qr-kicker" id="cn-qr-kicker">Scan to connect</p>
+    <p class="cn-qr-kicker" id="cn-qr-kicker">{c["scan_connect"]}</p>
     <img id="cn-qr-img" src="/images/qr-connect.svg" alt="QR code linking to amir-zare.com/connect" width="260" height="260">
-    <p class="cn-qr-name">Amir Zare</p>
+    <p class="cn-qr-name">{NAME[lang]}</p>
     <p class="cn-qr-url" id="cn-qr-url">amir-zare.com/connect</p>
-    <form method="dialog"><button class="cn-qr-close">Close</button></form>
+    <form method="dialog"><button class="cn-qr-close">{c["close"]}</button></form>
   </dialog>
   <script src="/script.js?v={JS_VERSION}" defer></script>
 </body>
@@ -835,10 +896,251 @@ def not_found_page():
     return re.sub(r'\s*<link rel="canonical" href="[^"]*">', "", doc, count=1)
 
 
+# ---------------------------------------------------------------- translated pages (Home, About, Community)
+
+def fill(text):
+    """Replace {DL}/{NEWS} placeholders in translated strings with links."""
+    return (text.replace("{DL}", '<a href="https://usedatalayer.com" target="_blank" rel="noopener">DataLayer</a>')
+                .replace("{NEWS}", f'<a href="{PRESS["url"]}" target="_blank" rel="noopener">NEWS.am Tech</a>'))
+
+
+def local_graph(lang, key, title, desc, extra=()):
+    page_ld = {"@type": "ProfilePage" if key in ("home", "about") else "CollectionPage", "name": title, "description": desc,
+               "url": SITE["url"] + lpath(lang, key), "inLanguage": lang, "about": {"@id": SITE["url"] + "/#person"},
+               "isPartOf": {"@id": SITE["url"] + "/#website"}}
+    if key in ("home", "about"):
+        page_ld["mainEntity"] = {"@id": SITE["url"] + "/#person"}
+    return [page_ld, PERSON, ORG, *extra]
+
+
+def local_home(lang):
+    h, a, u = T[lang]["home"], T[lang]["about"], UI[lang]
+    by_slug = {p["slug"]: p for p in ALL}
+    stats = "".join(f'<div class="lh-stat"><b class="lh-num">{v}</b><span>{l}</span></div>' for v, l in h["stats"])
+    focus = "".join(f'<div class="ab-focus"><h3>{t}</h3><p>{d}</p></div>' for t, d in a["focus"])
+    journey = "".join(f'<li><span class="ab-when">{w}</span><span class="ab-role">{r}</span><span class="ab-what">{d}</span></li>'
+                      for w, r, d in reversed(a["journey"]))
+    cards = []
+    for slug in FEATURED:
+        p = by_slug[slug]
+        cards.append(f'''
+          <a class="pj-card" href="{ppath(p)}" hreflang="en">
+            <span class="pj-media{img_class(p.get("image_fit", "cover"))}"><img src="{p["image"]}" alt="" loading="lazy"></span>
+            <span class="pj-body">
+              <span class="pj-cat">{p["category"]} · {p["year"]}</span>
+              <span class="pj-title">{p["title"]}</span>
+              <span class="pj-sum">{h["projects"][slug]}</span>
+              <span class="pj-more">{h["proj_more"]} {u["english"]} &rarr;</span>
+            </span>
+          </a>''')
+    body = f'''    <section class="section lh-hero">
+      <div class="container lh-hero-in">
+        <div class="lh-text">
+          <p class="cn-status"><span class="rs-pulse" aria-hidden="true"></span>{h["available"]}</p>
+          <p class="lh-kicker">{h["kicker"]}</p>
+          <h1 class="lh-name">{NAME[lang]}</h1>
+          <p class="lh-role">{u["role"]}</p>
+          <p class="lh-tag">{h["tagline"]}</p>
+          <div class="pg-actions">
+            <a class="cta-btn primary" href="{lpath(lang, "connect")}">{h["cta_contact"]}</a>
+            <a class="cta-btn" href="#projects">{h["cta_projects"]}</a>
+            <a class="cta-btn" href="/resume.html" target="_blank" rel="noopener" hreflang="en">{h["cta_resume"]} <span aria-hidden="true">&#8599;</span></a>
+          </div>
+        </div>
+        <div class="lh-photo"><img src="/images/amir-portrait.webp" alt="{NAME[lang]}" width="640" height="800" loading="eager"></div>
+      </div>
+      <div class="container"><div class="lh-stats">{stats}</div></div>
+    </section>
+    <section class="section pg lh-sec">
+      <div class="container">
+        <h2 class="lh-h">{h["what_h"]}</h2>
+        <div class="ab-focus-grid">{focus}</div>
+      </div>
+    </section>
+    <section class="section pg lh-sec" id="experience">
+      <div class="container">
+        <h2 class="lh-h">{h["xp_h"]}</h2>
+        <ol class="ab-journey">{journey}</ol>
+      </div>
+    </section>
+    <section class="section pg lh-sec" id="projects">
+      <div class="container">
+        <h2 class="lh-h">{h["proj_h"]}</h2>
+        <p class="cm-sub lh-note">{h["proj_sub"]}</p>
+        <div class="pj-grid">{"".join(cards)}
+        </div>
+        <p class="pg-back"><a href="/projects/" hreflang="en">{h["all_projects"]} {u["english"]} &rarr;</a></p>
+      </div>
+    </section>
+    <section class="section pg lh-sec">
+      <div class="container lh-split">
+        <img class="lh-split-img" src="/images/gdg-workshop-room.webp" alt="" loading="lazy">
+        <div>
+          <h2 class="lh-h">{h["community_h"]}</h2>
+          <p>{h["community_text"]}</p>
+          <div class="pg-actions"><a class="cta-btn" href="{lpath(lang, "community")}">{h["community_cta"]} &rarr;</a></div>
+        </div>
+      </div>
+    </section>
+    <section class="section pg lh-sec" id="contact">
+      <div class="container lh-cta">
+        <h2 class="lh-h">{h["contact_h"]}</h2>
+        <p>{h["contact_text"]}</p>
+        <div class="pg-actions">
+          <a class="cta-btn primary" href="mailto:{SITE["email"]}">{brand_icon("email", 15)}{h["email_me"]}</a>
+          <a class="cta-btn" href="https://linkedin.com/in/binahayat00" target="_blank" rel="noopener">{brand_icon("linkedin", 15)}LinkedIn</a>
+          <a class="cta-btn" href="https://t.me/MrProgrammingX" target="_blank" rel="noopener">{brand_icon("telegram", 15)}Telegram</a>
+          <a class="cta-btn" href="{lpath(lang, "connect")}">{QR_ICON}{h["card"]}</a>
+        </div>
+      </div>
+    </section>'''
+    graph = local_graph(lang, "home", h["title"], h["desc"])
+    return page(h["title"], h["desc"], lpath(lang, "home"), body, og_image("home"), graph, active="home", og_type="profile",
+                lang=lang, alts=alts_for("home"))
+
+
+def local_about(lang):
+    a, u = T[lang]["about"], UI[lang]
+    path = lpath(lang, "about")
+    trail = [(u["home"], lpath(lang, "home")), (u["about"], path)]
+    intro = "".join(f"<p>{fill(t)}</p>" for t in a["intro"])
+    focus = "".join(f'<div class="ab-focus"><h3>{t}</h3><p>{d}</p></div>' for t, d in a["focus"])
+    journey = "".join(f'<li><span class="ab-when">{w}</span><span class="ab-role">{r}</span><span class="ab-what">{d}</span></li>'
+                      for w, r, d in a["journey"])
+    dl = "".join(f"<li>{fill(t)}</li>" for t in a["datalayer"])
+    edu = "".join(f"<li><strong>{n}</strong> &mdash; {d}</li>" for n, d in a["education"])
+    certs = "".join(f"<li>{c}</li>" for c in ABOUT["certs"])
+    faq = "".join(f'<details class="ab-q"{" open" if i == 0 else ""}><summary>{esc(q)}</summary><p>{esc(ans)}</p></details>'
+                  for i, (q, ans) in enumerate(a["faq"]))
+    body = f'''    <section class="section pg">
+      <div class="container">
+        {crumbs_html(trail)}
+        <h1 class="grad-title">{a["h1"]}</h1>
+        <div class="about-grid">
+          <div class="about-photo-frame">
+            <img class="about-photo" src="/images/amir-working.webp" alt="{NAME[lang]}" width="853" height="1280" loading="eager">
+          </div>
+          <div class="about-body">
+            <p class="about-lead">{a["lead"]}</p>
+            {intro}
+            <div class="pg-actions">
+              <a class="cta-btn primary" href="mailto:{SITE["email"]}">{a["cta_email"]} <span aria-hidden="true">&#8599;</span></a>
+              <a class="cta-btn" href="/resume.html" target="_blank" rel="noopener" hreflang="en">{a["cta_resume"]} <span aria-hidden="true">&#8599;</span></a>
+            </div>
+          </div>
+        </div>
+        <section class="pg-sec">
+          <h2>{a["focus_h"]}</h2>
+          <div class="ab-focus-grid">{focus}</div>
+        </section>
+        <section class="pg-sec">
+          <h2>{a["journey_h"]}</h2>
+          <ol class="ab-journey">{journey}</ol>
+        </section>
+        <section class="pg-sec">
+          <h2>{a["datalayer_h"]}</h2>
+          <p>{fill(a["datalayer_text"])}</p>
+          <ul class="pg-list">{dl}</ul>
+          <a class="press-card" href="{PRESS["url"]}" target="_blank" rel="noopener" hreflang="en">
+            <span class="press-ic">{NEWS_ICON}</span>
+            <span class="press-body">
+              <span class="press-kicker">{a["press_kicker"]}</span>
+              <span class="press-title">{a["press_title"]}</span>
+              <span class="press-meta">{a["press_meta"]}</span>
+            </span>
+            <span class="press-go">{a["press_go"]} <span aria-hidden="true">&#8599;</span></span>
+          </a>
+        </section>
+        <div class="pg-grid">
+          <section class="pg-block">
+            <h2>{a["edu_h"]}</h2>
+            <ul class="pg-list">{edu}</ul>
+          </section>
+          <section class="pg-block">
+            <h2>{a["certs_h"]}</h2>
+            <ul class="pg-list" lang="en" dir="ltr">{certs}</ul>
+          </section>
+        </div>
+        <section class="pg-sec">
+          <h2>{a["langs_h"]}</h2>
+          {chips(a["languages"])}
+        </section>
+        <section class="pg-sec" id="faq">
+          <h2>{a["faq_h"]}</h2>
+          <div class="ab-faq">{faq}</div>
+        </section>
+        <p class="pg-back"><a href="/projects/" hreflang="en">{a["back_projects"]} {u["english"]} &rarr;</a> &nbsp; <a href="{lpath(lang, "community")}">{a["back_community"]} &rarr;</a></p>
+      </div>
+    </section>'''
+    faq_ld = {"@type": "FAQPage", "inLanguage": lang,
+              "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": ans}} for q, ans in a["faq"]]}
+    graph = local_graph(lang, "about", a["title"], a["desc"], (breadcrumbs(trail), faq_ld))
+    return page(a["title"], a["desc"], path, body, og_image("about"), graph, og_type="profile", lang=lang, alts=alts_for("about"))
+
+
+def local_community(lang):
+    c, u = T[lang]["community"], UI[lang]
+    path = lpath(lang, "community")
+    trail = [(u["home"], lpath(lang, "home")), (u["community"], path)]
+    items = []
+    for src, (title, when, text, labels) in zip(COMMUNITY["teaching"], c["items"]):
+        media = (f'<span class="cmx-media"><img src="{src["image"]}" alt="" loading="lazy"></span>' if src["image"] else "")
+        links = "".join(f'<a class="cta-btn{" primary" if i == 0 else ""}" href="{h}" target="_blank" rel="noopener">'
+                        f'{brand_icon("github", 14) if "github.com" in h else ""}{label} <span aria-hidden="true">&#8599;</span></a>'
+                        for i, (label, (_, h)) in enumerate(zip(labels, src["links"])))
+        items.append(f'''
+          <article class="cmx-item{" has-media" if src["image"] else ""}">
+            {media}
+            <div class="cmx-body">
+              <p class="cmx-when">{when}</p>
+              <h2>{title}</h2>
+              <p>{text}</p>
+              {f'<div class="pg-actions">{links}</div>' if links else ""}
+            </div>
+          </article>''')
+    photos = "".join(f'''
+          <figure class="cmx-photo"><img src="{src}" alt="{esc(cap)}" loading="lazy"><figcaption>{cap}<span>{when}</span></figcaption></figure>'''
+                     for (src, *_), (cap, when) in zip(COMMUNITY["events"], c["events"]))
+    body = f'''    <section class="section pg">
+      <div class="container">
+        {crumbs_html(trail)}
+        <h1 class="grad-title">{c["h1"]}</h1>
+        <p class="cm-sub">{c["sub"]}</p>
+        <div class="cmx-follow">
+          <span>{c["follow"]}</span>
+          <a class="cta-btn" href="https://www.youtube.com/@AmirZareDev" target="_blank" rel="noopener">{brand_icon("youtube", 15)}{c["yt"]}</a>
+          <a class="cta-btn" href="{TG_CHANNEL}" target="_blank" rel="noopener">{brand_icon("telegram", 15)}{c["tg"]}</a>
+        </div>
+        <div class="cmx-list">{"".join(items)}
+        </div>
+        <aside class="sponsor-card">
+          <span class="sponsor-heart" aria-hidden="true">{HEART}</span>
+          <div>
+            <h2>{c["sponsor_h"]}</h2>
+            <p>{c["sponsor_text"]}</p>
+          </div>
+          <a class="cta-btn sponsor-btn" href="{SPONSOR_URL}" target="_blank" rel="noopener">{HEART}{c["sponsor_btn"]}</a>
+        </aside>
+        <section class="pg-sec">
+          <h2>{c["events_h"]}</h2>
+          <div class="cmx-gallery">{photos}
+          </div>
+        </section>
+      </div>
+    </section>'''
+    graph = local_graph(lang, "community", c["title"], c["desc"], (breadcrumbs(trail),))
+    return page(c["title"], c["desc"], path, body, og_image("community"), graph, active="community", lang=lang, alts=alts_for("community"))
+
+
 def outputs():
     files = {}
     files["404.html"] = not_found_page()
     files["connect/index.html"] = connect_page()
+    for lang in LOCAL_LANGS:
+        files[f"{lang}/index.html"] = local_home(lang)
+        files[f"{lang}/about/index.html"] = local_about(lang)
+        files[f"{lang}/community/index.html"] = local_community(lang)
+        files[f"{lang}/connect/index.html"] = connect_page(lang)
     files["connect/amir-zare.vcf"] = vcard()
     for p in ALL:
         files[ppath(p).strip("/") + "/index.html"] = project_page(p)
@@ -851,6 +1153,7 @@ def outputs():
     paths = [("/", "weekly", "1.0"), ("/about/", "monthly", "0.9"), ("/projects/", "weekly", "0.9"), ("/community/", "monthly", "0.8"),
              ("/resume.html", "monthly", "0.8")]
     paths += [(ppath(p), "monthly", "0.7") for p in ALL]
+    paths += [(lpath(lang, key), "monthly", prio) for lang in LOCAL_LANGS for key, prio in (("home", "0.8"), ("about", "0.7"), ("community", "0.6"))]
     files["sitemap.xml"] = sitemap(paths)
     bots = ["*", "Googlebot", "Bingbot", "GPTBot", "OAI-SearchBot", "ChatGPT-User", "ClaudeBot", "Claude-SearchBot", "Claude-User",
             "PerplexityBot", "Perplexity-User", "Google-Extended", "Applebot-Extended", "CCBot"]

@@ -12,6 +12,7 @@ Amir has 7+ years of experience, from enterprise backend engineering (PHP, Larav
 - [Community](https://amir-zare.com/community/): YouTube Python course, GDG Yerevan workshop, mentoring, and events
 - [Resume](https://amir-zare.com/resume.html): full resume
 - [Contact card](https://amir-zare.com/connect/): email, LinkedIn, Telegram, and a downloadable contact card
+- Translations of Home, About, Community, and Contact card: [Հայերեն](https://amir-zare.com/hy/), [Русский](https://amir-zare.com/ru/), [فارسی](https://amir-zare.com/fa/), [Deutsch](https://amir-zare.com/de/)
 
 ## Press
 
