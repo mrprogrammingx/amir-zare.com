@@ -777,3 +777,39 @@ a:hover,a:focus{background:var(--glass);text-decoration:underline}
 :root[data-theme='light'] .icon-link[aria-label="GitHub"]{box-shadow:none}
 #contact .contact-social .icon-link{width:44px;height:44px}
 #contact .contact-social .icon-link svg{width:20px;height:20px}
+
+/* ---------- Header: pill nav + Connect button that reveals social links ---------- */
+.header-actions{display:flex;align-items:center;gap:10px}
+.header-actions #nav-toggle{margin-left:0}
+@media (min-width:701px){
+  .nav-pill{margin:0 auto;display:flex;gap:2px;padding:5px;border-radius:999px;background:var(--glass);border:1px solid var(--panel-border)}
+  .nav-pill a{margin:0;padding:8px 16px;border-radius:999px;color:var(--muted);font-size:.95rem;transition:color 160ms ease,background 160ms ease}
+  .nav-pill a:hover,.nav-pill a:focus-visible{color:var(--text);background:transparent;text-decoration:none}
+  .nav-pill a[aria-current="true"]{background:var(--card-bg);color:var(--text);box-shadow:inset 0 0 0 1px var(--panel-border)}
+}
+.connect{position:relative}
+.connect-btn{display:inline-flex;align-items:center;gap:4px;padding:0;border:none;background:none;cursor:pointer;font:inherit;color:inherit}
+.connect-label{padding:9px 18px;border-radius:999px;background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#06202a;font-weight:600;font-size:.95rem}
+.connect-arrow{width:38px;height:38px;border-radius:50%;background:var(--text);color:var(--bg);display:inline-flex;align-items:center;justify-content:center;transition:transform 200ms ease}
+.connect-btn:focus-visible{outline:2px solid var(--accent-2);outline-offset:3px;border-radius:999px}
+.connect-panel{position:absolute;right:0;top:calc(100% + 10px);width:min(240px,calc(100vw - 32px));background:var(--card-bg);border:1px solid var(--panel-border);border-radius:14px;padding:8px;display:flex;flex-direction:column;gap:2px;box-shadow:var(--card-shadow);z-index:1300;
+  opacity:0;visibility:hidden;transform:translateY(-4px);transition:opacity 160ms ease,transform 160ms ease,visibility 0s linear 160ms}
+.connect-panel::before{content:"";position:absolute;left:0;right:0;top:-12px;height:12px}
+.connect.open .connect-panel{opacity:1;visibility:visible;transform:none;transition-delay:0s}
+.connect.open .connect-arrow{transform:rotate(45deg)}
+@media (hover:hover){
+  .connect:hover .connect-panel{opacity:1;visibility:visible;transform:none;transition-delay:0s}
+  .connect:hover .connect-arrow{transform:rotate(45deg)}
+}
+.connect-row{display:flex;align-items:center;gap:10px;padding:8px;border-radius:10px;color:var(--text);font-size:.92rem;text-decoration:none}
+.connect-row:hover,.connect-row:focus-visible{background:var(--glass);text-decoration:none}
+.connect-dot{width:30px;height:30px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;color:#fff;flex:none}
+.connect-dot[data-brand="linkedin"]{background:#0a66c2}
+.connect-dot[data-brand="email"]{background:#0d9488}
+.connect-dot[data-brand="github"]{background:#24292f;box-shadow:inset 0 0 0 1px rgba(255,255,255,.18)}
+.connect-dot[data-brand="youtube"]{background:#ff0000}
+@media (max-width:700px){
+  .connect-label{padding:8px 14px;font-size:.9rem}
+  .connect-arrow{width:34px;height:34px}
+}
+@media (prefers-reduced-motion: reduce){ .connect-arrow,.connect-panel{transition:none} }

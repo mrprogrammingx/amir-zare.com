@@ -85,7 +85,7 @@
       if(!mbTick){
         mbTick = true;
         requestAnimationFrame(()=>{
-          const social = document.querySelector('.social');
+          const social = document.querySelector('.site-header .social');
           if(social) social.style.transform = `translate3d(${_mx*6}px, ${_my*4}px, 0)`;
           mbTick = false;
         });
@@ -203,6 +203,36 @@
       if (label) label.textContent = open ? 'Read more' : 'Show less';
     });
   });
+
+  // Header "Connect" button: opens the social links panel on click/tap (hover is CSS-only).
+  (function(){
+    const wrap = document.getElementById('connect');
+    const btn = document.getElementById('connect-btn');
+    if (!wrap || !btn) return;
+    const setOpen = open => { wrap.classList.toggle('open', open); btn.setAttribute('aria-expanded', String(open)); };
+    btn.addEventListener('click', () => setOpen(!wrap.classList.contains('open')));
+    document.addEventListener('click', e => { if (!wrap.contains(e.target)) setOpen(false); });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && wrap.classList.contains('open')) { setOpen(false); btn.focus(); }
+    });
+  })();
+
+  // Pill nav: mark the link for the section currently in view.
+  (function(){
+    const links = q('.nav-pill a[data-section]');
+    if (!links.length) return;
+    const sections = links.map(a => a.dataset.section === 'top' ? null : document.getElementById(a.dataset.section));
+    let ticking = false;
+    const update = () => {
+      ticking = false;
+      const y = 140;
+      let active = 0;
+      sections.forEach((s, i) => { if (s && s.getBoundingClientRect().top <= y) active = i; });
+      links.forEach((a, i) => { if (i === active) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current'); });
+    };
+    window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+    update();
+  })();
 
   // small enhancement: current year (used by all pages)
   (function setYear() {
