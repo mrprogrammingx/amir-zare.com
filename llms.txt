@@ -1,0 +1,37 @@
+# Amir Zare
+
+> Amir Zare is an AI Data Engineer and the founder of DataLayer, based in Yerevan, Armenia. He builds data pipelines, analytics platforms, and production LLM applications.
+
+Amir has 7+ years of experience, from enterprise backend engineering (PHP, Laravel) to modern data platforms (Airflow, dbt, Kafka, Flink, BigQuery) and production AI systems (RAG, multi-agent workflows). DataLayer is ranked #2 in Data Analytics and #6 among software companies in Armenia by F6S.
+
+## Pages
+
+- [Home](https://amir-zare.com/): overview of skills, projects, experience, and community work
+- [About](https://amir-zare.com/about/): background, focus areas, career journey, education, and certifications
+- [Projects](https://amir-zare.com/projects/): all projects with problem, approach, and results
+- [Community](https://amir-zare.com/community/): YouTube Python course, GDG Yerevan workshop, mentoring, and events
+- [Resume](https://amir-zare.com/resume.html): full resume
+
+## Projects
+
+- [DataLayer Evolution Agent](https://amir-zare.com/projects/datalayer-evolution-agent/): A production system that turns DataLayer's product, marketing, and lead data into one prioritized growth brief, emailed to the team every morning.
+- [FlowFleet](https://amir-zare.com/projects/flowfleet/): A production-style real-time streaming platform for a fictional delivery company: change data capture from PostgreSQL into Kafka and Flink, deployed on Kubernetes and load-tested to 50,000 events per second.
+- [A/B Test Analysis: Cookie Cats](https://amir-zare.com/projects/cookie-cats-ab-test/): A rigorous analysis of a 90,189-player mobile-game experiment that tested moving the first progress gate from level 30 to level 40.
+- [Crypto Analytics Lakehouse](https://amir-zare.com/projects/crypto-analytics-lakehouse/): An end-to-end crypto analytics lakehouse: hourly Spark ingestion, Kafka streaming, and dbt models organized as a tested medallion pipeline.
+- [AI Phone Assistant](https://amir-zare.com/projects/ai-phone-assistant/): An AI phone assistant built on Suisse Line’s voice-agent platform for Suisse IT’s Challenge A. Callers check availability, book, find, and cancel appointments, and join a waitlist.
+- [Job Hunter](https://amir-zare.com/projects/job-hunter/): A multi-agent job search platform where seven specialized AI agents find jobs, tailor applications, and prepare interviews, with every step streamed live.
+- [AgentPages](https://amir-zare.com/projects/agentpages/): An HTTP API that lets AI agents publish static websites: an agent sends the site’s files as JSON, gets back a live URL, and can update or delete the site later.
+- [Voice Narrator](https://amir-zare.com/projects/voice-narrator/): A fully local voice-cloning narration tool for programming tutorials, so there are no recurring fees and recordings never leave the machine.
+- [Barbershop Queue](https://amir-zare.com/projects/barbershop-queue/): A full-stack booking and walk-in queue system: customers book or check in online, and admins get an email for each new check-in.
+- [Laravel Queue Pipeline](https://amir-zare.com/projects/laravel-queue-pipeline/): A Laravel benchmarking system that compares synchronous and queue-based processing on large datasets, eliminating request timeouts.
+- [EvidenceHub](https://amir-zare.com/projects/evidencehub/): A reference data platform that migrates a deliberately poor legacy MySQL schema to an optimized, sharded design, where every performance claim is backed by a measured benchmark.
+- [Run/Walk Data Pipeline](https://amir-zare.com/run-walk): A batch pipeline that turns raw CSV activity data into fast DuckDB analytics, orchestrated by Airflow.
+- [Claude Code Analytics Platform](https://amir-zare.com/analytics): An analytics platform that turns AI coding telemetry into dashboards, analytics APIs, and forecasts.
+- [Real-Time Chat Application](https://amir-zare.com/classic-web-based-online-chat-application): A real-time web chat with rooms, private messages, presence, file sharing, and moderation.
+
+## Contact
+
+- Email: info@amir-zare.com
+- https://linkedin.com/in/binahayat00
+- https://github.com/mrprogrammingx
+- https://www.youtube.com/@AmirZareDev
