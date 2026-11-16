@@ -1148,3 +1148,13 @@ section[id]{scroll-margin-top:108px}
 :root[data-theme='light'] .sk-tile .sk-mono,:root[data-theme='light'] .sk-tile.skill .sk-mono{color:color-mix(in srgb,var(--c) 65%,#000)}
 .sk-pulse{animation-duration:7s}
 .sk-pulse{animation-duration:12s}
+/* Resume link: opens a new page, so it looks distinct from the section links */
+.nav .nav-ext{display:inline-flex;align-items:center;gap:5px}
+.nav .nav-ext svg{flex:none;opacity:.8;transition:transform 160ms ease}
+.nav .nav-ext:hover svg{transform:translate(2px,-2px);opacity:1}
+@media (min-width:701px){
+  .nav-pill .nav-ext{position:relative;margin-left:9px}
+  .nav-pill .nav-ext::before{content:"";position:absolute;left:-6px;top:22%;bottom:22%;width:1px;background:var(--panel-border)}
+}
+.nav-pill .nav-ext::before{background:rgba(255,255,255,.18)}
+:root[data-theme='light'] .nav-pill .nav-ext::before{background:rgba(2,6,23,.15)}
