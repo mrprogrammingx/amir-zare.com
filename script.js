@@ -233,6 +233,9 @@
     update();
   })();
 
+  // Resume "Save as PDF" button: opens the browser print dialog (print styles lay out an A4 page).
+  q('[data-print]').forEach(b => b.addEventListener('click', () => window.print()));
+
   // small enhancement: current year (used by all pages)
   (function setYear() {
     try {

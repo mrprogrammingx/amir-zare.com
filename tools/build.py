@@ -18,8 +18,8 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "tools"))
 from content import ABOUT, CASE_STUDIES, COMMUNITY, PROJECTS, SITE  # noqa: E402
 
-CSS_VERSION = "20261117x"
-JS_VERSION = "20261116d"
+CSS_VERSION = "20261118a"
+JS_VERSION = "20261118a"
 LASTMOD = "2026-11-16"
 
 ICONS = {
