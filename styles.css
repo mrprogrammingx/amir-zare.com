@@ -730,3 +730,13 @@ a:hover,a:focus{background:var(--glass);text-decoration:underline}
 }
 .hp-left a{padding:0}
 :root[data-theme='light'] .hp-badge{color:#047857}
+.hp-rating{display:flex;align-items:center;justify-content:flex-end;gap:10px;margin-bottom:4px!important}
+.hp-stars{display:inline-flex;gap:3px}
+.hp-stars svg{width:20px;height:20px;fill:#fbbf24}
+.hp-score{font-weight:800;font-size:1.25rem;color:var(--text)}
+:root[data-theme='light'] .hp-stars svg{fill:#f59e0b}
+@media (max-width:900px){
+  .hp-rating{flex-basis:100%;justify-content:center}
+}
+.hp-right{width:270px}
+@media (max-width:900px){ .hp-right{width:auto} }
