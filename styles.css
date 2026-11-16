@@ -891,5 +891,3 @@ a:hover,a:focus{background:var(--glass);text-decoration:underline}
   .xp-card{padding:18px}
 }
 @media (prefers-reduced-motion: reduce){ .xp-card{transition:none} .xp-card:hover{transform:none} }
-.xp-card{background:#111b2b}
-:root[data-theme='light'] .xp-card{background:var(--card-bg)}
