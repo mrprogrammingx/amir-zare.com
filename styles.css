@@ -1032,3 +1032,9 @@ a:hover,a:focus{background:var(--glass);text-decoration:underline}
   background:linear-gradient(90deg,transparent,rgba(110,231,183,.6),rgba(96,165,250,.6),transparent)}
 .site-footer.footer-rich .footer-line{display:none}
 :root[data-theme='light'] .site-footer.footer-rich{background:#e3ebf7}
+/* Spotlight + footer form one darker closing block, set apart from the page above */
+#contact.cta-stage{background:#060b14;margin-top:48px}
+#contact.cta-stage::before{content:"";position:absolute;left:0;right:0;top:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.08),transparent)}
+:root[data-theme='light'] #contact.cta-stage{background:#e3ebf7}
+:root[data-theme='light'] #contact.cta-stage::before{background:linear-gradient(90deg,transparent,rgba(2,6,23,.08),transparent)}
