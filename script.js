@@ -33,6 +33,7 @@
   const header = document.querySelector('.site-header');
   const onScroll = ()=>{
     const y = window.scrollY || window.pageYOffset;
+    if(!header) return; // the /connect card has no site header
     if(y>40) header.classList.add('scrolled'); else header.classList.remove('scrolled');
   };
 
@@ -233,8 +234,38 @@
     update();
   })();
 
+  // Resume phone number: kept out of the HTML (so search engines and scrapers don't index it) and
+  // decoded only when a visitor clicks "Show phone" or prints / saves the page as PDF.
+  const revealPhones = () => q('.rs-phone[data-p]').forEach(btn => {
+    let n = '';
+    try { n = atob(btn.dataset.p).split('').reverse().join(''); } catch (e) { return; }
+    const a = document.createElement('a');
+    a.href = 'tel:' + n;
+    a.innerHTML = btn.querySelector('svg') ? btn.querySelector('svg').outerHTML : '';
+    const label = document.createElement('span');
+    label.textContent = n.replace(/^(\+\d{3})(\d{2})(\d{3})(\d+)$/, '$1 $2 $3 $4');
+    a.appendChild(label);
+    btn.replaceWith(a);
+  });
+  q('.rs-phone[data-p]').forEach(b => b.addEventListener('click', revealPhones));
+  window.addEventListener('beforeprint', revealPhones);
+
   // Resume "Save as PDF" button: opens the browser print dialog (print styles lay out an A4 page).
-  q('[data-print]').forEach(b => b.addEventListener('click', () => window.print()));
+  q('[data-print]').forEach(b => b.addEventListener('click', () => { revealPhones(); window.print(); }));
+
+  // /connect: "Show my QR" opens a full-screen QR (tap outside or Close to dismiss).
+  const qrDialog = document.getElementById('cn-qr');
+  if (qrDialog && qrDialog.showModal) {
+    q('[data-qr-open]').forEach(b => b.addEventListener('click', () => qrDialog.showModal()));
+    qrDialog.addEventListener('click', e => { if (e.target === qrDialog) qrDialog.close(); });
+  }
+  // /connect?from=talk (or any ?from=...) greets people who scanned a QR on a slide, badge or card.
+  const hello = document.getElementById('cn-hello');
+  if (hello) {
+    const from = new URLSearchParams(location.search).get('from');
+    const msgs = { talk: 'Thanks for coming to my talk 👋', workshop: 'Great to have you in the workshop 👋', card: 'Nice to meet you 👋' };
+    if (from) { hello.textContent = msgs[from] || 'Nice to meet you 👋'; hello.hidden = false; }
+  }
 
   // small enhancement: current year (used by all pages)
   (function setYear() {

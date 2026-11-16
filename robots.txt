@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /connect/amir-zare.vcf
 
 Sitemap: https://amir-zare.com/sitemap.xml

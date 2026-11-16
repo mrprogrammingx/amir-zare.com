@@ -13,8 +13,10 @@ SITE = {
     "location": "Yerevan, Armenia",
     "same_as": [
         "https://linkedin.com/in/binahayat00",
+        "https://t.me/MrProgrammingX",
         "https://github.com/mrprogrammingx",
         "https://www.youtube.com/@AmirZareDev",
+        "https://t.me/amirzarecom",
     ],
     "portrait": "/images/amir-portrait.webp",
 }

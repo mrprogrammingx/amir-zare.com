@@ -7,6 +7,7 @@ Usage:
 
 Only the Python standard library is used. Content lives in tools/content.py.
 """
+import base64
 import datetime
 import html
 import json
@@ -18,16 +19,21 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "tools"))
 from content import ABOUT, CASE_STUDIES, COMMUNITY, PROJECTS, SITE  # noqa: E402
 
-CSS_VERSION = "20261118a"
-JS_VERSION = "20261118a"
+CSS_VERSION = "20261118g"
+JS_VERSION = "20261118c"
 LASTMOD = "2026-11-16"
 
 ICONS = {
     "linkedin": "M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 24V7h5v17H0zM8 7h4.7v2.3h.1c.7-1.3 2.4-2.7 4.9-2.7C23 6.6 24 9.1 24 13.5V24h-5v-9.6c0-2.3 0-5.3-3.2-5.3-3.2 0-3.7 2.5-3.7 5.1V24H8V7z",
     "email": "M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z",
     "github": "M12 .5C5.7.5.6 5.7.6 12c0 5.1 3.3 9.5 7.9 11 .6.1.8-.3.8-.6v-2.1c-3.2.7-3.8-1.4-3.8-1.4-.5-1.2-1.2-1.6-1.2-1.6-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 .1 1.6.7 2 1.1.1-.9.4-1.5.7-1.8-2.6-.3-5.3-1.3-5.3-6 0-1.3.5-2.4 1.2-3.3-.1-.3-.5-1.6.1-3.3 0 0 1-.3 3.3 1.3 1-.3 2-.4 3-.4s2 .1 3 .4c2.3-1.6 3.3-1.3 3.3-1.3.6 1.7.2 3 .1 3.3.8.9 1.2 2 1.2 3.3 0 4.7-2.7 5.7-5.3 6 .4.3.7 1 .7 2v3c0 .3.2.7.8.6 4.6-1.5 7.9-5.9 7.9-11C23.4 5.7 18.3.5 12 .5z",
+    "telegram": "M9.8 15.6l-.4 4.3c.6 0 .8-.3 1.1-.6l2.7-2.5 5.5 4c1 .6 1.7.3 2-.9l3.6-16.8c.3-1.5-.6-2.1-1.6-1.7L1.5 9.6c-1.4.6-1.4 1.4-.2 1.8l5.4 1.7L19 5.3c.6-.4 1.1-.2.7.2z",
     "youtube": "M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.2 3.6-6.2 3.6z",
 }
+QR_ICON = ('<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" '
+           'stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/>'
+           '<rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3M21 14v.01M14 21h3M21 18v3M17.5 17.5v3.5"/></svg>')
+TG_CHANNEL = "https://t.me/amirzarecom"
 SPONSOR_URL = "https://github.com/sponsors/mrprogrammingx"
 HEART = '<svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.7 4.5c2.1 0 3.6 1.2 4.3 2.4h2c.7-1.2 2.2-2.4 4.3-2.4 3.7 0 5.8 3.9 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg>'
 ARROW = '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg>'
@@ -51,6 +57,7 @@ def brand_icon(name, size=15):
 def connect_rows(indent):
     rows = [
         ("linkedin", "LinkedIn", "https://linkedin.com/in/binahayat00", True),
+        ("telegram", "Telegram", "https://t.me/MrProgrammingX", True),
         ("email", SITE["email"], "mailto:" + SITE["email"], False),
         ("github", "GitHub", "https://github.com/mrprogrammingx", True),
         ("youtube", "YouTube", "https://www.youtube.com/@AmirZareDev", True),
@@ -60,6 +67,8 @@ def connect_rows(indent):
         tgt = ' target="_blank" rel="noopener"' if ext else ""
         out.append(f'{indent}<a class="connect-row" href="{href}"{tgt}><span class="connect-dot" data-brand="{brand}" aria-hidden="true">'
                    f'{brand_icon(brand)}</span><span>{esc(label)}</span></a>')
+    out.append(f'{indent}<a class="connect-row connect-row-qr" href="/connect/"><span class="connect-dot" data-brand="qr" aria-hidden="true">'
+               f'{QR_ICON}</span><span>My QR / digital card</span></a>')
     return "\n".join(out)
 
 
@@ -100,11 +109,13 @@ def header(home, active=None):
     </header>'''
 
 
-def footer():
+def footer(telegram=True):
     built = "\n".join(f'          <a href="{h}" target="_blank" rel="noopener">{t} &#8599;</a>' for t, h in [
         ("DataLayer", "https://usedatalayer.com"),
         ("Evolution Agent", "https://usedatalayer.com/products/evolution-agent"),
     ]) + '\n          <a href="/projects/flowfleet/">FlowFleet</a>'
+    tg = ('          <a href="https://t.me/MrProgrammingX" target="_blank" rel="noopener">' + brand_icon("telegram") + "Telegram</a>\n"
+          f'          <a href="{TG_CHANNEL}" target="_blank" rel="noopener">' + brand_icon("telegram") + "Telegram channel</a>\n") if telegram else ""
     return f'''<footer class="site-footer footer-rich">
     <div class="container">
       <div class="footer-line" aria-hidden="true"></div>
@@ -125,10 +136,11 @@ def footer():
         <div>
           <h3>Connect</h3>
           <a href="https://linkedin.com/in/binahayat00" target="_blank" rel="noopener">{brand_icon("linkedin")}LinkedIn</a>
-          <a href="https://github.com/mrprogrammingx" target="_blank" rel="noopener">{brand_icon("github")}GitHub</a>
+{tg}          <a href="https://github.com/mrprogrammingx" target="_blank" rel="noopener">{brand_icon("github")}GitHub</a>
           <a href="https://www.youtube.com/@AmirZareDev" target="_blank" rel="noopener">{brand_icon("youtube")}YouTube</a>
           <a href="mailto:{SITE["email"]}">{brand_icon("email")}Email</a>
           <a class="footer-sponsor" href="{SPONSOR_URL}" target="_blank" rel="noopener">{HEART}Sponsor</a>
+          <a href="/connect/">{QR_ICON}Digital card</a>
         </div>
         <div>
           <h3>Built</h3>
@@ -198,6 +210,7 @@ def page(title, description, path, body, og_image, graph, active=None, og_type="
   <meta name="description" content="{esc(description)}">
   {seo_tags(title, description, path, og_image, og_type)}
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/favicon-32x32.png" sizes="32x32" type="image/png">
   <link rel="icon" href="/favicon-16x16.png" sizes="16x16" type="image/png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
@@ -508,6 +521,11 @@ def community_page():
         {crumbs_html(trail)}
         <h1 class="grad-title">Community &amp; Events</h1>
         <p class="cm-sub">Teaching, workshops, and meetups in Yerevan&rsquo;s data &amp; AI scene.</p>
+        <div class="cmx-follow">
+          <span>Follow along</span>
+          <a class="cta-btn" href="https://www.youtube.com/@AmirZareDev" target="_blank" rel="noopener">{brand_icon("youtube", 15)}YouTube channel</a>
+          <a class="cta-btn" href="{TG_CHANNEL}" target="_blank" rel="noopener">{brand_icon("telegram", 15)}Telegram channel</a>
+        </div>
         <div class="cmx-list">{"".join(items)}
         </div>
         <aside class="sponsor-card">
@@ -556,7 +574,7 @@ def replace_block(src, start_pat, end_pat, new):
 def sync_existing(path, home=False):
     src = (ROOT / path).read_text()
     out = replace_block(src, r'<header class="site-header">', r"</header>", header(home=home) if home else header(home=False))
-    out = replace_block(out, r'<footer class="site-footer[^"]*">', r"</footer>", footer())
+    out = replace_block(out, r'<footer class="site-footer[^"]*">', r"</footer>", footer(telegram=path != "resume.html"))
     out = re.sub(r"styles\.css\?v=[0-9a-z]+", f"styles.css?v={CSS_VERSION}", out)
     out = re.sub(r'href="(?:/)?styles\.css"', f'href="/styles.css?v={CSS_VERSION}"', out)
     out = re.sub(r"script\.js\?v=[0-9a-z]+", f"script.js?v={JS_VERSION}", out)
@@ -596,8 +614,97 @@ def llms_txt():
     return "\n".join(lines)
 
 
+CONNECT_URL = "https://amir-zare.com/connect/"  # printed in the QR code (images/qr-connect.*): never change or remove this path
+
+
+def vcard():
+    """Contact card for the "Save my contact" button, with the photo embedded so it shows in the phone's contacts."""
+    photo = base64.b64encode((ROOT / "images/amir-contact.jpg").read_bytes()).decode()
+    photo = "\n ".join(photo[i:i + 74] for i in range(0, len(photo), 74))
+    lines = ["BEGIN:VCARD", "VERSION:3.0", "N:Zare;Amir;;;", "FN:Amir Zare", "ORG:DataLayer",
+             "TITLE:AI Data Engineer · Founder of DataLayer", "EMAIL;TYPE=INTERNET,WORK:info@amir-zare.com",
+             "TEL;TYPE=CELL:+37477393112", "ADR;TYPE=WORK:;;;Yerevan;;;Armenia",
+             "URL:https://amir-zare.com", "X-SOCIALPROFILE;TYPE=linkedin:https://linkedin.com/in/binahayat00",
+             "X-SOCIALPROFILE;TYPE=telegram:https://t.me/MrProgrammingX",
+             "X-SOCIALPROFILE;TYPE=github:https://github.com/mrprogrammingx",
+             "NOTE:We met — let's stay in touch. LinkedIn: linkedin.com/in/binahayat00",
+             f"PHOTO;ENCODING=b;TYPE=JPEG:{photo}", "END:VCARD"]
+    return "\n".join(lines) + "\n"
+
+
+def connect_page():
+    """Phone-first digital business card that the event QR code opens."""
+    def row(href, icon, label, primary=False, ext=True, extra=""):
+        attrs = ' target="_blank" rel="noopener"' if ext else ""
+        return f'<a class="cn-btn{" cn-primary" if primary else ""}" href="{href}"{attrs}{extra}>{icon}<span>{label}</span></a>'
+    I = lambda d: f'<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{d}</svg>'
+    contact = I('<rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="11" r="2.5"/><path d="M5.5 17a3.5 3.5 0 0 1 7 0M15 9h3M15 13h3"/>')
+    qr = I('<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3M21 14v.01M14 21h3M21 18v3M17.5 17.5v3.5"/>')
+    globe = I('<circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/>')
+    rocket = I('<path d="M4 15c-1 1-1.5 4-1.5 4s3-.5 4-1.5"/><path d="M9 15l-3-3c1-4 5-9 12-9 0 7-5 11-9 12z"/><circle cx="14.5" cy="9.5" r="1.5"/>')
+    title = "Connect with Amir Zare — AI Data Engineer"
+    desc = "Save Amir Zare's contact, connect on LinkedIn, or email. AI Data Engineer and founder of DataLayer, Yerevan."
+    graph = [{"@type": "ProfilePage", "url": SITE["url"] + "/connect/", "name": title,
+              "mainEntity": {"@type": "Person", "name": "Amir Zare", "jobTitle": "AI Data Engineer", "url": SITE["url"],
+                             "image": SITE["url"] + "/images/amir-contact.jpg", "email": "mailto:info@amir-zare.com",
+                             "sameAs": ["https://linkedin.com/in/binahayat00", "https://t.me/MrProgrammingX", "https://github.com/mrprogrammingx", "https://www.youtube.com/@AmirZareDev"]}}]
+    doc = f'''<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="robots" content="noindex, follow">
+  <meta name="theme-color" content="#0b1220">
+  <title>{esc(title)}</title>
+  <meta name="description" content="{esc(desc)}">
+  {seo_tags(title, desc, "/connect/", og_image("home"))}
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
+  <link rel="stylesheet" href="/styles.css?v={CSS_VERSION}">
+  {jsonld(graph)}
+</head>
+<body class="cn-body">
+  <main class="cn-card">
+    <img class="cn-photo" src="/images/amir-contact.jpg" alt="Amir Zare" width="120" height="120">
+    <p class="cn-status"><span class="rs-pulse" aria-hidden="true"></span>Available for work</p>
+    <h1 class="cn-name">Amir Zare</h1>
+    <p class="cn-role">AI Data Engineer</p>
+    <p class="cn-meta">Founder of DataLayer · Yerevan, Armenia</p>
+    <p class="cn-hello" id="cn-hello" hidden></p>
+    <div class="cn-actions">
+      {row("/connect/amir-zare.vcf", contact, "Save my contact", primary=True, ext=False, extra=' download="Amir-Zare.vcf"')}
+      {row("https://linkedin.com/in/binahayat00", brand_icon("linkedin", 20), "Connect on LinkedIn")}
+      {row("https://t.me/MrProgrammingX", brand_icon("telegram", 20), "Message on Telegram")}
+      {row("mailto:info@amir-zare.com", brand_icon("email", 20), "Email me", ext=False)}
+      <div class="cn-row3">
+        {row("/", globe, "Site", ext=False)}
+        {row("https://github.com/mrprogrammingx", brand_icon("github", 20), "Code")}
+        {row("https://www.youtube.com/@AmirZareDev", brand_icon("youtube", 20), "Videos")}
+        {row(TG_CHANNEL, brand_icon("telegram", 20), "Channel")}
+      </div>
+      {row("https://usedatalayer.com", rocket, "DataLayer: analytics for sellers")}
+    </div>
+    <button type="button" class="cn-qr-open" data-qr-open>{qr}<span>Show my QR</span></button>
+  </main>
+  <dialog class="cn-qr" id="cn-qr">
+    <p class="cn-qr-kicker">Scan to connect</p>
+    <img src="/images/qr-connect.svg" alt="QR code linking to amir-zare.com/connect" width="260" height="260">
+    <p class="cn-qr-name">Amir Zare</p>
+    <p class="cn-qr-url">amir-zare.com/connect</p>
+    <form method="dialog"><button class="cn-qr-close">Close</button></form>
+  </dialog>
+  <script src="/script.js?v={JS_VERSION}" defer></script>
+</body>
+</html>
+'''
+    return "\n".join(line.rstrip() for line in doc.split("\n"))
+
+
 def outputs():
     files = {}
+    files["connect/index.html"] = connect_page()
+    files["connect/amir-zare.vcf"] = vcard()
     for p in ALL:
         files[ppath(p).strip("/") + "/index.html"] = project_page(p)
     files["projects/index.html"] = projects_hub()
@@ -610,7 +717,7 @@ def outputs():
              ("/resume.html", "monthly", "0.8")]
     paths += [(ppath(p), "monthly", "0.7") for p in ALL]
     files["sitemap.xml"] = sitemap(paths)
-    files["robots.txt"] = f"User-agent: *\nAllow: /\n\nSitemap: {SITE['url']}/sitemap.xml\n"
+    files["robots.txt"] = f"User-agent: *\nAllow: /\nDisallow: /connect/amir-zare.vcf\n\nSitemap: {SITE['url']}/sitemap.xml\n"
     files["llms.txt"] = llms_txt()
     files["tools/og-pages.json"] = json.dumps(og_specs(), ensure_ascii=False, indent=2) + "\n"
     return files
