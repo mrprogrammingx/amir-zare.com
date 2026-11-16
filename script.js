@@ -191,6 +191,19 @@
       img.addEventListener('error', ()=>{ img.style.display = 'none'; });
     }
   });
+  // Project "Read more" toggles: show/hide the full Problem / Solution / Impact details in place.
+  q('.proj-more').forEach(btn => {
+    const panel = document.getElementById(btn.getAttribute('aria-controls'));
+    const label = btn.querySelector('span');
+    if (!panel) return;
+    btn.addEventListener('click', () => {
+      const open = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!open));
+      panel.hidden = open;
+      if (label) label.textContent = open ? 'Read more' : 'Show less';
+    });
+  });
+
   // small enhancement: current year (used by all pages)
   (function setYear() {
     try {

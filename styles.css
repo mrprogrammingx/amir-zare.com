@@ -740,3 +740,26 @@ a:hover,a:focus{background:var(--glass);text-decoration:underline}
 }
 .hp-right{width:270px}
 @media (max-width:900px){ .hp-right{width:auto} }
+
+/* ---------- Compact project cards: summary, chips, tags, Read more ---------- */
+.proj-summary{margin:0 0 10px;color:var(--text);line-height:1.5}
+.featured-content .proj-summary{font-size:1.02rem}
+.proj-chips,.proj-tags{list-style:none;margin:0 0 10px;padding:0;display:flex;flex-wrap:wrap;gap:6px}
+.proj-chips li{font-size:.8rem;font-weight:600;padding:4px 10px;border-radius:999px;color:var(--accent);background:rgba(110,231,183,.1);border:1px solid rgba(110,231,183,.25)}
+.proj-tags li{font-size:.8rem;padding:3px 8px;border-radius:6px;color:var(--muted);background:var(--glass)}
+.proj-tags .proj-tag-more{cursor:help}
+.proj-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.proj-actions .btn{margin-right:0;display:inline-flex;align-items:center;gap:6px;font:inherit;font-size:.95rem;cursor:pointer}
+.btn-icon{flex:none}
+.proj-more .chev{transition:transform 200ms ease}
+.proj-more[aria-expanded="true"] .chev{transform:rotate(180deg)}
+.proj-details{margin-top:14px;padding-top:12px;border-top:1px solid var(--panel-border)}
+.proj-details p{margin:0 0 8px;line-height:1.55}
+.proj-details p:last-child{margin-bottom:0}
+.card .proj-details{font-size:.95rem}
+:root[data-theme='light'] .proj-chips li{color:#047857;background:rgba(4,120,87,.07);border-color:rgba(4,120,87,.22)}
+@media (prefers-reduced-motion: reduce){ .proj-more .chev{transition:none} }
+.card .proj-actions{gap:6px}
+.card .proj-actions .btn{padding:6px 10px;font-size:.85rem;gap:5px}
+.card .proj-tags li{font-size:.75rem}
+#projects .cards{grid-template-columns:repeat(auto-fill,minmax(270px,1fr))}
