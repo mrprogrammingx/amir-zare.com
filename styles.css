@@ -1042,3 +1042,11 @@ a:hover,a:focus{background:var(--glass);text-decoration:underline}
 #contact.cta-stage{background:linear-gradient(180deg,rgba(6,11,20,0) 0,rgba(6,11,20,.6) 120px,#060b14 240px);margin-top:0}
 #contact.cta-stage::before{display:none}
 :root[data-theme='light'] #contact.cta-stage{background:linear-gradient(180deg,rgba(227,235,247,0) 0,rgba(227,235,247,.6) 120px,#e3ebf7 240px)}
+/* The fade begins ~320px above the spotlight (behind the Community content) and finishes early in it */
+#contact.cta-stage{background:linear-gradient(180deg,rgba(6,11,20,.5) 0,#060b14 160px)}
+#contact.cta-stage::after{content:"";position:absolute;left:0;right:0;top:-320px;height:320px;z-index:0;pointer-events:none;
+  background:linear-gradient(180deg,rgba(6,11,20,0),rgba(6,11,20,.5))}
+:root[data-theme='light'] #contact.cta-stage{background:linear-gradient(180deg,rgba(227,235,247,.5) 0,#e3ebf7 160px)}
+:root[data-theme='light'] #contact.cta-stage::after{background:linear-gradient(180deg,rgba(227,235,247,0),rgba(227,235,247,.5))}
+#contact.cta-stage{overflow:visible}
+#contact .cta-light{overflow:hidden}
