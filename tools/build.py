@@ -516,7 +516,7 @@ def projects_hub():
 # so search engines and AI answer engines can quote them directly.
 FAQ = [
     ("Who is Amir Zare?",
-     "Amir Zare is an AI Data Engineer and the founder of DataLayer, based in Yerevan, Armenia. He has 7+ years of experience "
+     "Amir Zare is an AI & Data Engineer and the founder of DataLayer, based in Yerevan, Armenia. He has 7+ years of experience "
      "building backend systems, data pipelines, analytics platforms, and production LLM applications."),
     ("What does Amir Zare specialize in?",
      "Data pipelines and orchestration (Apache Airflow, dbt, Kafka, Flink), analytics engineering (BigQuery, DuckDB, advanced SQL, "
@@ -644,8 +644,8 @@ def about_page():
              PERSON, ORG, breadcrumbs(trail), video_ld(),
              {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}}
                                                  for q, a in FAQ]}]
-    return page("About Amir Zare — AI Data Engineer & Founder of DataLayer",
-                "Amir Zare is an AI Data Engineer and the founder of DataLayer in Yerevan, Armenia, with 7+ years building backend systems, data pipelines, and production AI.",
+    return page("About Amir Zare — AI & Data Engineer, Founder of DataLayer",
+                "Amir Zare is an AI & Data Engineer and the founder of DataLayer in Yerevan, Armenia, with 7+ years building backend systems, data pipelines, and production AI.",
                 path, body, og_image("about"), graph, og_type="profile", alts=alts_for("about"))
 
 
@@ -720,18 +720,18 @@ def community_page():
 
 # ---------------------------------------------------------------- existing pages
 
-HOME_TITLE = "Amir Zare — AI Data Engineer & Founder of DataLayer"
+HOME_TITLE = "Amir Zare — AI & Data Engineer, Founder of DataLayer"
 
 
 def home_seo():
-    desc = "Portfolio of Amir Zare — AI Data Engineer and Founder of DataLayer. Data pipelines, analytics platforms, A/B testing, and production LLM applications."
+    desc = "Portfolio of Amir Zare — AI & Data Engineer and Founder of DataLayer. Data pipelines, analytics platforms, A/B testing, and production LLM applications."
     graph = [PERSON, ORG, {"@type": "WebSite", "@id": SITE["url"] + "/#website", "name": "Amir Zare", "url": SITE["url"] + "/",
                            "publisher": {"@id": SITE["url"] + "/#person"}}]
     return seo_tags(HOME_TITLE, desc, "/", og_image("home"), alts=alts_for("home")) + "\n  " + jsonld(graph)
 
 
-RESUME_TITLE = "Amir Zare — Resume | AI Data Engineer"
-RESUME_DESC = ("Resume of Amir Zare, AI Data Engineer and founder of DataLayer in Yerevan: 7+ years in data pipelines, "
+RESUME_TITLE = "Amir Zare — Resume | AI & Data Engineer"
+RESUME_DESC = ("Resume of Amir Zare, AI & Data Engineer and founder of DataLayer in Yerevan: 7+ years in data pipelines, "
                "analytics, backend systems, and production LLM apps.")
 
 
@@ -799,7 +799,7 @@ def llms_txt():
              f"- [{PRESS['outlet']}: {PRESS['headline']}]({PRESS['url']}) ({PRESS['date']}): interview with Amir Zare about DataLayer at Seaside Startup Summit Armenia 2026", "",
              "## Key facts", "",
              "- Name: Amir Zare",
-             "- Role: AI Data Engineer; Founder of DataLayer (since January 2024)",
+             "- Role: AI & Data Engineer; Founder of DataLayer (since January 2024)",
              "- Location: Yerevan, Armenia (Armenian permanent resident)",
              "- Experience: 7+ years (backend engineering since 2019, data and AI platforms since 2024)",
              "- Core skills: Python, SQL, Apache Airflow, dbt, Kafka, Flink, Spark, BigQuery, DuckDB, FastAPI, Laravel, RAG, multi-agent systems, A/B testing",
@@ -822,7 +822,7 @@ def vcard():
     photo = base64.b64encode((ROOT / "images/amir-contact.jpg").read_bytes()).decode()
     photo = "\n ".join(photo[i:i + 74] for i in range(0, len(photo), 74))
     lines = ["BEGIN:VCARD", "VERSION:3.0", "N:Zare;Amir;;;", "FN:Amir Zare", "ORG:DataLayer",
-             "TITLE:AI Data Engineer · Founder of DataLayer", "EMAIL;TYPE=INTERNET,WORK:info@amir-zare.com",
+             "TITLE:AI & Data Engineer · Founder of DataLayer", "EMAIL;TYPE=INTERNET,WORK:info@amir-zare.com",
              "TEL;TYPE=CELL:+37477393112", "ADR;TYPE=WORK:;;;Yerevan;;;Armenia",
              # Labeled URL fields (itemN.URL + itemN.X-ABLabel) are the form both iPhone and Android Contacts keep;
              # X-SOCIALPROFILE alone is dropped for services the phone doesn't know (Telegram, GitHub).
@@ -854,7 +854,7 @@ def connect_page(lang="en"):
     langs = " ".join(f'<a href="{alts[code]}" lang="{code}" hreflang="{code}"{" aria-current=\"true\"" if code == lang else ""}>{LANG_SHORT[code]}</a>'
                      for code in LANG_ORDER)
     graph = [{"@type": "ProfilePage", "url": SITE["url"] + path, "name": title, "inLanguage": lang,
-              "mainEntity": {"@type": "Person", "name": "Amir Zare", "jobTitle": "AI Data Engineer", "url": SITE["url"],
+              "mainEntity": {"@type": "Person", "name": "Amir Zare", "jobTitle": "AI & Data Engineer", "url": SITE["url"],
                              "image": SITE["url"] + "/images/amir-contact.jpg", "email": "mailto:info@amir-zare.com",
                              "sameAs": ["https://linkedin.com/in/binahayat00", "https://t.me/MrProgrammingX", "https://github.com/mrprogrammingx", "https://www.youtube.com/@AmirZareDev"]}}]
     doc = f'''<!doctype html>
@@ -1292,10 +1292,10 @@ def outputs():
 
 def og_specs():
     """Inputs for tools/make-og.mjs, which renders the 1200x630 share images."""
-    specs = [{"slug": "home", "title": "Amir Zare", "subtitle": "AI Data Engineer · Founder of DataLayer", "image": "/images/amir-portrait.webp", "fit": "portrait"},
+    specs = [{"slug": "home", "title": "Amir Zare", "subtitle": "AI & Data Engineer · Founder of DataLayer", "image": "/images/amir-portrait.webp", "fit": "portrait"},
              {"slug": "about", "title": "About Amir Zare", "subtitle": "7+ years in backend, data platforms, and production AI", "image": "/images/amir-portrait.webp", "fit": "portrait"},
              {"slug": "projects", "title": "Projects", "subtitle": "Streaming platforms, lakehouses, analytics, and AI agents", "image": "/images/flowfleet.webp", "fit": "contain"},
-             {"slug": "resume", "title": "Resume", "subtitle": "AI Data Engineer · 7+ years in data, backend, and AI", "image": "/images/amir-portrait.webp", "fit": "portrait"},
+             {"slug": "resume", "title": "Resume", "subtitle": "AI & Data Engineer · 7+ years in data, backend, and AI", "image": "/images/amir-portrait.webp", "fit": "portrait"},
              {"slug": "community", "title": "Community & Events", "subtitle": "Teaching, workshops, and meetups in Yerevan", "image": "/images/gdg-workshop-room.webp", "fit": "cover"}]
     specs += [{"slug": p["slug"], "title": plain(p["title"]), "subtitle": plain(p["subtitle"]), "image": p["image"],
                "fit": "contain" if p.get("image_fit", "").startswith("contain") else "cover"} for p in ALL]

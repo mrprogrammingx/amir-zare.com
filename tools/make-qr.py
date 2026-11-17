@@ -20,7 +20,7 @@ CONNECT_URL = "https://amir-zare.com/connect/"
 # Kept short (no photo, no note) and low error correction so the code stays easy to scan from a phone screen.
 CONTACT = "\r\n".join([
     "BEGIN:VCARD", "VERSION:3.0", "N:Zare;Amir;;;", "FN:Amir Zare", "ORG:DataLayer",
-    "TITLE:AI Data Engineer, Founder of DataLayer", "TEL;TYPE=CELL:+37477393112",
+    "TITLE:AI & Data Engineer, Founder of DataLayer", "TEL;TYPE=CELL:+37477393112",
     "EMAIL;TYPE=INTERNET:info@amir-zare.com", "URL:https://amir-zare.com",
     "item1.URL:https://t.me/MrProgrammingX", "item1.X-ABLabel:Telegram",
     "item2.URL:https://linkedin.com/in/binahayat00", "item2.X-ABLabel:LinkedIn",
