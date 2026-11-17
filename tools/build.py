@@ -32,7 +32,7 @@ def lpath(lang, key):
 def alts_for(key):
     return {lang: lpath(lang, key) for lang in LANG_ORDER}
 
-CSS_VERSION = "20261118q"
+CSS_VERSION = "20261118r"
 JS_VERSION = "20261118j"
 LASTMOD = "2026-11-16"
 
@@ -537,7 +537,7 @@ FAQ = [
 ]
 
 
-VIDEO = {"id": "qCADjF5VixQ", "duration": "PT51S", "length": "0:51", "upload": "2026-10-05T03:50:34-07:00",
+VIDEO = {"id": "qCADjF5VixQ", "thumb": "sddefault", "duration": "PT51S", "length": "0:51", "upload": "2026-10-05T03:50:34-07:00",
          "title": "Amir Zare: Software Engineer & Backend Specialist | 7+ Years of Experience",
          "desc": "A 50-second introduction to Amir Zare: Python and backend development, APIs and databases, automation, "
                  "data engineering and ETL, and AI-powered automation."}
@@ -590,13 +590,13 @@ def about_page():
           <div class="about-body">
             <p class="about-lead">{ABOUT["lead"]}</p>
             {intro}
-            {video_block("Meet me in 50 seconds")}
             <div class="pg-actions">
               <a class="cta-btn primary" href="mailto:{SITE["email"]}">Email me <span aria-hidden="true">&#8599;</span></a>
               <a class="cta-btn" href="/resume.html" target="_blank" rel="noopener">View resume <span aria-hidden="true">&#8599;</span></a>
             </div>
           </div>
         </div>
+        <div class="ab-video">{video_block("Meet me in 50 seconds")}</div>
         <section class="pg-sec">
           <h2>What I focus on</h2>
           <div class="ab-focus-grid">{focus}</div>
@@ -1066,13 +1066,13 @@ def local_about(lang):
           <div class="about-body">
             <p class="about-lead">{a["lead"]}</p>
             {intro}
-            {video_block(a["video"])}
             <div class="pg-actions">
               <a class="cta-btn primary" href="mailto:{SITE["email"]}">{a["cta_email"]} <span aria-hidden="true">&#8599;</span></a>
               <a class="cta-btn" href="/resume.html" target="_blank" rel="noopener" hreflang="en">{a["cta_resume"]} <span aria-hidden="true">&#8599;</span></a>
             </div>
           </div>
         </div>
+        <div class="ab-video">{video_block(a["video"])}</div>
         <section class="pg-sec">
           <h2>{a["focus_h"]}</h2>
           <div class="ab-focus-grid">{focus}</div>
