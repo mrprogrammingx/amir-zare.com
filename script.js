@@ -317,6 +317,57 @@
     document.addEventListener('keydown', e => { if (e.key === 'Escape') sw.open = false; });
   });
 
+  // Analytics with consent: Google Analytics + Microsoft Clarity load only after the visitor accepts.
+  // Separate from DataLayer's properties (G-T0G4NJLZD9 / xxak9he4pz). Never runs on localhost.
+  (function () {
+    const GA_ID = 'G-3JQFRE2BH6', CLARITY_ID = 'zf11vbtia6', KEY = 'analytics-consent';
+    const local = /^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname) || location.protocol === 'file:';
+    const TEXT = {
+      en: ['This site uses analytics cookies (Google Analytics, Microsoft Clarity) to see which pages are useful.', 'Accept', 'Decline'],
+      hy: ['Այս կայքը օգտագործում է վերլուծական cookie-ներ (Google Analytics, Microsoft Clarity)՝ հասկանալու, թե որ էջերն են օգտակար։', 'Ընդունել', 'Մերժել'],
+      ru: ['Сайт использует аналитические cookie (Google Analytics, Microsoft Clarity), чтобы понять, какие страницы полезны.', 'Принять', 'Отклонить'],
+      fa: ['این سایت از کوکی‌های تحلیلی (Google Analytics و Microsoft Clarity) استفاده می‌کند تا بفهمد کدام صفحه‌ها مفیدند.', 'قبول', 'رد'],
+      de: ['Diese Website nutzt Analyse-Cookies (Google Analytics, Microsoft Clarity), um zu sehen, welche Seiten hilfreich sind.', 'Akzeptieren', 'Ablehnen']
+    };
+    const t = TEXT[(document.documentElement.lang || 'en').slice(0, 2)] || TEXT.en;
+    const get = () => { try { return localStorage.getItem(KEY); } catch (e) { return null; } };
+    const set = v => { try { localStorage.setItem(KEY, v); } catch (e) {} };
+    let loaded = false;
+    const load = () => {
+      if (loaded || local) return; loaded = true;
+      const s = document.createElement('script'); s.async = true; s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+      document.head.appendChild(s);
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { window.dataLayer.push(arguments); };
+      window.gtag('js', new Date());
+      window.gtag('config', GA_ID);
+      (function (c, l, a, r, i, tg, y) {
+        c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments); };
+        tg = l.createElement(r); tg.async = 1; tg.src = 'https://www.clarity.ms/tag/' + i;
+        y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(tg, y);
+      })(window, document, 'clarity', 'script', CLARITY_ID);
+    };
+    const banner = () => {
+      if (document.getElementById('consent')) return;
+      const box = document.createElement('div');
+      box.id = 'consent'; box.className = 'consent'; box.setAttribute('role', 'region'); box.setAttribute('aria-label', 'Cookies');
+      const p = document.createElement('p'); p.textContent = t[0];
+      const yes = document.createElement('button'); yes.type = 'button'; yes.className = 'consent-yes'; yes.textContent = t[1];
+      const no = document.createElement('button'); no.type = 'button'; no.className = 'consent-no'; no.textContent = t[2];
+      const btns = document.createElement('div'); btns.className = 'consent-btns'; btns.append(no, yes);
+      box.append(p, btns); document.body.appendChild(box);
+      yes.addEventListener('click', () => { set('granted'); box.remove(); load(); });
+      no.addEventListener('click', () => {
+        const wasOn = loaded; set('denied'); box.remove();
+        if (wasOn) location.reload(); // turning analytics off after it ran: reload so the scripts are gone
+      });
+    };
+    const choice = get();
+    if (choice === 'granted') load(); else if (choice !== 'denied') banner();
+    // "Cookie settings" link in the footer reopens the choice.
+    q('[data-cookie-settings]').forEach(b => b.addEventListener('click', e => { e.preventDefault(); banner(); }));
+  })();
+
   // small enhancement: current year (used by all pages)
   (function setYear() {
     try {

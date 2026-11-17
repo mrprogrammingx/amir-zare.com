@@ -32,8 +32,8 @@ def lpath(lang, key):
 def alts_for(key):
     return {lang: lpath(lang, key) for lang in LANG_ORDER}
 
-CSS_VERSION = "20261118k"
-JS_VERSION = "20261118f"
+CSS_VERSION = "20261118n"
+JS_VERSION = "20261118g"
 LASTMOD = "2026-11-16"
 
 ICONS = {
@@ -202,6 +202,7 @@ def footer(telegram=True, lang="en"):
       </div>
       <div class="footer-bottom">
         <small>© <span id="year"></span> {NAME[lang]} — {u["role"]}</small>
+        <a href="#" class="footer-cookies" data-cookie-settings>{u["cookies"]}</a>
         <a href="#" class="footer-top">{u["back_to_top"]} <span aria-hidden="true">&#8593;</span></a>
       </div>
     </div>
@@ -835,11 +836,13 @@ def connect_page(lang="en"):
 </head>
 <body class="cn-body">
   <main class="cn-card">
-    <img class="cn-photo" src="/images/amir-contact.jpg" alt="{NAME[lang]}" width="120" height="120">
-    <p class="cn-status"><span class="rs-pulse" aria-hidden="true"></span>{c["available"]}</p>
-    <h1 class="cn-name">{NAME[lang]}</h1>
-    <p class="cn-role">{u["role"]}</p>
-    <p class="cn-meta">{c["meta"]}</p>
+    <a class="cn-id" href="{lpath(lang, "home")}">
+      <img class="cn-photo" src="/images/amir-contact.jpg" alt="{NAME[lang]}" width="120" height="120">
+      <span class="cn-status"><span class="rs-pulse" aria-hidden="true"></span>{c["available"]}</span>
+      <h1 class="cn-name">{NAME[lang]}</h1>
+      <span class="cn-role">{u["role"]}</span>
+      <span class="cn-meta">{c["meta"]}</span>
+    </a>
     <p class="cn-hello" id="cn-hello" hidden data-talk="{esc(c["hello_talk"])}" data-workshop="{esc(c["hello_workshop"])}" data-default="{esc(c["hello"])}"></p>
     <div class="cn-actions">
       {row("/connect/amir-zare.vcf", contact, c["save"], primary=True, ext=False, extra=' download="Amir-Zare.vcf" data-save-contact data-p="MjExMzkzNzc0NzMr"')}
