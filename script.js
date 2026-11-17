@@ -324,7 +324,7 @@
     f.title = btn.getAttribute('aria-label') || 'Video';
     f.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
     f.allowFullscreen = true;
-    f.className = 'yt-frame';
+    f.className = 'yt-frame' + (btn.classList.contains('yt-short') ? ' yt-short-frame' : ''); // Shorts stay vertical
     btn.replaceWith(f);
   }));
 
