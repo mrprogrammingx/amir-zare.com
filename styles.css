@@ -1637,16 +1637,7 @@ html[lang="fa"] .lh-role,html[lang="fa"] .cn-role{letter-spacing:0;text-transfor
 [dir="rtl"] .cn-btn svg,[dir="rtl"] .cta-btn svg{flex:none}
 [dir="rtl"] .site-header .header-inner{direction:rtl}
 
-/* Analytics consent banner (injected by script.js) */
-.consent{position:fixed;z-index:200;inset-inline:16px;bottom:16px;margin:0 auto;max-width:640px;display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:16px;
-  color:#e6eef6;background:rgba(11,18,32,.97);border:1px solid rgba(96,165,250,.3);box-shadow:0 20px 50px rgba(2,6,23,.55)}
-.consent p{margin:0;flex:1;font-size:.88rem;line-height:1.5}
-.consent-btns{display:flex;gap:8px;flex:none}
-.consent button{padding:9px 14px;border-radius:10px;cursor:pointer;font:600 .85rem/1 inherit;font-family:inherit}
-.consent-yes{color:#04342c;background:linear-gradient(90deg,#6ee7b7,#60a5fa);border:0}
-.consent-no{color:#e6eef6;background:none;border:1px solid rgba(255,255,255,.2)}
-@media (max-width:600px){ .consent{flex-direction:column;align-items:stretch} .consent-btns button{flex:1} }
-.footer-cookies{font-size:.8rem;color:var(--muted)}
+.footer-privacy{font-size:.8rem;color:var(--muted)}
 .footer-bottom{gap:14px;flex-wrap:wrap}
 /* /connect: photo, name and title link to the home page */
 .cn-id{display:flex;flex-direction:column;align-items:center;color:inherit;text-decoration:none;border-radius:20px;padding:4px 10px;transition:transform .2s}
@@ -1657,3 +1648,8 @@ html[lang="fa"] .lh-role,html[lang="fa"] .cn-role{letter-spacing:0;text-transfor
 @media (prefers-reduced-motion: reduce){ .cn-id:active{transform:none} }
 /* "safe" centering: margin:auto centers the card but never pushes its top above the screen on short phones */
 .cn-card{margin:auto}
+/* Privacy page */
+.pv{max-width:820px}
+.pv .pg-sec p{line-height:1.7}
+.pv .pg-list li{line-height:1.6}
+.cn-privacy{margin-top:14px;font-size:.78rem;color:#9aa4b2;text-decoration:none}.cn-privacy:hover{text-decoration:underline}
