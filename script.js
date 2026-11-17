@@ -317,6 +317,17 @@
     document.addEventListener('keydown', e => { if (e.key === 'Escape') sw.open = false; });
   });
 
+  // Lightweight YouTube: only the thumbnail loads; the player (privacy-enhanced youtube-nocookie) loads on click.
+  q('.yt-lite[data-yt]').forEach(btn => btn.addEventListener('click', () => {
+    const f = document.createElement('iframe');
+    f.src = 'https://www.youtube-nocookie.com/embed/' + btn.dataset.yt + '?autoplay=1&rel=0&modestbranding=1&playsinline=1';
+    f.title = btn.getAttribute('aria-label') || 'Video';
+    f.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+    f.allowFullscreen = true;
+    f.className = 'yt-frame' + (btn.classList.contains('yt-short') ? ' yt-short-frame' : ''); // Shorts stay vertical
+    btn.replaceWith(f);
+  }));
+
   // Analytics: Google Analytics + Microsoft Clarity on every visit (disclosed in /privacy/).
   // Separate from DataLayer's properties (G-T0G4NJLZD9 / xxak9he4pz). Never runs on localhost.
   (function () {

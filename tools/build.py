@@ -32,8 +32,8 @@ def lpath(lang, key):
 def alts_for(key):
     return {lang: lpath(lang, key) for lang in LANG_ORDER}
 
-CSS_VERSION = "20261118o"
-JS_VERSION = "20261118h"
+CSS_VERSION = "20261118r"
+JS_VERSION = "20261118j"
 LASTMOD = "2026-11-16"
 
 ICONS = {
@@ -537,6 +537,36 @@ FAQ = [
 ]
 
 
+VIDEO = {"id": "qCADjF5VixQ", "thumb": "sddefault", "duration": "PT51S", "length": "0:51", "upload": "2026-10-05T03:50:34-07:00",
+         "title": "Amir Zare: Software Engineer & Backend Specialist | 7+ Years of Experience",
+         "desc": "A 50-second introduction to Amir Zare: Python and backend development, APIs and databases, automation, "
+                 "data engineering and ETL, and AI-powered automation."}
+PLAY = ('<svg viewBox="0 0 68 48" width="68" height="48" aria-hidden="true"><path d="M66.5 7.7a8.5 8.5 0 0 0-6-6C55.2.3 34 .3 34 .3s-21.2 0-26.5 1.4a8.5 8.5 0 0 0-6 6'
+        'C.1 13 .1 24 .1 24s0 11 1.4 16.3a8.5 8.5 0 0 0 6 6C12.8 47.7 34 47.7 34 47.7s21.2 0 26.5-1.4a8.5 8.5 0 0 0 6-6C67.9 35 67.9 24 67.9 24s0-11-1.4-16.3z" '
+        'fill="#ff0000"/><path d="M27 34V14l18 10z" fill="#fff"/></svg>')
+
+
+PITCH = {"id": "ah1Qp096Y1E", "duration": "PT57S", "length": "0:57", "upload": "2026-08-18T09:57:05-07:00", "short": True,
+         "thumb": "sddefault",  # 640px (~70 KB): the 480px default looks blurry once cropped to a vertical card; loads lazily
+         "title": "DataLayer Pitch at Sevan Startup Summit 2026 | Amir Zare, CEO",
+         "desc": "Amir Zare presents DataLayer at Sevan Startup Summit 2026: how e-commerce businesses turn raw sales data into "
+                 "actionable dashboards and insights with AI."}
+
+
+def video_block(label, v=VIDEO):
+    """Lightweight YouTube embed: a ~20 KB thumbnail; the player (youtube-nocookie) loads only when clicked."""
+    short = " yt-short" if v.get("short") else ""
+    return (f'<button type="button" class="yt-lite{short}" data-yt="{v["id"]}" aria-label="{esc(label)} ({v["length"]})">'
+            f'<img src="https://i.ytimg.com/vi/{v["id"]}/{v.get("thumb", "hqdefault")}.jpg" alt="" width="480" height="360" loading="lazy" decoding="async">'
+            f'<span class="yt-play">{PLAY}</span><span class="yt-cap">{label} &middot; {v["length"]}</span></button>')
+
+
+def video_ld(v=VIDEO):
+    return {"@type": "VideoObject", "name": v["title"], "description": v["desc"], "uploadDate": v["upload"], "duration": v["duration"],
+            "thumbnailUrl": f'https://i.ytimg.com/vi/{v["id"]}/{v.get("thumb", "hqdefault")}.jpg', "embedUrl": f'https://www.youtube-nocookie.com/embed/{v["id"]}',
+            "contentUrl": f'https://www.youtube.com/watch?v={v["id"]}', "author": {"@id": SITE["url"] + "/#person"}}
+
+
 def about_page():
     path = "/about/"
     trail = [("Home", "/"), ("About", path)]
@@ -566,6 +596,7 @@ def about_page():
             </div>
           </div>
         </div>
+        <div class="ab-video">{video_block("Meet me in 50 seconds")}</div>
         <section class="pg-sec">
           <h2>What I focus on</h2>
           <div class="ab-focus-grid">{focus}</div>
@@ -610,7 +641,7 @@ def about_page():
       </div>
     </section>'''
     graph = [{"@type": "ProfilePage", "name": "About Amir Zare", "url": SITE["url"] + path, "mainEntity": {"@id": SITE["url"] + "/#person"}},
-             PERSON, ORG, breadcrumbs(trail),
+             PERSON, ORG, breadcrumbs(trail), video_ld(),
              {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}}
                                                  for q, a in FAQ]}]
     return page("About Amir Zare — AI Data Engineer & Founder of DataLayer",
@@ -664,6 +695,14 @@ def community_page():
           <h2>Events &amp; meetups</h2>
           <div class="cmx-gallery">{photos}
           </div>
+          <div class="cmx-video">
+            {video_block("Watch the pitch", PITCH)}
+            <div class="cmx-video-text">
+              <p class="cmx-when">August 2026 &middot; Sevan Startup Summit</p>
+              <h3>Pitching DataLayer on stage</h3>
+              <p>A one-minute look at the DataLayer pitch: how e-commerce businesses turn raw sales data into clear dashboards and AI-powered recommendations.</p>
+            </div>
+          </div>
         </section>
       </div>
     </section>'''
@@ -673,7 +712,7 @@ def community_page():
                 "organizer": {"@type": "Organization", "name": "GDG Yerevan"}, "performer": {"@id": SITE["url"] + "/#person"},
                 "image": SITE["url"] + "/images/gdg-workshop-room.webp"}
     graph = [{"@type": "CollectionPage", "name": "Community & Events — Amir Zare", "url": SITE["url"] + path,
-              "about": {"@id": SITE["url"] + "/#person"}}, workshop, breadcrumbs(trail), PERSON]
+              "about": {"@id": SITE["url"] + "/#person"}}, workshop, video_ld(PITCH), breadcrumbs(trail), PERSON]
     return page("Community & Events — Teaching, Workshops & Talks | Amir Zare",
                 "Amir Zare's community work in Yerevan: a weekly Python course on YouTube, a GDG Yerevan multi-agent workshop, ML mentoring at TUMO Labs, hackathons, and events.",
                 path, body, og_image("community"), graph, active="community", alts=alts_for("community"))
@@ -1033,6 +1072,7 @@ def local_about(lang):
             </div>
           </div>
         </div>
+        <div class="ab-video">{video_block(a["video"])}</div>
         <section class="pg-sec">
           <h2>{a["focus_h"]}</h2>
           <div class="ab-focus-grid">{focus}</div>
@@ -1078,7 +1118,7 @@ def local_about(lang):
     </section>'''
     faq_ld = {"@type": "FAQPage", "inLanguage": lang,
               "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": ans}} for q, ans in a["faq"]]}
-    graph = local_graph(lang, "about", a["title"], a["desc"], (breadcrumbs(trail), faq_ld))
+    graph = local_graph(lang, "about", a["title"], a["desc"], (breadcrumbs(trail), faq_ld, video_ld()))
     return page(a["title"], a["desc"], path, body, og_image("about"), graph, og_type="profile", lang=lang, alts=alts_for("about"))
 
 
@@ -1129,10 +1169,18 @@ def local_community(lang):
           <h2>{c["events_h"]}</h2>
           <div class="cmx-gallery">{photos}
           </div>
+          <div class="cmx-video">
+            {video_block(c["pitch_btn"], PITCH)}
+            <div class="cmx-video-text">
+              <p class="cmx-when">{c["pitch_when"]}</p>
+              <h3>{c["pitch_h"]}</h3>
+              <p>{c["pitch_text"]}</p>
+            </div>
+          </div>
         </section>
       </div>
     </section>'''
-    graph = local_graph(lang, "community", c["title"], c["desc"], (breadcrumbs(trail),))
+    graph = local_graph(lang, "community", c["title"], c["desc"], (breadcrumbs(trail), video_ld(PITCH)))
     return page(c["title"], c["desc"], path, body, og_image("community"), graph, active="community", lang=lang, alts=alts_for("community"))
 
 
@@ -1188,7 +1236,10 @@ def privacy_page():
           </ul>
         </section>
         <section class="pg-sec">
-          <h2>Contact card</h2>
+          <h2>Video and contact card</h2>
+          <p>The video on the About page is hosted on YouTube. Nothing from YouTube loads until you press play; it then plays in
+          YouTube&rsquo;s privacy-enhanced mode (youtube-nocookie.com), and <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google&rsquo;s
+          Privacy Policy</a> applies.</p>
           <p>The &ldquo;Save my contact&rdquo; button on <a href="/connect/">the contact page</a> gives you Amir&rsquo;s own contact details. It
           doesn&rsquo;t collect yours.</p>
         </section>

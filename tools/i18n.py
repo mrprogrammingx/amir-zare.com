@@ -80,6 +80,7 @@ T["hy"] = {
         },
     },
     "about": {
+        "video": "Ծանոթացեք ինձ 50 վայրկյանում",
         "title": "Ամիր Զարեի մասին — AI տվյալների ինժեներ",
         "desc": "Ամիր Զարեն AI տվյալների ինժեներ է և DataLayer-ի հիմնադիրը Երևանում՝ backend համակարգերի, տվյալների փոխակրիչների և AI-ի 7+ տարվա փորձով։",
         "h1": "Իմ մասին",
@@ -123,6 +124,8 @@ T["hy"] = {
         "back_projects": "Դիտել նախագծերս", "back_community": "Համայնք և դասավանդում",
     },
     "community": {
+        "pitch_btn": "Դիտել ներկայացումը", "pitch_when": "2026 օգոստոս · Sevan Startup Summit", "pitch_h": "DataLayer-ի ներկայացումը բեմից",
+        "pitch_text": "Մեկ րոպեանոց հատված DataLayer-ի pitch-ից՝ ինչպես են էլեկտրոնային առևտրի բիզնեսները չմշակված վաճառքի տվյալները վերածում պարզ վահանակների և AI-ով առաջարկությունների։",
         "title": "Համայնք և միջոցառումներ | Ամիր Զարե",
         "desc": "Ամիր Զարեի համայնքային աշխատանքը Երևանում՝ Python դասընթաց YouTube-ում, GDG Yerevan վորքշոփ, ML մենթորություն TUMO Labs-ում և միջոցառումներ։",
         "h1": "Համայնք և միջոցառումներ", "sub": "Դասավանդում, վորքշոփներ և հանդիպումներ Երևանի տվյալների և AI համայնքում։",
@@ -179,6 +182,7 @@ T["ru"] = {
         },
     },
     "about": {
+        "video": "Знакомство за 50 секунд",
         "title": "Об Амире Заре — AI-инженер данных и основатель DataLayer",
         "desc": "Амир Заре — AI-инженер данных и основатель DataLayer в Ереване. Более 7 лет опыта в бэкенде, конвейерах данных и AI в продакшене.",
         "h1": "Обо мне",
@@ -222,6 +226,8 @@ T["ru"] = {
         "back_projects": "Мои проекты", "back_community": "Сообщество и преподавание",
     },
     "community": {
+        "pitch_btn": "Смотреть питч", "pitch_when": "август 2026 · Sevan Startup Summit", "pitch_h": "Питч DataLayer на сцене",
+        "pitch_text": "Минутный фрагмент питча DataLayer: как e-commerce-бизнес превращает сырые данные продаж в понятные дашборды и рекомендации на основе AI.",
         "title": "Сообщество и мероприятия | Амир Заре",
         "desc": "Работа Амира Заре в сообществе Еревана: курс по Python на YouTube, воркшоп GDG Yerevan, ML-менторство в TUMO Labs, хакатоны и мероприятия.",
         "h1": "Сообщество и мероприятия", "sub": "Преподавание, воркшопы и встречи в сообществе данных и AI Еревана.",
@@ -278,6 +284,7 @@ T["fa"] = {
         },
     },
     "about": {
+        "video": "آشنایی با من در ۵۰ ثانیه",
         "title": "درباره امیر زارع — مهندس داده هوش مصنوعی",
         "desc": "امیر زارع مهندس داده هوش مصنوعی و بنیان‌گذار DataLayer در ایروان است؛ با بیش از ۷ سال تجربه در بک‌اند، پایپ‌لاین‌های داده و هوش مصنوعی.",
         "h1": "درباره من",
@@ -321,6 +328,8 @@ T["fa"] = {
         "back_projects": "پروژه‌های من", "back_community": "جامعه و آموزش",
     },
     "community": {
+        "pitch_btn": "تماشای ارائه", "pitch_when": "اوت ۲۰۲۶ · Sevan Startup Summit", "pitch_h": "ارائه DataLayer روی صحنه",
+        "pitch_text": "نگاهی یک‌دقیقه‌ای به ارائه DataLayer: کسب‌وکارهای آنلاین چگونه داده‌های خام فروش را به داشبوردهای روشن و پیشنهادهای مبتنی بر هوش مصنوعی تبدیل می‌کنند.",
         "title": "جامعه و رویدادها | امیر زارع",
         "desc": "فعالیت‌های امیر زارع در جامعه فناوری ایروان: دوره پایتون در یوتیوب، کارگاه GDG Yerevan، منتورینگ یادگیری ماشین در TUMO Labs و رویدادها.",
         "h1": "جامعه و رویدادها", "sub": "آموزش، کارگاه‌ها و دورهمی‌ها در جامعه داده و هوش مصنوعی ایروان.",
@@ -377,6 +386,7 @@ T["de"] = {
         },
     },
     "about": {
+        "video": "Lernen Sie mich in 50 Sekunden kennen",
         "title": "Über Amir Zare — AI Data Engineer & Gründer",
         "desc": "Amir Zare ist AI Data Engineer und Gründer von DataLayer in Jerewan, mit über 7 Jahren Erfahrung in Backend, Datenpipelines und produktiver KI.",
         "h1": "Über mich",
@@ -420,6 +430,8 @@ T["de"] = {
         "back_projects": "Meine Projekte", "back_community": "Community & Lehre",
     },
     "community": {
+        "pitch_btn": "Pitch ansehen", "pitch_when": "August 2026 · Sevan Startup Summit", "pitch_h": "DataLayer-Pitch auf der Bühne",
+        "pitch_text": "Ein einminütiger Einblick in den DataLayer-Pitch: wie E-Commerce-Unternehmen rohe Verkaufsdaten in klare Dashboards und KI-gestützte Empfehlungen verwandeln.",
         "title": "Community & Veranstaltungen | Amir Zare",
         "desc": "Amir Zares Community-Arbeit in Jerewan: Python-Kurs auf YouTube, GDG-Yerevan-Workshop, ML-Mentoring bei TUMO Labs, Hackathons und Events.",
         "h1": "Community & Veranstaltungen", "sub": "Lehre, Workshops und Meetups in Jerewans Daten- und KI-Szene.",
