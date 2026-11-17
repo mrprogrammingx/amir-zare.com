@@ -32,8 +32,8 @@ def lpath(lang, key):
 def alts_for(key):
     return {lang: lpath(lang, key) for lang in LANG_ORDER}
 
-CSS_VERSION = "20261118n"
-JS_VERSION = "20261118g"
+CSS_VERSION = "20261118o"
+JS_VERSION = "20261118h"
 LASTMOD = "2026-11-16"
 
 ICONS = {
@@ -202,7 +202,7 @@ def footer(telegram=True, lang="en"):
       </div>
       <div class="footer-bottom">
         <small>© <span id="year"></span> {NAME[lang]} — {u["role"]}</small>
-        <a href="#" class="footer-cookies" data-cookie-settings>{u["cookies"]}</a>
+        <a href="/privacy/" class="footer-privacy">{u["privacy"]}</a>
         <a href="#" class="footer-top">{u["back_to_top"]} <span aria-hidden="true">&#8593;</span></a>
       </div>
     </div>
@@ -859,6 +859,7 @@ def connect_page(lang="en"):
     </div>
     <button type="button" class="cn-qr-open" data-qr-open>{qr}<span>{c["show_qr"]}</span></button>
     <nav class="cn-langs" aria-label="{u["language"]}">{langs}</nav>
+    <a class="cn-privacy" href="/privacy/">{u["privacy"]}</a>
   </main>
   <dialog class="cn-qr" id="cn-qr">
     <div class="cn-qr-switch">
@@ -1135,9 +1136,79 @@ def local_community(lang):
     return page(c["title"], c["desc"], path, body, og_image("community"), graph, active="community", lang=lang, alts=alts_for("community"))
 
 
+PRIVACY_UPDATED = "November 17, 2026"
+
+
+def privacy_page():
+    path = "/privacy/"
+    trail = [("Home", "/"), ("Privacy", path)]
+    body = f"""    <section class="section pg">
+      <div class="container pv">
+        {crumbs_html(trail)}
+        <h1 class="grad-title">Privacy Policy</h1>
+        <p class="cm-sub">Last updated: {PRIVACY_UPDATED}</p>
+        <section class="pg-sec">
+          <h2>Who runs this site</h2>
+          <p>amir-zare.com is the personal website of Amir Zare, based in Yerevan, Armenia. For any privacy question or request, email
+          <a href="mailto:{SITE["email"]}">{SITE["email"]}</a>.</p>
+        </section>
+        <section class="pg-sec">
+          <h2>What this site collects</h2>
+          <p>The site has no accounts, forms, or newsletter, so it doesn&rsquo;t ask you for personal information. To understand how the site is
+          used and improve it, every visit is measured with two analytics tools:</p>
+          <ul class="pg-list">
+            <li><strong>Google Analytics</strong> (Google LLC): pages visited, how you arrived (for example a search engine, LinkedIn, or a QR code),
+            approximate location (country and city), device, browser, language, and time on page.</li>
+            <li><strong>Microsoft Clarity</strong> (Microsoft Corporation): how pages are used, such as clicks, scrolling, and mouse movement, shown as
+            heatmaps and anonymized session replays. Clarity masks text you type.</li>
+          </ul>
+          <p>These tools set cookies and use similar technologies in your browser to recognize repeat visits. They don&rsquo;t receive your name,
+          email address, or phone number from this site. Data is reported in aggregate and is never sold or used for advertising by this site.</p>
+        </section>
+        <section class="pg-sec">
+          <h2>Who processes the data</h2>
+          <p>Google and Microsoft process analytics data on their servers, which may be outside your country, including in the United States.
+          Their own policies apply: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a> and
+          <a href="https://www.microsoft.com/privacy/privacystatement" target="_blank" rel="noopener">Microsoft Privacy Statement</a>.
+          The site itself is hosted on GitHub Pages, which keeps standard server logs (such as IP addresses) for security; see the
+          <a href="https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">GitHub Privacy Statement</a>.</p>
+        </section>
+        <section class="pg-sec">
+          <h2>How long it is kept</h2>
+          <p>Google Analytics keeps event data for 14 months, after which it is deleted automatically. Microsoft Clarity keeps session recordings
+          for up to 30 days and aggregated heatmap data for up to 13 months.</p>
+        </section>
+        <section class="pg-sec">
+          <h2>Your choices</h2>
+          <ul class="pg-list">
+            <li>Block or delete cookies in your browser settings, or browse in a private window.</li>
+            <li>Install the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">Google Analytics opt-out browser add-on</a>.</li>
+            <li>Use a content or tracker blocker, which stops both tools from loading.</li>
+            <li>Email <a href="mailto:{SITE["email"]}">{SITE["email"]}</a> to ask about or request deletion of data related to your visits.</li>
+          </ul>
+        </section>
+        <section class="pg-sec">
+          <h2>Contact card</h2>
+          <p>The &ldquo;Save my contact&rdquo; button on <a href="/connect/">the contact page</a> gives you Amir&rsquo;s own contact details. It
+          doesn&rsquo;t collect yours.</p>
+        </section>
+        <section class="pg-sec">
+          <h2>Changes</h2>
+          <p>If this policy changes, the date at the top of this page will be updated.</p>
+        </section>
+      </div>
+    </section>"""
+    graph = [{"@type": "WebPage", "name": "Privacy Policy — Amir Zare", "url": SITE["url"] + path, "dateModified": "2026-11-17",
+              "isPartOf": {"@id": SITE["url"] + "/#website"}}, breadcrumbs(trail)]
+    return page("Privacy Policy | Amir Zare",
+                "How amir-zare.com uses Google Analytics and Microsoft Clarity, what is collected, how long it is kept, and your choices.",
+                path, body, og_image("home"), graph)
+
+
 def outputs():
     files = {}
     files["404.html"] = not_found_page()
+    files["privacy/index.html"] = privacy_page()
     files["connect/index.html"] = connect_page()
     for lang in LOCAL_LANGS:
         files[f"{lang}/index.html"] = local_home(lang)
@@ -1154,7 +1225,7 @@ def outputs():
     for existing in ["resume.html"]:
         files[existing] = sync_existing(existing)
     paths = [("/", "weekly", "1.0"), ("/about/", "monthly", "0.9"), ("/projects/", "weekly", "0.9"), ("/community/", "monthly", "0.8"),
-             ("/resume.html", "monthly", "0.8")]
+             ("/resume.html", "monthly", "0.8"), ("/privacy/", "yearly", "0.2")]
     paths += [(ppath(p), "monthly", "0.7") for p in ALL]
     paths += [(lpath(lang, key), "monthly", prio) for lang in LOCAL_LANGS for key, prio in (("home", "0.8"), ("about", "0.7"), ("community", "0.6"))]
     files["sitemap.xml"] = sitemap(paths)
