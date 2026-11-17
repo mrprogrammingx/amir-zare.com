@@ -321,7 +321,11 @@ PROJECTS = [
         ],
         "impact": ["Narrates the lessons of the weekly Python course on YouTube."],
         "tech": ["Python", "Chatterbox TTS", "PyTorch", "Hugging Face", "ffmpeg"],
-        "links": [("Repository", GH + "voice-cloner")],
+        "links": [("Repository", GH + "voice-cloner"), ("Video tutorial", "https://www.youtube.com/watch?v=PFXBDEE6dao")],
+        "video": {"id": "PFXBDEE6dao", "duration": "PT11M12S", "length": "11:12", "upload": "2026-10-31T07:00:34-07:00", "thumb": "sddefault",
+                  "title": "Build a FREE AI Voice Cloner on Your PC in 10 Minutes (Clone Any Voice)",
+                  "desc": "Step-by-step tutorial: build a free, fully local AI voice cloner and narration tool on your own PC.",
+                  "label": "Watch the tutorial"},
     },
     {
         "slug": "barbershop-queue",
