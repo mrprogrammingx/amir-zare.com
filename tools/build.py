@@ -437,6 +437,7 @@ def project_page(p):
         <figure class="pg-figure{img_class(p.get("image_fit", "cover"))}">
           <img src="{p["image"]}" alt="{esc(plain(p["title"]))}: {esc(plain(p["subtitle"]))}" loading="eager">
         </figure>
+        {f'<section class="cs-sec"><h2>Video tutorial</h2><div class="ab-video">{video_block(p["video"]["label"], p["video"])}</div></section>' if p.get("video") else ""}
         {extras_top}
         <div class="pg-grid">
           <section class="pg-block wide">
@@ -472,7 +473,7 @@ def project_page(p):
     if code_repo:
         work["codeRepository"] = code_repo
         work["programmingLanguage"] = [t for t in p["tech"] if t.split()[0] in ("Python", "Java", "PHP", "SQL", "TypeScript", "JavaScript")]
-    graph = [work, breadcrumbs(trail), PERSON]
+    graph = [work, breadcrumbs(trail), PERSON] + ([video_ld(p["video"])] if p.get("video") else [])
     title = f"{plain(p['title'])} — {plain(p['subtitle'])} | Amir Zare"
     if len(title) > 62:
         title = f"{plain(p['title'])} | Amir Zare"
