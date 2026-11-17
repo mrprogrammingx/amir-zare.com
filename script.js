@@ -292,7 +292,7 @@
       const fallback = new URL(btn.getAttribute('href'), location.href).href;
       const extras = {
         'S.name': 'Amir Zare', 'S.phone': phone, 'i.phone_type': '2', 'S.email': 'info@amir-zare.com', 'i.email_type': '2',
-        'S.company': 'DataLayer', 'S.job_title': 'AI Data Engineer, Founder of DataLayer',
+        'S.company': 'DataLayer', 'S.job_title': 'AI & Data Engineer, Founder of DataLayer',
         'S.notes': 'Website: amir-zare.com\nTelegram: t.me/MrProgrammingX\nLinkedIn: linkedin.com/in/binahayat00\nGitHub: github.com/mrprogrammingx',
         'S.browser_fallback_url': fallback
       };

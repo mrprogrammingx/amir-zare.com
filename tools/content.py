@@ -6,8 +6,8 @@ Edit facts here, then run `python3 tools/build.py`. Text may contain simple HTML
 SITE = {
     "url": "https://amir-zare.com",
     "name": "Amir Zare",
-    "headline": "AI Data Engineer",
-    "description": "Amir Zare is an AI Data Engineer and the founder of DataLayer, based in Yerevan, Armenia. "
+    "headline": "AI & Data Engineer",
+    "description": "Amir Zare is an AI & Data Engineer and the founder of DataLayer, based in Yerevan, Armenia. "
                    "He builds data pipelines, analytics platforms, and production LLM applications.",
     "email": "info@amir-zare.com",
     "location": "Yerevan, Armenia",
@@ -384,7 +384,7 @@ PROJECTS = [
 ABOUT = {
     "lead": "Software &amp; Data Engineer building data platforms and AI-powered products.",
     "intro": [
-        "I&rsquo;m Amir Zare, an AI Data Engineer based in Yerevan, Armenia, and the founder of "
+        "I&rsquo;m Amir Zare, an AI & Data Engineer based in Yerevan, Armenia, and the founder of "
         "<a href=\"https://usedatalayer.com\" target=\"_blank\" rel=\"noopener\">DataLayer</a>, an AI-powered analytics platform for e-commerce sellers.",
         "Over 7+ years I&rsquo;ve grown from enterprise backend engineering in PHP and Laravel to modern data platforms &mdash; Airflow, dbt, Kafka, Flink, BigQuery &mdash; and production AI systems. "
         "I design reliable, cost-efficient pipelines that move quickly from prototype to production, and I ship LLM applications with deterministic guardrails.",

@@ -2,7 +2,7 @@
   {
     "slug": "home",
     "title": "Amir Zare",
-    "subtitle": "AI Data Engineer · Founder of DataLayer",
+    "subtitle": "AI & Data Engineer · Founder of DataLayer",
     "image": "/images/amir-portrait.webp",
     "fit": "portrait"
   },
@@ -23,7 +23,7 @@
   {
     "slug": "resume",
     "title": "Resume",
-    "subtitle": "AI Data Engineer · 7+ years in data, backend, and AI",
+    "subtitle": "AI & Data Engineer · 7+ years in data, backend, and AI",
     "image": "/images/amir-portrait.webp",
     "fit": "portrait"
   },

@@ -1,6 +1,6 @@
 # Amir Zare
 
-> Amir Zare is an AI Data Engineer and the founder of DataLayer, based in Yerevan, Armenia. He builds data pipelines, analytics platforms, and production LLM applications.
+> Amir Zare is an AI & Data Engineer and the founder of DataLayer, based in Yerevan, Armenia. He builds data pipelines, analytics platforms, and production LLM applications.
 
 Amir has 7+ years of experience, from enterprise backend engineering (PHP, Laravel) to modern data platforms (Airflow, dbt, Kafka, Flink, BigQuery) and production AI systems (RAG, multi-agent workflows). DataLayer is ranked #2 in Data Analytics and #6 among software companies in Armenia by F6S.
 
@@ -21,7 +21,7 @@ Amir has 7+ years of experience, from enterprise backend engineering (PHP, Larav
 ## Key facts
 
 - Name: Amir Zare
-- Role: AI Data Engineer; Founder of DataLayer (since January 2024)
+- Role: AI & Data Engineer; Founder of DataLayer (since January 2024)
 - Location: Yerevan, Armenia (Armenian permanent resident)
 - Experience: 7+ years (backend engineering since 2019, data and AI platforms since 2024)
 - Core skills: Python, SQL, Apache Airflow, dbt, Kafka, Flink, Spark, BigQuery, DuckDB, FastAPI, Laravel, RAG, multi-agent systems, A/B testing
@@ -34,7 +34,7 @@ Amir has 7+ years of experience, from enterprise backend engineering (PHP, Larav
 
 ### Who is Amir Zare?
 
-Amir Zare is an AI Data Engineer and the founder of DataLayer, based in Yerevan, Armenia. He has 7+ years of experience building backend systems, data pipelines, analytics platforms, and production LLM applications.
+Amir Zare is an AI & Data Engineer and the founder of DataLayer, based in Yerevan, Armenia. He has 7+ years of experience building backend systems, data pipelines, analytics platforms, and production LLM applications.
 
 ### What does Amir Zare specialize in?
 
