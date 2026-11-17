@@ -32,8 +32,8 @@ def lpath(lang, key):
 def alts_for(key):
     return {lang: lpath(lang, key) for lang in LANG_ORDER}
 
-CSS_VERSION = "20261118o"
-JS_VERSION = "20261118h"
+CSS_VERSION = "20261118p"
+JS_VERSION = "20261118i"
 LASTMOD = "2026-11-16"
 
 ICONS = {
@@ -537,6 +537,30 @@ FAQ = [
 ]
 
 
+VIDEO = {"id": "qCADjF5VixQ", "duration": "PT51S", "length": "0:51", "upload": "2026-10-05T03:50:34-07:00",
+         "title": "Amir Zare: Software Engineer & Backend Specialist | 7+ Years of Experience",
+         "desc": "A 50-second introduction to Amir Zare: Python and backend development, APIs and databases, automation, "
+                 "data engineering and ETL, and AI-powered automation."}
+PLAY = ('<svg viewBox="0 0 68 48" width="68" height="48" aria-hidden="true"><path d="M66.5 7.7a8.5 8.5 0 0 0-6-6C55.2.3 34 .3 34 .3s-21.2 0-26.5 1.4a8.5 8.5 0 0 0-6 6'
+        'C.1 13 .1 24 .1 24s0 11 1.4 16.3a8.5 8.5 0 0 0 6 6C12.8 47.7 34 47.7 34 47.7s21.2 0 26.5-1.4a8.5 8.5 0 0 0 6-6C67.9 35 67.9 24 67.9 24s0-11-1.4-16.3z" '
+        'fill="#ff0000"/><path d="M27 34V14l18 10z" fill="#fff"/></svg>')
+
+
+def video_block(label):
+    """Lightweight YouTube embed: a ~20 KB thumbnail; the player (youtube-nocookie) loads only when clicked."""
+    v = VIDEO
+    return (f'<button type="button" class="yt-lite" data-yt="{v["id"]}" aria-label="{esc(label)} ({v["length"]})">'
+            f'<img src="https://i.ytimg.com/vi/{v["id"]}/hqdefault.jpg" alt="" width="480" height="360" loading="lazy" decoding="async">'
+            f'<span class="yt-play">{PLAY}</span><span class="yt-cap">{label} &middot; {v["length"]}</span></button>')
+
+
+def video_ld():
+    v = VIDEO
+    return {"@type": "VideoObject", "name": v["title"], "description": v["desc"], "uploadDate": v["upload"], "duration": v["duration"],
+            "thumbnailUrl": f'https://i.ytimg.com/vi/{v["id"]}/hqdefault.jpg', "embedUrl": f'https://www.youtube-nocookie.com/embed/{v["id"]}',
+            "contentUrl": f'https://www.youtube.com/watch?v={v["id"]}', "author": {"@id": SITE["url"] + "/#person"}}
+
+
 def about_page():
     path = "/about/"
     trail = [("Home", "/"), ("About", path)]
@@ -560,6 +584,7 @@ def about_page():
           <div class="about-body">
             <p class="about-lead">{ABOUT["lead"]}</p>
             {intro}
+            {video_block("Meet me in 50 seconds")}
             <div class="pg-actions">
               <a class="cta-btn primary" href="mailto:{SITE["email"]}">Email me <span aria-hidden="true">&#8599;</span></a>
               <a class="cta-btn" href="/resume.html" target="_blank" rel="noopener">View resume <span aria-hidden="true">&#8599;</span></a>
@@ -610,7 +635,7 @@ def about_page():
       </div>
     </section>'''
     graph = [{"@type": "ProfilePage", "name": "About Amir Zare", "url": SITE["url"] + path, "mainEntity": {"@id": SITE["url"] + "/#person"}},
-             PERSON, ORG, breadcrumbs(trail),
+             PERSON, ORG, breadcrumbs(trail), video_ld(),
              {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}}
                                                  for q, a in FAQ]}]
     return page("About Amir Zare — AI Data Engineer & Founder of DataLayer",
@@ -1027,6 +1052,7 @@ def local_about(lang):
           <div class="about-body">
             <p class="about-lead">{a["lead"]}</p>
             {intro}
+            {video_block(a["video"])}
             <div class="pg-actions">
               <a class="cta-btn primary" href="mailto:{SITE["email"]}">{a["cta_email"]} <span aria-hidden="true">&#8599;</span></a>
               <a class="cta-btn" href="/resume.html" target="_blank" rel="noopener" hreflang="en">{a["cta_resume"]} <span aria-hidden="true">&#8599;</span></a>
@@ -1078,7 +1104,7 @@ def local_about(lang):
     </section>'''
     faq_ld = {"@type": "FAQPage", "inLanguage": lang,
               "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": ans}} for q, ans in a["faq"]]}
-    graph = local_graph(lang, "about", a["title"], a["desc"], (breadcrumbs(trail), faq_ld))
+    graph = local_graph(lang, "about", a["title"], a["desc"], (breadcrumbs(trail), faq_ld, video_ld()))
     return page(a["title"], a["desc"], path, body, og_image("about"), graph, og_type="profile", lang=lang, alts=alts_for("about"))
 
 
@@ -1188,7 +1214,10 @@ def privacy_page():
           </ul>
         </section>
         <section class="pg-sec">
-          <h2>Contact card</h2>
+          <h2>Video and contact card</h2>
+          <p>The video on the About page is hosted on YouTube. Nothing from YouTube loads until you press play; it then plays in
+          YouTube&rsquo;s privacy-enhanced mode (youtube-nocookie.com), and <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google&rsquo;s
+          Privacy Policy</a> applies.</p>
           <p>The &ldquo;Save my contact&rdquo; button on <a href="/connect/">the contact page</a> gives you Amir&rsquo;s own contact details. It
           doesn&rsquo;t collect yours.</p>
         </section>

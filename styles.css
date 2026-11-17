@@ -1653,3 +1653,13 @@ html[lang="fa"] .lh-role,html[lang="fa"] .cn-role{letter-spacing:0;text-transfor
 .pv .pg-sec p{line-height:1.7}
 .pv .pg-list li{line-height:1.6}
 .cn-privacy{margin-top:14px;font-size:.78rem;color:#9aa4b2;text-decoration:none}.cn-privacy:hover{text-decoration:underline}
+/* Lightweight YouTube embed (About page) */
+.yt-lite,.yt-frame{display:block;width:100%;aspect-ratio:16/9;margin:18px 0 4px;border-radius:16px;border:1px solid rgba(96,165,250,.3);overflow:hidden;background:#0b1220}
+.yt-lite{position:relative;padding:0;cursor:pointer;color:#fff;font:inherit}
+.yt-lite img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s,filter .3s;filter:brightness(.85)}
+.yt-play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;transition:transform .2s}
+.yt-cap{position:absolute;inset-inline-start:12px;bottom:12px;padding:6px 11px;border-radius:999px;font-size:.85rem;font-weight:600;background:rgba(11,18,32,.82);border:1px solid rgba(255,255,255,.15)}
+.yt-lite:hover img,.yt-lite:focus-visible img{filter:brightness(1);transform:scale(1.03)}
+.yt-lite:hover .yt-play{transform:scale(1.08)}
+.yt-frame{border:0}
+@media (prefers-reduced-motion: reduce){ .yt-lite img,.yt-play{transition:none} .yt-lite:hover img{transform:none} }

@@ -80,6 +80,7 @@ T["hy"] = {
         },
     },
     "about": {
+        "video": "Ծանոթացեք ինձ 50 վայրկյանում",
         "title": "Ամիր Զարեի մասին — AI տվյալների ինժեներ",
         "desc": "Ամիր Զարեն AI տվյալների ինժեներ է և DataLayer-ի հիմնադիրը Երևանում՝ backend համակարգերի, տվյալների փոխակրիչների և AI-ի 7+ տարվա փորձով։",
         "h1": "Իմ մասին",
@@ -179,6 +180,7 @@ T["ru"] = {
         },
     },
     "about": {
+        "video": "Знакомство за 50 секунд",
         "title": "Об Амире Заре — AI-инженер данных и основатель DataLayer",
         "desc": "Амир Заре — AI-инженер данных и основатель DataLayer в Ереване. Более 7 лет опыта в бэкенде, конвейерах данных и AI в продакшене.",
         "h1": "Обо мне",
@@ -278,6 +280,7 @@ T["fa"] = {
         },
     },
     "about": {
+        "video": "آشنایی با من در ۵۰ ثانیه",
         "title": "درباره امیر زارع — مهندس داده هوش مصنوعی",
         "desc": "امیر زارع مهندس داده هوش مصنوعی و بنیان‌گذار DataLayer در ایروان است؛ با بیش از ۷ سال تجربه در بک‌اند، پایپ‌لاین‌های داده و هوش مصنوعی.",
         "h1": "درباره من",
@@ -377,6 +380,7 @@ T["de"] = {
         },
     },
     "about": {
+        "video": "Lernen Sie mich in 50 Sekunden kennen",
         "title": "Über Amir Zare — AI Data Engineer & Gründer",
         "desc": "Amir Zare ist AI Data Engineer und Gründer von DataLayer in Jerewan, mit über 7 Jahren Erfahrung in Backend, Datenpipelines und produktiver KI.",
         "h1": "Über mich",
