@@ -707,10 +707,15 @@ def community_page():
         </section>
       </div>
     </section>'''
-    workshop = {"@type": "Event", "name": "GDG Yerevan Multi-Agent Workshop (Google ADK + A2A)", "startDate": "2026-06",
+    workshop = {"@type": "Event", "name": "GDG Yerevan Multi-Agent Workshop (Google ADK + A2A)", "startDate": "2026-06", "endDate": "2026-06",
+                "description": "Hands-on workshop by Amir Zare: participants build three AI agents with Google ADK for TypeScript and an "
+                               "orchestrator that coordinates them over the A2A protocol.",
+                "eventStatus": "https://schema.org/EventScheduled", "url": SITE["url"] + "/community/",
+                "offers": {"@type": "Offer", "price": "0", "priceCurrency": "AMD", "availability": "https://schema.org/SoldOut",
+                           "url": "https://gdg.community.dev/gdg-yerevan/", "validFrom": "2026-05-01"},
                 "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
                 "location": {"@type": "Place", "name": "Yandex Armenia", "address": {"@type": "PostalAddress", "addressLocality": "Yerevan", "addressCountry": "AM"}},
-                "organizer": {"@type": "Organization", "name": "GDG Yerevan"}, "performer": {"@id": SITE["url"] + "/#person"},
+                "organizer": {"@type": "Organization", "name": "GDG Yerevan", "url": "https://gdg.community.dev/gdg-yerevan/"}, "performer": {"@id": SITE["url"] + "/#person"},
                 "image": SITE["url"] + "/images/gdg-workshop-room.webp"}
     graph = [{"@type": "CollectionPage", "name": "Community & Events — Amir Zare", "url": SITE["url"] + path,
               "about": {"@id": SITE["url"] + "/#person"}}, workshop, video_ld(PITCH), breadcrumbs(trail), PERSON]
