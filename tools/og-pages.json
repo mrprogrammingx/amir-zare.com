@@ -105,6 +105,13 @@
     "fit": "cover"
   },
   {
+    "slug": "gdg-yerevan-multi-agent-workshop",
+    "title": "GDG Yerevan Multi-Agent Workshop",
+    "subtitle": "Building multi-agent systems with Google ADK + A2A",
+    "image": "/images/gdg-workshop-room.webp",
+    "fit": "cover"
+  },
+  {
     "slug": "voice-narrator",
     "title": "Voice Narrator",
     "subtitle": "Local voice cloning for tutorial production",
