@@ -306,6 +306,26 @@ PROJECTS = [
         "note": "The source code is in a private repository.",
     },
     {
+        "slug": "gdg-yerevan-multi-agent-workshop",
+        "title": "GDG Yerevan Multi-Agent Workshop",
+        "subtitle": "Building multi-agent systems with Google ADK + A2A",
+        "year": "2026", "category": "AI / Agents", "status": "Delivered at GDG Yerevan, June 2026",
+        "image": "/images/gdg-workshop-room.webp", "image_fit": "cover",
+        "summary": "A hands-on workshop for GDG Yerevan where participants built three independent AI agents with Google&rsquo;s Agent Development Kit for TypeScript, then an orchestrator that coordinates them over the A2A protocol.",
+        "highlights": ["Google ADK for TypeScript", "A2A protocol", "Starter + solution branches"],
+        "problem": "Multi-agent systems are hard to teach: participants need real agents, real data, and a way to see what each agent is doing, without spending the session on setup.",
+        "built": [
+            "Three independent agents for a fictional electronics retailer: inventory (catalog and stock), orders (order lookup and a 30-day return policy), and pricing (our prices plus a Google Search market-research sub-agent), each deployable as its own service.",
+            "An orchestrator with no data of its own that wraps the three workers as remote A2A agents and resolves support cases end-to-end, such as &ldquo;customer 1042 wants to return their headphones and get something similar.&rdquo;",
+            "Shared scaffolding: an agent server with a debug console showing every tool call and result, SSE chat, A2A endpoints (agent card, REST, JSON-RPC), and a seeded SQLite dataset.",
+            "Deterministic tests that need no API key, plus a starter branch with TODOs and a solution branch so participants learn at their own pace and check their work.",
+        ],
+        "impact": ["Delivered as a hands-on GDG Yerevan workshop in June 2026 at Yandex Armenia.",
+                   "Reusable as a self-paced course: anyone can clone the starter branch and follow along."],
+        "tech": ["TypeScript", "Google ADK", "A2A protocol", "Gemini", "Node.js", "SQLite", "SSE"],
+        "links": [("Repository", GH + "adk-cloud-workshop"), ("Community page", "/community/")],
+    },
+    {
         "slug": "voice-narrator",
         "title": "Voice Narrator",
         "subtitle": "Local voice cloning for tutorial production",
@@ -443,11 +463,6 @@ COMMUNITY = {
                     "then an orchestrator that coordinates them over the A2A protocol. The scaffolding includes a shared agent server with a debug console that shows every tool call, "
                     "SSE chat and A2A endpoints, a seeded SQLite dataset, deterministic tests, and starter and solution branches for self-paced learning.",
             "links": [("Workshop repository", GH + "adk-cloud-workshop")],
-        },
-        {
-            "title": "Data Engineering Docker Workshop", "when": "Feb 2026", "image": None,
-            "text": "A Docker workshop prepared for data engineering learners.",
-            "links": [("Workshop repository", GH + "de-docker-workshop")],
         },
         {
             "title": "ML Mentor at TUMO Labs", "when": "Aug 2026 &ndash; present &middot; Yerevan", "image": None,
