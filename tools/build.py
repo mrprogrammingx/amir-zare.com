@@ -53,8 +53,8 @@ def lpath(lang, key):
 def alts_for(key):
     return {lang: lpath(lang, key) for lang in LANG_ORDER}
 
-CSS_VERSION = "20261124e"
-JS_VERSION = "20261124d"
+CSS_VERSION = "20261124f"
+JS_VERSION = "20261124f"
 LASTMOD = "2026-11-16"
 
 ICONS = {
@@ -212,23 +212,29 @@ def header(home, active=None, lang="en", alts=None):
 ASK_ICON = ('<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" '
             'stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20.5l1.4-4.7A8 8 0 1 1 21 12z"/>'
             '<path d="M9.2 9.6a2.8 2.8 0 0 1 5.4 1c0 1.8-2.6 2.2-2.6 3.6M12 16.8h.01"/></svg>')
+DOWN_ICON = ('<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" '
+             'stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg>')
 
 
 def ask_widget(lang="en", indent="    "):
-    """Floating "Ask about me" button + popup. script.js creates the Hugging Face iframe on the first click only."""
+    """Floating "Ask about me" link to the home page's #ask section (script.js scrolls there on the home page)."""
     u = UI[lang]
-    i = indent
-    return f'''{i}<div class="ask" data-ask>
-{i}  <button type="button" class="ask-btn" aria-label="{u["ask_me"]} ({u["ask_ai"]})" aria-haspopup="dialog" aria-controls="ask-panel" aria-expanded="false">{ASK_ICON}<span class="ask-label">{u["ask_me"]}</span></button>
-{i}  <div class="ask-panel" id="ask-panel" role="dialog" aria-modal="true" aria-labelledby="ask-title" tabindex="-1" hidden data-src="{SITE["assistant_embed"]}">
-{i}    <div class="ask-head">
-{i}      <p class="ask-title" id="ask-title">{u["ask_title"]}</p>
-{i}      <a class="ask-full" href="{SITE["assistant_page"]}" target="_blank" rel="noopener">{u["ask_full"]} <span aria-hidden="true">&#8599;</span></a>
-{i}      <button type="button" class="ask-close" aria-label="{u["ask_close"]}"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
-{i}    </div>
-{i}    <div class="ask-body"></div>
-{i}  </div>
-{i}</div>'''
+    return (f'{indent}<div class="ask"><a class="ask-btn" href="{lpath(lang, "home")}#ask" data-ask-jump aria-label="{u["ask_me"]} ({u["ask_ai"]})">'
+            f'{DOWN_ICON}<span class="ask-label">{u["ask_me"]}</span></a></div>')
+
+
+def ask_section(lang="en"):
+    """Home "Ask about me": the Hugging Face Space, created by script.js only when the section is about to scroll into view."""
+    u = UI[lang]
+    return f'''<section id="ask" class="section ask-sec" aria-labelledby="ask-heading">
+      <div class="container">
+        <h2 id="ask-heading" class="ask-h">{ASK_ICON}<span>{u["ask_me"]}</span></h2>
+        <p class="ask-line">{u["ask_line"]}</p>
+        <div class="ask-frame" data-src="{SITE["assistant_section"]}" data-title="{u["ask_title"]}">
+          <p class="ask-fallback"><a href="{SITE["assistant_page"]}" target="_blank" rel="noopener">{u["ask_full"]} <span aria-hidden="true">&#8599;</span></a></p>
+        </div>
+      </div>
+    </section>'''
 
 
 def footer(telegram=True, lang="en"):
@@ -840,6 +846,7 @@ def sync_existing(path, home=False):
         out = replace_block(out, r"<!-- build:seo -->", r"<!-- /build:seo -->", "<!-- build:seo -->\n  " + home_seo() + "\n  <!-- /build:seo -->")
         out = re.sub(r"<title>.*?</title>", f"<title>{esc(HOME_TITLE)}</title>", out, count=1)
         out = replace_block(out, r"<!-- build:book -->", r"<!-- /build:book -->", "<!-- build:book -->\n    " + book_section() + "\n    <!-- /build:book -->")
+        out = replace_block(out, r"<!-- build:ask -->", r"<!-- /build:ask -->", "<!-- build:ask -->\n    " + ask_section() + "\n    <!-- /build:ask -->")
     if path == "resume.html":
         out = replace_block(out, r"<!-- build:seo -->", r"<!-- /build:seo -->", "<!-- build:seo -->\n  " + resume_seo() + "\n  <!-- /build:seo -->")
         out = re.sub(r"<title>.*?</title>", f"<title>{esc(RESUME_TITLE)}</title>", out, count=1)
@@ -1335,7 +1342,7 @@ def llms_txt():
              f"- [Resume]({SITE['url']}/resume.html): full resume",
              f"- [Knowledge base]({SITE['url']}/kb.json): the resume as standalone third-person facts (JSON)",
              f"- [Contact card]({SITE['url']}/connect/): email, LinkedIn, Telegram, and a downloadable contact card",
-             f"- [Ask about Amir]({SITE['assistant_page']}): an assistant that answers questions about Amir's experience with citations",
+             f"- [Ask about Amir]({SITE['url']}/#ask): an assistant that answers questions about Amir's experience with citations",
              "- Translations of Home, About, Community, and Contact card: "
              + ", ".join(f"[{LANG_NAME[c]}]({SITE['url']}{lpath(c, 'home')})" for c in LOCAL_LANGS), "",
              "## Press", "",
@@ -1578,7 +1585,8 @@ def local_home(lang):
           <a class="cta-btn" href="{lpath(lang, "connect")}">{QR_ICON}{h["card"]}</a>
         </div>
       </div>
-    </section>'''
+    </section>
+    {ask_section(lang)}'''
     graph = local_graph(lang, "home", h["title"], h["desc"])
     return page(h["title"], h["desc"], lpath(lang, "home"), body, og_image("home"), graph, active="home", og_type="profile",
                 lang=lang, alts=alts_for("home"))
