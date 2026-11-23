@@ -234,6 +234,7 @@
           "private": true
         }
       ],
+      "selected": true,
       "bullets": [
         "Built an HTTP API that lets AI agents publish static websites: an agent sends the site files as JSON, gets back a live URL, and can update or delete the site later.",
         "Separated the API service from the sites service. The sites service is read-only, only reads published files and never touches the database.",
@@ -260,6 +261,7 @@
           "private": false
         }
       ],
+      "selected": false,
       "bullets": [
         "Built a playable pygame chess game with three opponents: a random mover, Stockfish, and an LLM through OpenRouter that comments on its moves.",
         "Made the LLM opponent reliable: the model gets the board position (FEN), the move history and the legal moves, and answers in structured JSON. The code checks each move is legal, retries up to 3 times, then falls back to a random move, and the UI shows how many illegal attempts there were.",
@@ -286,6 +288,7 @@
           "private": false
         }
       ],
+      "selected": false,
       "bullets": [
         "Built a fully local voice-cloning narration tool for programming tutorials, so there are no recurring fees and recordings never leave the machine.",
         "Designed a two-stage pipeline after testing showed direct cloning gave inconsistent accents: the base TTS model speaks each sentence, then voice conversion re-voices it to match the reference recording.",
@@ -307,6 +310,7 @@
       "date": "2026",
       "note": "Anthropic “Claude Code in Action” course project",
       "links": [],
+      "selected": false,
       "bullets": [
         "Worked on an AI-powered React component generator that uses Claude, with a live preview, a virtual file system, a code editor and saved projects.",
         "Maintained dependency security by pinning versions and patching a critical Next.js vulnerability (CVE-2025-55182) instead of running blanket audit fixes."
@@ -337,6 +341,7 @@
           "private": false
         }
       ],
+      "selected": true,
       "bullets": [
         "Analyzed a public mobile-game A/B test with 90,189 players to see whether moving the first progress gate from level 30 to 40 affects retention and engagement.",
         "Found a statistically significant 0.82 pp (4.3% relative) drop in 7-day retention (95% CI −1.33 to −0.31 pp; Holm-adjusted p = 0.0047), and recommended keeping the gate at level 30.",
@@ -365,6 +370,7 @@
           "private": false
         }
       ],
+      "selected": false,
       "bullets": [
         "Built a configurable clustering toolkit that groups music tracks by mood from numeric audio features, with YAML/CLI batch runs that keep each run’s outputs separate.",
         "Added preprocessing options (standard or min-max scaling, feature selection, PCA), silhouette-based K selection, and evaluation with silhouette, Davies–Bouldin and Calinski–Harabasz scores.",
@@ -393,6 +399,7 @@
           "private": false
         }
       ],
+      "selected": false,
       "bullets": [
         "Built an end-to-end multi-label classifier for moderation labels on online comments: load → clean → vectorize → train → evaluate → save.",
         "Used TF-IDF features with a One-vs-Rest logistic regression baseline, with per-label evaluation and error analysis.",
@@ -420,6 +427,7 @@
           "private": false
         }
       ],
+      "selected": false,
       "bullets": [
         "Implemented a complete ML workflow: data cleaning, exploratory analysis, feature engineering, model training and evaluation."
       ],
@@ -443,6 +451,7 @@
           "private": false
         }
       ],
+      "selected": false,
       "bullets": [
         "Implemented the exercises from Hands-On Machine Learning with Scikit-Learn and TensorFlow to strengthen core ML concepts."
       ],
@@ -461,6 +470,7 @@
           "private": false
         }
       ],
+      "selected": false,
       "bullets": [
         "Built and ran Airflow DAGs locally with the Astro CLI, using the TaskFlow API and dynamic task mapping. This is companion work to the Astronomer Airflow 3 certification."
       ],
@@ -479,6 +489,7 @@
           "private": false
         }
       ],
+      "selected": false,
       "bullets": [
         "Built a full-stack booking and walk-in queue system: customers book or check in online, and admins get an email for each new check-in.",
         "Developed a FastAPI backend with SQLAlchemy (SQLite in development, ready for Postgres) for check-in, queue position, call-next, done and no-show flows.",
@@ -512,6 +523,7 @@
           "private": false
         }
       ],
+      "selected": false,
       "bullets": [
         "Built a static website for a travel agency."
       ],
@@ -530,6 +542,7 @@
           "private": false
         }
       ],
+      "selected": false,
       "bullets": [
         "Built a Laravel service class around the Mail.tm API that creates temporary inboxes, authenticates, and fetches the latest message matching a subject, for automated email testing.",
         "Added typed exceptions for invalid state and HTTP failures."
@@ -568,6 +581,7 @@
           "private": false
         }
       ],
+      "selected": false,
       "bullets": [
         "Implemented Gang of Four design patterns in Laravel. For example, Observer handles user-model lifecycle events, and Factory switches between payment gateways (PayPal/Stripe) at runtime."
       ],
@@ -589,6 +603,7 @@
           "private": false
         }
       ],
+      "selected": true,
       "bullets": [
         "Designed and built a production-style real-time streaming platform for a fictional delivery company, delivered in 8 phases, each with working code, tests and architecture notes.",
         "Implemented change data capture from PostgreSQL/PostGIS with Debezium, covering snapshot vs. streaming modes, tombstones, and replication slot and connector recovery.",
@@ -632,6 +647,7 @@
           "private": false
         }
       ],
+      "selected": true,
       "bullets": [
         "Built an AI phone assistant for a barbershop on Suisse Line’s voice agent platform for Suisse IT’s Challenge A. Callers can check services and availability, book, find and cancel appointments, and join a waitlist.",
         "Designed a FastAPI booking backend that exposes seven live tools to the agent during calls, with one database as the single source of truth for the website, staff dashboard and phone channel.",
@@ -663,6 +679,7 @@
           "private": false
         }
       ],
+      "selected": false,
       "bullets": [
         "Building a reference data platform that migrates a deliberately poor legacy MySQL schema to an optimized, sharded design. Every performance claim is backed by a measured benchmark report.",
         "Set up a 4-shard MySQL 8 cluster with a catalog database and Redis in Docker Compose, plus a synthetic data generator that scales to 20M rows.",
@@ -700,6 +717,7 @@
           "private": false
         }
       ],
+      "selected": true,
       "bullets": [
         "Designed and shipped a production system that automates DataLayer's own growth decision-making: a daily batch job pulling product, marketing, and lead data, synthesized via LLM into one prioritized \"Growth Brief\" emailed to the team each morning",
         "Deliberately minimal, production-safe stack (Flask, PostgreSQL, APScheduler, Docker) — explicitly excluded heavier frameworks (LangChain, vector DBs, Redis, Celery, Kubernetes, multi-agent orchestration) to keep the system auditable, low-risk, and easy to reason about",
@@ -736,6 +754,7 @@
           "private": false
         }
       ],
+      "selected": true,
       "bullets": [
         "Designed and developed an end-to-end crypto analytics lakehouse platform using Python and modern data engineering technologies.",
         "Built scalable data ingestion pipelines for cryptocurrency market data using Apache Kafka and batch ingestion workflows.",
@@ -776,6 +795,7 @@
           "private": false
         }
       ],
+      "selected": false,
       "bullets": [
         "Built a Dockerized classic web-based online chat application with backend-focused architecture.",
         "Implemented authentication, multi-room systems, private messaging, and session management.",
@@ -800,6 +820,7 @@
           "private": false
         }
       ],
+      "selected": false,
       "bullets": [
         "Designed and implemented an end-to-end batch data pipeline for activity monitoring using Python, Apache Airflow, DuckDB, Parquet, Streamlit, and Flask.",
         "Built ingestion pipelines to process raw CSV activity datasets and convert them into optimized Parquet files within a local data lake architecture.",
@@ -828,6 +849,7 @@
           "private": false
         }
       ],
+      "selected": false,
       "bullets": [
         "Built a complete analytics platform for AI telemetry monitoring using Python, DuckDB, FastAPI, Streamlit, and machine learning workflows.",
         "Designed ingestion pipelines capable of processing JSONL telemetry logs and employee datasets into analytical warehouse structures.",
@@ -856,6 +878,7 @@
           "private": false
         }
       ],
+      "selected": false,
       "bullets": [
         "Architected a production-grade multi-agent job search platform with 7 specialized AI agents handling job discovery, resume tailoring, cover letter generation, company research, outreach drafting, interview prep, and application tracking.",
         "Built with FastAPI backend, Next.js 14 frontend, JWT authentication, SSE streaming for real-time agent status delivery, and SQLite/PostgreSQL persistence.",
@@ -876,6 +899,7 @@
           "private": false
         }
       ],
+      "selected": false,
       "bullets": [
         "Took part in a hands-on GDG Yerevan (Google Developer Groups) workshop on building multi-agent systems with Google’s Agent Development Kit (ADK) for TypeScript.",
         "Built three independent AI agents (inventory, orders, and pricing with Google Search), then an orchestrator agent that coordinates them over the A2A (Agent-to-Agent) protocol. Worked with an agent server and debug console that showed every tool call, SSE chat and A2A endpoints, and a seeded SQLite dataset, and checked my work against deterministic tests."
@@ -902,6 +926,7 @@
           "private": false
         }
       ],
+      "selected": false,
       "bullets": [
         "Developed a production-ready news aggregation platform using Laravel, MySQL, Docker, and PHPUnit.",
         "Integrated multiple external news providers including NewsAPI, New York Times, and The Guardian.",
@@ -927,6 +952,7 @@
           "private": false
         }
       ],
+      "selected": false,
       "bullets": [
         "Built a Laravel-based benchmarking system to compare synchronous and asynchronous processing strategies for large-scale datasets.",
         "Seeded and processed high-volume datasets including 200,000 Orders, 1,000,000 Items, and 1,000 Products.",
@@ -953,6 +979,7 @@
           "private": false
         }
       ],
+      "selected": false,
       "bullets": [
         "Developed a lightweight PHP package for parsing and managing .env configuration files in Laravel and PHP applications.",
         "Implemented a custom environment loader supporting Multi-line environment variables, Quoted values handling, Comment and whitespace parsing, and Robust error handling for malformed inputs.",
@@ -979,6 +1006,7 @@
           "private": false
         }
       ],
+      "selected": false,
       "bullets": [
         "Developed enterprise warehouse management solutions using Laravel and MySQL.",
         "Implemented Repository-Service architecture across the entire application.",

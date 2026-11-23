@@ -10,6 +10,7 @@ Only the Python standard library is used. Content lives in tools/content.py.
 import base64
 import datetime
 import html
+import hashlib
 import json
 import pathlib
 import re
@@ -17,7 +18,7 @@ import sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "tools"))
-from content import ABOUT, CASE_STUDIES, COMMUNITY, PROJECTS, SITE  # noqa: E402
+from content import ABOUT, CASE_STUDIES, COMMUNITY, CORE_SKILLS, PROJECTS, SITE  # noqa: E402
 from i18n import CONNECT_EN, FEATURED, LANG_NAME, LANG_ORDER, LANG_SHORT, NAME, OG_LOCALE, RTL, T, UI  # noqa: E402
 
 from import_resume import privacy_check  # noqa: E402
@@ -52,8 +53,8 @@ def lpath(lang, key):
 def alts_for(key):
     return {lang: lpath(lang, key) for lang in LANG_ORDER}
 
-CSS_VERSION = "20261123c"
-JS_VERSION = "20261118j"
+CSS_VERSION = "20261123e"
+JS_VERSION = "20261123a"
 LASTMOD = "2026-11-16"
 
 ICONS = {
@@ -888,13 +889,32 @@ def degree_short(e):
     return f"{abbr.group(1)} {e['field']}" if abbr else (f"{e['degree']}, {e['field']}" if e["degree"] else e["field"])
 
 
+SHORT_JOB_BULLETS, SHORT_PROJECT_BULLETS = 4, 3  # resume.html?version=short (the 2-page PDF)
+
+
+def rich(entry, key):
+    """Plain text list, or its "_rich" twin with **bold** runs from the Word master."""
+    return entry.get(key + "_rich", entry[key])
+
+
+def rich_html(text):
+    return re.sub(r"\*\*(.+?)\*\*", r"<b>\1</b>", esc(text))
+
+
+def more(cond):
+    """Items marked rs-more are hidden in the short resume (body.rs-short)."""
+    return ' class="rs-more"' if cond else ""
+
+
 def resume_body():
     R = RESUME
     i = "          "
     s = R["summary"]
     side = [f'{i}<section class="rs-block">', f"{i}  {rs_h('profile', 'Profile')}"]
-    side += [f"{i}  <p>{esc(p)}</p>" for p in s["paragraphs"][:1]]
-    side += [f'{i}  <ul class="rs-ticks">'] + [f"{i}    <li>{esc(h)}</li>" for h in s["highlights"]] + [f"{i}  </ul>", f"{i}</section>"]
+    side += [f"{i}  <p{more(k > 0)}>{rich_html(p)}</p>" for k, p in enumerate(rich(s, "paragraphs"))]
+    if s["highlights_intro"]:
+        side.append(f'{i}  <p class="rs-more">{esc(s["highlights_intro"])}</p>')
+    side += [f'{i}  <ul class="rs-ticks rs-more">'] + [f"{i}    <li>{rich_html(h)}</li>" for h in rich(s, "highlights")] + [f"{i}  </ul>", f"{i}</section>"]
     side += [f'{i}<section class="rs-block">', f"{i}  {rs_h('skills', 'Skills')}"]
     for g in R["skills"]:
         side += [f'{i}  <h3 class="rs-sub">{esc(g["category"])}</h3>',
@@ -906,10 +926,12 @@ def resume_body():
     side.append(f"{i}  </ul>")
     extra = [c for c in R["certifications"] if c["additional"]]
     if extra:
-        side += [f'{i}  <h3 class="rs-sub">Additional certifications</h3>',
-                 f'{i}  <p class="rs-small">' + " · ".join(f"{esc(c['name'])} ({esc(c['issuer'])}, {esc(c['date'][-4:])})" for c in extra) + "</p>"]
+        side += [f'{i}  <h3 class="rs-sub rs-more">Additional certifications</h3>',
+                 f'{i}  <p class="rs-small rs-more">' + " · ".join(f"{esc(c['name'])} ({esc(c['issuer'])}, {esc(c['date'][-4:])})" for c in extra) + "</p>"]
     for t in R["training"]:
         side += [f'{i}  <h3 class="rs-sub">Training</h3>', f'{i}  <p class="rs-small"><b>{esc(t["org"])}</b> — {esc(t["title"])}<br><small>{esc(t["dates"])}</small></p>']
+        if t["bullets"]:
+            side.append(f'{i}  <ul class="rs-pts rs-small">' + "".join(f"<li>{rich_html(b)}</li>" for b in rich(t, "bullets")) + "</ul>")
     side += [f"{i}</section>", f'{i}<section class="rs-block">', f"{i}  {rs_h('education', 'Education')}"]
     for e in R["education"]:
         small = " · ".join([e["dates"]] + e["bullets"])
@@ -932,7 +954,7 @@ def resume_body():
         when = " · ".join(v for v in (x["dates"], x["location"]) if v)
         body += [f'{i}  <li class="rs-xp">',
                  f'{i}    <div class="rs-xp-top"><h3>{esc(x["title"])} <span class="rs-at">@ {company}</span></h3><span class="rs-date">{esc(when)}</span></div>',
-                 f'{i}    <ul>' + "".join(f"<li>{press_links(esc(b))}</li>" for b in x["bullets"]) + "</ul>", f"{i}  </li>"]
+                 f'{i}    <ul>' + "".join(f"<li{more(k >= SHORT_JOB_BULLETS)}>{press_links(rich_html(b))}</li>" for k, b in enumerate(rich(x, "bullets"))) + "</ul>", f"{i}  </li>"]
     body += [f"{i}  </ol>", f"{i}</section>", f'{i}<section class="rs-block">', f"{i}  {rs_h('projects', 'Selected Projects')}"]
     group = None
     for rp in R["projects"]:
@@ -940,25 +962,31 @@ def resume_body():
             if group is not None:
                 body.append(f"{i}  </div>")
             group = rp["group"]
-            body += [f'{i}  <h3 class="rs-group">{esc(group)}</h3>', f'{i}  <div class="rs-cards">']
+            hide = "" if any(x["selected"] for x in R["projects"] if x["group"] == group) else " rs-more"
+            body += [f'{i}  <h3 class="rs-group{hide}">{esc(group)}</h3>', f'{i}  <div class="rs-cards{hide}">']
         sp = site_project(rp)
         links = ([rs_link(ppath(sp), "Details")] if sp else []) + public_links(rp["links"])
         year = " · ".join(v for v in (rp["date"], rp["note"] if len(rp["note"]) <= 20 else "") if v)  # long notes stay in kb.json
-        body += [f'{i}    <article class="rs-card">',
+        pts = rich(rp, "bullets")
+        body += [f'{i}    <article class="rs-card{"" if rp["selected"] else " rs-more"}">',
                  f'{i}      <div class="rs-card-top"><h4>{esc(plain(sp["title"]) if sp else rp["name"])}</h4>'
                  + (f'<span class="rs-year">{esc(year)}</span>' if year else "") + "</div>",
-                 f"{i}      <p>{esc(rp['bullets'][0])}</p>"]
+                 f"{i}      <p>{rich_html(pts[0])}</p>"]
+        if pts[1:]:
+            body.append(f'{i}      <ul class="rs-pts">' + "".join(f"<li{more(k >= SHORT_PROJECT_BULLETS)}>{rich_html(b)}</li>" for k, b in enumerate(pts[1:], 1)) + "</ul>")
         if rp["tech"]:
             body.append(f'{i}      <p class="rs-tech">{" · ".join(esc(t) for t in rp["tech"])}</p>')
         if links:
             body.append(f'{i}      <p class="rs-links">{"".join(links)}</p>')
         body.append(f"{i}    </article>")
     body += [f"{i}  </div>", f"{i}</section>", f'{i}<section class="rs-block">', f"{i}  {rs_h('community', 'Teaching &amp; Community')}", f'{i}  <div class="rs-cards">']
-    cards = [(c["title"], c["date"], c["bullets"], c["links"]) for c in R["community"]]
-    cards += [(f"Hackathon — {h['title']}", " · ".join(v for v in (h["date"], re.sub(r"\s+Hackathon$", "", h["event"].split(" — ")[0])) if v), h["bullets"][:1], h["links"]) for h in R["hackathons"]]
+    cards = [(c["title"], c["date"], rich(c, "bullets"), c["links"]) for c in R["community"]]
+    cards += [(f"Hackathon — {h['title']}", " · ".join(v for v in (h["date"], re.sub(r"\s+Hackathon$", "", h["event"].split(" — ")[0])) if v), rich(h, "bullets"), h["links"]) for h in R["hackathons"]]
     for title, when, text, links in cards:
         body += [f'{i}    <article class="rs-card">', f'{i}      <div class="rs-card-top"><h4>{esc(title)}</h4><span class="rs-year">{esc(when)}</span></div>',
-                 f"{i}      <p>{esc(' '.join(text))}</p>"]
+                 f"{i}      <p>{rich_html(text[0])}</p>"]
+        if text[1:]:
+            body.append(f'{i}      <ul class="rs-pts">' + "".join(f"<li>{rich_html(b)}</li>" for b in text[1:]) + "</ul>")
         if public_links(links):
             body.append(f'{i}      <p class="rs-links">{"".join(public_links(links))}</p>')
         body.append(f"{i}    </article>")
@@ -1210,19 +1238,13 @@ def key_facts():
     now = [x for x in R["experience"] if x["dates"].endswith("Present")]
     first = R["experience"][-1]["dates"].split(" – ")[0]
     resident = " (Armenian permanent resident)" if "permanent resident" in " ".join(R["summary"]["paragraphs"]) else ""
-    skills = []
-    for g in R["skills"]:
-        for item in g["items"][:3]:
-            short = re.sub(r"\s*\(.*?\)", "", item)
-            if short not in skills:
-                skills.append(short)
     edu = "; ".join(f"{e['degree'] + ' in ' if e['degree'] else ''}{e['field']}, {e['school']} ({e['dates']})" for e in R["education"])
     teaching = [f"{c['title']} ({c['date']})" for c in R["community"]] + [f"{TUMO['title']} at TUMO Labs (since {TUMO['dates'].split(' – ')[0]})"]
     return [f"- Name: {R['name']}",
             "- Current roles: " + "; ".join(f"{x['title']} at {x['company']} (since {x['dates'].split(' – ')[0]})" for x in now),
             f"- Location: {R['location']}{resident}",
             f"- Experience: {YEARS} (professional experience since {first})",
-            "- Core skills: " + ", ".join(skills),
+            "- Core skills: " + ", ".join(CORE_SKILLS),
             f"- Education: {edu}",
             "- Teaching and community: " + "; ".join(teaching),
             "- Languages: " + ", ".join(f"{l['language']} ({l['level'].lower()})" for l in R["languages"])]
@@ -1250,8 +1272,11 @@ def llms_txt():
              "- Availability: open to data engineering, analytics engineering, and AI engineering roles", "",
              "## Frequently asked questions", ""] + [f"### {q}\n\n{a}\n" for q, a in FAQ] + ["## Projects", ""]
     for p in ALL:
-        lines.append(f"- [{plain(p['title'])}]({SITE['url']}{ppath(p)}): {plain(p['summary'])}")
+        lines.append(f"- [{plain(p['title'])}]({SITE['url']}{ppath(p)}): {plain(p.get('summary_3p', p['summary']))}")
     lines += ["", "## Contact", "", f"- Email: {SITE['email']}"] + [f"- {u}" for u in SITE["same_as"]] + [f"- Sponsor: {SPONSOR_URL}", ""]
+    for line in lines:  # llms.txt speaks about Amir in the third person (FAQ questions are asked by the reader)
+        if not line.startswith("### ") and re.search(r"\b(I|I'm|I've|I'd|me|my|My|mine)\b", re.sub(r"\(?https?://\S+", "", plain(line))):
+            raise SystemExit(f"llms.txt: first-person line (add a third-person 'summary_3p' in tools/content.py):\n  {line}")
     return "\n".join(lines)
 
 
@@ -1744,6 +1769,18 @@ def og_specs():
     return specs
 
 
+def pdfs_stale():
+    """The resume PDFs are printed by tools/make-pdf.mjs, which records the hash of the resume data it printed.
+    (A hash, not file times: a git checkout gives every file the same modification time.)"""
+    record = ROOT / "tools" / "resume-pdf.json"
+    missing = [f for f in ("Amir_Zare_Resume.pdf", "Amir_Zare_Resume_Full.pdf") if not (ROOT / f).exists()]
+    if missing:
+        return f"missing {', '.join(missing)}"
+    if not record.exists() or json.loads(record.read_text()).get("resume_data_sha256") != hashlib.sha256(_RESUME_TEXT.encode()).hexdigest():
+        return "tools/resume_data.json is newer than Amir_Zare_Resume.pdf / Amir_Zare_Resume_Full.pdf"
+    return ""
+
+
 def main():
     check = "--check" in sys.argv
     stale = []
@@ -1755,13 +1792,19 @@ def main():
             if not check:
                 target.parent.mkdir(parents=True, exist_ok=True)
                 target.write_text(text)
+    pdf = pdfs_stale()
     if check:
         if stale:
             print("Out of date (run python3 tools/build.py):\n  " + "\n  ".join(stale))
+        if pdf:
+            print(f"Resume PDFs out of date: {pdf}.\n  Run: node tools/make-pdf.mjs   (then commit both PDFs and tools/resume-pdf.json)")
+        if stale or pdf:
             sys.exit(1)
         print("Generated files are up to date.")
     else:
         print(f"Wrote {len(stale)} file(s)" + (":\n  " + "\n  ".join(stale) if stale else "."))
+        if pdf:
+            print(f"Resume PDFs out of date ({pdf}): run node tools/make-pdf.mjs")
 
 
 if __name__ == "__main__":

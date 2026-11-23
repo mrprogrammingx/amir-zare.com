@@ -76,7 +76,7 @@ def read_paragraphs(path):
                 num = n.find(W + "numId").get(W + "val")
                 lv = n.find(W + "ilvl")
                 level = int(lv.get(W + "val")) if lv is not None else 0
-        text, bold, links = "", "", []
+        text, bold, links, rich = "", "", [], ""
         bold_open = True  # collect the leading bold run(s)
 
         def run_text(r):
@@ -104,6 +104,7 @@ def read_paragraphs(path):
                     else:
                         bold_open = False
                 text += t
+                rich += f"**{t}**" if is_bold(ch) and t.strip() else t
             elif ch.tag == W + "hyperlink":
                 t = "".join(run_text(r) for r in ch.iter(W + "r"))
                 url = targets.get(ch.get(R + "id"))
@@ -112,7 +113,21 @@ def read_paragraphs(path):
                 if t.strip():
                     bold_open = False
                 text += t
-        paras.append({"style": style, "num": num, "level": level, "text": text.strip(), "bold": bold.strip(), "links": merge_links(links)})
+                rich += t
+        rich = re.sub(r"\*\*(\s*)\*\*", r"\1", rich.strip())  # join adjacent bold runs
+        star = text.strip().startswith(STAR)  # "★ Title" marks a project for the short resume, bold or not
+        if star:
+            text = text.strip()[1:]
+            rich = re.sub(r"^(\*\*)?" + STAR + r"\s*(\*\*)?", lambda m: m.group(1) if m.group(1) and not m.group(2) else "", rich)
+            if bold.strip().startswith(STAR):
+                bold = bold.strip()[1:]
+            elif not bold.strip():
+                bold_open = True
+            text = text.strip()
+            if not bold.strip():
+                bold = "".join(run_text(ch) for ch in p if ch.tag == W + "r" and is_bold(ch))  # title bold after a plain star
+        paras.append({"style": style, "num": num, "level": level, "text": text.strip(), "bold": bold.strip(), "rich": rich,
+                      "star": star, "links": merge_links(links)})
     return [p for p in paras if p["text"] or p["style"]]
 
 
@@ -163,21 +178,30 @@ def bullets_of(items):
     """Numbered paragraphs -> list of strings; "X including:" bullets absorb the sub-list that follows."""
     out, parent_num = [], None
     for p in items:
-        text = clean(p["text"])
+        text, rich = clean(p["text"]), clean(p.get("rich", p["text"]))
         if out and parent_num is not None and (p["num"] != parent_num or p["level"] > 0):
             out[-1]["children"].append(text)
+            out[-1]["rich_children"].append(rich)
             continue
         parent_num = None
-        out.append({"text": text, "children": [], "links": p["links"]})
+        out.append({"text": text, "rich": rich, "children": [], "rich_children": [], "links": p["links"]})
         if text.endswith(":"):
             parent_num = p["num"]
     result = []
     for b in out:
         if b["children"]:
-            result.append({"text": b["text"].rstrip(":") + " " + join_list(b["children"]) + ".", "links": b["links"]})
+            result.append({"text": b["text"].rstrip(":") + " " + join_list(b["children"]) + ".",
+                           "rich": b["rich"].rstrip(":") + " " + join_list(b["rich_children"]) + ".", "links": b["links"]})
         else:
-            result.append({"text": b["text"], "links": b["links"]})
+            result.append({"text": b["text"], "rich": b["rich"], "links": b["links"]})
     return result
+
+
+def with_rich(entry, key, rich):
+    """Bold runs inside body text are kept as **bold** in a parallel "<key>_rich" list (only when there are any)."""
+    if any("**" in r for r in rich):
+        entry[key + "_rich"] = rich
+    return entry
 
 
 def join_list(items):
@@ -223,13 +247,18 @@ def label_for(url, text):
 
 def parse_summary(paras):
     out = {"paragraphs": [], "highlights_intro": "", "highlights": []}
+    rich = {"paragraphs": [], "highlights": []}
     for p in paras:
         if p["num"]:
             out["highlights"].append(clean(p["text"]))
+            rich["highlights"].append(clean(p["rich"]))
         elif clean(p["text"]).endswith(":"):
             out["highlights_intro"] = clean(p["text"])
         else:
             out["paragraphs"].append(clean(p["text"]))
+            rich["paragraphs"].append(clean(p["rich"]))
+    for key, values in rich.items():
+        with_rich(out, key, values)
     return out
 
 
@@ -254,8 +283,9 @@ def parse_experience(paras):
         for p in g[1:]:
             if not p["num"]:
                 fail("Professional Experience", p, "expected only bullets under a job")
-        out.append({"company": company, "title": title, "dates": dates, "location": extra[0] if extra else "",
-                    "bullets": [b["text"] for b in bullets_of(g[1:])]})
+        bl = bullets_of(g[1:])
+        out.append(with_rich({"company": company, "title": title, "dates": dates, "location": extra[0] if extra else "",
+                              "bullets": [b["text"] for b in bl]}, "bullets", [b["rich"] for b in bl]))
     return out
 
 
@@ -292,11 +322,12 @@ def project_entries(group, paras):
         fail("Projects", paras[0], "project before the first Heading 4 group")
     for g in entries("Projects", paras, is_title):
         head, rest, extra = split_title("Projects", g[0])
+        selected = g[0]["star"]
         name, _, subtitle = head.partition(" — ")
         _, date, note = parse_date_tail("Projects", g[0], rest, required=False) if rest else ("", "", "")
         if rest and not date:
             fail("Projects", g[0], "unrecognized text after the project title")
-        tech, bullets, link_paras = [], [], [g[0]]
+        tech, bullets, rich, link_paras = [], [], [], [g[0]]
         body = []
         for p in g[1:]:
             t = clean(p["text"])
@@ -310,13 +341,26 @@ def project_entries(group, paras):
                 fail("Projects", p, "unexpected bold paragraph inside a project")
         for b in bullets_of(body):
             bullets.append(strip_inline_urls(b["text"]))
+            rich.append(strip_inline_urls(b["rich"]))
             link_paras.append({"text": "", "links": b["links"]})
         links = entry_links(link_paras)
         if not bullets:
             fail("Projects", g[0], "project has no bullets")
-        out.append({"group": group, "name": clean(name), "subtitle": clean(subtitle), "date": date, "note": note,
-                    "links": links, "bullets": bullets, "tech": tech})
+        out.append(with_rich({"group": group, "name": clean(name), "subtitle": clean(subtitle), "date": date, "note": note,
+                              "links": links, "selected": selected, "bullets": bullets, "tech": tech}, "bullets", rich))
     return out
+
+
+def mark_selected(projects):
+    """The short resume shows only projects marked with ★ in the master; with none marked, a default selection."""
+    if any(p["selected"] for p in projects):
+        return projects
+    for want in DEFAULT_SELECTED:
+        hits = [p for p in projects if want.lower() in (p["name"] + " " + p["subtitle"]).lower()]
+        if len(hits) != 1:
+            raise ImportError_(f"import_resume: default selected project {want!r} matches {len(hits)} projects; mark projects with {STAR} in the master")
+        hits[0]["selected"] = True
+    return projects
 
 
 def parse_training(paras):
@@ -325,8 +369,13 @@ def parse_training(paras):
         org, rest, _ = split_title("Professional Training", g[0])
         rest = re.sub(r"^[—–-]\s*", "", rest)
         title, dates, _ = parse_date_tail("Professional Training", g[0], rest)
-        out.append({"org": org, "title": title, "dates": dates, "bullets": [b["text"] for b in bullets_of(g[1:])]})
+        bl = bullets_of(g[1:])
+        out.append(with_rich({"org": org, "title": title, "dates": dates, "bullets": [b["text"] for b in bl]}, "bullets", [b["rich"] for b in bl]))
     return out
+
+
+STAR = "★"
+DEFAULT_SELECTED = ["DataLayer Evolution Agent", "FlowFleet", "AI Phone Assistant", "Cookie Cats", "Crypto Analytics Data Platform", "AgentPages"]
 
 
 LINK_LINE = re.compile(r"^(Credential|Certificate|Badge)\s*:", re.I)
@@ -380,13 +429,15 @@ def parse_hackathons(paras):
     for g in entries("Hackathons", paras, is_title):
         title, rest, extra = split_title("Hackathons", g[0])
         _, date, _ = parse_date_tail("Hackathons", g[0], rest)
-        bullets, link_paras = [], []
+        bullets, rich, link_paras = [], [], []
         for b in bullets_of(g[1:]):
             if b["links"] and not strip_inline_urls(b["text"]).replace(b["links"][0]["text"], "").strip():
                 link_paras.append({"text": "", "links": b["links"]})
             else:
                 bullets.append(b["text"])
-        out.append({"title": title, "date": date, "event": extra[0] if extra else "", "bullets": bullets, "links": entry_links(link_paras)})
+                rich.append(b["rich"])
+        out.append(with_rich({"title": title, "date": date, "event": extra[0] if extra else "", "bullets": bullets,
+                              "links": entry_links(link_paras)}, "bullets", rich))
     return out
 
 
@@ -425,13 +476,13 @@ def parse_community(paras):
         title, rest, _ = split_title("Teaching & Community", g[0])
         _, date, _ = parse_date_tail("Teaching & Community", g[0], rest)
         body = bullets_of(g[1:])
-        out.append({"title": title, "date": date, "links": entry_links([g[0]] + [{"text": "", "links": b["links"]} for b in body]),
-                    "bullets": [strip_inline_urls(b["text"]) for b in body]})
+        out.append(with_rich({"title": title, "date": date, "links": entry_links([g[0]] + [{"text": "", "links": b["links"]} for b in body]),
+                              "bullets": [strip_inline_urls(b["text"]) for b in body]}, "bullets", [strip_inline_urls(b["rich"]) for b in body]))
     return out
 
 
 PARSERS = {
-    "summary": parse_summary, "skills": parse_skills, "experience": parse_experience, "projects": parse_projects,
+    "summary": parse_summary, "skills": parse_skills, "experience": parse_experience, "projects": lambda ps: mark_selected(parse_projects(ps)),
     "training": parse_training, "certifications": parse_certifications, "hackathons": parse_hackathons,
     "education": parse_education, "languages": parse_languages, "interests": lambda ps: [clean(p["text"]) for p in ps],
     "community": parse_community,

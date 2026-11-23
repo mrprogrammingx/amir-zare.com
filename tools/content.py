@@ -312,6 +312,7 @@ PROJECTS = [
         "subtitle": "Building multi-agent systems with Google ADK + A2A",
         "year": "2026", "category": "AI / Agents", "status": "Workshop participant, GDG Yerevan, June 2026",
         "image": "/images/gdg-workshop-room.webp", "image_fit": "cover",
+        "summary_3p": "Amir took part in a hands-on GDG Yerevan workshop on multi-agent systems, where he built three independent AI agents with Google&rsquo;s Agent Development Kit for TypeScript, then an orchestrator that coordinates them over the A2A protocol.",
         "summary": "I took part in a hands-on GDG Yerevan workshop on multi-agent systems, where I built three independent AI agents with Google&rsquo;s Agent Development Kit for TypeScript, then an orchestrator that coordinates them over the A2A protocol.",
         "highlights": ["Google ADK for TypeScript", "A2A protocol", "Workshop participant"],
         "problem": "Multi-agent systems are easier to understand by building one: real agents, real data, and a way to see what each agent is doing.",
@@ -482,3 +483,8 @@ COMMUNITY = {
         ("/images/event-expo.webp", "Tech Expo, Yerevan", "2026", "Amir at a technology expo hall in Yerevan"),
     ],
 }
+
+
+# llms.txt "Core skills" line (curated; not derived from the resume's skill lists)
+CORE_SKILLS = ["Python", "SQL", "Apache Airflow", "dbt", "Kafka", "Flink", "Spark", "BigQuery", "DuckDB", "FastAPI",
+               "Laravel", "RAG", "multi-agent systems", "A/B testing"]
