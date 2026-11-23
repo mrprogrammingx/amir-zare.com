@@ -53,7 +53,7 @@ def lpath(lang, key):
 def alts_for(key):
     return {lang: lpath(lang, key) for lang in LANG_ORDER}
 
-CSS_VERSION = "20261124g"
+CSS_VERSION = "20261124h"
 JS_VERSION = "20261124g"
 LASTMOD = "2026-11-16"
 

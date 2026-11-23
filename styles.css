@@ -1805,3 +1805,18 @@ html[lang="fa"] .lh-role,html[lang="fa"] .cn-role{letter-spacing:0;text-transfor
 .nav .nav-book--ext > svg:last-child{width:13px;height:13px;margin-left:4px;opacity:.8}
 @media (min-width:701px) and (max-width:1399px){ .nav .nav-book--ext > svg:last-child{display:none} }
 .rs-contact .rs-book > svg:last-child{width:12px;height:12px;opacity:.8}
+/* Phone header: keep everything on one line down to 320px (long labels like "Связаться") */
+@media (max-width:480px){
+  .site-header .header-inner{padding-left:12px;padding-right:12px}
+  .site-header .header-actions{gap:6px}
+  .site-header #theme-toggle{margin-left:0}
+  .site-header .connect-btn{gap:0}
+  .site-header .connect-arrow{display:none}  /* the label alone opens the Connect panel */
+  .site-header .connect-label{padding:8px 13px;font-size:.88rem}
+}
+@media (max-width:360px){
+  .site-header .logo{font-size:.98rem}
+  .site-header .header-actions{gap:4px}
+  .site-header .connect-label{padding:7px 10px;font-size:.84rem}
+  .site-header .lang-sw summary{padding:0 6px}
+}
