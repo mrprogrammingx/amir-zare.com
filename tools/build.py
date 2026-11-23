@@ -1189,10 +1189,28 @@ def current(x):
     return x["dates"].endswith("Present")
 
 
+OPEN_TO_ROLES = ["data engineering", "analytics engineering", "AI engineering"]
+
+
+def kb_role_sentences(R):
+    """Who Amir is now, from the resume data: headline, current roles, availability ("What is his job?")."""
+    m = re.match(r"(?P<headline>[A-Z][^.]*?) with \d", R["summary"]["paragraphs"][0])
+    if not m:
+        raise SystemExit("kb.json: the Professional Summary should open with the headline, e.g. 'AI and Data Engineer with 7+ years ...'")
+    out = [f"Amir's job title is {m['headline']}."]
+    now = [x for x in R["experience"] if x["dates"].endswith("Present")]
+    if now:
+        roles = [f"{x['title']} at {x['company']} (since {x['dates'].split(' – ')[0]})" for x in now]
+        out.append("Amir currently works as " + " and as ".join([", as ".join(roles[:-1]), roles[-1]] if len(roles) > 1 else roles) + ".")
+    if "ready to work" in " ".join(R["summary"]["paragraphs"]):
+        out.append("Amir is open to " + ", ".join(OPEN_TO_ROLES[:-1]) + " and " + OPEN_TO_ROLES[-1] + " roles.")
+    return out
+
+
 def kb_entries():
     R = RESUME
     s = R["summary"]
-    profile = []
+    profile = kb_role_sentences(R)
     for para in s["paragraphs"]:
         for f in split_facts(para):
             if f.startswith("Founder"):
