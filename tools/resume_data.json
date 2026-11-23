@@ -149,17 +149,16 @@
       "dates": "Jan 2024 – Present",
       "location": "Yerevan, Armenia",
       "bullets": [
-        "Founded and lead DataLayer, an AI-powered analytics startup turning e-commerce sellers' raw sales exports into actionable dashboards (customer segmentation, anomaly and churn detection) — live at usedatalayer.com",
-        "Ranked a Top 2 Data Startup and Top 6 Software Startup in Armenia by F6S (2026)",
+        "Founded and lead DataLayer, an AI analytics platform that turns e-commerce sellers' sales exports into dashboards with segmentation, anomaly and churn detection.",
+        "Designed ETL/ELT pipelines, APIs and analytics services with Python, FastAPI and Apache Airflow.",
+        "Used Parquet and DuckDB for analytical processing and built dashboards with Streamlit.",
+        "Ranked #2 in Data Analytics in Armenia by F6S (2026), featured in NEWS.am Tech; leading pre-seed fundraising.",
         "Applied for $170K+ in startup credits (Microsoft for Startups, Google for Startups, E2B, DigitalOcean)",
-        "Featured in NEWS.am Tech press coverage; leading pre-seed fundraising and hiring DataLayer's first Growth/BD team member.",
-        "Built dashboard and reporting interfaces using Streamlit.",
-        "Worked with Parquet and DuckDB for efficient analytical data processing and local warehouse-style querying.",
+        "Hiring DataLayer's first Growth/BD team member.",
         "Designed modular architectures for scalable data workflows and backend systems.",
         "Worked with SQL and NoSQL databases for scalable data storage and retrieval.",
         "Integrated early AI engineering concepts including embeddings, retrieval workflows, and RAG-inspired analytics systems.",
-        "Built earlier crypto-analytics pipelines and dashboards (Streamlit, DuckDB, Parquet) as part of DataLayer's technical foundation",
-        "Designed backend ETL/ELT pipelines, APIs, and analytics services using Python, FastAPI, and Apache Airflow"
+        "Built earlier crypto-analytics pipelines and dashboards (Streamlit, DuckDB, Parquet) as part of DataLayer's technical foundation"
       ]
     },
     {
@@ -1286,6 +1285,14 @@
       "bullets": [
         "Create a weekly Python programming course, with code examples for each week and narration produced with my own local voice-cloning tool.",
         "Create videos of interesting projects, especially about AI."
+      ]
+    },
+    {
+      "title": "Vice President, Computer Engineering Scientific Association, Meybod University",
+      "date": "2020–2022",
+      "links": [],
+      "bullets": [
+        "Elected by students; organized technical events and taught programming workshops."
       ]
     }
   ]

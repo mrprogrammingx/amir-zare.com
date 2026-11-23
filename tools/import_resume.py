@@ -32,6 +32,8 @@ POINT = rf"(?:{MONTH} )?\d{{4}}"
 DATE = rf"{POINT}(?:\s*[–-]\s*(?:{POINT}|Present))?"
 TAIL = re.compile(rf"^(?P<head>.*?)\s*(?P<date>{DATE})\s*(?P<note>\([^)]*\))?\s*$")
 
+INLINE_ROLE = re.compile(rf"^,\s*(?P<org>[^()]+?)\s*\((?P<date>{DATE})\):\s*(?P<desc>.+)$")
+
 SECTIONS = {
     "Professional Summary": "summary", "Technical Skills": "skills", "Professional Experience": "experience",
     "Projects": "projects", "Professional Training": "training", "Certifications": "certifications",
@@ -474,8 +476,14 @@ def parse_community(paras):
     out = []
     for g in entries("Teaching & Community", paras, is_title):
         title, rest, _ = split_title("Teaching & Community", g[0])
-        _, date, _ = parse_date_tail("Teaching & Community", g[0], rest)
+        inline = INLINE_ROLE.match(rest)  # "Title, Organisation (2020–2022): what I did" in one paragraph
+        if inline:
+            title, date = f"{title}, {clean(inline['org'])}", inline["date"].replace("-", "–")
+        else:
+            _, date, _ = parse_date_tail("Teaching & Community", g[0], rest)
         body = bullets_of(g[1:])
+        if inline:
+            body.insert(0, {"text": clean(inline["desc"][:1].upper() + inline["desc"][1:]), "rich": clean(inline["desc"][:1].upper() + inline["desc"][1:]), "links": []})
         out.append(with_rich({"title": title, "date": date, "links": entry_links([g[0]] + [{"text": "", "links": b["links"]} for b in body]),
                               "bullets": [strip_inline_urls(b["text"]) for b in body]}, "bullets", [strip_inline_urls(b["rich"]) for b in body]))
     return out

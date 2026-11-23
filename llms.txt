@@ -27,7 +27,7 @@ Amir has 7+ years of experience, from enterprise backend engineering (PHP, Larav
 - Experience: 7+ years (professional experience since Aug 2019)
 - Core skills: Python, SQL, Apache Airflow, dbt, Kafka, Flink, Spark, BigQuery, DuckDB, FastAPI, Laravel, RAG, multi-agent systems, A/B testing
 - Education: Bachelor of Engineering (B.E.) in Computer Software Engineering, Meybod University (2018 – 2022); Machine Learning, TUMO Labs (Feb 2026 – Present)
-- Teaching and community: Python Course — YouTube (Oct 2026 – Present); ML Mentor / Volunteer Instructor at TUMO Labs (since Aug 2026)
+- Teaching and community: Python Course — YouTube (Oct 2026 – Present); Vice President, Computer Engineering Scientific Association, Meybod University (2020–2022); ML Mentor / Volunteer Instructor at TUMO Labs (since Aug 2026)
 - Languages: Persian (native), English (full professional), German (elementary), Armenian (limited working proficiency), Russian (elementary)
 - Availability: open to data engineering, analytics engineering, and AI engineering roles
 

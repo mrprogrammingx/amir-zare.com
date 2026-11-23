@@ -49,18 +49,17 @@
     "url": "https://amir-zare.com/resume.html",
     "sentences": [
       "Amir has worked at DataLayer as Founder / AI & Data Engineer since Jan 2024, in Yerevan, Armenia.",
-      "At DataLayer, Amir founded and lead DataLayer, an AI-powered analytics startup turning e-commerce sellers' raw sales exports into actionable dashboards (customer segmentation, anomaly and churn detection).",
-      "DataLayer was ranked a Top 2 Data Startup and Top 6 Software Startup in Armenia by F6S (2026).",
+      "At DataLayer, Amir founded and lead DataLayer, an AI analytics platform that turns e-commerce sellers' sales exports into dashboards with segmentation, anomaly and churn detection.",
+      "At DataLayer, Amir designed ETL/ELT pipelines, APIs and analytics services with Python, FastAPI and Apache Airflow.",
+      "At DataLayer, Amir used Parquet and DuckDB for analytical processing and built dashboards with Streamlit.",
+      "DataLayer was ranked #2 in Data Analytics in Armenia by F6S (2026), featured in NEWS.am Tech.",
+      "At DataLayer, Amir is leading pre-seed fundraising.",
       "At DataLayer, Amir applied for $170K+ in startup credits (Microsoft for Startups, Google for Startups, E2B, DigitalOcean).",
-      "DataLayer was featured in NEWS.am Tech press coverage.",
-      "At DataLayer, Amir is leading pre-seed fundraising and hiring DataLayer's first Growth/BD team member.",
-      "At DataLayer, Amir built dashboard and reporting interfaces using Streamlit.",
-      "At DataLayer, Amir worked with Parquet and DuckDB for efficient analytical data processing and local warehouse-style querying.",
+      "At DataLayer, Amir is hiring DataLayer's first Growth/BD team member.",
       "At DataLayer, Amir designed modular architectures for scalable data workflows and backend systems.",
       "At DataLayer, Amir worked with SQL and NoSQL databases for scalable data storage and retrieval.",
       "At DataLayer, Amir integrated early AI engineering concepts including embeddings, retrieval workflows, and RAG-inspired analytics systems.",
-      "At DataLayer, Amir built earlier crypto-analytics pipelines and dashboards (Streamlit, DuckDB, Parquet) as part of DataLayer's technical foundation.",
-      "At DataLayer, Amir designed backend ETL/ELT pipelines, APIs, and analytics services using Python, FastAPI, and Apache Airflow."
+      "At DataLayer, Amir built earlier crypto-analytics pipelines and dashboards (Streamlit, DuckDB, Parquet) as part of DataLayer's technical foundation."
     ]
   },
   {
@@ -599,6 +598,9 @@
       "Amir has run his Python Course on YouTube since Oct 2026.",
       "On YouTube, Amir creates a weekly Python programming course, with code examples for each week and narration produced with his own local voice-cloning tool.",
       "On YouTube, Amir creates videos of interesting projects, especially about AI.",
+      "Amir's Vice President, Computer Engineering Scientific Association, Meybod University ran in 2020–2022.",
+      "Amir elected by students.",
+      "Amir organized technical events and taught programming workshops.",
       "In Jun 2026, Amir took part in the lablab.ai Hackathon with the team project AI-Powered Job Assistant.",
       "At the lablab.ai Hackathon, Amir built a multi-agent AI job assistant in a 1-week hackathon, covering opportunity discovery, resume tailoring, and application guidance using LLM orchestration and multi-agent workflows.",
       "At the lablab.ai Hackathon, Amir integrated external APIs and delivered a working submission under tight deadlines.",
