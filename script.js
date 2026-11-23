@@ -158,6 +158,8 @@
     if(themeBtn) themeBtn.textContent = t==='light' ? '🌙' : '🌞';
     _safeSetItem('site-theme', t);
     if (window.Cal && window.Cal.loaded) window.Cal('ui', { theme: t });  // keep an open Cal.com embed in step
+    const askFrame = document.querySelector('.ask-body iframe');  // and the assistant, once it exists
+    if (askFrame && askFrame.contentWindow) askFrame.contentWindow.postMessage({ type: 'theme', value: t }, new URL(askFrame.src).origin);
   }
   const saved = _safeGetItem('site-theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
   setTheme(saved);
@@ -189,6 +191,44 @@
       calBox.classList.add('is-loaded');
     }, { rootMargin: '0px 0px 120px 0px' });
     io.observe(calBox);
+  }
+
+  // "Ask about me" assistant. The Hugging Face Space iframe (it loads a ~25 MB model) is created on the first click
+  // only and then kept in the page, so reopening is instant; nothing is requested from Hugging Face before that.
+  const ask = document.querySelector('[data-ask]');
+  if (ask) {
+    const btn = ask.querySelector('.ask-btn'), panel = ask.querySelector('.ask-panel'), body = ask.querySelector('.ask-body');
+    const closeBtn = ask.querySelector('.ask-close');
+    const focusables = () => [...panel.querySelectorAll('a[href], button, iframe')];
+    const open = () => {
+      if (!body.firstChild) {
+        const f = document.createElement('iframe');
+        const src = new URL(panel.dataset.src);
+        src.searchParams.set('theme', document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark');
+        f.src = src.href;
+        f.title = document.getElementById('ask-title').textContent;
+        f.allow = 'clipboard-write';
+        body.appendChild(f);
+      }
+      panel.hidden = false;
+      btn.setAttribute('aria-expanded', 'true');
+      closeBtn.focus();
+    };
+    const close = () => {
+      panel.hidden = true;
+      btn.setAttribute('aria-expanded', 'false');
+      btn.focus();
+    };
+    btn.addEventListener('click', open);
+    closeBtn.addEventListener('click', close);
+    document.addEventListener('keydown', e => {
+      if (panel.hidden) return;
+      if (e.key === 'Escape') { e.preventDefault(); close(); return; }
+      if (e.key !== 'Tab') return;  // keep Tab inside the dialog
+      const f = focusables(), first = f[0], last = f[f.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    });
   }
 
   // Mobile nav toggle (button added in HTML). Toggles `#site-nav.open` and updates aria state.

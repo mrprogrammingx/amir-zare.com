@@ -53,8 +53,8 @@ def lpath(lang, key):
 def alts_for(key):
     return {lang: lpath(lang, key) for lang in LANG_ORDER}
 
-CSS_VERSION = "20261124b"
-JS_VERSION = "20261124b"
+CSS_VERSION = "20261124c"
+JS_VERSION = "20261124d"
 LASTMOD = "2026-11-16"
 
 ICONS = {
@@ -209,6 +209,28 @@ def header(home, active=None, lang="en", alts=None):
     </header>'''
 
 
+ASK_ICON = ('<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" '
+            'stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20.5l1.4-4.7A8 8 0 1 1 21 12z"/>'
+            '<path d="M9.2 9.6a2.8 2.8 0 0 1 5.4 1c0 1.8-2.6 2.2-2.6 3.6M12 16.8h.01"/></svg>')
+
+
+def ask_widget(lang="en", indent="    "):
+    """Floating "Ask about me" button + popup. script.js creates the Hugging Face iframe on the first click only."""
+    u = UI[lang]
+    i = indent
+    return f'''{i}<div class="ask" data-ask>
+{i}  <button type="button" class="ask-btn" aria-label="{u["ask_me"]} ({u["ask_ai"]})" aria-haspopup="dialog" aria-controls="ask-panel" aria-expanded="false">{ASK_ICON}<span class="ask-label">{u["ask_me"]}</span></button>
+{i}  <div class="ask-panel" id="ask-panel" role="dialog" aria-modal="true" aria-labelledby="ask-title" tabindex="-1" hidden data-src="{SITE["assistant_embed"]}">
+{i}    <div class="ask-head">
+{i}      <p class="ask-title" id="ask-title">{u["ask_title"]}</p>
+{i}      <a class="ask-full" href="{SITE["assistant_page"]}" target="_blank" rel="noopener">{u["ask_full"]} <span aria-hidden="true">&#8599;</span></a>
+{i}      <button type="button" class="ask-close" aria-label="{u["ask_close"]}"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+{i}    </div>
+{i}    <div class="ask-body"></div>
+{i}  </div>
+{i}</div>'''
+
+
 def footer(telegram=True, lang="en"):
     u = UI[lang]
     built = "\n".join(f'          <a href="{h}" target="_blank" rel="noopener">{t} &#8599;</a>' for t, h in [
@@ -254,6 +276,7 @@ def footer(telegram=True, lang="en"):
         <a href="#" class="footer-top">{u["back_to_top"]} <span aria-hidden="true">&#8593;</span></a>
       </div>
     </div>
+{ask_widget(lang)}
   </footer>'''
 
 
@@ -1312,6 +1335,7 @@ def llms_txt():
              f"- [Resume]({SITE['url']}/resume.html): full resume",
              f"- [Knowledge base]({SITE['url']}/kb.json): the resume as standalone third-person facts (JSON)",
              f"- [Contact card]({SITE['url']}/connect/): email, LinkedIn, Telegram, and a downloadable contact card",
+             f"- [Ask about Amir]({SITE['assistant_page']}): an assistant that answers questions about Amir's experience with citations",
              "- Translations of Home, About, Community, and Contact card: "
              + ", ".join(f"[{LANG_NAME[c]}]({SITE['url']}{lpath(c, 'home')})" for c in LOCAL_LANGS), "",
              "## Press", "",
@@ -1427,6 +1451,7 @@ def connect_page(lang="en"):
     <p class="cn-qr-url" id="cn-qr-url">amir-zare.com/connect</p>
     <form method="dialog"><button class="cn-qr-close">{c["close"]}</button></form>
   </dialog>
+{ask_widget(lang, "  ")}
   <script src="/script.js?v={JS_VERSION}" defer></script>
 </body>
 </html>

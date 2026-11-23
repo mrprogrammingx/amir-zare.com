@@ -61,7 +61,7 @@ try {
     for (let i = 0; i < 100 && await evaluate('document.readyState') !== 'complete'; i++) await sleep(100);
     // The PDFs are committed to a public repo: drop the "Show phone" button so its number can never be revealed into them.
     const text = await evaluate(`(async () => {
-      document.querySelectorAll('.rs-phone, a[href^="tel:"], .rs-book').forEach(e => e.remove());
+      document.querySelectorAll('.rs-phone, a[href^="tel:"], .rs-book, .ask').forEach(e => e.remove());
       document.title = ${JSON.stringify(TITLE)};
       await document.fonts.ready;
       await Promise.all([...document.images].map(i => i.decode().catch(() => {})));

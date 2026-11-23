@@ -13,6 +13,7 @@ Amir has 7+ years of experience, from enterprise backend engineering (PHP, Larav
 - [Resume](https://amir-zare.com/resume.html): full resume
 - [Knowledge base](https://amir-zare.com/kb.json): the resume as standalone third-person facts (JSON)
 - [Contact card](https://amir-zare.com/connect/): email, LinkedIn, Telegram, and a downloadable contact card
+- [Ask about Amir](https://huggingface.co/spaces/amirzaredev/ask-about-amir): an assistant that answers questions about Amir's experience with citations
 - Translations of Home, About, Community, and Contact card: [Հայերեն](https://amir-zare.com/hy/), [Русский](https://amir-zare.com/ru/), [فارسی](https://amir-zare.com/fa/), [Deutsch](https://amir-zare.com/de/)
 
 ## Press
