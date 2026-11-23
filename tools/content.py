@@ -220,7 +220,7 @@ PROJECTS = [
             "Recommended keeping the gate at level 30.",
         ],
         "tech": ["Python", "pandas", "SciPy", "statsmodels", "Matplotlib", "Tableau"],
-        "links": [("Kaggle notebook", "https://www.kaggle.com/code/amirzaredev/cookie-cats-a-b-test-gate-30-vs-40"), ("Tableau dashboard", "https://public.tableau.com/app/profile/amir.zare8388/viz/CookieCatsABTestGatePlacement/Dashboard1"), ("Repository", GH + "cookie-cats-ab-test")],
+        "links": [("Kaggle notebook", "https://www.kaggle.com/code/amirzaredev/cookie-cats-a-b-test-gate-30-vs-40"), ("Live A/B Test Analyzer (Hugging Face)", "https://huggingface.co/spaces/amirzaredev/ab-test-analyzer"), ("Tableau dashboard", "https://public.tableau.com/app/profile/amir.zare8388/viz/CookieCatsABTestGatePlacement/Dashboard1"), ("Repository", GH + "cookie-cats-ab-test")],
     },
     {
         "slug": "crypto-analytics-lakehouse",
