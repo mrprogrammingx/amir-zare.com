@@ -32,7 +32,7 @@ def lpath(lang, key):
 def alts_for(key):
     return {lang: lpath(lang, key) for lang in LANG_ORDER}
 
-CSS_VERSION = "20261118r"
+CSS_VERSION = "20261123a"
 JS_VERSION = "20261118j"
 LASTMOD = "2026-11-16"
 
@@ -437,6 +437,7 @@ def project_page(p):
         <figure class="pg-figure{img_class(p.get("image_fit", "cover"))}">
           <img src="{p["image"]}" alt="{esc(plain(p["title"]))}: {esc(plain(p["subtitle"]))}" loading="eager">
         </figure>
+        {f'<section class="cs-sec"><h2>Try it live</h2><iframe class="app-embed" src="{esc(p["embed"]["src"])}" width="100%" height="{p["embed"]["height"]}" loading="lazy" title="{esc(p["embed"]["title"])}"></iframe></section>' if p.get("embed") else ""}
         {f'<section class="cs-sec"><h2>Video tutorial</h2><div class="ab-video">{video_block(p["video"]["label"], p["video"])}</div></section>' if p.get("video") else ""}
         {extras_top}
         <div class="pg-grid">

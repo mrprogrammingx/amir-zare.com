@@ -202,6 +202,7 @@ PROJECTS = [
     },
     {
         "slug": "cookie-cats-ab-test",
+        "embed": {"src": "https://amirzaredev-ab-test-analyzer.static.hf.space/index.html", "height": 1100, "title": "A/B Test Analyzer"},
         "title": "A/B Test Analysis: Cookie Cats",
         "subtitle": "Does moving a game's progress gate hurt retention?",
         "year": "2026", "category": "Analytics", "status": "Published",
@@ -220,7 +221,7 @@ PROJECTS = [
             "Recommended keeping the gate at level 30.",
         ],
         "tech": ["Python", "pandas", "SciPy", "statsmodels", "Matplotlib", "Tableau"],
-        "links": [("Tableau dashboard", "https://public.tableau.com/app/profile/amir.zare8388/viz/CookieCatsABTestGatePlacement/Dashboard1"), ("Repository", GH + "cookie-cats-ab-test")],
+        "links": [("Kaggle notebook", "https://www.kaggle.com/code/amirzaredev/cookie-cats-a-b-test-gate-30-vs-40"), ("Live A/B Test Analyzer (Hugging Face)", "https://huggingface.co/spaces/amirzaredev/ab-test-analyzer"), ("Tableau dashboard", "https://public.tableau.com/app/profile/amir.zare8388/viz/CookieCatsABTestGatePlacement/Dashboard1"), ("Repository", GH + "cookie-cats-ab-test")],
     },
     {
         "slug": "crypto-analytics-lakehouse",
