@@ -488,3 +488,13 @@ COMMUNITY = {
 # llms.txt "Core skills" line (curated; not derived from the resume's skill lists)
 CORE_SKILLS = ["Python", "SQL", "Apache Airflow", "dbt", "Kafka", "Flink", "Spark", "BigQuery", "DuckDB", "FastAPI",
                "Laravel", "RAG", "multi-agent systems", "A/B testing"]
+
+# Short resume (resume.html?version=short -> Amir_Zare_Resume.pdf, max 2 pages at 10pt). Company names as in the Word master.
+SHORT_RESUME = {
+    "job_bullets": {"TUMO Labs": 1, "DataLayer": 4, "HireToDo": 3, "Ardakan Float Glass Company": 2, "Paziresh24": 1,
+                    "Mahya Pardaz Company": 2},
+    "job_bullets_default": 2,   # a job not listed above
+    "project_bullets": 2,       # per ★ project, plus its Tech line
+    "skills_per_line": 8,       # one line per skill category
+    "certifications": 5,        # most recent, one line each
+}

@@ -234,7 +234,7 @@
           "private": true
         }
       ],
-      "selected": true,
+      "selected": false,
       "bullets": [
         "Built an HTTP API that lets AI agents publish static websites: an agent sends the site files as JSON, gets back a live URL, and can update or delete the site later.",
         "Separated the API service from the sites service. The sites service is read-only, only reads published files and never touches the database.",
@@ -754,7 +754,7 @@
           "private": false
         }
       ],
-      "selected": true,
+      "selected": false,
       "bullets": [
         "Designed and developed an end-to-end crypto analytics lakehouse platform using Python and modern data engineering technologies.",
         "Built scalable data ingestion pipelines for cryptocurrency market data using Apache Kafka and batch ingestion workflows.",

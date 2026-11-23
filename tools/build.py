@@ -18,7 +18,7 @@ import sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "tools"))
-from content import ABOUT, CASE_STUDIES, COMMUNITY, CORE_SKILLS, PROJECTS, SITE  # noqa: E402
+from content import ABOUT, CASE_STUDIES, COMMUNITY, CORE_SKILLS, PROJECTS, SHORT_RESUME, SITE  # noqa: E402
 from i18n import CONNECT_EN, FEATURED, LANG_NAME, LANG_ORDER, LANG_SHORT, NAME, OG_LOCALE, RTL, T, UI  # noqa: E402
 
 from import_resume import privacy_check  # noqa: E402
@@ -53,7 +53,7 @@ def lpath(lang, key):
 def alts_for(key):
     return {lang: lpath(lang, key) for lang in LANG_ORDER}
 
-CSS_VERSION = "20261123e"
+CSS_VERSION = "20261124a"
 JS_VERSION = "20261123a"
 LASTMOD = "2026-11-16"
 
@@ -889,7 +889,18 @@ def degree_short(e):
     return f"{abbr.group(1)} {e['field']}" if abbr else (f"{e['degree']}, {e['field']}" if e["degree"] else e["field"])
 
 
-SHORT_JOB_BULLETS, SHORT_PROJECT_BULLETS = 4, 3  # resume.html?version=short (the 2-page PDF)
+MONTHS = {m: k for k, m in enumerate("Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec".split(), 1)}
+
+
+def month_key(date):
+    """"Apr 2026" / "2026" -> sortable (year, month)."""
+    m = re.search(r"(?:([A-Z][a-z]{2})\w*\s+)?(\d{4})", date)
+    return (int(m.group(2)), MONTHS.get(m.group(1), 0)) if m else (0, 0)
+
+
+def short_only(html):
+    """Shown only in the short resume (body.rs-short), e.g. one-line versions of lists."""
+    return html.replace(' class="', ' class="rs-only-short ', 1)
 
 
 def rich(entry, key):
@@ -917,21 +928,25 @@ def resume_body():
     side += [f'{i}  <ul class="rs-ticks rs-more">'] + [f"{i}    <li>{rich_html(h)}</li>" for h in rich(s, "highlights")] + [f"{i}  </ul>", f"{i}</section>"]
     side += [f'{i}<section class="rs-block">', f"{i}  {rs_h('skills', 'Skills')}"]
     for g in R["skills"]:
-        side += [f'{i}  <h3 class="rs-sub">{esc(g["category"])}</h3>',
-                 f'{i}  <ul class="rs-chips">' + "".join(f"<li>{esc(x)}</li>" for x in g["items"]) + "</ul>"]
+        side += [f'{i}  <h3 class="rs-sub rs-more">{esc(g["category"])}</h3>',
+                 f'{i}  <ul class="rs-chips rs-more">' + "".join(f"<li>{esc(x)}</li>" for x in g["items"]) + "</ul>",
+                 short_only(f'{i}  <p class="rs-line"><b>{esc(g["category"])}:</b> '
+                            + ", ".join(esc(x) for x in g["items"][:SHORT_RESUME["skills_per_line"]]) + "</p>")]
     side += [f"{i}</section>", f'{i}<section class="rs-block">', f"{i}  {rs_h('certs', 'Certifications')}", f'{i}  <ul class="rs-certs">']
-    for c in [c for c in R["certifications"] if not c["additional"]]:
+    main_certs = [c for c in R["certifications"] if not c["additional"]]
+    recent = sorted(main_certs, key=lambda c: month_key(c["date"]), reverse=True)[:SHORT_RESUME["certifications"]]
+    for c in main_certs:
         name = f'<a href="{esc(c["link"])}" target="_blank" rel="noopener">{esc(c["name"])}</a>' if c["link"] else esc(c["name"])
-        side.append(f'{i}    <li><span class="rs-cert-ic" aria-hidden="true">{RS_CERT_ICON}</span><span>{name}<small>{esc(c["issuer"])} · {esc(c["date"])}</small></span></li>')
+        side.append(f'{i}    <li{more(not any(c is r for r in recent))}><span class="rs-cert-ic" aria-hidden="true">{RS_CERT_ICON}</span><span>{name}<small>{esc(c["issuer"])} · {esc(c["date"])}</small></span></li>')
     side.append(f"{i}  </ul>")
     extra = [c for c in R["certifications"] if c["additional"]]
     if extra:
         side += [f'{i}  <h3 class="rs-sub rs-more">Additional certifications</h3>',
                  f'{i}  <p class="rs-small rs-more">' + " · ".join(f"{esc(c['name'])} ({esc(c['issuer'])}, {esc(c['date'][-4:])})" for c in extra) + "</p>"]
     for t in R["training"]:
-        side += [f'{i}  <h3 class="rs-sub">Training</h3>', f'{i}  <p class="rs-small"><b>{esc(t["org"])}</b> — {esc(t["title"])}<br><small>{esc(t["dates"])}</small></p>']
+        side += [f'{i}  <h3 class="rs-sub rs-more">Training</h3>', f'{i}  <p class="rs-small rs-more"><b>{esc(t["org"])}</b> — {esc(t["title"])}<br><small>{esc(t["dates"])}</small></p>']
         if t["bullets"]:
-            side.append(f'{i}  <ul class="rs-pts rs-small">' + "".join(f"<li>{rich_html(b)}</li>" for b in rich(t, "bullets")) + "</ul>")
+            side.append(f'{i}  <ul class="rs-pts rs-small rs-more">' + "".join(f"<li>{rich_html(b)}</li>" for b in rich(t, "bullets")) + "</ul>")
     side += [f"{i}</section>", f'{i}<section class="rs-block">', f"{i}  {rs_h('education', 'Education')}"]
     for e in R["education"]:
         small = " · ".join([e["dates"]] + e["bullets"])
@@ -943,18 +958,19 @@ def resume_body():
             raise SystemExit(f"resume: unknown language level {l['level']!r}; add it to LANG_DOTS in tools/build.py")
         dots = "".join('<i class="on"></i>' if k < n else "<i></i>" for k in range(5))
         side.append(f'{i}    <li><span>{esc(l["language"])}<small>{esc(l["level"])}</small></span><span class="rs-dots" role="img" aria-label="{n} of 5">{dots}</span></li>')
-    side += [f"{i}  </ul>", f"{i}</section>", f'{i}<section class="rs-block">', f"{i}  {rs_h('interests', 'Interests')}",
+    side += [f"{i}  </ul>", f"{i}</section>", f'{i}<section class="rs-block rs-more">', f"{i}  {rs_h('interests', 'Interests')}",
              f'{i}  <ul class="rs-chips rs-chips--soft">' + "".join(f"<li>{esc(x)}</li>" for x in R["interests"]) + "</ul>", f"{i}</section>"]
 
     body = [f'{i}<section class="rs-block">', f"{i}  {rs_h('experience', 'Professional Experience')}", f'{i}  <ol class="rs-timeline">']
     for x in R["experience"]:
+        keep = SHORT_RESUME["job_bullets"].get(x["company"], SHORT_RESUME["job_bullets_default"])
         company = esc(x["company"])
         if x["company"] in COMPANY_URL:
             company = f'<a href="{COMPANY_URL[x["company"]]}" target="_blank" rel="noopener">{company}</a>'
         when = " · ".join(v for v in (x["dates"], x["location"]) if v)
         body += [f'{i}  <li class="rs-xp">',
                  f'{i}    <div class="rs-xp-top"><h3>{esc(x["title"])} <span class="rs-at">@ {company}</span></h3><span class="rs-date">{esc(when)}</span></div>',
-                 f'{i}    <ul>' + "".join(f"<li{more(k >= SHORT_JOB_BULLETS)}>{press_links(rich_html(b))}</li>" for k, b in enumerate(rich(x, "bullets"))) + "</ul>", f"{i}  </li>"]
+                 f'{i}    <ul>' + "".join(f"<li{more(k >= keep)}>{press_links(rich_html(b))}</li>" for k, b in enumerate(rich(x, "bullets"))) + "</ul>", f"{i}  </li>"]
     body += [f"{i}  </ol>", f"{i}</section>", f'{i}<section class="rs-block">', f"{i}  {rs_h('projects', 'Selected Projects')}"]
     group = None
     for rp in R["projects"]:
@@ -973,13 +989,16 @@ def resume_body():
                  + (f'<span class="rs-year">{esc(year)}</span>' if year else "") + "</div>",
                  f"{i}      <p>{rich_html(pts[0])}</p>"]
         if pts[1:]:
-            body.append(f'{i}      <ul class="rs-pts">' + "".join(f"<li{more(k >= SHORT_PROJECT_BULLETS)}>{rich_html(b)}</li>" for k, b in enumerate(pts[1:], 1)) + "</ul>")
+            body.append(f'{i}      <ul class="rs-pts">' + "".join(f"<li{more(k >= SHORT_RESUME["project_bullets"])}>{rich_html(b)}</li>" for k, b in enumerate(pts[1:], 1)) + "</ul>")
         if rp["tech"]:
             body.append(f'{i}      <p class="rs-tech">{" · ".join(esc(t) for t in rp["tech"])}</p>')
         if links:
             body.append(f'{i}      <p class="rs-links">{"".join(links)}</p>')
         body.append(f"{i}    </article>")
-    body += [f"{i}  </div>", f"{i}</section>", f'{i}<section class="rs-block">', f"{i}  {rs_h('community', 'Teaching &amp; Community')}", f'{i}  <div class="rs-cards">']
+    body += [f"{i}  </div>", f"{i}</section>", f'{i}<section class="rs-block">', f"{i}  {rs_h('community', 'Teaching &amp; Community')}"]
+    body.append(short_only(f'{i}  <p class="rs-line">' + "; ".join(f"<b>{esc(c['title'])}</b> ({esc(c['date'])})" for c in R["community"])
+                           + "</p>"))
+    body.append(f'{i}  <div class="rs-cards rs-more">')
     cards = [(c["title"], c["date"], rich(c, "bullets"), c["links"]) for c in R["community"]]
     cards += [(f"Hackathon — {h['title']}", " · ".join(v for v in (h["date"], re.sub(r"\s+Hackathon$", "", h["event"].split(" — ")[0])) if v), rich(h, "bullets"), h["links"]) for h in R["hackathons"]]
     for title, when, text, links in cards:

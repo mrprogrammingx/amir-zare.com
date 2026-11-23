@@ -375,7 +375,7 @@ def parse_training(paras):
 
 
 STAR = "★"
-DEFAULT_SELECTED = ["DataLayer Evolution Agent", "FlowFleet", "AI Phone Assistant", "Cookie Cats", "Crypto Analytics Data Platform", "AgentPages"]
+DEFAULT_SELECTED = ["DataLayer Evolution Agent", "FlowFleet", "AI Phone Assistant", "Cookie Cats"]
 
 
 LINK_LINE = re.compile(r"^(Credential|Certificate|Badge)\s*:", re.I)

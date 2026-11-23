@@ -14,7 +14,7 @@ const CHROME = process.env.CHROME || '/Applications/Google Chrome.app/Contents/M
 const ROOT = process.cwd();
 const TITLE = 'Amir Zare – Resume';
 const MAX_SHORT_PAGES = 2;
-const SHORT_SIZES = [12, 11.5, 11, 10.5, 10.25, 10, 9.75, 9.5];  // tried largest first; the full resume keeps the site's size
+const PAGE_CONTENT_MM = 297 - 2 * 12;  // A4 height minus the @page margins in styles.css
 const OUT = [
   { version: 'short', file: 'Amir_Zare_Resume.pdf' },
   { version: 'full', file: 'Amir_Zare_Resume_Full.pdf' },
@@ -55,7 +55,7 @@ try {
   const evaluate = async expression => (await send('Runtime.evaluate', { expression, awaitPromise: true, returnByValue: true })).result.result.value;
   await send('Page.enable'); await send('Runtime.enable');
 
-  const pages = {};
+  const pages = {}, lengths = {};
   for (const { version, file } of OUT) {
     await send('Page.navigate', { url: `${base}/resume.html?version=${version}` });
     for (let i = 0; i < 100 && await evaluate('document.readyState') !== 'complete'; i++) await sleep(100);
@@ -70,25 +70,25 @@ try {
     const shortOn = await evaluate("document.body.classList.contains('rs-short')");
     if (shortOn !== (version === 'short')) throw new Error(`${version}: the rs-short body class is ${shortOn ? 'on' : 'off'} (script.js not loaded?)`);
     if (PHONE.test(text)) throw new Error(`${version}: page text contains a phone number: ${text.match(PHONE)[0]}`);
-    // The short resume takes the largest root type size (in px; the print styles are in rem) that fits MAX_SHORT_PAGES.
-    let pdf, n, size = '';
-    for (const px of version === 'short' ? SHORT_SIZES : ['']) {
-      await evaluate(`document.documentElement.style.fontSize = ${JSON.stringify(px && px + 'px')}`);
-      await sleep(300);
-      const { result } = await send('Page.printToPDF', { printBackground: true, preferCSSPageSize: true, paperWidth: 8.27, paperHeight: 11.69,
-        displayHeaderFooter: false, generateTaggedPDF: true });
-      pdf = Buffer.from(result.data, 'base64');
-      n = (pdf.toString('latin1').match(/\/Type\s*\/Page(?![s\w])/g) || []).length;
-      size = px;
-      if (n <= MAX_SHORT_PAGES) break;
-    }
+    // How many pages of content: the sheet's height in print layout / the printable page height (A4 width minus margins).
+    await send('Emulation.setEmulatedMedia', { media: 'print' });
+    await send('Emulation.setDeviceMetricsOverride', { width: Math.round((210 - 24) / 25.4 * 96), height: 1000, deviceScaleFactor: 1, mobile: false });
+    await sleep(300);
+    const length = await evaluate(`document.querySelector('.rs-sheet').getBoundingClientRect().height / (${PAGE_CONTENT_MM} / 25.4 * 96)`);
+    if (process.env.DEBUG) console.log(await evaluate(`JSON.stringify([...document.querySelectorAll('.rs-hero,.rs-side,.rs-body,.rs-block')].filter(e => e.offsetHeight).map(e => [(e.querySelector('.rs-h')||e).className.slice(0,12), (e.querySelector('.rs-h')?.textContent||'').trim().slice(0,12), Math.round(e.getBoundingClientRect().height)]))`));
+    await send('Emulation.clearDeviceMetricsOverride'); await send('Emulation.setEmulatedMedia', { media: '' });
+    const { result } = await send('Page.printToPDF', { printBackground: true, preferCSSPageSize: true, paperWidth: 8.27, paperHeight: 11.69,
+      displayHeaderFooter: false, generateTaggedPDF: true });
+    const pdf = Buffer.from(result.data, 'base64');
+    const n = (pdf.toString('latin1').match(/\/Type\s*\/Page(?![s\w])/g) || []).length;
+    lengths[version] = length;
     writeFileSync(file, pdf);
     pages[version] = n;
-    console.log(`${file}: ${n} page(s), ${(pdf.length / 1024).toFixed(0)} KB` + (size ? `, root type size ${size}px` : ''));
+    console.log(`${file}: ${n} page(s) (content ≈ ${length.toFixed(2)} pages), ${(pdf.length / 1024).toFixed(0)} KB`);
   }
   if (pages.short > MAX_SHORT_PAGES) {
     failed = true;
-    console.error(`Amir_Zare_Resume.pdf has ${pages.short} pages (max ${MAX_SHORT_PAGES}): even at ${SHORT_SIZES.at(-1)}px type; mark fewer ★ projects or shorten bullets in the Word master.`);
+    console.error(`Short resume is ${lengths.short.toFixed(2)} pages at 10pt (${pages.short} printed pages, max ${MAX_SHORT_PAGES}): mark fewer ★ projects or shorten bullets in the Word master (limits: SHORT_RESUME in tools/content.py).`);
   } else {
     const hash = createHash('sha256').update(readFileSync('tools/resume_data.json')).digest('hex');
     writeFileSync('tools/resume-pdf.json', JSON.stringify({ resume_data_sha256: hash, pages }, null, 2) + '\n');
