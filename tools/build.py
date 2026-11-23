@@ -1400,10 +1400,10 @@ def connect_page(lang="en"):
     <p class="cn-hello" id="cn-hello" hidden data-talk="{esc(c["hello_talk"])}" data-workshop="{esc(c["hello_workshop"])}" data-default="{esc(c["hello"])}"></p>
     <div class="cn-actions">
       {row("/connect/amir-zare.vcf", contact, c["save"], primary=True, ext=False, extra=' download="Amir-Zare.vcf" data-save-contact data-p="MjExMzkzNzc0NzMr"')}
-      {row(BOOKING_URL, CAL_ICON.format(s=20), u["book_call"], primary=True, extra=f' data-cal-link="{CAL_LINK}"')}
       {row("https://linkedin.com/in/binahayat00", brand_icon("linkedin", 20), c["linkedin"])}
       {row("https://t.me/MrProgrammingX", brand_icon("telegram", 20), c["telegram"])}
       {row("mailto:info@amir-zare.com", brand_icon("email", 20), c["email"], ext=False)}
+      {row(BOOKING_URL, CAL_ICON.format(s=20), u["book_call"], extra=f' data-cal-link="{CAL_LINK}"')}
       <div class="cn-row3">
         {row(lpath(lang, "home"), globe, c["site"], ext=False)}
         {row("https://github.com/mrprogrammingx", brand_icon("github", 20), c["code"])}
