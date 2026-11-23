@@ -9,8 +9,9 @@ Amir has 7+ years of experience, from enterprise backend engineering (PHP, Larav
 - [Home](https://amir-zare.com/): overview of skills, projects, experience, and community work
 - [About](https://amir-zare.com/about/): background, focus areas, career journey, education, and certifications
 - [Projects](https://amir-zare.com/projects/): all projects with problem, approach, and results
-- [Community](https://amir-zare.com/community/): YouTube Python course, GDG Yerevan workshop, mentoring, and events
+- [Community](https://amir-zare.com/community/): YouTube Python course, ML mentoring, hackathons, and events
 - [Resume](https://amir-zare.com/resume.html): full resume
+- [Knowledge base](https://amir-zare.com/kb.json): the resume as standalone third-person facts (JSON)
 - [Contact card](https://amir-zare.com/connect/): email, LinkedIn, Telegram, and a downloadable contact card
 - Translations of Home, About, Community, and Contact card: [Հայերեն](https://amir-zare.com/hy/), [Русский](https://amir-zare.com/ru/), [فارسی](https://amir-zare.com/fa/), [Deutsch](https://amir-zare.com/de/)
 
@@ -21,13 +22,13 @@ Amir has 7+ years of experience, from enterprise backend engineering (PHP, Larav
 ## Key facts
 
 - Name: Amir Zare
-- Role: AI & Data Engineer; Founder of DataLayer (since January 2024)
+- Current roles: ML Mentor / Volunteer Instructor at TUMO Labs (since Aug 2026); Founder / AI & Data Engineer at DataLayer (since Jan 2024)
 - Location: Yerevan, Armenia (Armenian permanent resident)
-- Experience: 7+ years (backend engineering since 2019, data and AI platforms since 2024)
+- Experience: 7+ years (professional experience since Aug 2019)
 - Core skills: Python, SQL, Apache Airflow, dbt, Kafka, Flink, Spark, BigQuery, DuckDB, FastAPI, Laravel, RAG, multi-agent systems, A/B testing
-- Education: B.E. in Computer Software Engineering, Yazd University (2018-2022); Machine Learning program, TUMO Labs (2026)
-- Teaching: weekly Python course on YouTube (@AmirZareDev); GDG Yerevan multi-agent workshop; ML mentor at TUMO Labs
-- Languages: Persian (native), English (full professional), German, Armenian, Russian (elementary)
+- Education: Bachelor of Engineering (B.E.) in Computer Software Engineering, Meybod University (2018 – 2022); Machine Learning, TUMO Labs (Feb 2026 – Present)
+- Teaching and community: Python Course — YouTube (Oct 2026 – Present); Vice President, Computer Engineering Scientific Association, Meybod University (2020–2022); ML Mentor / Volunteer Instructor at TUMO Labs (since Aug 2026)
+- Languages: Persian (native), English (full professional), German (elementary), Armenian (limited working proficiency), Russian (elementary)
 - Availability: open to data engineering, analytics engineering, and AI engineering roles
 
 ## Frequently asked questions
@@ -50,7 +51,7 @@ Yes. Amir is an Armenian permanent resident based in Yerevan and is open to data
 
 ### Does Amir Zare teach or speak at events?
 
-Yes. He runs a weekly Python course on YouTube, designed and delivered a multi-agent workshop (Google ADK + A2A) for GDG Yerevan, and mentors machine learning students at TUMO Labs.
+Yes. He runs a weekly Python course on YouTube and mentors machine learning students at TUMO Labs as an ML Mentor / Volunteer Instructor (since Aug 2026). He also took part in the GDG Yerevan multi-agent workshop (Google ADK + A2A).
 
 ### How can I contact Amir Zare?
 
@@ -68,7 +69,7 @@ By email at info@amir-zare.com, on LinkedIn (linkedin.com/in/binahayat00), or on
 - [AI Phone Assistant](https://amir-zare.com/projects/ai-phone-assistant/): An AI phone assistant built on Suisse Line’s voice-agent platform for Suisse IT’s Challenge A. Callers check availability, book, find, and cancel appointments, and join a waitlist.
 - [Job Hunter](https://amir-zare.com/projects/job-hunter/): A multi-agent job search platform where seven specialized AI agents find jobs, tailor applications, and prepare interviews, with every step streamed live.
 - [AgentPages](https://amir-zare.com/projects/agentpages/): An HTTP API that lets AI agents publish static websites: an agent sends the site’s files as JSON, gets back a live URL, and can update or delete the site later.
-- [GDG Yerevan Multi-Agent Workshop](https://amir-zare.com/projects/gdg-yerevan-multi-agent-workshop/): A hands-on workshop for GDG Yerevan where participants built three independent AI agents with Google’s Agent Development Kit for TypeScript, then an orchestrator that coordinates them over the A2A protocol.
+- [GDG Yerevan Multi-Agent Workshop](https://amir-zare.com/projects/gdg-yerevan-multi-agent-workshop/): Amir took part in a hands-on GDG Yerevan workshop on multi-agent systems, where he built three independent AI agents with Google’s Agent Development Kit for TypeScript, then an orchestrator that coordinates them over the A2A protocol.
 - [Voice Narrator](https://amir-zare.com/projects/voice-narrator/): A fully local voice-cloning narration tool for programming tutorials, so there are no recurring fees and recordings never leave the machine.
 - [Barbershop Queue](https://amir-zare.com/projects/barbershop-queue/): A full-stack booking and walk-in queue system: customers book or check in online, and admins get an email for each new check-in.
 - [Laravel Queue Pipeline](https://amir-zare.com/projects/laravel-queue-pipeline/): A Laravel benchmarking system that compares synchronous and queue-based processing on large datasets, eliminating request timeouts.

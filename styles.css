@@ -1371,6 +1371,16 @@ section[id]{scroll-margin-top:108px}
 .rs-print{position:absolute;top:22px;right:24px;display:inline-flex;align-items:center;gap:7px;padding:8px 14px;border-radius:10px;cursor:pointer;
   font:600 .85rem/1 inherit;font-family:inherit;color:#0b1220;background:linear-gradient(90deg,#6ee7b7,#60a5fa);border:0;box-shadow:0 8px 24px rgba(96,165,250,.3)}
 .rs-print:hover{filter:brightness(1.08)}
+.rs-dl{position:absolute;top:22px;right:24px;display:flex;flex-wrap:wrap;justify-content:flex-end;gap:8px}
+.rs-dl .rs-print{position:static;text-decoration:none}
+.rs-pts{margin:6px 0 0;padding-left:18px}
+.rs-pts li{margin-top:3px;font-size:.86rem;line-height:1.5;color:#cbd5e1}
+.rs-pts li::marker{color:#60a5fa}
+.rs-short .rs-more{display:none !important}
+.rs-only-short{display:none}
+.rs-short .rs-only-short{display:block}
+.rs-line{margin:0 0 4px;font-size:.88rem;line-height:1.45;color:#cbd5e1}
+.rs-line b{color:#e2e8f0}
 .rs-grid{display:grid;grid-template-columns:330px 1fr}
 .rs-side{padding:30px 28px;background:rgba(255,255,255,.018);border-right:1px solid rgba(96,165,250,.12)}
 .rs-body{padding:30px 36px;min-width:0}
@@ -1435,7 +1445,7 @@ section[id]{scroll-margin-top:108px}
 :root[data-theme='light'] .rs-sheet{background:#fff;border-color:rgba(37,99,235,.18);box-shadow:0 20px 60px rgba(2,6,23,.1)}
 :root[data-theme='light'] .rs-side{background:#f6f9fd}
 :root[data-theme='light'] :is(.rs-name,.rs-h,.rs-xp h3,.rs-card h4,.rs-edu b,.rs-langs li,.rs-certs li,.rs-certs a){color:#0f172a}
-:root[data-theme='light'] :is(.rs-side p,.rs-ticks li,.rs-xp li,.rs-card p){color:#334155}
+:root[data-theme='light'] :is(.rs-side p,.rs-ticks li,.rs-xp li,.rs-card p,.rs-pts li){color:#334155}
 :root[data-theme='light'] .rs-contact a{color:#0f172a;background:#fff;border-color:rgba(2,6,23,.12)}
 :root[data-theme='light'] .rs-chips li{color:#1d4ed8;background:rgba(29,78,216,.06)}
 :root[data-theme='light'] .rs-chips--soft li{color:#047857;background:rgba(4,120,87,.06)}
@@ -1453,6 +1463,7 @@ section[id]{scroll-margin-top:108px}
   .rs-photo{width:132px;height:132px}
   .rs-contact{justify-content:center}
   .rs-print{top:14px;right:14px;padding:7px 11px}
+  .rs-dl{position:static;justify-content:center}
   .rs-side,.rs-body{padding:24px 18px}
   .rs-cards{grid-template-columns:1fr}
   .rs-h{letter-spacing:.06em}
@@ -1461,7 +1472,7 @@ section[id]{scroll-margin-top:108px}
 @media print{
   @page{size:A4;margin:12mm}
   html,body{background:#fff !important}
-  body::before,.site-header,.site-footer,#scroll-progress,.rs-print,.rs-status,.blobs{display:none !important}
+  body::before,.site-header,.site-footer,#scroll-progress,.rs-print,.rs-dl,.rs-status,.blobs{display:none !important}
   .rs-page{padding:0}
   .rs-wrap{max-width:none;padding:0}
   .rs-sheet{background:#fff;border:0;box-shadow:none;border-radius:0}
@@ -1472,7 +1483,7 @@ section[id]{scroll-margin-top:108px}
   .rs-side{padding:14px 14px 0 0;background:none;border-right:1px solid #dbe3ef}
   .rs-body{order:0;padding:14px 0 0 16px}
   .rs-name,.rs-h,.rs-xp h3,.rs-card h4,.rs-edu b,.rs-langs li,.rs-certs li,.rs-certs a{color:#0f172a !important}
-  .rs-side p,.rs-ticks li,.rs-xp li,.rs-card p,.rs-tag{color:#334155 !important}
+  .rs-side p,.rs-ticks li,.rs-xp li,.rs-card p,.rs-pts li,.rs-tag{color:#334155 !important}
   .rs-role{color:#0f766e;background:none;-webkit-text-fill-color:#0f766e;filter:none}
   .rs-contact a{color:#0f172a;border-color:#dbe3ef;background:none;padding:3px 8px}
   .rs-chips li{color:#1e3a8a;background:none}
@@ -1481,8 +1492,40 @@ section[id]{scroll-margin-top:108px}
   .rs-xp::before,.rs-dots i.on,.rs-photo{box-shadow:none !important}
   .rs-xp::before{background:#fff}
   .rs-h,.rs-group,.rs-sub{break-after:avoid}
-  .rs-cards{grid-template-columns:1fr 1fr}
+  .rs-cards{grid-template-columns:1fr}
+  .rs-card{break-inside:auto}
+  .rs-card-top{break-after:avoid}
   .rs-links a,.rs-at a,.rs-xp b,.rs-card b{color:#047857 !important}
+  /* Short resume (resume.html?version=short, max 3 pages): fixed 10pt (13.4px) minimum text, larger headings */
+  .rs-short .rs-hero{padding:0 0 8px;gap:14px}
+  .rs-short .rs-photo{width:76px;height:76px}
+  .rs-short .rs-name{font-size:30px}
+  .rs-short .rs-role{font-size:17px}
+  .rs-short .rs-side{padding:8px 10px 0 0}
+  .rs-short .rs-body{padding:8px 0 0 12px}
+  .rs-short .rs-block + .rs-block{margin-top:12px}
+  .rs-short .rs-h{margin:0 0 6px;font-size:16px}
+  .rs-short .rs-h svg{width:22px;height:22px;padding:3px}
+  .rs-short :is(.rs-xp h3,.rs-card h4,.rs-group){font-size:14.5px}
+  .rs-short :is(.rs-tag,.rs-contact a,.rs-side p,.rs-line,.rs-certs li,.rs-certs small,.rs-edu,.rs-edu small,.rs-langs li,.rs-langs small,
+    .rs-xp li,.rs-date,.rs-card p,.rs-pts li,.rs-year,.rs-card .rs-tech,.rs-links a){font-size:13.4px;line-height:1.35}
+  .rs-short .rs-line b{color:#0f172a}
+  .rs-short .rs-line{color:#334155 !important}
+  .rs-short .rs-certs{gap:2px}
+  .rs-short .rs-certs li{display:block;padding:0;border:0;background:none}
+  .rs-short .rs-certs small{display:inline;margin:0}
+  .rs-short .rs-certs small::before{content:" · "}
+  .rs-short .rs-cert-ic{display:none}
+  .rs-short .rs-xp{padding-bottom:8px}
+  .rs-short .rs-xp ul{gap:2px;margin-top:3px}
+  .rs-short .rs-group{margin:8px 0 5px}
+  .rs-short .rs-cards{grid-template-columns:1fr;gap:6px}
+  .rs-short .rs-card{display:block;padding:7px 9px}
+  .rs-short .rs-card p{margin-top:3px}
+  .rs-short .rs-card .rs-links{display:inline;padding:0}
+  .rs-short .rs-links a{display:inline;margin-right:10px}
+  .rs-short .rs-langs{gap:3px}
+  .rs-short .rs-edu{padding-bottom:4px}
 }
 
 /* ---------- /connect: digital business card (always dark, phone first) ---------- */
@@ -1673,3 +1716,6 @@ html[lang="fa"] .lh-role,html[lang="fa"] .cn-role{letter-spacing:0;text-transfor
 .cmx-video-text p{line-height:1.7}
 @media (max-width:640px){ .cmx-video{flex-direction:column;align-items:stretch} .cmx-video .yt-lite,.cmx-video .yt-frame{flex:none;width:100%;max-width:340px;margin:0 auto} }
 .ab-video{max-width:760px;margin:34px auto 0}.ab-video .yt-lite,.ab-video .yt-frame{margin:0}
+
+/* Embedded live app on a project page (Cookie Cats A/B Test Analyzer) */
+.app-embed { display: block; width: 100%; border: 0; border-radius: 12px; background: #fff; }

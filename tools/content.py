@@ -310,19 +310,20 @@ PROJECTS = [
         "slug": "gdg-yerevan-multi-agent-workshop",
         "title": "GDG Yerevan Multi-Agent Workshop",
         "subtitle": "Building multi-agent systems with Google ADK + A2A",
-        "year": "2026", "category": "AI / Agents", "status": "Delivered at GDG Yerevan, June 2026",
+        "year": "2026", "category": "AI / Agents", "status": "Workshop participant, GDG Yerevan, June 2026",
         "image": "/images/gdg-workshop-room.webp", "image_fit": "cover",
-        "summary": "A hands-on workshop for GDG Yerevan where participants built three independent AI agents with Google&rsquo;s Agent Development Kit for TypeScript, then an orchestrator that coordinates them over the A2A protocol.",
-        "highlights": ["Google ADK for TypeScript", "A2A protocol", "Starter + solution branches"],
-        "problem": "Multi-agent systems are hard to teach: participants need real agents, real data, and a way to see what each agent is doing, without spending the session on setup.",
+        "summary_3p": "Amir took part in a hands-on GDG Yerevan workshop on multi-agent systems, where he built three independent AI agents with Google&rsquo;s Agent Development Kit for TypeScript, then an orchestrator that coordinates them over the A2A protocol.",
+        "summary": "I took part in a hands-on GDG Yerevan workshop on multi-agent systems, where I built three independent AI agents with Google&rsquo;s Agent Development Kit for TypeScript, then an orchestrator that coordinates them over the A2A protocol.",
+        "highlights": ["Google ADK for TypeScript", "A2A protocol", "Workshop participant"],
+        "problem": "Multi-agent systems are easier to understand by building one: real agents, real data, and a way to see what each agent is doing.",
         "built": [
-            "Three independent agents for a fictional electronics retailer: inventory (catalog and stock), orders (order lookup and a 30-day return policy), and pricing (our prices plus a Google Search market-research sub-agent), each deployable as its own service.",
-            "An orchestrator with no data of its own that wraps the three workers as remote A2A agents and resolves support cases end-to-end, such as &ldquo;customer 1042 wants to return their headphones and get something similar.&rdquo;",
-            "Shared scaffolding: an agent server with a debug console showing every tool call and result, SSE chat, A2A endpoints (agent card, REST, JSON-RPC), and a seeded SQLite dataset.",
-            "Deterministic tests that need no API key, plus a starter branch with TODOs and a solution branch so participants learn at their own pace and check their work.",
+            "Built three independent agents for a fictional electronics retailer: inventory (catalog and stock), orders (order lookup and a 30-day return policy), and pricing (our prices plus a Google Search market-research sub-agent), each deployable as its own service.",
+            "Built an orchestrator with no data of its own that wraps the three workers as remote A2A agents and resolves support cases end-to-end, such as &ldquo;customer 1042 wants to return their headphones and get something similar.&rdquo;",
+            "Worked with the workshop&rsquo;s agent server and debug console, which showed every tool call and result, SSE chat, A2A endpoints (agent card, REST, JSON-RPC), and a seeded SQLite dataset.",
+            "Checked my work against the workshop&rsquo;s deterministic tests, which need no API key.",
         ],
-        "impact": ["Delivered as a hands-on GDG Yerevan workshop in June 2026 at Yandex Armenia.",
-                   "Reusable as a self-paced course: anyone can clone the starter branch and follow along."],
+        "impact": ["Completed as a participant in the GDG Yerevan workshop in June 2026 at Yandex Armenia.",
+                   "My working code for the three agents and the orchestrator is in the repository."],
         "tech": ["TypeScript", "Google ADK", "A2A protocol", "Gemini", "Node.js", "SQLite", "SSE"],
         "links": [("Repository", GH + "adk-cloud-workshop"), ("Community page", "/community/")],
     },
@@ -407,7 +408,7 @@ PROJECTS = [
 ]
 
 ABOUT = {
-    "lead": "Software &amp; Data Engineer building data platforms and AI-powered products.",
+    "lead": "AI &amp; Data Engineer building data platforms and AI-powered products.",
     "intro": [
         "I&rsquo;m Amir Zare, an AI & Data Engineer based in Yerevan, Armenia, and the founder of "
         "<a href=\"https://usedatalayer.com\" target=\"_blank\" rel=\"noopener\">DataLayer</a>, an AI-powered analytics platform for e-commerce sellers.",
@@ -423,31 +424,31 @@ ABOUT = {
     "journey": [
         ("2019 &ndash; 2021", "Web Developer, Mahya Pardaz", "Built 15+ custom applications for municipal and enterprise clients with CakePHP, and mentored junior developers."),
         ("2021", "PHP Developer, Paziresh24", "Worked on backend systems for a high-traffic healthcare platform with 500K+ app downloads."),
-        ("2021 &ndash; 2022", "PHP / Laravel Developer, Ardakan Float Glass", "Built enterprise systems handling 200,000+ product records."),
-        ("2022 &ndash; 2023", "Software Developer, HireToDo", "Built GraphQL APIs and platform features for a hiring and payments platform."),
+        ("2021 &ndash; 2022", "Software Engineer, Ardakan Float Glass", "Built enterprise systems handling 200,000+ product records."),
+        ("2022 &ndash; 2023", "Software Engineer, HireToDo", "Built GraphQL APIs and platform features for a hiring and payments platform."),
         ("2024 &ndash; now", "Founder, DataLayer", "Building an AI-powered analytics startup for e-commerce sellers."),
-        ("2026 &ndash; now", "ML Mentor, TUMO Labs", "Mentoring and presenting to machine learning students."),
+        ("2026 &ndash; now", "ML Mentor, TUMO Labs", "Mentoring machine learning students with hands-on support on their coursework and projects."),
     ],
     "datalayer": [
         "Ranked #2 in Data Analytics and #6 among software companies in Armenia by F6S, with a 5.0 rating.",
-        "Secured $170K+ in non-dilutive startup credits from Microsoft for Startups, Google for Startups, E2B, and DigitalOcean.",
+        "Applied for $170K+ in startup credits from Microsoft for Startups, Google for Startups, E2B, and DigitalOcean.",
         "Featured in <a href=\"https://tech.news.am/en/news/7656\" target=\"_blank\" rel=\"noopener\">NEWS.am Tech</a>; now leading pre-seed fundraising.",
     ],
     "education": [
-        ("Yazd University", "Bachelor of Engineering, Computer Software Engineering (2018 &ndash; 2022)"),
-        ("TUMO Labs", "Machine Learning (2026): led a 4-student team training supervised and unsupervised models with scikit-learn, TensorFlow, and PyTorch."),
+        ("Meybod University", "Bachelor of Engineering, Computer Software Engineering (2018 &ndash; 2022)"),
+        ("TUMO Labs", "Machine Learning (2026 &ndash; present): led a 4-student team training supervised and unsupervised models with scikit-learn, TensorFlow, and PyTorch."),
         ("EPAM Systems", "Data Software Engineering training (2025 &ndash; 2026)"),
     ],
     "certs": [
         "Building AI Agents with Multimodal Models &mdash; NVIDIA (2026)",
         "Claude Code in Action &mdash; Anthropic (2026)",
-        "MongoDB: AI-Powered Vector Search and Building RAG Apps (2026)",
+        "MongoDB: Relational to Document Model, AI-Powered Vector Search, and Building RAG Apps (2026)",
         "Data Engineering Zoomcamp &mdash; DataTalksClub (2026)",
         "Agentic AI on AWS &mdash; BeSA Program (2026)",
         "AWS Skills Centers: AI Practitioner &ndash; Foundations (2026)",
         "Apache Airflow 3 Fundamentals &mdash; Astronomer (2026)",
     ],
-    "languages": ["Persian (native)", "English (full professional)", "German (elementary)", "Armenian (elementary)", "Russian (elementary)"],
+    "languages": ["Persian (native)", "English (full professional)", "German (elementary)", "Armenian (limited working proficiency)", "Russian (elementary)"],
 }
 
 COMMUNITY = {
@@ -459,15 +460,8 @@ COMMUNITY = {
             "links": [("Watch on YouTube", "https://www.youtube.com/@AmirZareDev"), ("Course code", GH + "python-course-youtube")],
         },
         {
-            "title": "GDG Yerevan: Multi-Agent Workshop", "when": "June 2026 &middot; Yandex Armenia, Yerevan", "image": "/images/gdg-workshop-room.webp",
-            "text": "A hands-on workshop where participants build three independent AI agents (inventory, orders, and pricing with Google Search) using Google ADK for TypeScript, "
-                    "then an orchestrator that coordinates them over the A2A protocol. The scaffolding includes a shared agent server with a debug console that shows every tool call, "
-                    "SSE chat and A2A endpoints, a seeded SQLite dataset, deterministic tests, and starter and solution branches for self-paced learning.",
-            "links": [("Workshop repository", GH + "adk-cloud-workshop")],
-        },
-        {
             "title": "ML Mentor at TUMO Labs", "when": "Aug 2026 &ndash; present &middot; Yerevan", "image": None,
-            "text": "Presenting to and mentoring machine learning students at TUMO Labs, guiding their learning with hands-on support, after leading a 4-student team through the program.",
+            "text": "Mentoring machine learning students at TUMO Labs, guiding them through the program with hands-on support on their coursework and projects, after leading a 4-student team through it myself.",
             "links": [],
         },
         {
@@ -488,4 +482,19 @@ COMMUNITY = {
         ("/images/event-siliconmtns.webp", "Silicon Mountains Expo", "2026", "Amir at the Silicon Mountains expo"),
         ("/images/event-expo.webp", "Tech Expo, Yerevan", "2026", "Amir at a technology expo hall in Yerevan"),
     ],
+}
+
+
+# llms.txt "Core skills" line (curated; not derived from the resume's skill lists)
+CORE_SKILLS = ["Python", "SQL", "Apache Airflow", "dbt", "Kafka", "Flink", "Spark", "BigQuery", "DuckDB", "FastAPI",
+               "Laravel", "RAG", "multi-agent systems", "A/B testing"]
+
+# Short resume (resume.html?version=short -> Amir_Zare_Resume.pdf, max 3 pages at 10pt). Company names as in the Word master.
+SHORT_RESUME = {
+    "job_bullets": {"TUMO Labs": 1, "DataLayer": 4, "HireToDo": 3, "Ardakan Float Glass Company": 2, "Paziresh24": 1,
+                    "Mahya Pardaz Company": 2},
+    "job_bullets_default": 2,   # a job not listed above
+    "project_bullets": 2,       # per ★ project, plus its Tech line
+    "skills_per_line": 8,       # one line per skill category
+    "certifications": 5,        # most recent, one line each
 }
