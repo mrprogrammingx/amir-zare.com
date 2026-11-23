@@ -4,10 +4,10 @@ Edit facts here, then run `python3 tools/build.py`. Text may contain simple HTML
 """
 
 SITE = {
-    "booking_url": "https://cal.com/amirzaredev",
-    # "Ask about Amir" assistant (Hugging Face Space): compact embed for the site popup, full page for "Open full version"
-    "assistant_embed": "https://amirzaredev-ask-about-amir.static.hf.space/index.html?embed=1",
-    "assistant_page": "https://huggingface.co/spaces/amirzaredev/ask-about-amir",  # Cal.com: nav button, home "Work with me", /connect/, resume, llms.txt
+    "booking_url": "https://cal.com/amirzaredev",  # Cal.com: nav button, home "Work with me", /connect/, resume, llms.txt
+    # "Ask about Amir" assistant (Hugging Face Space): section embed for the home #ask section, and the full Space page
+    "assistant_section": "https://amirzaredev-ask-about-amir.static.hf.space/index.html?embed=section",
+    "assistant_page": "https://huggingface.co/spaces/amirzaredev/ask-about-amir",
     "url": "https://amir-zare.com",
     "name": "Amir Zare",
     "headline": "AI & Data Engineer",

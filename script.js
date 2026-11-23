@@ -158,7 +158,7 @@
     if(themeBtn) themeBtn.textContent = t==='light' ? '🌙' : '🌞';
     _safeSetItem('site-theme', t);
     if (window.Cal && window.Cal.loaded) window.Cal('ui', { theme: t });  // keep an open Cal.com embed in step
-    const askFrame = document.querySelector('.ask-body iframe');  // and the assistant, once it exists
+    const askFrame = document.querySelector('.ask-frame iframe');  // and the assistant, once it exists
     if (askFrame && askFrame.contentWindow) askFrame.contentWindow.postMessage({ type: 'theme', value: t }, new URL(askFrame.src).origin);
   }
   const saved = _safeGetItem('site-theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
@@ -193,41 +193,60 @@
     io.observe(calBox);
   }
 
-  // "Ask about me" assistant. The Hugging Face Space iframe (it loads a ~25 MB model) is created on the first click
-  // only and then kept in the page, so reopening is instant; nothing is requested from Hugging Face before that.
-  const ask = document.querySelector('[data-ask]');
-  if (ask) {
-    const btn = ask.querySelector('.ask-btn'), panel = ask.querySelector('.ask-panel'), body = ask.querySelector('.ask-body');
-    const closeBtn = ask.querySelector('.ask-close');
-    const focusables = () => [...panel.querySelectorAll('a[href], button, iframe')];
-    const open = () => {
-      if (!body.firstChild) {
-        const f = document.createElement('iframe');
-        const src = new URL(panel.dataset.src);
-        src.searchParams.set('theme', document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark');
-        f.src = src.href;
-        f.title = document.getElementById('ask-title').textContent;
-        f.allow = 'clipboard-write';
-        body.appendChild(f);
-      }
-      panel.hidden = false;
-      btn.setAttribute('aria-expanded', 'true');
-      closeBtn.focus();
-    };
-    const close = () => {
-      panel.hidden = true;
-      btn.setAttribute('aria-expanded', 'false');
-      btn.focus();
-    };
-    btn.addEventListener('click', open);
-    closeBtn.addEventListener('click', close);
-    document.addEventListener('keydown', e => {
-      if (panel.hidden) return;
-      if (e.key === 'Escape') { e.preventDefault(); close(); return; }
-      if (e.key !== 'Tab') return;  // keep Tab inside the dialog
-      const f = focusables(), first = f[0], last = f[f.length - 1];
-      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
-      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  // "Ask about me": the home #ask section embeds the Hugging Face Space (it loads a ~25 MB model). The iframe is
+  // created only when the section is about to scroll into view or the floating button is clicked, so nothing is
+  // requested from Hugging Face before then. The Space reports its height with postMessage.
+  const askSec = document.getElementById('ask');
+  const askBox = askSec && askSec.querySelector('.ask-frame');
+  const askOrigin = askBox ? new URL(askBox.dataset.src).origin : '';
+  let askIframe = null, askReady = false;
+  const loadAsk = () => {
+    if (askIframe || !askBox) return askIframe;
+    const src = new URL(askBox.dataset.src);
+    src.searchParams.set('theme', document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark');
+    askIframe = document.createElement('iframe');
+    askIframe.src = src.href;
+    askIframe.title = askBox.dataset.title;
+    askIframe.allow = 'clipboard-write';
+    askIframe.addEventListener('load', () => { askReady = true; }, { once: true });
+    askBox.appendChild(askIframe);
+    askBox.classList.add('is-loaded');
+    return askIframe;
+  };
+  window.addEventListener('message', e => {
+    if (!askIframe || e.origin !== askOrigin || e.source !== askIframe.contentWindow) return;
+    const d = e.data;
+    if (d && d.type === 'ask-height') {
+      const h = Number(d.value);
+      if (h > 0 && h < 20000) askIframe.style.height = Math.ceil(h) + 'px';
+    }
+  });
+  const askBtn = document.querySelector('[data-ask-jump]');
+  if (askSec && 'IntersectionObserver' in window) {
+    const near = new IntersectionObserver(entries => {
+      if (entries.some(en => en.isIntersecting)) { loadAsk(); near.disconnect(); }
+    }, { rootMargin: '400px 0px' });
+    near.observe(askSec);
+    if (askBtn) {  // hide the floating button while the section itself is on screen
+      new IntersectionObserver(entries => {
+        const on = entries.some(en => en.isIntersecting);
+        askBtn.classList.toggle('is-hidden', on);
+        askBtn.toggleAttribute('aria-hidden', on);
+        askBtn.tabIndex = on ? -1 : 0;
+      }).observe(askSec);
+    }
+  } else if (askSec) {
+    loadAsk();
+  }
+  if (askBtn && askSec) {
+    askBtn.addEventListener('click', e => {
+      e.preventDefault();
+      const f = loadAsk();
+      const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      askSec.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+      if (history.replaceState) history.replaceState(null, '', '#ask');
+      const focus = () => f.focus({ preventScroll: true });
+      if (askReady) setTimeout(focus, reduce ? 0 : 500); else f.addEventListener('load', focus, { once: true });
     });
   }
 
