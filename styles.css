@@ -1729,7 +1729,7 @@ html[lang="fa"] .lh-role,html[lang="fa"] .cn-role{letter-spacing:0;text-transfor
 .nav.open .nav-book{display:flex;justify-content:center;margin:4px 0 0;padding:10px;border-radius:10px;color:var(--text)}
 :root[data-theme='light'] .nav .nav-book{border-color:rgba(4,120,87,.5)}
 :root[data-theme='light'] .nav .nav-book svg{color:#047857}
-.book-sec{padding-top:56px;padding-bottom:56px}
+.book-sec{padding-top:56px;padding-bottom:56px;scroll-margin-top:72px}
 .book-title{display:flex;align-items:center;gap:12px;margin:0 0 10px;font-size:clamp(1.6rem,3vw,2.1rem)}
 .book-title svg{flex:none;width:44px;height:44px;padding:9px;border-radius:12px;color:var(--accent);background:rgba(110,231,183,.1);border:1px solid rgba(110,231,183,.28)}
 .book-line{margin:0 0 22px;color:var(--muted);max-width:640px}
@@ -1801,4 +1801,22 @@ html[lang="fa"] .lh-role,html[lang="fa"] .cn-role{letter-spacing:0;text-transfor
   .nav .nav-book{margin-left:4px;padding:6px 7px}
   .site-header .header-actions{gap:6px}
   .site-header .header-inner{padding-left:10px;padding-right:10px}
+}
+.nav .nav-book--ext > svg:last-child{width:13px;height:13px;margin-left:4px;opacity:.8}
+@media (min-width:701px) and (max-width:1399px){ .nav .nav-book--ext > svg:last-child{display:none} }
+.rs-contact .rs-book > svg:last-child{width:12px;height:12px;opacity:.8}
+/* Phone header: keep everything on one line down to 320px (long labels like "Связаться") */
+@media (max-width:480px){
+  .site-header .header-inner{padding-left:12px;padding-right:12px}
+  .site-header .header-actions{gap:6px}
+  .site-header #theme-toggle{margin-left:0}
+  .site-header .connect-btn{gap:0}
+  .site-header .connect-arrow{display:none}  /* the label alone opens the Connect panel */
+  .site-header .connect-label{padding:8px 13px;font-size:.88rem}
+}
+@media (max-width:360px){
+  .site-header .logo{font-size:.98rem}
+  .site-header .header-actions{gap:4px}
+  .site-header .connect-label{padding:7px 10px;font-size:.84rem}
+  .site-header .lang-sw summary{padding:0 6px}
 }
