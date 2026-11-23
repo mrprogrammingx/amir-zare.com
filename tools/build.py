@@ -53,8 +53,8 @@ def lpath(lang, key):
 def alts_for(key):
     return {lang: lpath(lang, key) for lang in LANG_ORDER}
 
-CSS_VERSION = "20261124f"
-JS_VERSION = "20261124f"
+CSS_VERSION = "20261124g"
+JS_VERSION = "20261124g"
 LASTMOD = "2026-11-16"
 
 ICONS = {
@@ -144,9 +144,12 @@ CAL_ICON = ('<svg viewBox="0 0 24 24" width="{s}" height="{s}" fill="none" strok
             '<path d="M8 14h.01M12 14h.01M16 14h.01M8 17.5h.01M12 17.5h.01"/></svg>')
 
 
-def book_attrs():
-    """A link to the Cal.com page that script.js opens in the Cal.com popup (the embed script loads on first click)."""
-    return f'href="{BOOKING_URL}" target="_blank" rel="noopener" data-cal-link="{CAL_LINK}"'
+def book_attrs(on_home=False, lang="en"):
+    """"Book a call": on a home page (which has the "Work with me" #book section) a same-page link that scrolls there;
+    everywhere else a plain new-tab link to Cal.com. No popup: nothing here triggers Cal.com's embed."""
+    if on_home:
+        return 'href="#book"'
+    return f'href="{BOOKING_URL}" target="_blank" rel="noopener" aria-label="{UI[lang]["book_call"]} ({UI[lang]["new_tab"]})"'
 
 
 def book_section(lang="en"):
@@ -156,7 +159,7 @@ def book_section(lang="en"):
       <div class="container">
         <h2 id="book-title" class="book-title">{CAL_ICON.format(s=26)}<span>{u["work_with_me"]}</span></h2>
         <p class="book-line">{u["book_line"]}</p>
-        <div class="book-inline" id="book-inline" data-cal-link="{CAL_LINK}">
+        <div class="book-inline" id="book-inline" data-booking-link="{CAL_LINK}">
           <p class="book-fallback"><a href="{BOOKING_URL}" target="_blank" rel="noopener">{CAL_ICON.format(s=18)}{u["book_open"]} <span aria-hidden="true">&#8599;</span></a></p>
         </div>
       </div>
@@ -182,7 +185,10 @@ def header(home, active=None, lang="en", alts=None):
         items = [f'          <a href="{h}"{" aria-current=\"page\"" if s == active else ""}>{t}</a>' for t, h, s in links]
         logo = "/"
     items.append(f'          <a href="/resume.html" class="nav-ext" target="_blank" rel="noopener" aria-label="{u["resume"]} ({u["new_tab"]})">{u["resume"]}{ARROW}</a>')
-    items.append(f'          <a class="nav-book" {book_attrs()} aria-label="{u["book_call"]}" title="{u["book_call"]}">{CAL_ICON.format(s=16)}<span>{u["book_call"]}</span></a>')
+    on_home = home if lang == "en" else active == "home"
+    book_label = "" if not on_home else f' aria-label="{u["book_call"]}"'
+    items.append(f'          <a class="nav-book{"" if on_home else " nav-book--ext"}" {book_attrs(on_home, lang)}{book_label} title="{u["book_call"]}">'
+                 f'{CAL_ICON.format(s=16)}<span>{u["book_call"]}</span>{"" if on_home else ARROW}</a>')
     nav = "\n".join(items)
     sw = lang_switcher(lang, alts)
     sw_line = f"          {sw}\n" if sw else ""
@@ -853,7 +859,7 @@ def sync_existing(path, home=False):
         out = re.sub(r'<meta name="description" content="[^"]*"', f'<meta name="description" content="{esc(RESUME_DESC)}"', out, count=1)
         out = replace_block(out, r"<!-- build:resume -->", r"<!-- /build:resume -->", resume_body())
         out = replace_block(out, r"<!-- build:book -->", r"<!-- /build:book -->",
-                            f'<!-- build:book --><a class="rs-book" {book_attrs()}>{CAL_ICON.format(s=15)}<span>{UI["en"]["book_call"]}</span></a><!-- /build:book -->')
+                            f'<!-- build:book --><a class="rs-book" {book_attrs()}>{CAL_ICON.format(s=15)}<span>{UI["en"]["book_call"]}</span>{ARROW}</a><!-- /build:book -->')
     return out
 
 
@@ -1434,7 +1440,7 @@ def connect_page(lang="en"):
       {row("https://linkedin.com/in/binahayat00", brand_icon("linkedin", 20), c["linkedin"])}
       {row("https://t.me/MrProgrammingX", brand_icon("telegram", 20), c["telegram"])}
       {row("mailto:info@amir-zare.com", brand_icon("email", 20), c["email"], ext=False)}
-      {row(BOOKING_URL, CAL_ICON.format(s=20), u["book_call"], extra=f' data-cal-link="{CAL_LINK}"')}
+      {row(BOOKING_URL, CAL_ICON.format(s=20), u["book_call"] + f' <span aria-hidden="true">&#8599;</span>')}
       <div class="cn-row3">
         {row(lpath(lang, "home"), globe, c["site"], ext=False)}
         {row("https://github.com/mrprogrammingx", brand_icon("github", 20), c["code"])}
