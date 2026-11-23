@@ -16,17 +16,19 @@ Edit facts only in the Word master resume, then:
 ```bash
 python3 tools/import_resume.py "/path/to/Master Resume.docx"   # writes tools/resume_data.json
 python3 tools/build.py                                         # updates resume.html, llms.txt, the About FAQ, kb.json
-node tools/make-pdf.mjs                                        # prints Amir_Zare_Resume.pdf (max 2 pages) and Amir_Zare_Resume_Full.pdf
+node tools/make-pdf.mjs                                        # prints Amir_Zare_Resume.pdf (max 3 pages) and Amir_Zare_Resume_Full.pdf
 git add -A && git commit -m "Resume: <what changed>" && git push
 ```
 
 - The two PDFs behind the "Download resume" / "Download full resume" buttons come from the same page:
   `resume.html?version=short` and `resume.html?version=full`. `make-pdf.mjs` needs Google Chrome (set `CHROME=` for
-  another path) and picks the largest type size that keeps the short PDF to 2 pages; it fails if even the smallest doesn't.
-- The short version shows only projects marked with a ★ at the start of their title in the master (if none are marked:
-  DataLayer Evolution Agent, FlowFleet, AI Phone Assistant, Cookie Cats A/B Test, Crypto Analytics Data Platform,
-  AgentPages), the first 4 bullets per job and 3 per project, no "Additional Professional Certifications" and no skill
-  bullets under the Professional Summary.
+  another path). Text is fixed at 10pt minimum; if the short PDF is over 3 pages it fails and says by how much, so trim the
+  master. The short-version limits are `SHORT_RESUME` in `tools/content.py`.
+- The short version shows the summary paragraph, the first bullets of each job (per-job limits), only projects marked
+  with a ★ at the start of their title in the master (2 bullets + Tech line; if none are marked: DataLayer Evolution
+  Agent, FlowFleet, AI Phone Assistant, Cookie Cats A/B Test), skills as one line per category, the 5 most recent
+  certifications, and Teaching & Community as one line; no Interests, Hackathons or training details. All limits are
+  `SHORT_RESUME` in `tools/content.py`.
 - `build.py --check` fails if `tools/resume_data.json` changed since the PDFs were printed (`tools/resume-pdf.json` keeps
   the hash), so CI catches PDFs that weren't regenerated.
 

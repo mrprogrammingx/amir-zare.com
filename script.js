@@ -250,7 +250,7 @@
   q('.rs-phone[data-p]').forEach(b => b.addEventListener('click', revealPhones));
   window.addEventListener('beforeprint', revealPhones);
 
-  // resume.html?version=short: the 2-page resume (tools/make-pdf.mjs prints it to /Amir_Zare_Resume.pdf).
+  // resume.html?version=short: the short resume (tools/make-pdf.mjs prints it to /Amir_Zare_Resume.pdf).
   if (new URLSearchParams(location.search).get('version') === 'short') document.body.classList.add('rs-short');
 
   // Resume "Save as PDF" button: opens the browser print dialog (print styles lay out an A4 page).

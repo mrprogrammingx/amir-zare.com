@@ -1496,7 +1496,7 @@ section[id]{scroll-margin-top:108px}
   .rs-card{break-inside:auto}
   .rs-card-top{break-after:avoid}
   .rs-links a,.rs-at a,.rs-xp b,.rs-card b{color:#047857 !important}
-  /* Short resume (resume.html?version=short, max 2 pages): fixed 10pt (13.4px) minimum text, larger headings */
+  /* Short resume (resume.html?version=short, max 3 pages): fixed 10pt (13.4px) minimum text, larger headings */
   .rs-short .rs-hero{padding:0 0 8px;gap:14px}
   .rs-short .rs-photo{width:76px;height:76px}
   .rs-short .rs-name{font-size:30px}

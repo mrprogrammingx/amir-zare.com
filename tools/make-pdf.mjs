@@ -1,6 +1,6 @@
 // Print resume.html to the two downloadable PDFs (run after python3 tools/build.py):
 //   node tools/make-pdf.mjs
-// Serves the repo on a local port, prints resume.html?version=short -> Amir_Zare_Resume.pdf (max 2 A4 pages)
+// Serves the repo on a local port, prints resume.html?version=short -> Amir_Zare_Resume.pdf (max 3 A4 pages at 10pt)
 // and resume.html?version=full -> Amir_Zare_Resume_Full.pdf with headless Chrome, then records the hash of
 // tools/resume_data.json in tools/resume-pdf.json so `python3 tools/build.py --check` can tell when the PDFs are stale.
 import { spawn } from 'node:child_process';
@@ -13,7 +13,7 @@ import { extname, join, normalize } from 'node:path';
 const CHROME = process.env.CHROME || '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
 const ROOT = process.cwd();
 const TITLE = 'Amir Zare – Resume';
-const MAX_SHORT_PAGES = 2;
+const MAX_SHORT_PAGES = 3;
 const PAGE_CONTENT_MM = 297 - 2 * 12;  // A4 height minus the @page margins in styles.css
 const OUT = [
   { version: 'short', file: 'Amir_Zare_Resume.pdf' },
