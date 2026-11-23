@@ -20,6 +20,26 @@ sys.path.insert(0, str(ROOT / "tools"))
 from content import ABOUT, CASE_STUDIES, COMMUNITY, PROJECTS, SITE  # noqa: E402
 from i18n import CONNECT_EN, FEATURED, LANG_NAME, LANG_ORDER, LANG_SHORT, NAME, OG_LOCALE, RTL, T, UI  # noqa: E402
 
+from import_resume import privacy_check  # noqa: E402
+
+_RESUME_TEXT = (ROOT / "tools" / "resume_data.json").read_text()
+privacy_check(_RESUME_TEXT)  # no phone number, personal email or credential ID may be published (checked in CI too)
+RESUME = json.loads(_RESUME_TEXT)  # written by tools/import_resume.py from the Word master resume
+
+
+def resume_job(company):
+    for x in RESUME["experience"]:
+        if x["company"] == company:
+            return x
+    raise SystemExit(f"resume_data.json: no job at {company!r} (the site expects one)")
+
+
+YEARS = re.search(r"\d+\+? years", " ".join(RESUME["summary"]["paragraphs"])).group(0)  # "7+ years"
+DATALAYER_SINCE = resume_job("DataLayer")["dates"].split(" – ")[0]  # "Jan 2024"
+CITY = RESUME["location"].split(",")[0]
+UNIVERSITY = next(e["school"] for e in RESUME["education"] if e["degree"])
+TUMO = resume_job("TUMO Labs")
+
 LOCAL_LANGS = [lang for lang in LANG_ORDER if lang != "en"]
 LOCAL_PAGES = {"home": "/", "about": "/about/", "community": "/community/", "connect": "/connect/"}
 
@@ -32,7 +52,7 @@ def lpath(lang, key):
 def alts_for(key):
     return {lang: lpath(lang, key) for lang in LANG_ORDER}
 
-CSS_VERSION = "20261123a"
+CSS_VERSION = "20261123b"
 JS_VERSION = "20261118j"
 LASTMOD = "2026-11-16"
 
@@ -227,7 +247,7 @@ PERSON = {
     "email": "mailto:" + SITE["email"], "sameAs": SITE["same_as"],
     "address": {"@type": "PostalAddress", "addressLocality": "Yerevan", "addressCountry": "AM"},
     "worksFor": {"@type": "Organization", "@id": "https://usedatalayer.com/#org", "name": "DataLayer", "url": "https://usedatalayer.com"},
-    "alumniOf": {"@type": "CollegeOrUniversity", "name": "Yazd University"},
+    "alumniOf": {"@type": "CollegeOrUniversity", "name": UNIVERSITY},
     "subjectOf": PRESS_LD,
     "knowsAbout": ["Data engineering", "Apache Airflow", "dbt", "Apache Kafka", "Apache Flink", "BigQuery", "Python", "SQL",
                    "LLM applications", "Retrieval-augmented generation", "Multi-agent systems", "A/B testing", "FastAPI", "Laravel"],
@@ -518,21 +538,21 @@ def projects_hub():
 # so search engines and AI answer engines can quote them directly.
 FAQ = [
     ("Who is Amir Zare?",
-     "Amir Zare is an AI & Data Engineer and the founder of DataLayer, based in Yerevan, Armenia. He has 7+ years of experience "
+     f"Amir Zare is an AI & Data Engineer and the founder of DataLayer, based in {RESUME['location']}. He has {YEARS} of experience "
      "building backend systems, data pipelines, analytics platforms, and production LLM applications."),
     ("What does Amir Zare specialize in?",
      "Data pipelines and orchestration (Apache Airflow, dbt, Kafka, Flink), analytics engineering (BigQuery, DuckDB, advanced SQL, "
      "A/B test analysis), production AI (RAG, embeddings, multi-agent systems), and backend APIs with Python/FastAPI and PHP/Laravel."),
     ("What is DataLayer?",
-     "DataLayer is an AI-powered analytics platform for e-commerce sellers, founded by Amir Zare in 2024. It turns raw sales exports "
+     f"DataLayer is an AI-powered analytics platform for e-commerce sellers, founded by Amir Zare in {DATALAYER_SINCE[-4:]}. It turns raw sales exports "
      "into dashboards with customer segmentation, anomaly detection, and churn detection. F6S ranks it #2 in Data Analytics and #6 "
      "among software companies in Armenia."),
     ("Is Amir Zare available for work?",
-     "Yes. Amir is an Armenian permanent resident based in Yerevan and is open to data engineering, analytics engineering, and AI "
+     f"Yes. Amir is an Armenian permanent resident based in {CITY} and is open to data engineering, analytics engineering, and AI "
      "engineering roles and projects."),
     ("Does Amir Zare teach or speak at events?",
-     "Yes. He runs a weekly Python course on YouTube, designed and delivered a multi-agent workshop (Google ADK + A2A) for GDG Yerevan, "
-     "and mentors machine learning students at TUMO Labs."),
+     f"Yes. He runs a weekly Python course on YouTube and mentors machine learning students at TUMO Labs as an {TUMO['title']} "
+     f"(since {TUMO['dates'].split(' – ')[0]}). He also took part in the GDG Yerevan multi-agent workshop (Google ADK + A2A)."),
     ("How can I contact Amir Zare?",
      "By email at info@amir-zare.com, on LinkedIn (linkedin.com/in/binahayat00), or on Telegram (@MrProgrammingX). "
      "His digital contact card is at amir-zare.com/connect."),
@@ -709,19 +729,19 @@ def community_page():
       </div>
     </section>'''
     workshop = {"@type": "Event", "name": "GDG Yerevan Multi-Agent Workshop (Google ADK + A2A)", "startDate": "2026-06", "endDate": "2026-06",
-                "description": "Hands-on workshop by Amir Zare: participants build three AI agents with Google ADK for TypeScript and an "
-                               "orchestrator that coordinates them over the A2A protocol.",
+                "description": "Hands-on GDG Yerevan workshop on multi-agent systems, attended by Amir Zare: participants build three AI agents "
+                               "with Google ADK for TypeScript and an orchestrator that coordinates them over the A2A protocol.",
                 "eventStatus": "https://schema.org/EventScheduled", "url": SITE["url"] + "/community/",
                 "offers": {"@type": "Offer", "price": "0", "priceCurrency": "AMD", "availability": "https://schema.org/SoldOut",
                            "url": "https://gdg.community.dev/gdg-yerevan/", "validFrom": "2026-05-01"},
                 "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
                 "location": {"@type": "Place", "name": "Yandex Armenia", "address": {"@type": "PostalAddress", "addressLocality": "Yerevan", "addressCountry": "AM"}},
-                "organizer": {"@type": "Organization", "name": "GDG Yerevan", "url": "https://gdg.community.dev/gdg-yerevan/"}, "performer": {"@id": SITE["url"] + "/#person"},
+                "organizer": {"@type": "Organization", "name": "GDG Yerevan", "url": "https://gdg.community.dev/gdg-yerevan/"}, "attendee": {"@id": SITE["url"] + "/#person"},
                 "image": SITE["url"] + "/images/gdg-workshop-room.webp"}
     graph = [{"@type": "CollectionPage", "name": "Community & Events — Amir Zare", "url": SITE["url"] + path,
               "about": {"@id": SITE["url"] + "/#person"}}, workshop, video_ld(PITCH), breadcrumbs(trail), PERSON]
     return page("Community & Events — Teaching, Workshops & Talks | Amir Zare",
-                "Amir Zare's community work in Yerevan: a weekly Python course on YouTube, a GDG Yerevan multi-agent workshop, ML mentoring at TUMO Labs, hackathons, and events.",
+                "Amir Zare's community work in Yerevan: a weekly Python course on YouTube, ML mentoring at TUMO Labs, workshops, hackathons, and events.",
                 path, body, og_image("community"), graph, active="community", alts=alts_for("community"))
 
 
@@ -772,6 +792,7 @@ def sync_existing(path, home=False):
         out = replace_block(out, r"<!-- build:seo -->", r"<!-- /build:seo -->", "<!-- build:seo -->\n  " + resume_seo() + "\n  <!-- /build:seo -->")
         out = re.sub(r"<title>.*?</title>", f"<title>{esc(RESUME_TITLE)}</title>", out, count=1)
         out = re.sub(r'<meta name="description" content="[^"]*"', f'<meta name="description" content="{esc(RESUME_DESC)}"', out, count=1)
+        out = replace_block(out, r"<!-- build:resume -->", r"<!-- /build:resume -->", resume_body())
     return out
 
 
@@ -788,31 +809,444 @@ def sitemap(paths):
     return f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{rows}\n</urlset>\n'
 
 
+# ---------------------------------------------------------------- resume (from the Word master)
+#
+# tools/resume_data.json is written by tools/import_resume.py from the Word master resume and is the single source
+# for the resume body (resume.html), the key facts in llms.txt and the FAQ, and /kb.json ("Ask about Amir").
+
+RS_ICON = {
+    'profile': '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>',
+    'skills': '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3"/></svg>',
+    'certs': '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M15.5 13.2L17 22l-5-3-5 3 1.5-8.8"/></svg>',
+    'education': '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 9L12 4 2 9l10 5 10-5z"/><path d="M6 11.5v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5"/></svg>',
+    'languages': '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8l6 6M4 14l6-6 2-3M2 5h12M7 2h1M22 22l-5-10-5 10M14 18h6"/></svg>',
+    'interests': '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg>',
+    'experience': '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 13h18"/></svg>',
+    'projects': '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 16V8a2 2 0 0 0-1-1.7l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.7l7 4a2 2 0 0 0 2 0l7-4a2 2 0 0 0 1-1.7z"/><path d="M3.3 7L12 12l8.7-5M12 22V12"/></svg>',
+    'community': '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0 0 14 0M12 17v5"/></svg>',
+}
+RS_CERT_ICON = '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M15.5 13.2L17 22l-5-3-5 3 1.5-8.8"/></svg>'
+RS_LINK_ICON = '<svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg>'
+
+COMPANY_URL = {"DataLayer": "https://usedatalayer.com"}
+LANG_DOTS = {"native": 5, "full professional": 4, "professional working proficiency": 3, "professional working": 3,
+             "limited working proficiency": 2, "limited working": 2, "elementary": 1}
+
+
+def rs_link(url, label):
+    ext = url.startswith("http")
+    attrs = ' target="_blank" rel="noopener"' if ext else ""
+    return f'<a href="{esc(url)}"{attrs}>{esc(label)}{RS_LINK_ICON}</a>'
+
+
+def rs_h(key, title):
+    return f'<h2 class="rs-h">{RS_ICON[key]}{title}</h2>'
+
+
+def site_project(rp):
+    """The amir-zare.com page for a resume project: matched by any of its links, then by name."""
+    urls = {l["url"].rstrip("/").lower() for l in rp["links"]}
+    for p in ALL:
+        if urls & {u.rstrip("/").lower() for _, u in p.get("links", [])}:
+            return p
+    name = rp["name"].lower()
+    for p in ALL:
+        if plain(p["title"]).lower() == name or p["slug"] == slug(rp["name"]):
+            return p
+    return None
+
+
+def slug(text):
+    return re.sub(r"[^a-z0-9]+", "-", html.unescape(text).lower()).strip("-")
+
+
+def link_label(url, text, many_github):
+    if "github.com" in url:
+        return text if many_github and text else "Code"
+    if "tableau.com" in url:
+        return "Dashboard"
+    if "youtube.com" in url:
+        return "Channel"
+    if "lnkd.in" in url or "linkedin.com" in url:
+        return "Submission"
+    return "Live"
+
+
+def public_links(links):
+    shown = [l for l in links if not l["private"]]
+    many = sum("github.com" in l["url"] for l in shown) > 1
+    return [rs_link(l["url"], link_label(l["url"], l["text"], many)) for l in shown]
+
+
+def press_links(text):
+    """Bullets mention the press feature by name; link it like the rest of the site does."""
+    return text.replace("NEWS.am Tech", f'<a href="{PRESS["url"]}" target="_blank" rel="noopener">NEWS.am Tech</a>', 1)
+
+
+def degree_short(e):
+    abbr = re.search(r"\(([^)]+)\)", e["degree"])
+    return f"{abbr.group(1)} {e['field']}" if abbr else (f"{e['degree']}, {e['field']}" if e["degree"] else e["field"])
+
+
+def resume_body():
+    R = RESUME
+    i = "          "
+    s = R["summary"]
+    side = [f'{i}<section class="rs-block">', f"{i}  {rs_h('profile', 'Profile')}"]
+    side += [f"{i}  <p>{esc(p)}</p>" for p in s["paragraphs"][:1]]
+    side += [f'{i}  <ul class="rs-ticks">'] + [f"{i}    <li>{esc(h)}</li>" for h in s["highlights"]] + [f"{i}  </ul>", f"{i}</section>"]
+    side += [f'{i}<section class="rs-block">', f"{i}  {rs_h('skills', 'Skills')}"]
+    for g in R["skills"]:
+        side += [f'{i}  <h3 class="rs-sub">{esc(g["category"])}</h3>',
+                 f'{i}  <ul class="rs-chips">' + "".join(f"<li>{esc(x)}</li>" for x in g["items"]) + "</ul>"]
+    side += [f"{i}</section>", f'{i}<section class="rs-block">', f"{i}  {rs_h('certs', 'Certifications')}", f'{i}  <ul class="rs-certs">']
+    for c in [c for c in R["certifications"] if not c["additional"]]:
+        name = f'<a href="{esc(c["link"])}" target="_blank" rel="noopener">{esc(c["name"])}</a>' if c["link"] else esc(c["name"])
+        side.append(f'{i}    <li><span class="rs-cert-ic" aria-hidden="true">{RS_CERT_ICON}</span><span>{name}<small>{esc(c["issuer"])} · {esc(c["date"])}</small></span></li>')
+    side.append(f"{i}  </ul>")
+    extra = [c for c in R["certifications"] if c["additional"]]
+    if extra:
+        side += [f'{i}  <h3 class="rs-sub">Additional certifications</h3>',
+                 f'{i}  <p class="rs-small">' + " · ".join(f"{esc(c['name'])} ({esc(c['issuer'])}, {esc(c['date'][-4:])})" for c in extra) + "</p>"]
+    for t in R["training"]:
+        side += [f'{i}  <h3 class="rs-sub">Training</h3>', f'{i}  <p class="rs-small"><b>{esc(t["org"])}</b> — {esc(t["title"])}<br><small>{esc(t["dates"])}</small></p>']
+    side += [f"{i}</section>", f'{i}<section class="rs-block">', f"{i}  {rs_h('education', 'Education')}"]
+    for e in R["education"]:
+        small = " · ".join([e["dates"]] + e["bullets"])
+        side.append(f'{i}  <div class="rs-edu"><b>{esc(degree_short(e))}</b><span>{esc(e["school"])}</span><small>{esc(small)}</small></div>')
+    side += [f"{i}</section>", f'{i}<section class="rs-block">', f"{i}  {rs_h('languages', 'Languages')}", f'{i}  <ul class="rs-langs">']
+    for l in R["languages"]:
+        n = LANG_DOTS.get(l["level"].lower())
+        if n is None:
+            raise SystemExit(f"resume: unknown language level {l['level']!r}; add it to LANG_DOTS in tools/build.py")
+        dots = "".join('<i class="on"></i>' if k < n else "<i></i>" for k in range(5))
+        side.append(f'{i}    <li><span>{esc(l["language"])}<small>{esc(l["level"])}</small></span><span class="rs-dots" role="img" aria-label="{n} of 5">{dots}</span></li>')
+    side += [f"{i}  </ul>", f"{i}</section>", f'{i}<section class="rs-block">', f"{i}  {rs_h('interests', 'Interests')}",
+             f'{i}  <ul class="rs-chips rs-chips--soft">' + "".join(f"<li>{esc(x)}</li>" for x in R["interests"]) + "</ul>", f"{i}</section>"]
+
+    body = [f'{i}<section class="rs-block">', f"{i}  {rs_h('experience', 'Professional Experience')}", f'{i}  <ol class="rs-timeline">']
+    for x in R["experience"]:
+        company = esc(x["company"])
+        if x["company"] in COMPANY_URL:
+            company = f'<a href="{COMPANY_URL[x["company"]]}" target="_blank" rel="noopener">{company}</a>'
+        when = " · ".join(v for v in (x["dates"], x["location"]) if v)
+        body += [f'{i}  <li class="rs-xp">',
+                 f'{i}    <div class="rs-xp-top"><h3>{esc(x["title"])} <span class="rs-at">@ {company}</span></h3><span class="rs-date">{esc(when)}</span></div>',
+                 f'{i}    <ul>' + "".join(f"<li>{press_links(esc(b))}</li>" for b in x["bullets"]) + "</ul>", f"{i}  </li>"]
+    body += [f"{i}  </ol>", f"{i}</section>", f'{i}<section class="rs-block">', f"{i}  {rs_h('projects', 'Selected Projects')}"]
+    group = None
+    for rp in R["projects"]:
+        if rp["group"] != group:
+            if group is not None:
+                body.append(f"{i}  </div>")
+            group = rp["group"]
+            body += [f'{i}  <h3 class="rs-group">{esc(group)}</h3>', f'{i}  <div class="rs-cards">']
+        sp = site_project(rp)
+        links = ([rs_link(ppath(sp), "Details")] if sp else []) + public_links(rp["links"])
+        year = " · ".join(v for v in (rp["date"], rp["note"] if len(rp["note"]) <= 20 else "") if v)  # long notes stay in kb.json
+        body += [f'{i}    <article class="rs-card">',
+                 f'{i}      <div class="rs-card-top"><h4>{esc(plain(sp["title"]) if sp else rp["name"])}</h4>'
+                 + (f'<span class="rs-year">{esc(year)}</span>' if year else "") + "</div>",
+                 f"{i}      <p>{esc(rp['bullets'][0])}</p>"]
+        if rp["tech"]:
+            body.append(f'{i}      <p class="rs-tech">{" · ".join(esc(t) for t in rp["tech"])}</p>')
+        if links:
+            body.append(f'{i}      <p class="rs-links">{"".join(links)}</p>')
+        body.append(f"{i}    </article>")
+    body += [f"{i}  </div>", f"{i}</section>", f'{i}<section class="rs-block">', f"{i}  {rs_h('community', 'Teaching &amp; Community')}", f'{i}  <div class="rs-cards">']
+    cards = [(c["title"], c["date"], c["bullets"], c["links"]) for c in R["community"]]
+    cards += [(f"Hackathon — {h['title']}", " · ".join(v for v in (h["date"], re.sub(r"\s+Hackathon$", "", h["event"].split(" — ")[0])) if v), h["bullets"][:1], h["links"]) for h in R["hackathons"]]
+    for title, when, text, links in cards:
+        body += [f'{i}    <article class="rs-card">', f'{i}      <div class="rs-card-top"><h4>{esc(title)}</h4><span class="rs-year">{esc(when)}</span></div>',
+                 f"{i}      <p>{esc(' '.join(text))}</p>"]
+        if public_links(links):
+            body.append(f'{i}      <p class="rs-links">{"".join(public_links(links))}</p>')
+        body.append(f"{i}    </article>")
+    body += [f"{i}  </div>", f"{i}</section>"]
+    ind = lambda lines: "\n".join("  " + l for l in lines)  # noqa: E731
+    return ("<!-- build:resume -->\n        <div class=\"rs-grid\">\n        <aside class=\"rs-side\">\n" + ind(side)
+            + "\n        </aside>\n        <div class=\"rs-body\">\n" + ind(body) + "\n        </div>\n        </div>\n        <!-- /build:resume -->")
+
+
+# ------------------------------------------------- kb.json: quotable third-person facts for "Ask about Amir"
+
+PAST_IRREGULAR = {"Built", "Led", "Ran", "Made", "Wrote", "Found", "Took", "Set", "Kept", "Grew", "Taught", "Won", "Gave", "Held",
+                  "Brought", "Began", "Drove", "Chose", "Sent", "Spent", "Put", "Met", "Became", "Shipped", "Split", "Rebuilt", "Undertook"}
+PASSIVE = {"Featured", "Ranked", "Sponsored", "Selected", "Awarded", "Invited", "Nominated"}
+STATE = {"Experienced", "Interested", "Hands-on", "Based", "Currently"}
+BASE_VERBS = {"Create", "Mentor", "Build", "Lead", "Help", "Run", "Teach", "Write", "Develop", "Manage", "Work", "Design", "Host", "Organize", "Make"}
+SUBJECT_START = {"The", "This", "These", "Every", "Each", "One", "All", "Both"}
+VOWEL_SOUND = re.compile(r"^(?:[AEIOU]|(?:[FHLMNRSX])[A-Z0-9])")
+PRONOUNS = [(r"\bmy\b", "his"), (r"\bMy\b", "His"), (r"\bI\b", "he"), (r"\bme\b", "him"), (r"\bmyself\b", "himself"), (r"\bmine\b", "his")]
+KB_ALLOWED_URLS = ("linkedin.com/in/binahayat00", "amir-zare.com")
+
+
+def lower_first(s, title_case=False):
+    """Lowercase the first letter unless the word is an acronym or brand (AI, GenAI, DevOps) or, in lists,
+    the start of a Title Case name ("Data Platform Engineering")."""
+    words = s.split(" ")
+    w = words[0]
+    if any(c.isupper() or c.isdigit() for c in w[1:]):
+        return s
+    if title_case and len(words) > 1 and words[1][:1].isupper():
+        return s
+    return s[:1].lower() + s[1:]
+
+
+def article(s):
+    return "an" if VOWEL_SOUND.match(s) else "a"
+
+
+def finish(s):
+    s = re.sub(r"\s+", " ", html.unescape(s)).strip().rstrip(";,: ")
+    for pat, rep in PRONOUNS:
+        s = re.sub(pat, rep, s)
+    s = s[:1].upper() + s[1:]
+    return s if s.endswith((".", "!", "?")) else s + "."
+
+
+def split_facts(text):
+    """One fact per sentence: split on sentence ends, on '; ' and ' — ' before a verb clause."""
+    text = re.sub(r"\s*[—-]\s*live at \S+", "", text)
+    out = []
+    for sent in re.split(r"(?<=[.!?])\s+(?=[A-Z])", text):
+        out += [x for x in re.split(r";\s+(?=(?:\w+ly )?(?:\w+ing|\w+ed|built|led|made)\b)|\s+—\s+(?=(?:\w+ly )?\w+ed\b)", sent) if x.strip()]
+    return out
+
+
+def third(text, prefix="", subject="Amir", noun_subject=None):
+    """Turn a resume bullet into a standalone third-person fact, starting from the original wording.
+    prefix: context like "At HireToDo, "; subject: what a bare noun phrase or passive verb is about."""
+    noun_subject = noun_subject or subject
+    words = text.split(" ")
+    w = words[0]
+    nxt = words[1] if len(words) > 1 else ""
+    lw = lower_first(text)
+    if w == "Roadmap:":
+        return f"The roadmap for {noun_subject} includes {text.split(':', 1)[1].strip()}"
+    if w in PASSIVE:
+        return f"{noun_subject} was {lw}"
+    if w == "Built" and nxt == "with":
+        return f"{noun_subject} is {lw}"
+    if w == "This" and nxt in ("is", "was"):
+        return f"{noun_subject} {text.split(' ', 1)[1]}"
+    if w.endswith(",") or text.startswith(("For example,", "For instance,", "In addition,", "In total,")):
+        return f"{prefix}{lw}" if prefix else text
+    if w == "Deliberately":
+        return f"{noun_subject} uses a {lw}"
+    if w == "Live":
+        return f"{noun_subject} is {lw}"
+    if w in STATE:
+        return f"{prefix}Amir is {lw}"
+    if w.endswith("ly") and nxt.endswith("ed"):
+        return f"{prefix}Amir {lw}"
+    if w in SUBJECT_START:
+        return f"{prefix}{lw}" if prefix else text
+    if w.endswith("ing"):
+        return f"{prefix}Amir is {lw}"
+    if w.endswith("ed") or w in PAST_IRREGULAR:
+        return f"{prefix}Amir {lw}"
+    if w in BASE_VERBS:
+        return f"{prefix}Amir {lw.replace(w.lower(), w.lower() + ('es' if w.endswith(('sh', 'ch')) else 's'), 1)}"
+    if w.endswith("s") and not w.endswith("ss") and w[:1].isupper() and w not in ("Tools", "APIs"):
+        return f"{noun_subject} {lw}"
+    if w[:1].isupper():
+        return f"{noun_subject} is {article(text)} {text}"
+    raise SystemExit(f"kb.json: can't turn this resume line into a third-person fact: {text!r}")
+
+
+def facts(text, prefix="", subject="Amir", noun_subject=None):
+    return [finish(third(f[:1].upper() + f[1:], prefix, subject, noun_subject)) for f in split_facts(text)]
+
+
+def kb_url(path):
+    return SITE["url"] + path
+
+
+def years_of_experience():
+    m = re.search(r"(\d+\+? years)", " ".join(RESUME["summary"]["paragraphs"]))
+    return m.group(1) if m else ""
+
+
+def since(dates):
+    return dates.split(" – ")[0]
+
+
+def current(x):
+    return x["dates"].endswith("Present")
+
+
+def kb_entries():
+    R = RESUME
+    s = R["summary"]
+    profile = []
+    for para in s["paragraphs"]:
+        for f in split_facts(para):
+            if f.startswith("Founder"):
+                profile.append(finish("Amir is the " + lower_first(f)))
+            elif f.split(" ")[0] in STATE or f.split(" ")[0].endswith("ed") or f.split(" ")[0] in PAST_IRREGULAR:
+                profile.append(finish(third(f)))
+            else:
+                profile.append(finish(f"Amir Zare is {article(f)} {f}"))
+    if s["highlights"]:
+        profile.append(finish("Amir has hands-on experience with " + join_items([lower_first(h, title_case=True) for h in s["highlights"]])))
+    profile.append(finish(f"Amir is based in {R['location']}"))
+    profile.append(finish("Amir has worked at " + join_items([x["company"] for x in R["experience"]])))
+    if R["interests"]:
+        profile.append(finish("Amir's professional interests include " + join_items([lower_first(x, title_case=True) for x in R["interests"]])))
+    profile.append(finish("Amir can be contacted through LinkedIn (linkedin.com/in/binahayat00) or amir-zare.com"))
+    out = [{"id": "profile", "title": "Profile", "url": kb_url("/about/"), "sentences": profile}]
+
+    skills = []
+    for g in R["skills"]:
+        cat = " ".join(lower_first(w) for w in g["category"].split(" "))
+        if cat.endswith("languages"):
+            skills.append(finish(f"Amir's {cat} include {join_items(g['items'])}"))
+        elif cat.endswith("s") and not cat.endswith("analytics"):
+            skills.append(finish(f"Amir's skills in {cat} include {join_items(g['items'])}"))
+        else:
+            skills.append(finish(f"Amir's {cat} skills include {join_items(g['items'])}"))
+    out.append({"id": "skills", "title": "Skills", "url": kb_url("/resume.html"), "sentences": skills})
+
+    for x in R["experience"]:
+        where = f", in {x['location']}" if x["location"] else ""
+        head = (f"Amir has worked at {x['company']} as {x['title']} since {since(x['dates'])}{where}" if current(x)
+                else f"Amir worked at {x['company']} as {x['title']} from {x['dates'].replace(' – ', ' to ')}{where}")
+        sents = [finish(head)]
+        for b in x["bullets"]:
+            sents += facts(b, f"At {x['company']}, ", noun_subject=x["company"])
+        out.append({"id": "experience-" + slug(x["company"]), "title": f"{x['company']} — {x['title']}", "url": kb_url("/resume.html"), "sentences": sents})
+
+    seen = set()
+    for rp in R["projects"]:
+        sp = site_project(rp)
+        pid = "project-" + (sp["slug"] if sp else slug(rp["name"]))
+        if pid in seen:
+            raise SystemExit(f"kb.json: two resume projects map to {pid}")
+        seen.add(pid)
+        public = [l["url"] for l in rp["links"] if not l["private"] and "github.com" in l["url"]] + [l["url"] for l in rp["links"] if not l["private"]]
+        url = kb_url(ppath(sp)) if sp else (public[0] if public else kb_url("/resume.html"))
+        full = f"{rp['name']} — {rp['subtitle']}" if rp["subtitle"] else rp["name"]
+        when = f" ({rp['date']}{', ' + rp['note'] if rp['note'] else ''})" if rp["date"] else ""
+        sents = [finish(f"{full}{when} is one of Amir Zare's projects")]
+        for b in rp["bullets"]:
+            sents += facts(b, f"In {rp['name']}, ", noun_subject=rp["name"])
+        if rp["tech"]:
+            sents.append(finish(f"{rp['name']} uses {join_items(rp['tech'])}"))
+        out.append({"id": pid, "title": full, "url": url, "sentences": sents})
+
+    training = []
+    for t in R["training"]:
+        training.append(finish(f"Amir took the {t['title']} at {t['org']} ({t['dates']})"))
+        for b in t["bullets"]:
+            training += facts(b, f"In the {t['org']} {t['title']}, ", noun_subject=f"The {t['org']} {t['title']}")
+    out.append({"id": "training", "title": "Professional training", "url": kb_url("/resume.html"), "sentences": training})
+
+    certs = []
+    for c in R["certifications"]:
+        for name in c["items"] or [c["name"]]:
+            certs.append(finish(f"Amir completed {name} ({c['issuer']}, {c['date']})"))
+        for d in c["details"]:
+            certs += facts(d, f"In {c['name']}, ", noun_subject=c["name"])
+    out.append({"id": "certifications", "title": "Certifications", "url": kb_url("/resume.html"), "sentences": certs})
+
+    edu = []
+    for e in R["education"]:
+        if e["degree"]:
+            edu.append(finish(f"Amir earned a {e['degree']} in {e['field']} from {e['school']} ({e['dates']})"))
+        elif e["dates"].endswith("Present"):
+            edu.append(finish(f"Amir has studied {e['field']} at {e['school']} since {since(e['dates'])}"))
+        else:
+            edu.append(finish(f"Amir studied {e['field']} at {e['school']} ({e['dates']})"))
+        for b in e["bullets"]:
+            edu += facts(b, f"At {e['school']}, ", noun_subject=e["school"])
+    out.append({"id": "education", "title": "Education", "url": kb_url("/resume.html"), "sentences": edu})
+
+    out.append({"id": "languages", "title": "Languages", "url": kb_url("/resume.html"),
+                "sentences": [finish(f"Amir speaks {l['language']} ({l['level']})") for l in R["languages"]]})
+
+    community = []
+    for c in R["community"]:
+        title, _, platform = c["title"].partition(" — ")
+        community.append(finish(f"Amir has run his {title} on {platform} since {since(c['date'])}" if c["date"].endswith("Present") and platform
+                                else f"Amir's {c['title']} ran in {c['date']}"))
+        for b in c["bullets"]:
+            community += facts(b, f"On {platform}, " if platform else "", noun_subject=title)
+    for h in R["hackathons"]:
+        event, _, kind = h["event"].partition(" — ")
+        community.append(finish(f"In {h['date']}, Amir took part in the {event} with the {kind.lower() or 'project'} {h['title']}"))
+        for b in h["bullets"]:
+            community += facts(b, f"At the {event}, ", noun_subject=f"The {event}")
+    out.append({"id": "community", "title": "Teaching & community", "url": kb_url("/community/"), "sentences": community})
+    for entry in out:
+        for sent in entry["sentences"]:
+            kb_check(entry["id"], sent)
+    return out
+
+
+def join_items(items):
+    items = list(items)
+    return items[0] if len(items) == 1 else ", ".join(items[:-1]) + (", and " if len(items) > 2 else " and ") + items[-1]
+
+
+def kb_check(eid, sent):
+    rest = sent
+    for ok in KB_ALLOWED_URLS:
+        rest = rest.replace(ok, "")
+    bad = [p for p in (r"https?://", r"www\.", r"[\w-]+\.(?:com|io|org|net|dev|co)\b/?", r"[\w.+-]+@\w", r"\+?\d{3}[ -]\d{3}[ -]\d{3}", r"credential id", r"&[a-z]+;|&#\d+;")
+           if re.search(p, rest, re.I)]
+    if bad:
+        raise SystemExit(f"kb.json: sentence in {eid!r} contains a URL, contact detail or entity ({bad}): {sent!r}")
+
+
+def kb_json():
+    return json.dumps(kb_entries(), ensure_ascii=False, indent=2) + "\n"
+
+
+
+def key_facts():
+    """The "Key facts" list in llms.txt, from the Word master resume."""
+    R = RESUME
+    now = [x for x in R["experience"] if x["dates"].endswith("Present")]
+    first = R["experience"][-1]["dates"].split(" – ")[0]
+    resident = " (Armenian permanent resident)" if "permanent resident" in " ".join(R["summary"]["paragraphs"]) else ""
+    skills = []
+    for g in R["skills"]:
+        for item in g["items"][:3]:
+            short = re.sub(r"\s*\(.*?\)", "", item)
+            if short not in skills:
+                skills.append(short)
+    edu = "; ".join(f"{e['degree'] + ' in ' if e['degree'] else ''}{e['field']}, {e['school']} ({e['dates']})" for e in R["education"])
+    teaching = [f"{c['title']} ({c['date']})" for c in R["community"]] + [f"{TUMO['title']} at TUMO Labs (since {TUMO['dates'].split(' – ')[0]})"]
+    return [f"- Name: {R['name']}",
+            "- Current roles: " + "; ".join(f"{x['title']} at {x['company']} (since {x['dates'].split(' – ')[0]})" for x in now),
+            f"- Location: {R['location']}{resident}",
+            f"- Experience: {YEARS} (professional experience since {first})",
+            "- Core skills: " + ", ".join(skills),
+            f"- Education: {edu}",
+            "- Teaching and community: " + "; ".join(teaching),
+            "- Languages: " + ", ".join(f"{l['language']} ({l['level'].lower()})" for l in R["languages"])]
+
+
 def llms_txt():
     lines = [f"# {SITE['name']}", "", f"> {SITE['description']}", "",
-             "Amir has 7+ years of experience, from enterprise backend engineering (PHP, Laravel) to modern data platforms "
+             f"Amir has {YEARS} of experience, from enterprise backend engineering (PHP, Laravel) to modern data platforms "
              "(Airflow, dbt, Kafka, Flink, BigQuery) and production AI systems (RAG, multi-agent workflows). "
              "DataLayer is ranked #2 in Data Analytics and #6 among software companies in Armenia by F6S.", "",
              "## Pages", "",
              f"- [Home]({SITE['url']}/): overview of skills, projects, experience, and community work",
              f"- [About]({SITE['url']}/about/): background, focus areas, career journey, education, and certifications",
              f"- [Projects]({SITE['url']}/projects/): all projects with problem, approach, and results",
-             f"- [Community]({SITE['url']}/community/): YouTube Python course, GDG Yerevan workshop, mentoring, and events",
+             f"- [Community]({SITE['url']}/community/): YouTube Python course, ML mentoring, hackathons, and events",
              f"- [Resume]({SITE['url']}/resume.html): full resume",
+             f"- [Knowledge base]({SITE['url']}/kb.json): the resume as standalone third-person facts (JSON)",
              f"- [Contact card]({SITE['url']}/connect/): email, LinkedIn, Telegram, and a downloadable contact card",
              "- Translations of Home, About, Community, and Contact card: "
              + ", ".join(f"[{LANG_NAME[c]}]({SITE['url']}{lpath(c, 'home')})" for c in LOCAL_LANGS), "",
              "## Press", "",
              f"- [{PRESS['outlet']}: {PRESS['headline']}]({PRESS['url']}) ({PRESS['date']}): interview with Amir Zare about DataLayer at Seaside Startup Summit Armenia 2026", "",
              "## Key facts", "",
-             "- Name: Amir Zare",
-             "- Role: AI & Data Engineer; Founder of DataLayer (since January 2024)",
-             "- Location: Yerevan, Armenia (Armenian permanent resident)",
-             "- Experience: 7+ years (backend engineering since 2019, data and AI platforms since 2024)",
-             "- Core skills: Python, SQL, Apache Airflow, dbt, Kafka, Flink, Spark, BigQuery, DuckDB, FastAPI, Laravel, RAG, multi-agent systems, A/B testing",
-             "- Education: B.E. in Computer Software Engineering, Yazd University (2018-2022); Machine Learning program, TUMO Labs (2026)",
-             "- Teaching: weekly Python course on YouTube (@AmirZareDev); GDG Yerevan multi-agent workshop; ML mentor at TUMO Labs",
-             "- Languages: Persian (native), English (full professional), German, Armenian, Russian (elementary)",
+             ] + key_facts() + [
              "- Availability: open to data engineering, analytics engineering, and AI engineering roles", "",
              "## Frequently asked questions", ""] + [f"### {q}\n\n{a}\n" for q, a in FAQ] + ["## Projects", ""]
     for p in ALL:
@@ -1293,6 +1727,7 @@ def outputs():
                            + "".join(f"User-agent: {b}\n" for b in bots)
                            + f"Allow: /\nDisallow: /connect/amir-zare.vcf\n\nSitemap: {SITE['url']}/sitemap.xml\n")
     files["llms.txt"] = llms_txt()
+    files["kb.json"] = kb_json()
     files["tools/og-pages.json"] = json.dumps(og_specs(), ensure_ascii=False, indent=2) + "\n"
     return files
 

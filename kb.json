@@ -1,0 +1,608 @@
+[
+  {
+    "id": "profile",
+    "title": "Profile",
+    "url": "https://amir-zare.com/about/",
+    "sentences": [
+      "Amir Zare is an AI and Data Engineer with 7+ years of experience building backend systems, data pipelines and analytics products.",
+      "Amir is the founder of DataLayer, an analytics platform for e-commerce sellers.",
+      "Amir is hands-on with Python, advanced SQL, BigQuery, dbt, Airflow and A/B test analysis, plus production LLM applications.",
+      "Amir Zare is an Armenian permanent resident, based in Yerevan and ready to work.",
+      "Amir is experienced in designing ETL/ELT pipelines, orchestrating workflows with Apache Airflow, building APIs and backend architectures, and developing analytics-focused systems using Python, SQL, and cloud technologies.",
+      "Amir transitioned from enterprise backend engineering into modern data platform development, focusing on scalable analytics systems, orchestration frameworks, cloud infrastructure, and AI-assisted data applications.",
+      "Amir is interested in Data Platform Engineering, AI Engineering, and scalable distributed systems.",
+      "Amir has hands-on experience with end-to-end data pipeline development, workflow orchestration with Apache Airflow, backend system architecture and API development, cloud analytics platforms and modern data stacks, RAG systems, embeddings, and AI-assisted workflows, dockerized development environments and CI/CD practices, and large-scale backend systems and enterprise applications.",
+      "Amir is based in Yerevan, Armenia.",
+      "Amir has worked at TUMO Labs, DataLayer, HireToDo, Ardakan Float Glass Company, Paziresh24, and Mahya Pardaz Company.",
+      "Amir's professional interests include Data Platform Engineering, AI Engineering, cloud-native architectures, workflow orchestration systems, distributed systems, modern analytics infrastructure, scalable backend engineering, and LLM-powered data applications.",
+      "Amir can be contacted through LinkedIn (linkedin.com/in/binahayat00) or amir-zare.com."
+    ]
+  },
+  {
+    "id": "skills",
+    "title": "Skills",
+    "url": "https://amir-zare.com/resume.html",
+    "sentences": [
+      "Amir's programming languages include Python, PHP, SQL, and JavaScript.",
+      "Amir's data engineering skills include Apache Airflow, ETL / ELT Pipelines, Data Modeling, dbt, Apache Kafka, DuckDB, Parquet, Data Orchestration, Batch Data Processing, and Analytics Pipelines.",
+      "Amir's skills in cloud platforms include Amazon Web Services (AWS), Google Cloud Platform (GCP), BigQuery, Snowflake, and Azure.",
+      "Amir's backend development skills include Laravel, CakePHP, FastAPI, Flask, GraphQL, REST APIs, Service-Oriented Architecture, and Clean Architecture.",
+      "Amir's AI / GenAI skills include Retrieval-Augmented Generation (RAG), Embeddings & RAG, LLM Integration, Prompt Engineering, Amazon Bedrock, AI-assisted analytics workflows, and MCP concepts and agentic AI exposure.",
+      "Amir's skills in databases include PostgreSQL, MySQL, BigQuery, DuckDB, and NoSQL databases.",
+      "Amir's skills in DevOps / tools include Docker, Git, Linux, CI/CD Concepts, PHPUnit, and Docker Compose.",
+      "Amir's visualization / analytics skills include Streamlit, Dashboard Development, and Analytics Interfaces.",
+      "Amir's analytics skills include Advanced SQL, Product & Marketing Analytics (GA4, Search Console), A/B Test Analysis (significance, confidence intervals, power), Tableau Public, and Streamlit Dashboards."
+    ]
+  },
+  {
+    "id": "experience-tumo-labs",
+    "title": "TUMO Labs — ML Mentor / Volunteer Instructor",
+    "url": "https://amir-zare.com/resume.html",
+    "sentences": [
+      "Amir has worked at TUMO Labs as ML Mentor / Volunteer Instructor since Aug 2026, in Yerevan, Armenia.",
+      "At TUMO Labs, Amir mentors Machine Learning students at TUMO Labs, guiding them through the program with hands-on support on their coursework and projects."
+    ]
+  },
+  {
+    "id": "experience-datalayer",
+    "title": "DataLayer — Founder / AI & Data Engineer",
+    "url": "https://amir-zare.com/resume.html",
+    "sentences": [
+      "Amir has worked at DataLayer as Founder / AI & Data Engineer since Jan 2024, in Yerevan, Armenia.",
+      "At DataLayer, Amir founded and lead DataLayer, an AI-powered analytics startup turning e-commerce sellers' raw sales exports into actionable dashboards (customer segmentation, anomaly and churn detection).",
+      "DataLayer was ranked a Top 2 Data Startup and Top 6 Software Startup in Armenia by F6S (2026).",
+      "At DataLayer, Amir applied for $170K+ in startup credits (Microsoft for Startups, Google for Startups, E2B, DigitalOcean).",
+      "DataLayer was featured in NEWS.am Tech press coverage.",
+      "At DataLayer, Amir is leading pre-seed fundraising and hiring DataLayer's first Growth/BD team member.",
+      "At DataLayer, Amir built dashboard and reporting interfaces using Streamlit.",
+      "At DataLayer, Amir worked with Parquet and DuckDB for efficient analytical data processing and local warehouse-style querying.",
+      "At DataLayer, Amir designed modular architectures for scalable data workflows and backend systems.",
+      "At DataLayer, Amir worked with SQL and NoSQL databases for scalable data storage and retrieval.",
+      "At DataLayer, Amir integrated early AI engineering concepts including embeddings, retrieval workflows, and RAG-inspired analytics systems.",
+      "At DataLayer, Amir built earlier crypto-analytics pipelines and dashboards (Streamlit, DuckDB, Parquet) as part of DataLayer's technical foundation.",
+      "At DataLayer, Amir designed backend ETL/ELT pipelines, APIs, and analytics services using Python, FastAPI, and Apache Airflow."
+    ]
+  },
+  {
+    "id": "experience-hiretodo",
+    "title": "HireToDo — Software Engineer",
+    "url": "https://amir-zare.com/resume.html",
+    "sentences": [
+      "Amir worked at HireToDo as Software Engineer from Dec 2022 to Dec 2023, in Yerevan, Armenia.",
+      "At HireToDo, Amir worked on backend and platform features for a hiring and payment system platform.",
+      "At HireToDo, Amir developed backend systems using Laravel 9/10 and PHP.",
+      "At HireToDo, Amir collaborated on frontend integrations using Vue.js and Nuxt.js.",
+      "At HireToDo, Amir designed and maintained GraphQL APIs and backend services.",
+      "At HireToDo, Amir applied clean architecture and SOLID principles for maintainable and scalable backend systems.",
+      "At HireToDo, Amir wrote unit tests using PHPUnit to improve system reliability and code quality.",
+      "At HireToDo, Amir participated in backend architecture discussions and API design decisions.",
+      "At HireToDo, Amir worked on production-grade backend workflows and database operations."
+    ]
+  },
+  {
+    "id": "experience-ardakan-float-glass-company",
+    "title": "Ardakan Float Glass Company — Software Engineer",
+    "url": "https://amir-zare.com/resume.html",
+    "sentences": [
+      "Amir worked at Ardakan Float Glass Company as Software Engineer from Oct 2021 to Nov 2022.",
+      "At Ardakan Float Glass Company, Amir developed enterprise web applications and internal business systems using Laravel.",
+      "At Ardakan Float Glass Company, Amir built scalable systems handling more than 200,000 product records with optimized database operations.",
+      "At Ardakan Float Glass Company, Amir applied service-oriented architecture and clean code practices for maintainable backend development.",
+      "At Ardakan Float Glass Company, Amir developed multiple production-grade applications for enterprise use cases.",
+      "At Ardakan Float Glass Company, Amir worked on backend logic, reporting systems, and large-scale database interactions.",
+      "At Ardakan Float Glass Company, Amir contributed to scalable application design and long-term maintainability improvements."
+    ]
+  },
+  {
+    "id": "experience-paziresh24",
+    "title": "Paziresh24 — PHP Developer",
+    "url": "https://amir-zare.com/resume.html",
+    "sentences": [
+      "Amir worked at Paziresh24 as PHP Developer from Jun 2021 to Oct 2021.",
+      "At Paziresh24, Amir contributed to backend systems for a high-traffic healthcare platform widely used in local.",
+      "At Paziresh24, Amir worked on backend feature development and production application maintenance.",
+      "At Paziresh24, Amir supported performance optimization and backend stability improvements.",
+      "At Paziresh24, Amir participated in maintaining systems serving large-scale user traffic.",
+      "At Paziresh24, Amir contributed to a healthcare ecosystem associated with over 500K+ mobile application downloads."
+    ]
+  },
+  {
+    "id": "experience-mahya-pardaz-company",
+    "title": "Mahya Pardaz Company — Web Developer",
+    "url": "https://amir-zare.com/resume.html",
+    "sentences": [
+      "Amir worked at Mahya Pardaz Company as Web Developer from Aug 2019 to Jun 2021.",
+      "At Mahya Pardaz Company, Amir developed and maintained web applications using CakePHP 4.",
+      "At Mahya Pardaz Company, Amir built more than 15 custom applications for municipal and enterprise clients.",
+      "At Mahya Pardaz Company, Amir implemented backend business logic and organization-specific workflows.",
+      "At Mahya Pardaz Company, Amir worked on backend architecture and scalable application implementations.",
+      "At Mahya Pardaz Company, Amir mentored junior developers and taught PHP fundamentals.",
+      "At Mahya Pardaz Company, Amir participated in system design and engineering best practice improvements."
+    ]
+  },
+  {
+    "id": "project-agentpages",
+    "title": "AgentPages — Static Site Publishing API for AI Agents",
+    "url": "https://amir-zare.com/projects/agentpages/",
+    "sentences": [
+      "AgentPages — Static Site Publishing API for AI Agents (2026) is one of Amir Zare's projects.",
+      "In AgentPages, Amir built an HTTP API that lets AI agents publish static websites: an agent sends the site files as JSON, gets back a live URL, and can update or delete the site later.",
+      "In AgentPages, Amir separated the API service from the sites service.",
+      "In AgentPages, the sites service is read-only, only reads published files and never touches the database.",
+      "In AgentPages, Amir served untrusted uploaded pages from a separate origin inside a CSP sandbox, and built a sandbox test page that checks the isolation guarantees (opaque origin; storage, cookies and fetch blocked).",
+      "In AgentPages, Amir added API-key bearer authentication, upload size limits, and a web dashboard for publishing, updating and deleting sites from a folder.",
+      "AgentPages uses Python, FastAPI, SQLite, and Content Security Policy."
+    ]
+  },
+  {
+    "id": "project-chess-vs-ai",
+    "title": "Chess vs AI — LLM Game Opponent",
+    "url": "https://github.com/mrprogrammingx/chess-ai",
+    "sentences": [
+      "Chess vs AI — LLM Game Opponent (2026) is one of Amir Zare's projects.",
+      "In Chess vs AI, Amir built a playable pygame chess game with three opponents: a random mover, Stockfish, and an LLM through OpenRouter that comments on its moves.",
+      "In Chess vs AI, Amir made the LLM opponent reliable: the model gets the board position (FEN), the move history and the legal moves, and answers in structured JSON.",
+      "In Chess vs AI, the code checks each move is legal, retries up to 3 times, then falls back to a random move, and the UI shows how many illegal attempts there were.",
+      "Chess vs AI records the full game in standard chess notation (PGN) and keeps API keys local in an env file.",
+      "Chess vs AI uses Python, pygame, python-chess, Stockfish, and OpenRouter (LLM)."
+    ]
+  },
+  {
+    "id": "project-voice-narrator",
+    "title": "Voice Narrator — Local Voice Cloning for Tutorial Production",
+    "url": "https://amir-zare.com/projects/voice-narrator/",
+    "sentences": [
+      "Voice Narrator — Local Voice Cloning for Tutorial Production (2026) is one of Amir Zare's projects.",
+      "In Voice Narrator, Amir built a fully local voice-cloning narration tool for programming tutorials, so there are no recurring fees and recordings never leave the machine.",
+      "In Voice Narrator, Amir designed a two-stage pipeline after testing showed direct cloning gave inconsistent accents: the base TTS model speaks each sentence, then voice conversion re-voices it to match the reference recording.",
+      "In Voice Narrator, Amir added batch processing (the model loads once, and one failing script doesn’t stop the rest), config-driven defaults, a custom pronunciation dictionary, and MP3 export.",
+      "In Voice Narrator, Amir checked the model licenses and kept the built-in AI-audio watermark on every output.",
+      "Voice Narrator uses Python, Chatterbox TTS, PyTorch, Hugging Face, and ffmpeg."
+    ]
+  },
+  {
+    "id": "project-uigen",
+    "title": "UIGen — AI React Component Generator",
+    "url": "https://amir-zare.com/resume.html",
+    "sentences": [
+      "UIGen — AI React Component Generator (2026, Anthropic “Claude Code in Action” course project) is one of Amir Zare's projects.",
+      "In UIGen, Amir worked on an AI-powered React component generator that uses Claude, with a live preview, a virtual file system, a code editor and saved projects.",
+      "In UIGen, Amir maintained dependency security by pinning versions and patching a critical Next.js vulnerability (CVE-2025-55182) instead of running blanket audit fixes.",
+      "UIGen uses Next.js, React, TypeScript, Prisma, and Anthropic Claude API."
+    ]
+  },
+  {
+    "id": "project-cookie-cats-ab-test",
+    "title": "A/B Test Analysis — Cookie Cats Game Gate Experiment",
+    "url": "https://amir-zare.com/projects/cookie-cats-ab-test/",
+    "sentences": [
+      "A/B Test Analysis — Cookie Cats Game Gate Experiment (2026) is one of Amir Zare's projects.",
+      "In A/B Test Analysis, Amir analyzed a public mobile-game A/B test with 90,189 players to see whether moving the first progress gate from level 30 to 40 affects retention and engagement.",
+      "In A/B Test Analysis, Amir found a statistically significant 0.82 pp (4.3% relative) drop in 7-day retention (95% CI −1.33 to −0.31 pp; Holm-adjusted p = 0.0047), and recommended keeping the gate at level 30.",
+      "In A/B Test Analysis, Amir ran experiment-validity checks: sample ratio mismatch (chi-square), duplicate and missing data checks, outlier handling with medians and rank tests, minimum-detectable-effect power analysis, and Holm-Bonferroni correction for multiple tests.",
+      "In A/B Test Analysis, Amir labelled post-treatment segmentation as descriptive only, and published an interactive Tableau Public dashboard.",
+      "A/B Test Analysis uses Python, pandas, SciPy, statsmodels, Matplotlib, and Tableau."
+    ]
+  },
+  {
+    "id": "project-moodscape",
+    "title": "MoodScape — Music Mood Clustering Toolkit",
+    "url": "https://github.com/mrprogrammingx/MoodScape-Clustering",
+    "sentences": [
+      "MoodScape — Music Mood Clustering Toolkit (2026, TUMO Labs) is one of Amir Zare's projects.",
+      "In MoodScape, Amir built a configurable clustering toolkit that groups music tracks by mood from numeric audio features, with YAML/CLI batch runs that keep each run’s outputs separate.",
+      "In MoodScape, Amir added preprocessing options (standard or min-max scaling, feature selection, PCA), silhouette-based K selection, and evaluation with silhouette, Davies–Bouldin and Calinski–Harabasz scores.",
+      "In MoodScape, Amir built run comparison (Adjusted Rand Index, NMI, pairwise stability heatmaps), named snapshots of saved models for predicting on new data, and exportable evidence reports.",
+      "In MoodScape, Amir wrote unit tests for preprocessing, snapshots and comparison utilities.",
+      "MoodScape uses Python, scikit-learn, pandas, NumPy, Matplotlib, and YAML."
+    ]
+  },
+  {
+    "id": "project-multi-label-text-classification-system",
+    "title": "Multi-Label Text Classification System — Content Moderation",
+    "url": "https://github.com/mrprogrammingx/Multi-Label-Text-Classification-System",
+    "sentences": [
+      "Multi-Label Text Classification System — Content Moderation (2026, TUMO Labs) is one of Amir Zare's projects.",
+      "In Multi-Label Text Classification System, Amir built an end-to-end multi-label classifier for moderation labels on online comments: load → clean → vectorize → train → evaluate → save.",
+      "In Multi-Label Text Classification System, Amir used TF-IDF features with a One-vs-Rest logistic regression baseline, with per-label evaluation and error analysis.",
+      "In Multi-Label Text Classification System, Amir saved the model and vectorizer as artifacts for reproducible inference.",
+      "Multi-Label Text Classification System uses Python, scikit-learn, pandas, NumPy, Jupyter, and joblib."
+    ]
+  },
+  {
+    "id": "project-ml-music-recommender",
+    "title": "ML Music Recommender",
+    "url": "https://github.com/mrprogrammingx/ml_basic_music_recommender",
+    "sentences": [
+      "ML Music Recommender (2026) is one of Amir Zare's projects.",
+      "In ML Music Recommender, Amir implemented a complete ML workflow: data cleaning, exploratory analysis, feature engineering, model training and evaluation.",
+      "ML Music Recommender uses Python, scikit-learn, pandas, and Seaborn."
+    ]
+  },
+  {
+    "id": "project-hands-on-machine-learning",
+    "title": "Hands-On Machine Learning — Exercise Implementations",
+    "url": "https://github.com/mrprogrammingx/hands_on_machine_learning_book",
+    "sentences": [
+      "Hands-On Machine Learning — Exercise Implementations (2026) is one of Amir Zare's projects.",
+      "In Hands-On Machine Learning, Amir implemented the exercises from Hands-On Machine Learning with Scikit-Learn and TensorFlow to strengthen core ML concepts."
+    ]
+  },
+  {
+    "id": "project-airflow-astronomer-project",
+    "title": "Airflow / Astronomer Project",
+    "url": "https://github.com/mrprogrammingx/astro-project",
+    "sentences": [
+      "Airflow / Astronomer Project (2026) is one of Amir Zare's projects.",
+      "In Airflow / Astronomer Project, Amir built and ran Airflow DAGs locally with the Astro CLI, using the TaskFlow API and dynamic task mapping.",
+      "Airflow / Astronomer Project is companion work to the Astronomer Airflow 3 certification."
+    ]
+  },
+  {
+    "id": "project-barbershop-queue",
+    "title": "Barbershop Queue — Booking & Queue Management System",
+    "url": "https://amir-zare.com/projects/barbershop-queue/",
+    "sentences": [
+      "Barbershop Queue — Booking & Queue Management System (2026) is one of Amir Zare's projects.",
+      "In Barbershop Queue, Amir built a full-stack booking and walk-in queue system: customers book or check in online, and admins get an email for each new check-in.",
+      "In Barbershop Queue, Amir developed a FastAPI backend with SQLAlchemy (SQLite in development, ready for Postgres) for check-in, queue position, call-next, done and no-show flows.",
+      "In Barbershop Queue, Amir built a React admin panel (dashboard, history, customers, settings) protected by signed session-cookie authentication, plus a no-JavaScript check-in page as a fallback.",
+      "In Barbershop Queue, Amir built an animated public marketing site with React, Tailwind and Framer Motion, with a booking form connected to the same API.",
+      "In Barbershop Queue, the backend serves both the API and the built frontend.",
+      "In Barbershop Queue, Amir added switchable email providers (Resend or SendGrid) with a dry-run mode for development.",
+      "Barbershop Queue uses Python, FastAPI, SQLAlchemy, Pydantic, Jinja2, React, Vite, Tailwind CSS, Framer Motion, and Resend/SendGrid."
+    ]
+  },
+  {
+    "id": "project-mayad-tour",
+    "title": "Mayad Tour — Travel Agency Website",
+    "url": "https://github.com/mrprogrammingx/mayadtour",
+    "sentences": [
+      "Mayad Tour — Travel Agency Website (2026) is one of Amir Zare's projects.",
+      "In Mayad Tour, Amir built a static website for a travel agency."
+    ]
+  },
+  {
+    "id": "project-mail-tm-temporary-email-service",
+    "title": "Mail.tm Temporary Email Service",
+    "url": "https://github.com/mrprogrammingx/generate-email",
+    "sentences": [
+      "Mail.tm Temporary Email Service (2025) is one of Amir Zare's projects.",
+      "In Mail.tm Temporary Email Service, Amir built a Laravel service class around the Mail.tm API that creates temporary inboxes, authenticates, and fetches the latest message matching a subject, for automated email testing.",
+      "In Mail.tm Temporary Email Service, Amir added typed exceptions for invalid state and HTTP failures.",
+      "Mail.tm Temporary Email Service uses PHP, Laravel, and REST APIs."
+    ]
+  },
+  {
+    "id": "project-laravel-design-patterns-series",
+    "title": "Laravel Design Patterns Series",
+    "url": "https://github.com/mrprogrammingx/observer-factory-design-patterns",
+    "sentences": [
+      "Laravel Design Patterns Series (2025) is one of Amir Zare's projects.",
+      "In Laravel Design Patterns Series, Amir implemented Gang of Four design patterns in Laravel.",
+      "In Laravel Design Patterns Series, for example, Observer handles user-model lifecycle events, and Factory switches between payment gateways (PayPal/Stripe) at runtime.",
+      "Laravel Design Patterns Series uses PHP and Laravel."
+    ]
+  },
+  {
+    "id": "project-flowfleet",
+    "title": "FlowFleet — Real-Time Logistics Data Platform",
+    "url": "https://amir-zare.com/projects/flowfleet/",
+    "sentences": [
+      "FlowFleet — Real-Time Logistics Data Platform (2026) is one of Amir Zare's projects.",
+      "In FlowFleet, Amir designed and built a production-style real-time streaming platform for a fictional delivery company, delivered in 8 phases, each with working code, tests and architecture notes.",
+      "In FlowFleet, Amir implemented change data capture from PostgreSQL/PostGIS with Debezium, covering snapshot vs. streaming modes, tombstones, and replication slot and connector recovery.",
+      "In FlowFleet, Amir designed Kafka topics with Avro and Schema Registry, built a high-volume driver-location simulator, and tested consumer-group rebalancing.",
+      "In FlowFleet, Amir developed Apache Flink jobs in Java 21 using keyed state, event-time windows, watermarks, timers and side outputs, including broadcast-state geofencing with JTS.",
+      "In FlowFleet, Amir built sinks to TimescaleDB and ClickHouse with batching, retries and idempotent writes, plus BigQuery for analytics.",
+      "In FlowFleet, Amir engineered for failure: a dead-letter queue for poison messages, late-data handling, checkpoint and savepoint recovery, and backpressure experiments.",
+      "In FlowFleet, Amir deployed on Kubernetes with Helm, the Flink Kubernetes Operator (savepoint-based upgrades) and Argo CD (app-of-apps GitOps).",
+      "In FlowFleet, Amir load-tested from 1k to 50k events/second with a live-adjustable rate generator, end-to-end p50/p95/p99 latency histograms and a ramp harness.",
+      "In FlowFleet, Amir tuned throughput and added the Flink autoscaler and consumer HPA.",
+      "In FlowFleet, Amir added Prometheus and Grafana observability across the pipeline.",
+      "FlowFleet uses Java 21, Spring Boot, PostgreSQL/PostGIS, Debezium, Apache Kafka, Avro, Schema Registry, Apache Flink, TimescaleDB, ClickHouse, BigQuery, Kubernetes, Helm, Argo CD, Prometheus, and Grafana."
+    ]
+  },
+  {
+    "id": "project-ai-phone-assistant",
+    "title": "AI Phone Assistant — Voice Agent Booking System",
+    "url": "https://amir-zare.com/projects/ai-phone-assistant/",
+    "sentences": [
+      "AI Phone Assistant — Voice Agent Booking System (2026) is one of Amir Zare's projects.",
+      "In AI Phone Assistant, Amir built an AI phone assistant for a barbershop on Suisse Line’s voice agent platform for Suisse IT’s Challenge A.",
+      "AI Phone Assistant callers can check services and availability, book, find and cancel appointments, and join a waitlist.",
+      "In AI Phone Assistant, Amir designed a FastAPI booking backend that exposes seven live tools to the agent during calls, with one database as the single source of truth for the website, staff dashboard and phone channel.",
+      "In AI Phone Assistant, Amir prevented double bookings with an atomic booking lock, verified with 12 simultaneous booking requests and with website and phone bookings at the same moment.",
+      "In AI Phone Assistant, Amir made booking and cancellation idempotent so the agent can safely retry after timeouts without creating duplicate appointments.",
+      "In AI Phone Assistant, Amir designed a structured ok/error-code response contract so the agent can always tell the caller what happened, and added a read-back confirmation step before any booking.",
+      "In AI Phone Assistant, Amir shipped a Smart Cancellation Waitlist: consent-first sign-up, freed slots offered oldest-first with time-limited offers, first confirmed booking wins, and 30-day data retention.",
+      "In AI Phone Assistant, Amir secured the public endpoint with token-scoped routes and request-size limits, exposed only the assistant service through a Cloudflare tunnel, and kept names and phone numbers out of logs.",
+      "AI Phone Assistant uses Python, FastAPI, SQLite, Suisse Line AI voice agent, Cloudflare Tunnel, and Pytest."
+    ]
+  },
+  {
+    "id": "project-evidencehub",
+    "title": "EvidenceHub — MySQL Performance & Sharding Platform",
+    "url": "https://amir-zare.com/projects/evidencehub/",
+    "sentences": [
+      "EvidenceHub — MySQL Performance & Sharding Platform (2026, in progress) is one of Amir Zare's projects.",
+      "In EvidenceHub, Amir is building a reference data platform that migrates a deliberately poor legacy MySQL schema to an optimized, sharded design.",
+      "In EvidenceHub, every performance claim is backed by a measured benchmark report.",
+      "In EvidenceHub, Amir set up a 4-shard MySQL 8 cluster with a catalog database and Redis in Docker Compose, plus a synthetic data generator that scales to 20M rows.",
+      "In EvidenceHub, Amir defined 8 mission-critical queries, each with a latency SLO (p95 under 50 ms for point and latest-N lookups), and built a Locust + EXPLAIN ANALYZE benchmark harness that produced the baseline performance report.",
+      "In EvidenceHub, Amir enforced strict engineering standards: mypy --strict, Ruff, Pytest/Hypothesis, GitHub Actions CI with full-history secret scanning, and architecture decision records.",
+      "The roadmap for EvidenceHub includes online schema migration, shard routing and resharding, Kafka ingestion with a DLQ, a Redis-cached FastAPI layer, and a Spark/Iceberg Kimball warehouse orchestrated by Airflow.",
+      "EvidenceHub uses Python 3.12, MySQL 8, Redis, Docker Compose, SQLAlchemy, Alembic, Locust, Pytest, and GitHub Actions."
+    ]
+  },
+  {
+    "id": "project-datalayer-evolution-agent",
+    "title": "DataLayer Evolution Agent — Internal Growth Intelligence System",
+    "url": "https://amir-zare.com/projects/datalayer-evolution-agent/",
+    "sentences": [
+      "DataLayer Evolution Agent — Internal Growth Intelligence System (2026) is one of Amir Zare's projects.",
+      "In DataLayer Evolution Agent, Amir designed and shipped a production system that automates DataLayer's own growth decision-making: a daily batch job pulling product, marketing, and lead data, synthesized via LLM into one prioritized \"Growth Brief\" emailed to the team each morning.",
+      "DataLayer Evolution Agent uses a deliberately minimal, production-safe stack (Flask, PostgreSQL, APScheduler, Docker).",
+      "In DataLayer Evolution Agent, Amir explicitly excluded heavier frameworks (LangChain, vector DBs, Redis, Celery, Kubernetes, multi-agent orchestration) to keep the system auditable, low-risk, and easy to reason about.",
+      "In DataLayer Evolution Agent, Amir implemented least-privilege data access via separately-scoped read-only and write database roles, so a bug in the write path can never compromise the read-only analysis guarantee.",
+      "In DataLayer Evolution Agent, Amir engineered graceful degradation across multiple data sources (internal database, GA4, Search Console, Reddit) — a failed source is logged and surfaced rather than crashing the pipeline.",
+      "In DataLayer Evolution Agent, Amir solved LLM reliability limitations by moving mechanical judgment out of the prompt and into code: metrics precomputed and passed as exact figures, outputs re-sorted deterministically, and a dedicated anti-overclaiming design preventing the model from claiming false causation on low-traffic data.",
+      "In DataLayer Evolution Agent, Amir found and fixed a real data-integrity bug where internal test accounts were being miscounted as paying customers.",
+      "In DataLayer Evolution Agent, Amir delivered in three phases over one month, followed by a structured 8-angle code review that surfaced and fixed 10 bugs pre-production.",
+      "DataLayer Evolution Agent is live in production, running daily against real company data.",
+      "In DataLayer Evolution Agent, Amir extended the agent to find leads and draft customized outreach emails for each prospect; every message is reviewed before it is sent.",
+      "DataLayer Evolution Agent uses Python, Flask, PostgreSQL, APScheduler, Docker, OpenAI SDK via OpenRouter (GPT-4o-mini), Google OAuth (GA4/Search Console), PRAW, and Resend."
+    ]
+  },
+  {
+    "id": "project-crypto-analytics-lakehouse",
+    "title": "Crypto Analytics Data Platform",
+    "url": "https://amir-zare.com/projects/crypto-analytics-lakehouse/",
+    "sentences": [
+      "Crypto Analytics Data Platform (2026) is one of Amir Zare's projects.",
+      "In Crypto Analytics Data Platform, Amir designed and developed an end-to-end crypto analytics lakehouse platform using Python and modern data engineering technologies.",
+      "In Crypto Analytics Data Platform, Amir built scalable data ingestion pipelines for cryptocurrency market data using Apache Kafka and batch ingestion workflows.",
+      "In Crypto Analytics Data Platform, Amir developed distributed data processing pipelines with Apache Spark for large-scale transformation and analytics workloads.",
+      "In Crypto Analytics Data Platform, Amir orchestrated ETL/ELT workflows using Apache Airflow, enabling automated scheduling, monitoring, and dependency management.",
+      "In Crypto Analytics Data Platform, Amir implemented a Lakehouse architecture utilizing Parquet and DuckDB for efficient storage, analytical querying, and data versioning.",
+      "In Crypto Analytics Data Platform, Amir built data transformation layers using dbt, applying modular modeling, testing, and documentation best practices.",
+      "In Crypto Analytics Data Platform, Amir provisioned and managed cloud infrastructure on Google Cloud Platform (GCP) using Terraform following Infrastructure-as-Code principles.",
+      "In Crypto Analytics Data Platform, Amir designed dimensional data models and analytics-ready datasets to support reporting and business intelligence use cases.",
+      "In Crypto Analytics Data Platform, Amir developed interactive dashboards and reporting interfaces for cryptocurrency market insights and trend analysis.",
+      "In Crypto Analytics Data Platform, Amir is currently extending the platform with Snowflake integration, AI-assisted anomaly detection, retrieval-augmented analytics (RAG), and embedding-based search capabilities.",
+      "In Crypto Analytics Data Platform, Amir applied modular architecture principles to support scalability, maintainability, and future cloud-native deployment.",
+      "In Crypto Analytics Data Platform, Amir built a crypto market-data pipeline with hourly Spark ingestion running on GitHub Actions.",
+      "In Crypto Analytics Data Platform, Amir modeled the data in dbt as a 4-layer medallion pipeline (staging, bronze, silver, gold), with not_null and unique tests running in CI against DuckDB and BigQuery.",
+      "In Crypto Analytics Data Platform, Amir published dbt documentation on GitHub Pages.",
+      "In Crypto Analytics Data Platform, Amir stored data as Parquet and queried it with DuckDB.",
+      "In Crypto Analytics Data Platform, Amir built dashboards for cryptocurrency market trends.",
+      "Crypto Analytics Data Platform uses Python, Spark, dbt, DuckDB, BigQuery, and GitHub Actions."
+    ]
+  },
+  {
+    "id": "project-classic-web-based-online-chat-application",
+    "title": "Classic Web-Based Online Chat Application",
+    "url": "https://amir-zare.com/classic-web-based-online-chat-application/",
+    "sentences": [
+      "Classic Web-Based Online Chat Application is one of Amir Zare's projects.",
+      "In Classic Web-Based Online Chat Application, Amir built a Dockerized classic web-based online chat application with backend-focused architecture.",
+      "In Classic Web-Based Online Chat Application, Amir implemented authentication, multi-room systems, private messaging, and session management.",
+      "In Classic Web-Based Online Chat Application, Amir added moderation systems including bans, roles, and room administration.",
+      "In Classic Web-Based Online Chat Application, Amir implemented AFK detection, multi-tab presence logic, unread indicators, and persistent chat history.",
+      "In Classic Web-Based Online Chat Application, Amir added file and image sharing with access control rules.",
+      "In Classic Web-Based Online Chat Application, Amir worked with scalable backend logic and real-time communication concepts.",
+      "In Classic Web-Based Online Chat Application, Amir configured Docker Compose environments and reproducible local development setup."
+    ]
+  },
+  {
+    "id": "project-run-walk",
+    "title": "Run-Walk Data Pipeline",
+    "url": "https://amir-zare.com/run-walk/",
+    "sentences": [
+      "Run-Walk Data Pipeline (2026) is one of Amir Zare's projects.",
+      "In Run-Walk Data Pipeline, Amir designed and implemented an end-to-end batch data pipeline for activity monitoring using Python, Apache Airflow, DuckDB, Parquet, Streamlit, and Flask.",
+      "In Run-Walk Data Pipeline, Amir built ingestion pipelines to process raw CSV activity datasets and convert them into optimized Parquet files within a local data lake architecture.",
+      "In Run-Walk Data Pipeline, Amir developed SQL-based transformation workflows that materialized analytical summary tables inside DuckDB data warehouses.",
+      "In Run-Walk Data Pipeline, Amir created aggregated analytical models including daily_user_summary, daily_activity_counts, and daily_wrist_counts.",
+      "In Run-Walk Data Pipeline, Amir implemented Apache Airflow DAGs orchestrating dataset download, ingestion, and transformation stages.",
+      "In Run-Walk Data Pipeline, Amir developed interactive analytics dashboards using Streamlit for monitoring activity trends and user behavior.",
+      "In Run-Walk Data Pipeline, Amir built lightweight REST-style JSON endpoints using Flask for programmatic data access.",
+      "In Run-Walk Data Pipeline, Amir utilized Parquet-based lakehouse patterns to reduce storage footprint and improve analytical query performance.",
+      "In Run-Walk Data Pipeline, Amir containerized development environments using Docker Compose including Airflow services.",
+      "In Run-Walk Data Pipeline, Amir implemented automated testing workflows with Pytest and CI-oriented sample dataset generation.",
+      "In Run-Walk Data Pipeline, Amir applied modern Data Engineering concepts including ETL / ELT, Data Lakes, Data Warehousing, Workflow Orchestration, Batch Processing, Analytics Engineering, and Data Modeling."
+    ]
+  },
+  {
+    "id": "project-analytics",
+    "title": "Claude Code Analytics Platform",
+    "url": "https://amir-zare.com/analytics/",
+    "sentences": [
+      "Claude Code Analytics Platform (2026) is one of Amir Zare's projects.",
+      "In Claude Code Analytics Platform, Amir built a complete analytics platform for AI telemetry monitoring using Python, DuckDB, FastAPI, Streamlit, and machine learning workflows.",
+      "In Claude Code Analytics Platform, Amir designed ingestion pipelines capable of processing JSONL telemetry logs and employee datasets into analytical warehouse structures.",
+      "In Claude Code Analytics Platform, Amir developed ETL workflows for parsing, transforming, and normalizing large-scale telemetry events.",
+      "In Claude Code Analytics Platform, Amir implemented DuckDB-based analytical storage optimized for local OLAP workloads.",
+      "In Claude Code Analytics Platform, Amir built interactive dashboards using Streamlit to visualize Token usage, Model utilization, Peak activity periods, and User behavior metrics.",
+      "In Claude Code Analytics Platform, Amir developed FastAPI services exposing analytics APIs including events, metrics, user insights, and forecasting endpoints.",
+      "In Claude Code Analytics Platform, Amir implemented predictive analytics workflows using Scikit-Learn RandomForest models and forecasting pipelines.",
+      "In Claude Code Analytics Platform, Amir built real-time simulation tooling for producer-consumer telemetry generation and event streaming demonstrations.",
+      "In Claude Code Analytics Platform, Amir developed automated orchestration scripts enabling one-command deployment and execution of the complete analytics pipeline.",
+      "In Claude Code Analytics Platform, Amir implemented software quality practices including Pytest, Ruff, Black, Isort, Pre-commit Hooks, and GitHub Actions CI.",
+      "In Claude Code Analytics Platform, Amir applied modern Data Engineering and Analytics Engineering practices including ETL Pipelines, Data Warehousing, Analytics APIs, Feature Engineering, Forecasting Models, Dashboard Development, and Data Visualization."
+    ]
+  },
+  {
+    "id": "project-job-hunter",
+    "title": "Job Hunter — 7-Agent AI Job Search Platform",
+    "url": "https://amir-zare.com/projects/job-hunter/",
+    "sentences": [
+      "Job Hunter — 7-Agent AI Job Search Platform (2026) is one of Amir Zare's projects.",
+      "In Job Hunter, Amir architected a production-grade multi-agent job search platform with 7 specialized AI agents handling job discovery, resume tailoring, cover letter generation, company research, outreach drafting, interview prep, and application tracking.",
+      "Job Hunter is built with FastAPI backend, Next.js 14 frontend, JWT authentication, SSE streaming for real-time agent status delivery, and SQLite/PostgreSQL persistence.",
+      "Job Hunter demonstrates end-to-end agentic AI system design: agent orchestration, tool-calling, inter-agent communication, and async task execution."
+    ]
+  },
+  {
+    "id": "project-gdg-yerevan-multi-agent-workshop",
+    "title": "GDG Yerevan — Multi-Agent Workshop (Google ADK + A2A)",
+    "url": "https://amir-zare.com/projects/gdg-yerevan-multi-agent-workshop/",
+    "sentences": [
+      "GDG Yerevan — Multi-Agent Workshop (Google ADK + A2A) (Jun 2026) is one of Amir Zare's projects.",
+      "In GDG Yerevan, Amir took part in a hands-on GDG Yerevan (Google Developer Groups) workshop on building multi-agent systems with Google’s Agent Development Kit (ADK) for TypeScript.",
+      "In GDG Yerevan, Amir built three independent AI agents (inventory, orders, and pricing with Google Search), then an orchestrator agent that coordinates them over the A2A (Agent-to-Agent) protocol.",
+      "In GDG Yerevan, Amir worked with an agent server and debug console that showed every tool call, SSE chat and A2A endpoints, and a seeded SQLite dataset, and checked his work against deterministic tests.",
+      "GDG Yerevan uses TypeScript, Node.js, Google ADK, Gemini, A2A protocol, and SQLite."
+    ]
+  },
+  {
+    "id": "project-news-aggregator-api",
+    "title": "News Aggregator API",
+    "url": "https://github.com/mrprogrammingx/NewsAggregator",
+    "sentences": [
+      "News Aggregator API (2025) is one of Amir Zare's projects.",
+      "In News Aggregator API, Amir developed a production-ready news aggregation platform using Laravel, MySQL, Docker, and PHPUnit.",
+      "In News Aggregator API, Amir integrated multiple external news providers including NewsAPI, New York Times, and The Guardian.",
+      "In News Aggregator API, Amir implemented Adapter, Factory, Repository, and Service design patterns to create extensible and maintainable integrations.",
+      "In News Aggregator API, Amir designed scheduled data ingestion workflows using Laravel Scheduler for automated content synchronization.",
+      "In News Aggregator API, Amir built advanced filtering, search, pagination, and categorization APIs.",
+      "In News Aggregator API, Amir implemented comprehensive testing using PHPUnit and Mockery.",
+      "In News Aggregator API, Amir developed scalable REST APIs supporting frontend news applications.",
+      "In News Aggregator API, Amir added centralized logging, error handling, and monitoring capabilities."
+    ]
+  },
+  {
+    "id": "project-laravel-queue-pipeline",
+    "title": "Laravel Queue Performance Benchmark System",
+    "url": "https://amir-zare.com/projects/laravel-queue-pipeline/",
+    "sentences": [
+      "Laravel Queue Performance Benchmark System (2025) is one of Amir Zare's projects.",
+      "In Laravel Queue Performance Benchmark System, Amir built a Laravel-based benchmarking system to compare synchronous and asynchronous processing strategies for large-scale datasets.",
+      "In Laravel Queue Performance Benchmark System, Amir seeded and processed high-volume datasets including 200,000 Orders, 1,000,000 Items, and 1,000 Products.",
+      "In Laravel Queue Performance Benchmark System, Amir implemented invoice generation workflows for thousands of orders and evaluated application performance under heavy workloads.",
+      "In Laravel Queue Performance Benchmark System, Amir compared Laravel Eloquent ORM and Query Builder approaches for large dataset processing.",
+      "In Laravel Queue Performance Benchmark System, Amir designed queue-based background processing pipelines using Redis and Laravel Queue Workers.",
+      "In Laravel Queue Performance Benchmark System, Amir integrated Laravel Horizon for queue monitoring, job management, and operational visibility.",
+      "In Laravel Queue Performance Benchmark System, Amir implemented asynchronous PDF generation workflows using Laravel DomPDF.",
+      "In Laravel Queue Performance Benchmark System, Amir demonstrated significant reduction in request execution time and elimination of timeout issues through background job processing.",
+      "In Laravel Queue Performance Benchmark System, Amir applied backend engineering concepts including Asynchronous Processing, Distributed Task Execution, Queue-Based Architectures, Redis, Performance Optimization, Background Job Processing, and Scalability Engineering."
+    ]
+  },
+  {
+    "id": "project-env-loader-php-package",
+    "title": "Env Loader PHP Package",
+    "url": "https://github.com/mrprogrammingx/env-loader",
+    "sentences": [
+      "Env Loader PHP Package (2025) is one of Amir Zare's projects.",
+      "In Env Loader PHP Package, Amir developed a lightweight PHP package for parsing and managing .env configuration files in Laravel and PHP applications.",
+      "In Env Loader PHP Package, Amir implemented a custom environment loader supporting Multi-line environment variables, Quoted values handling, Comment and whitespace parsing, and Robust error handling for malformed inputs.",
+      "In Env Loader PHP Package, Amir designed a service-based architecture to ensure modularity, extensibility, and clean separation of concerns.",
+      "In Env Loader PHP Package, Amir built a configuration system allowing structured access to environment values using dot-notation (e.g. file.name.default).",
+      "In Env Loader PHP Package, Amir implemented factory pattern for flexible instantiation of environment loaders.",
+      "In Env Loader PHP Package, Amir added custom exception handling for Missing configuration files, Regex parsing errors, and Invalid environment formats.",
+      "In Env Loader PHP Package, Amir designed the package to be reusable across Laravel and plain PHP applications.",
+      "In Env Loader PHP Package, Amir applied clean architecture principles and PSR-style modular design.",
+      "In Env Loader PHP Package, Amir developed unit tests using PHPUnit to ensure reliability of parsing logic and edge cases."
+    ]
+  },
+  {
+    "id": "project-warehouse-management-system",
+    "title": "Warehouse Management System",
+    "url": "https://github.com/mrprogrammingx/warehouse",
+    "sentences": [
+      "Warehouse Management System (2022) is one of Amir Zare's projects.",
+      "In Warehouse Management System, Amir developed enterprise warehouse management solutions using Laravel and MySQL.",
+      "In Warehouse Management System, Amir implemented Repository-Service architecture across the entire application.",
+      "In Warehouse Management System, Amir built integrations with Rayvarz ERP APIs for inventory synchronization and remittance management.",
+      "In Warehouse Management System, Amir developed event-driven status tracking workflows using Laravel Events.",
+      "In Warehouse Management System, Amir automated product synchronization processes through scheduled background jobs.",
+      "In Warehouse Management System, Amir implemented warehouse operations, inventory management, request workflows, and audit logging systems.",
+      "In Warehouse Management System, Amir designed scalable service-layer architecture supporting long-term maintainability.",
+      "In Warehouse Management System, Amir developed administrative modules for warehouse, center, category, and product management."
+    ]
+  },
+  {
+    "id": "training",
+    "title": "Professional training",
+    "url": "https://amir-zare.com/resume.html",
+    "sentences": [
+      "Amir took the Data Software Engineering Training at Epam Systems (Sep 2025 – Jan 2026).",
+      "In the Epam Systems Data Software Engineering Training, Amir participated in Data Software Engineering training focused on modern backend and data engineering concepts.",
+      "In the Epam Systems Data Software Engineering Training, Amir worked with scalable systems, data workflows, and engineering best practices.",
+      "In the Epam Systems Data Software Engineering Training, Amir improved understanding of production-ready software engineering and distributed systems concepts."
+    ]
+  },
+  {
+    "id": "certifications",
+    "title": "Certifications",
+    "url": "https://amir-zare.com/resume.html",
+    "sentences": [
+      "Amir completed Building AI Agents with Multimodal Models (NVIDIA, Aug 2026).",
+      "Building AI Agents with Multimodal Models is an NVIDIA Certificate of Competency validating practical proficiency in building AI agents using multimodal AI models.",
+      "Amir completed Claude Code in Action (Anthropic, Jul 2026).",
+      "Amir completed From Relational Model (SQL) to MongoDB’s Document Model (MongoDB, May 2026).",
+      "Amir completed Building AI-Powered Search with MongoDB Vector Search (MongoDB, May 2026).",
+      "Amir completed Building RAG Apps Using MongoDB (MongoDB, May 2026).",
+      "Amir completed Conflict Management & Resolution in IT Teams: From Theory to Practice (DataArt, May 2026).",
+      "Amir completed Data Engineering Zoomcamp (DataTalksClub, Apr 2026).",
+      "In Data Engineering Zoomcamp, Amir completed hands-on Data Engineering program focused on modern data platforms and pipelines.",
+      "In Data Engineering Zoomcamp, Amir covered workflow orchestration, data lakes, warehouses, batch processing, and analytics systems.",
+      "In Data Engineering Zoomcamp, Amir worked with modern data engineering tools and cloud concepts.",
+      "Amir completed AI Practitioner – Foundations (AWS Skills Centers, Apr 2026).",
+      "In AI Practitioner – Foundations, Amir completed AWS AI Practitioner training focused on generative AI and foundation models.",
+      "In AI Practitioner – Foundations, Amir learned concepts related to Amazon Bedrock, prompt engineering, RAG systems, and responsible AI.",
+      "In AI Practitioner – Foundations, Amir gained hands-on exposure to AI engineering workflows and cloud AI systems.",
+      "Amir completed Agentic AI on AWS (BeSA Program, Apr 2026).",
+      "In Agentic AI on AWS, Amir studied AI agents, MCP concepts, agentic workflows, and scalable AI system design.",
+      "In Agentic AI on AWS, Amir learned concepts around Amazon Bedrock, AI orchestration, and production AI architectures.",
+      "In Agentic AI on AWS, Amir explored AI-assisted system design and AI workflow automation.",
+      "Amir completed Apache Airflow 3 Fundamentals (Astronomer, Mar 2026).",
+      "In Apache Airflow 3 Fundamentals, Amir completed Apache Airflow fundamentals training focused on workflow orchestration and DAG development.",
+      "In Apache Airflow 3 Fundamentals, Amir learned orchestration concepts, scheduling, task dependencies, and Airflow best practices.",
+      "Amir completed AWS Cloud Technical Essentials (Coursera, Nov 2022).",
+      "Amir completed Mastering Visual Studio Code (Udemy, Dec 2021).",
+      "Amir completed Learn Basic Data Science and Python Libraries (Udemy, Dec 2021).",
+      "Amir completed Git & GitHub For Beginners (Udemy, Dec 2021).",
+      "Amir completed Complete Python Programming for Beginners (Udemy, Oct 2021).",
+      "Amir completed Make Laravel and Laravel 8 APIs and Apps Fast with Blueprint (Udemy, Oct 2021).",
+      "Amir completed The SQL Programming Essentials 2022 Immersive Training (Udemy, Sep 2021).",
+      "Amir completed Python Django Full Social Media Course (Udemy, Sep 2021)."
+    ]
+  },
+  {
+    "id": "education",
+    "title": "Education",
+    "url": "https://amir-zare.com/resume.html",
+    "sentences": [
+      "Amir earned a Bachelor of Engineering (B.E.) in Computer Software Engineering from Meybod University (2018 – 2022).",
+      "Amir has studied Machine Learning at TUMO Labs since Feb 2026.",
+      "At TUMO Labs, Amir led a 4-student team that trained classification and regression models from scratch (supervised and unsupervised) using scikit-learn, TensorFlow and PyTorch."
+    ]
+  },
+  {
+    "id": "languages",
+    "title": "Languages",
+    "url": "https://amir-zare.com/resume.html",
+    "sentences": [
+      "Amir speaks Persian (Native).",
+      "Amir speaks English (Full Professional).",
+      "Amir speaks German (Elementary).",
+      "Amir speaks Armenian (Limited working proficiency).",
+      "Amir speaks Russian (Elementary)."
+    ]
+  },
+  {
+    "id": "community",
+    "title": "Teaching & community",
+    "url": "https://amir-zare.com/community/",
+    "sentences": [
+      "Amir has run his Python Course on YouTube since Oct 2026.",
+      "On YouTube, Amir creates a weekly Python programming course, with code examples for each week and narration produced with his own local voice-cloning tool.",
+      "On YouTube, Amir creates videos of interesting projects, especially about AI.",
+      "In Jun 2026, Amir took part in the lablab.ai Hackathon with the team project AI-Powered Job Assistant.",
+      "At the lablab.ai Hackathon, Amir built a multi-agent AI job assistant in a 1-week hackathon, covering opportunity discovery, resume tailoring, and application guidance using LLM orchestration and multi-agent workflows.",
+      "At the lablab.ai Hackathon, Amir integrated external APIs and delivered a working submission under tight deadlines.",
+      "The lablab.ai Hackathon was sponsored by Featherless AI, BAND, and AI/ML API."
+    ]
+  }
+]

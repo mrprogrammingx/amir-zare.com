@@ -1,0 +1,1264 @@
+{
+  "source": "Word master resume, imported with tools/import_resume.py",
+  "name": "Amir Zare",
+  "location": "Yerevan, Armenia",
+  "links": [
+    {
+      "label": "LinkedIn",
+      "url": "https://linkedin.com/in/binahayat00"
+    },
+    {
+      "label": "GitHub",
+      "url": "https://github.com/mrprogrammingx"
+    },
+    {
+      "label": "amir-zare.com",
+      "url": "https://amir-zare.com"
+    }
+  ],
+  "summary": {
+    "paragraphs": [
+      "AI and Data Engineer with 7+ years of experience building backend systems, data pipelines and analytics products. Founder of DataLayer, an analytics platform for e-commerce sellers. Hands-on with Python, advanced SQL, BigQuery, dbt, Airflow and A/B test analysis, plus production LLM applications. Armenian permanent resident, based in Yerevan and ready to work.",
+      "Experienced in designing ETL/ELT pipelines, orchestrating workflows with Apache Airflow, building APIs and backend architectures, and developing analytics-focused systems using Python, SQL, and cloud technologies.",
+      "Transitioned from enterprise backend engineering into modern data platform development, focusing on scalable analytics systems, orchestration frameworks, cloud infrastructure, and AI-assisted data applications. Interested in Data Platform Engineering, AI Engineering, and scalable distributed systems."
+    ],
+    "highlights_intro": "Hands-on experience with:",
+    "highlights": [
+      "End-to-end data pipeline development",
+      "Workflow orchestration with Apache Airflow",
+      "Backend system architecture and API development",
+      "Cloud analytics platforms and modern data stacks",
+      "RAG systems, embeddings, and AI-assisted workflows",
+      "Dockerized development environments and CI/CD practices",
+      "Large-scale backend systems and enterprise applications"
+    ]
+  },
+  "skills": [
+    {
+      "category": "Programming Languages",
+      "items": [
+        "Python",
+        "PHP",
+        "SQL",
+        "JavaScript"
+      ]
+    },
+    {
+      "category": "Data Engineering",
+      "items": [
+        "Apache Airflow",
+        "ETL / ELT Pipelines",
+        "Data Modeling",
+        "dbt",
+        "Apache Kafka",
+        "DuckDB",
+        "Parquet",
+        "Data Orchestration",
+        "Batch Data Processing",
+        "Analytics Pipelines"
+      ]
+    },
+    {
+      "category": "Cloud Platforms",
+      "items": [
+        "Amazon Web Services (AWS)",
+        "Google Cloud Platform (GCP)",
+        "BigQuery",
+        "Snowflake",
+        "Azure"
+      ]
+    },
+    {
+      "category": "Backend Development",
+      "items": [
+        "Laravel",
+        "CakePHP",
+        "FastAPI",
+        "Flask",
+        "GraphQL",
+        "REST APIs",
+        "Service-Oriented Architecture",
+        "Clean Architecture"
+      ]
+    },
+    {
+      "category": "AI / GenAI",
+      "items": [
+        "Retrieval-Augmented Generation (RAG)",
+        "Embeddings & RAG",
+        "LLM Integration",
+        "Prompt Engineering",
+        "Amazon Bedrock",
+        "AI-assisted analytics workflows",
+        "MCP concepts and agentic AI exposure"
+      ]
+    },
+    {
+      "category": "Databases",
+      "items": [
+        "PostgreSQL",
+        "MySQL",
+        "BigQuery",
+        "DuckDB",
+        "NoSQL databases"
+      ]
+    },
+    {
+      "category": "DevOps / Tools",
+      "items": [
+        "Docker",
+        "Git",
+        "Linux",
+        "CI/CD Concepts",
+        "PHPUnit",
+        "Docker Compose"
+      ]
+    },
+    {
+      "category": "Visualization / Analytics",
+      "items": [
+        "Streamlit",
+        "Dashboard Development",
+        "Analytics Interfaces"
+      ]
+    },
+    {
+      "category": "Analytics",
+      "items": [
+        "Advanced SQL",
+        "Product & Marketing Analytics (GA4, Search Console)",
+        "A/B Test Analysis (significance, confidence intervals, power)",
+        "Tableau Public",
+        "Streamlit Dashboards"
+      ]
+    }
+  ],
+  "experience": [
+    {
+      "company": "TUMO Labs",
+      "title": "ML Mentor / Volunteer Instructor",
+      "dates": "Aug 2026 – Present",
+      "location": "Yerevan, Armenia",
+      "bullets": [
+        "Mentor Machine Learning students at TUMO Labs, guiding them through the program with hands-on support on their coursework and projects."
+      ]
+    },
+    {
+      "company": "DataLayer",
+      "title": "Founder / AI & Data Engineer",
+      "dates": "Jan 2024 – Present",
+      "location": "Yerevan, Armenia",
+      "bullets": [
+        "Founded and lead DataLayer, an AI-powered analytics startup turning e-commerce sellers' raw sales exports into actionable dashboards (customer segmentation, anomaly and churn detection) — live at usedatalayer.com",
+        "Ranked a Top 2 Data Startup and Top 6 Software Startup in Armenia by F6S (2026)",
+        "Applied for $170K+ in startup credits (Microsoft for Startups, Google for Startups, E2B, DigitalOcean)",
+        "Featured in NEWS.am Tech press coverage; leading pre-seed fundraising and hiring DataLayer's first Growth/BD team member.",
+        "Built dashboard and reporting interfaces using Streamlit.",
+        "Worked with Parquet and DuckDB for efficient analytical data processing and local warehouse-style querying.",
+        "Designed modular architectures for scalable data workflows and backend systems.",
+        "Worked with SQL and NoSQL databases for scalable data storage and retrieval.",
+        "Integrated early AI engineering concepts including embeddings, retrieval workflows, and RAG-inspired analytics systems.",
+        "Built earlier crypto-analytics pipelines and dashboards (Streamlit, DuckDB, Parquet) as part of DataLayer's technical foundation",
+        "Designed backend ETL/ELT pipelines, APIs, and analytics services using Python, FastAPI, and Apache Airflow"
+      ]
+    },
+    {
+      "company": "HireToDo",
+      "title": "Software Engineer",
+      "dates": "Dec 2022 – Dec 2023",
+      "location": "Yerevan, Armenia",
+      "bullets": [
+        "Worked on backend and platform features for a hiring and payment system platform.",
+        "Developed backend systems using Laravel 9/10 and PHP.",
+        "Collaborated on frontend integrations using Vue.js and Nuxt.js.",
+        "Designed and maintained GraphQL APIs and backend services.",
+        "Applied clean architecture and SOLID principles for maintainable and scalable backend systems.",
+        "Wrote unit tests using PHPUnit to improve system reliability and code quality.",
+        "Participated in backend architecture discussions and API design decisions.",
+        "Worked on production-grade backend workflows and database operations."
+      ]
+    },
+    {
+      "company": "Ardakan Float Glass Company",
+      "title": "Software Engineer",
+      "dates": "Oct 2021 – Nov 2022",
+      "location": "",
+      "bullets": [
+        "Developed enterprise web applications and internal business systems using Laravel.",
+        "Built scalable systems handling more than 200,000 product records with optimized database operations.",
+        "Applied service-oriented architecture and clean code practices for maintainable backend development.",
+        "Developed multiple production-grade applications for enterprise use cases.",
+        "Worked on backend logic, reporting systems, and large-scale database interactions.",
+        "Contributed to scalable application design and long-term maintainability improvements."
+      ]
+    },
+    {
+      "company": "Paziresh24",
+      "title": "PHP Developer",
+      "dates": "Jun 2021 – Oct 2021",
+      "location": "",
+      "bullets": [
+        "Contributed to backend systems for a high-traffic healthcare platform widely used in local.",
+        "Worked on backend feature development and production application maintenance.",
+        "Supported performance optimization and backend stability improvements.",
+        "Participated in maintaining systems serving large-scale user traffic.",
+        "Contributed to a healthcare ecosystem associated with over 500K+ mobile application downloads."
+      ]
+    },
+    {
+      "company": "Mahya Pardaz Company",
+      "title": "Web Developer",
+      "dates": "Aug 2019 – Jun 2021",
+      "location": "",
+      "bullets": [
+        "Developed and maintained web applications using CakePHP 4.",
+        "Built more than 15 custom applications for municipal and enterprise clients.",
+        "Implemented backend business logic and organization-specific workflows.",
+        "Worked on backend architecture and scalable application implementations.",
+        "Mentored junior developers and taught PHP fundamentals.",
+        "Participated in system design and engineering best practice improvements."
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "group": "AI / Agents",
+      "name": "AgentPages",
+      "subtitle": "Static Site Publishing API for AI Agents",
+      "date": "2026",
+      "note": "",
+      "links": [
+        {
+          "text": "GitHub Repository",
+          "url": "https://github.com/mrprogrammingx/agentpages",
+          "private": true
+        }
+      ],
+      "bullets": [
+        "Built an HTTP API that lets AI agents publish static websites: an agent sends the site files as JSON, gets back a live URL, and can update or delete the site later.",
+        "Separated the API service from the sites service. The sites service is read-only, only reads published files and never touches the database.",
+        "Served untrusted uploaded pages from a separate origin inside a CSP sandbox, and built a sandbox test page that checks the isolation guarantees (opaque origin; storage, cookies and fetch blocked).",
+        "Added API-key bearer authentication, upload size limits, and a web dashboard for publishing, updating and deleting sites from a folder."
+      ],
+      "tech": [
+        "Python",
+        "FastAPI",
+        "SQLite",
+        "Content Security Policy"
+      ]
+    },
+    {
+      "group": "AI / Agents",
+      "name": "Chess vs AI",
+      "subtitle": "LLM Game Opponent",
+      "date": "2026",
+      "note": "",
+      "links": [
+        {
+          "text": "GitHub Repository",
+          "url": "https://github.com/mrprogrammingx/chess-ai",
+          "private": false
+        }
+      ],
+      "bullets": [
+        "Built a playable pygame chess game with three opponents: a random mover, Stockfish, and an LLM through OpenRouter that comments on its moves.",
+        "Made the LLM opponent reliable: the model gets the board position (FEN), the move history and the legal moves, and answers in structured JSON. The code checks each move is legal, retries up to 3 times, then falls back to a random move, and the UI shows how many illegal attempts there were.",
+        "Records the full game in standard chess notation (PGN) and keeps API keys local in an env file."
+      ],
+      "tech": [
+        "Python",
+        "pygame",
+        "python-chess",
+        "Stockfish",
+        "OpenRouter (LLM)"
+      ]
+    },
+    {
+      "group": "AI / Agents",
+      "name": "Voice Narrator",
+      "subtitle": "Local Voice Cloning for Tutorial Production",
+      "date": "2026",
+      "note": "",
+      "links": [
+        {
+          "text": "GitHub Repository",
+          "url": "https://github.com/mrprogrammingx/voice-cloner",
+          "private": false
+        }
+      ],
+      "bullets": [
+        "Built a fully local voice-cloning narration tool for programming tutorials, so there are no recurring fees and recordings never leave the machine.",
+        "Designed a two-stage pipeline after testing showed direct cloning gave inconsistent accents: the base TTS model speaks each sentence, then voice conversion re-voices it to match the reference recording.",
+        "Added batch processing (the model loads once, and one failing script doesn’t stop the rest), config-driven defaults, a custom pronunciation dictionary, and MP3 export.",
+        "Checked the model licenses and kept the built-in AI-audio watermark on every output."
+      ],
+      "tech": [
+        "Python",
+        "Chatterbox TTS",
+        "PyTorch",
+        "Hugging Face",
+        "ffmpeg"
+      ]
+    },
+    {
+      "group": "AI / Agents",
+      "name": "UIGen",
+      "subtitle": "AI React Component Generator",
+      "date": "2026",
+      "note": "Anthropic “Claude Code in Action” course project",
+      "links": [],
+      "bullets": [
+        "Worked on an AI-powered React component generator that uses Claude, with a live preview, a virtual file system, a code editor and saved projects.",
+        "Maintained dependency security by pinning versions and patching a critical Next.js vulnerability (CVE-2025-55182) instead of running blanket audit fixes."
+      ],
+      "tech": [
+        "Next.js",
+        "React",
+        "TypeScript",
+        "Prisma",
+        "Anthropic Claude API"
+      ]
+    },
+    {
+      "group": "Data / Analytics / ML",
+      "name": "A/B Test Analysis",
+      "subtitle": "Cookie Cats Game Gate Experiment",
+      "date": "2026",
+      "note": "",
+      "links": [
+        {
+          "text": "GitHub Repository",
+          "url": "https://github.com/mrprogrammingx/cookie-cats-ab-test",
+          "private": false
+        },
+        {
+          "text": "Tableau Dashboard",
+          "url": "https://public.tableau.com/app/profile/amir.zare8388/viz/CookieCatsABTestGatePlacement/Dashboard1",
+          "private": false
+        }
+      ],
+      "bullets": [
+        "Analyzed a public mobile-game A/B test with 90,189 players to see whether moving the first progress gate from level 30 to 40 affects retention and engagement.",
+        "Found a statistically significant 0.82 pp (4.3% relative) drop in 7-day retention (95% CI −1.33 to −0.31 pp; Holm-adjusted p = 0.0047), and recommended keeping the gate at level 30.",
+        "Ran experiment-validity checks: sample ratio mismatch (chi-square), duplicate and missing data checks, outlier handling with medians and rank tests, minimum-detectable-effect power analysis, and Holm-Bonferroni correction for multiple tests.",
+        "Labelled post-treatment segmentation as descriptive only, and published an interactive Tableau Public dashboard."
+      ],
+      "tech": [
+        "Python",
+        "pandas",
+        "SciPy",
+        "statsmodels",
+        "Matplotlib",
+        "Tableau"
+      ]
+    },
+    {
+      "group": "Data / Analytics / ML",
+      "name": "MoodScape",
+      "subtitle": "Music Mood Clustering Toolkit",
+      "date": "2026",
+      "note": "TUMO Labs",
+      "links": [
+        {
+          "text": "GitHub Repository",
+          "url": "https://github.com/mrprogrammingx/MoodScape-Clustering",
+          "private": false
+        }
+      ],
+      "bullets": [
+        "Built a configurable clustering toolkit that groups music tracks by mood from numeric audio features, with YAML/CLI batch runs that keep each run’s outputs separate.",
+        "Added preprocessing options (standard or min-max scaling, feature selection, PCA), silhouette-based K selection, and evaluation with silhouette, Davies–Bouldin and Calinski–Harabasz scores.",
+        "Built run comparison (Adjusted Rand Index, NMI, pairwise stability heatmaps), named snapshots of saved models for predicting on new data, and exportable evidence reports.",
+        "Wrote unit tests for preprocessing, snapshots and comparison utilities."
+      ],
+      "tech": [
+        "Python",
+        "scikit-learn",
+        "pandas",
+        "NumPy",
+        "Matplotlib",
+        "YAML"
+      ]
+    },
+    {
+      "group": "Data / Analytics / ML",
+      "name": "Multi-Label Text Classification System",
+      "subtitle": "Content Moderation",
+      "date": "2026",
+      "note": "TUMO Labs",
+      "links": [
+        {
+          "text": "GitHub Repository",
+          "url": "https://github.com/mrprogrammingx/Multi-Label-Text-Classification-System",
+          "private": false
+        }
+      ],
+      "bullets": [
+        "Built an end-to-end multi-label classifier for moderation labels on online comments: load → clean → vectorize → train → evaluate → save.",
+        "Used TF-IDF features with a One-vs-Rest logistic regression baseline, with per-label evaluation and error analysis.",
+        "Saved the model and vectorizer as artifacts for reproducible inference."
+      ],
+      "tech": [
+        "Python",
+        "scikit-learn",
+        "pandas",
+        "NumPy",
+        "Jupyter",
+        "joblib"
+      ]
+    },
+    {
+      "group": "Data / Analytics / ML",
+      "name": "ML Music Recommender",
+      "subtitle": "",
+      "date": "2026",
+      "note": "",
+      "links": [
+        {
+          "text": "GitHub Repository",
+          "url": "https://github.com/mrprogrammingx/ml_basic_music_recommender",
+          "private": false
+        }
+      ],
+      "bullets": [
+        "Implemented a complete ML workflow: data cleaning, exploratory analysis, feature engineering, model training and evaluation."
+      ],
+      "tech": [
+        "Python",
+        "scikit-learn",
+        "pandas",
+        "Seaborn"
+      ]
+    },
+    {
+      "group": "Data / Analytics / ML",
+      "name": "Hands-On Machine Learning",
+      "subtitle": "Exercise Implementations",
+      "date": "2026",
+      "note": "",
+      "links": [
+        {
+          "text": "GitHub Repository",
+          "url": "https://github.com/mrprogrammingx/hands_on_machine_learning_book",
+          "private": false
+        }
+      ],
+      "bullets": [
+        "Implemented the exercises from Hands-On Machine Learning with Scikit-Learn and TensorFlow to strengthen core ML concepts."
+      ],
+      "tech": []
+    },
+    {
+      "group": "Data / Analytics / ML",
+      "name": "Airflow / Astronomer Project",
+      "subtitle": "",
+      "date": "2026",
+      "note": "",
+      "links": [
+        {
+          "text": "GitHub Repository",
+          "url": "https://github.com/mrprogrammingx/astro-project",
+          "private": false
+        }
+      ],
+      "bullets": [
+        "Built and ran Airflow DAGs locally with the Astro CLI, using the TaskFlow API and dynamic task mapping. This is companion work to the Astronomer Airflow 3 certification."
+      ],
+      "tech": []
+    },
+    {
+      "group": "Backend / Web",
+      "name": "Barbershop Queue",
+      "subtitle": "Booking & Queue Management System",
+      "date": "2026",
+      "note": "",
+      "links": [
+        {
+          "text": "GitHub Repository",
+          "url": "https://github.com/mrprogrammingx/barbershop-queue",
+          "private": false
+        }
+      ],
+      "bullets": [
+        "Built a full-stack booking and walk-in queue system: customers book or check in online, and admins get an email for each new check-in.",
+        "Developed a FastAPI backend with SQLAlchemy (SQLite in development, ready for Postgres) for check-in, queue position, call-next, done and no-show flows.",
+        "Built a React admin panel (dashboard, history, customers, settings) protected by signed session-cookie authentication, plus a no-JavaScript check-in page as a fallback.",
+        "Built an animated public marketing site with React, Tailwind and Framer Motion, with a booking form connected to the same API. The backend serves both the API and the built frontend.",
+        "Added switchable email providers (Resend or SendGrid) with a dry-run mode for development."
+      ],
+      "tech": [
+        "Python",
+        "FastAPI",
+        "SQLAlchemy",
+        "Pydantic",
+        "Jinja2",
+        "React",
+        "Vite",
+        "Tailwind CSS",
+        "Framer Motion",
+        "Resend/SendGrid"
+      ]
+    },
+    {
+      "group": "Backend / Web",
+      "name": "Mayad Tour",
+      "subtitle": "Travel Agency Website",
+      "date": "2026",
+      "note": "",
+      "links": [
+        {
+          "text": "GitHub Repository",
+          "url": "https://github.com/mrprogrammingx/mayadtour",
+          "private": false
+        }
+      ],
+      "bullets": [
+        "Built a static website for a travel agency."
+      ],
+      "tech": []
+    },
+    {
+      "group": "Backend / Web",
+      "name": "Mail.tm Temporary Email Service",
+      "subtitle": "",
+      "date": "2025",
+      "note": "",
+      "links": [
+        {
+          "text": "GitHub Repository",
+          "url": "https://github.com/mrprogrammingx/generate-email",
+          "private": false
+        }
+      ],
+      "bullets": [
+        "Built a Laravel service class around the Mail.tm API that creates temporary inboxes, authenticates, and fetches the latest message matching a subject, for automated email testing.",
+        "Added typed exceptions for invalid state and HTTP failures."
+      ],
+      "tech": [
+        "PHP",
+        "Laravel",
+        "REST APIs"
+      ]
+    },
+    {
+      "group": "Backend / Web",
+      "name": "Laravel Design Patterns Series",
+      "subtitle": "",
+      "date": "2025",
+      "note": "",
+      "links": [
+        {
+          "text": "Observer/Factory",
+          "url": "https://github.com/mrprogrammingx/observer-factory-design-patterns",
+          "private": false
+        },
+        {
+          "text": "Bridge",
+          "url": "https://github.com/mrprogrammingx/bridge-design-pattern",
+          "private": false
+        },
+        {
+          "text": "Composite",
+          "url": "https://github.com/mrprogrammingx/composite-design-pattern",
+          "private": false
+        },
+        {
+          "text": "Prototype",
+          "url": "https://github.com/mrprogrammingx/prototype-design-pattern",
+          "private": false
+        }
+      ],
+      "bullets": [
+        "Implemented Gang of Four design patterns in Laravel. For example, Observer handles user-model lifecycle events, and Factory switches between payment gateways (PayPal/Stripe) at runtime."
+      ],
+      "tech": [
+        "PHP",
+        "Laravel"
+      ]
+    },
+    {
+      "group": "Backend / Web",
+      "name": "FlowFleet",
+      "subtitle": "Real-Time Logistics Data Platform",
+      "date": "2026",
+      "note": "",
+      "links": [
+        {
+          "text": "GitHub Repository",
+          "url": "https://github.com/mrprogrammingx/real-time-logistics-data-platform",
+          "private": false
+        }
+      ],
+      "bullets": [
+        "Designed and built a production-style real-time streaming platform for a fictional delivery company, delivered in 8 phases, each with working code, tests and architecture notes.",
+        "Implemented change data capture from PostgreSQL/PostGIS with Debezium, covering snapshot vs. streaming modes, tombstones, and replication slot and connector recovery.",
+        "Designed Kafka topics with Avro and Schema Registry, built a high-volume driver-location simulator, and tested consumer-group rebalancing.",
+        "Developed Apache Flink jobs in Java 21 using keyed state, event-time windows, watermarks, timers and side outputs, including broadcast-state geofencing with JTS.",
+        "Built sinks to TimescaleDB and ClickHouse with batching, retries and idempotent writes, plus BigQuery for analytics.",
+        "Engineered for failure: a dead-letter queue for poison messages, late-data handling, checkpoint and savepoint recovery, and backpressure experiments.",
+        "Deployed on Kubernetes with Helm, the Flink Kubernetes Operator (savepoint-based upgrades) and Argo CD (app-of-apps GitOps).",
+        "Load-tested from 1k to 50k events/second with a live-adjustable rate generator, end-to-end p50/p95/p99 latency histograms and a ramp harness. Tuned throughput and added the Flink autoscaler and consumer HPA.",
+        "Added Prometheus and Grafana observability across the pipeline."
+      ],
+      "tech": [
+        "Java 21",
+        "Spring Boot",
+        "PostgreSQL/PostGIS",
+        "Debezium",
+        "Apache Kafka",
+        "Avro",
+        "Schema Registry",
+        "Apache Flink",
+        "TimescaleDB",
+        "ClickHouse",
+        "BigQuery",
+        "Kubernetes",
+        "Helm",
+        "Argo CD",
+        "Prometheus",
+        "Grafana"
+      ]
+    },
+    {
+      "group": "Backend / Web",
+      "name": "AI Phone Assistant",
+      "subtitle": "Voice Agent Booking System",
+      "date": "2026",
+      "note": "",
+      "links": [
+        {
+          "text": "GitHub Repository",
+          "url": "https://github.com/mrprogrammingx/ai-phone-assistant",
+          "private": false
+        }
+      ],
+      "bullets": [
+        "Built an AI phone assistant for a barbershop on Suisse Line’s voice agent platform for Suisse IT’s Challenge A. Callers can check services and availability, book, find and cancel appointments, and join a waitlist.",
+        "Designed a FastAPI booking backend that exposes seven live tools to the agent during calls, with one database as the single source of truth for the website, staff dashboard and phone channel.",
+        "Prevented double bookings with an atomic booking lock, verified with 12 simultaneous booking requests and with website and phone bookings at the same moment.",
+        "Made booking and cancellation idempotent so the agent can safely retry after timeouts without creating duplicate appointments.",
+        "Designed a structured ok/error-code response contract so the agent can always tell the caller what happened, and added a read-back confirmation step before any booking.",
+        "Shipped a Smart Cancellation Waitlist: consent-first sign-up, freed slots offered oldest-first with time-limited offers, first confirmed booking wins, and 30-day data retention.",
+        "Secured the public endpoint with token-scoped routes and request-size limits, exposed only the assistant service through a Cloudflare tunnel, and kept names and phone numbers out of logs."
+      ],
+      "tech": [
+        "Python",
+        "FastAPI",
+        "SQLite",
+        "Suisse Line AI voice agent",
+        "Cloudflare Tunnel",
+        "Pytest"
+      ]
+    },
+    {
+      "group": "Backend / Web",
+      "name": "EvidenceHub",
+      "subtitle": "MySQL Performance & Sharding Platform",
+      "date": "2026",
+      "note": "in progress",
+      "links": [
+        {
+          "text": "GitHub Repository",
+          "url": "https://github.com/mrprogrammingx/EvidenceHub",
+          "private": false
+        }
+      ],
+      "bullets": [
+        "Building a reference data platform that migrates a deliberately poor legacy MySQL schema to an optimized, sharded design. Every performance claim is backed by a measured benchmark report.",
+        "Set up a 4-shard MySQL 8 cluster with a catalog database and Redis in Docker Compose, plus a synthetic data generator that scales to 20M rows.",
+        "Defined 8 mission-critical queries, each with a latency SLO (p95 under 50 ms for point and latest-N lookups), and built a Locust + EXPLAIN ANALYZE benchmark harness that produced the baseline performance report.",
+        "Enforced strict engineering standards: mypy --strict, Ruff, Pytest/Hypothesis, GitHub Actions CI with full-history secret scanning, and architecture decision records.",
+        "Roadmap: online schema migration, shard routing and resharding, Kafka ingestion with a DLQ, a Redis-cached FastAPI layer, and a Spark/Iceberg Kimball warehouse orchestrated by Airflow."
+      ],
+      "tech": [
+        "Python 3.12",
+        "MySQL 8",
+        "Redis",
+        "Docker Compose",
+        "SQLAlchemy",
+        "Alembic",
+        "Locust",
+        "Pytest",
+        "GitHub Actions"
+      ]
+    },
+    {
+      "group": "Backend / Web",
+      "name": "DataLayer Evolution Agent",
+      "subtitle": "Internal Growth Intelligence System",
+      "date": "2026",
+      "note": "",
+      "links": [
+        {
+          "text": "live here",
+          "url": "https://usedatalayer.com/products/evolution-agent",
+          "private": false
+        },
+        {
+          "text": "",
+          "url": "https://github.com/mrprogrammingx/datalayer-growth-agent",
+          "private": false
+        }
+      ],
+      "bullets": [
+        "Designed and shipped a production system that automates DataLayer's own growth decision-making: a daily batch job pulling product, marketing, and lead data, synthesized via LLM into one prioritized \"Growth Brief\" emailed to the team each morning",
+        "Deliberately minimal, production-safe stack (Flask, PostgreSQL, APScheduler, Docker) — explicitly excluded heavier frameworks (LangChain, vector DBs, Redis, Celery, Kubernetes, multi-agent orchestration) to keep the system auditable, low-risk, and easy to reason about",
+        "Implemented least-privilege data access via separately-scoped read-only and write database roles, so a bug in the write path can never compromise the read-only analysis guarantee",
+        "Engineered graceful degradation across multiple data sources (internal database, GA4, Search Console, Reddit) — a failed source is logged and surfaced rather than crashing the pipeline",
+        "Solved LLM reliability limitations by moving mechanical judgment out of the prompt and into code: metrics precomputed and passed as exact figures, outputs re-sorted deterministically, and a dedicated anti-overclaiming design preventing the model from claiming false causation on low-traffic data",
+        "Found and fixed a real data-integrity bug where internal test accounts were being miscounted as paying customers",
+        "Delivered in three phases over one month, followed by a structured 8-angle code review that surfaced and fixed 10 bugs pre-production",
+        "Live in production, running daily against real company data",
+        "Extended the agent to find leads and draft customized outreach emails for each prospect; every message is reviewed before it is sent."
+      ],
+      "tech": [
+        "Python",
+        "Flask",
+        "PostgreSQL",
+        "APScheduler",
+        "Docker",
+        "OpenAI SDK via OpenRouter (GPT-4o-mini)",
+        "Google OAuth (GA4/Search Console)",
+        "PRAW",
+        "Resend"
+      ]
+    },
+    {
+      "group": "Backend / Web",
+      "name": "Crypto Analytics Data Platform",
+      "subtitle": "",
+      "date": "2026",
+      "note": "",
+      "links": [
+        {
+          "text": "GitHub Repository",
+          "url": "https://github.com/mrprogrammingx/crypto-analytics-platform",
+          "private": false
+        }
+      ],
+      "bullets": [
+        "Designed and developed an end-to-end crypto analytics lakehouse platform using Python and modern data engineering technologies.",
+        "Built scalable data ingestion pipelines for cryptocurrency market data using Apache Kafka and batch ingestion workflows.",
+        "Developed distributed data processing pipelines with Apache Spark for large-scale transformation and analytics workloads.",
+        "Orchestrated ETL/ELT workflows using Apache Airflow, enabling automated scheduling, monitoring, and dependency management.",
+        "Implemented a Lakehouse architecture utilizing Parquet and DuckDB for efficient storage, analytical querying, and data versioning.",
+        "Built data transformation layers using dbt, applying modular modeling, testing, and documentation best practices.",
+        "Provisioned and managed cloud infrastructure on Google Cloud Platform (GCP) using Terraform following Infrastructure-as-Code principles.",
+        "Designed dimensional data models and analytics-ready datasets to support reporting and business intelligence use cases.",
+        "Developed interactive dashboards and reporting interfaces for cryptocurrency market insights and trend analysis.",
+        "Currently extending the platform with Snowflake integration, AI-assisted anomaly detection, retrieval-augmented analytics (RAG), and embedding-based search capabilities.",
+        "Applied modular architecture principles to support scalability, maintainability, and future cloud-native deployment.",
+        "Built a crypto market-data pipeline with hourly Spark ingestion running on GitHub Actions.",
+        "Modeled the data in dbt as a 4-layer medallion pipeline (staging, bronze, silver, gold), with not_null and unique tests running in CI against DuckDB and BigQuery.",
+        "Published dbt documentation on GitHub Pages.",
+        "Stored data as Parquet and queried it with DuckDB.",
+        "Built dashboards for cryptocurrency market trends."
+      ],
+      "tech": [
+        "Python",
+        "Spark",
+        "dbt",
+        "DuckDB",
+        "BigQuery",
+        "GitHub Actions"
+      ]
+    },
+    {
+      "group": "Backend / Web",
+      "name": "Classic Web-Based Online Chat Application",
+      "subtitle": "",
+      "date": "",
+      "note": "",
+      "links": [
+        {
+          "text": "GitHub Repository",
+          "url": "https://github.com/mrprogrammingx/classic-web-based-online-chat-application",
+          "private": false
+        }
+      ],
+      "bullets": [
+        "Built a Dockerized classic web-based online chat application with backend-focused architecture.",
+        "Implemented authentication, multi-room systems, private messaging, and session management.",
+        "Added moderation systems including bans, roles, and room administration.",
+        "Implemented AFK detection, multi-tab presence logic, unread indicators, and persistent chat history.",
+        "Added file and image sharing with access control rules.",
+        "Worked with scalable backend logic and real-time communication concepts.",
+        "Configured Docker Compose environments and reproducible local development setup."
+      ],
+      "tech": []
+    },
+    {
+      "group": "Backend / Web",
+      "name": "Run-Walk Data Pipeline",
+      "subtitle": "",
+      "date": "2026",
+      "note": "",
+      "links": [
+        {
+          "text": "GitHub Repository",
+          "url": "https://github.com/mrprogrammingx/run-walk-pipeline",
+          "private": false
+        }
+      ],
+      "bullets": [
+        "Designed and implemented an end-to-end batch data pipeline for activity monitoring using Python, Apache Airflow, DuckDB, Parquet, Streamlit, and Flask.",
+        "Built ingestion pipelines to process raw CSV activity datasets and convert them into optimized Parquet files within a local data lake architecture.",
+        "Developed SQL-based transformation workflows that materialized analytical summary tables inside DuckDB data warehouses.",
+        "Created aggregated analytical models including daily_user_summary, daily_activity_counts, and daily_wrist_counts.",
+        "Implemented Apache Airflow DAGs orchestrating dataset download, ingestion, and transformation stages.",
+        "Developed interactive analytics dashboards using Streamlit for monitoring activity trends and user behavior.",
+        "Built lightweight REST-style JSON endpoints using Flask for programmatic data access.",
+        "Utilized Parquet-based lakehouse patterns to reduce storage footprint and improve analytical query performance.",
+        "Containerized development environments using Docker Compose including Airflow services.",
+        "Implemented automated testing workflows with Pytest and CI-oriented sample dataset generation.",
+        "Applied modern Data Engineering concepts including ETL / ELT, Data Lakes, Data Warehousing, Workflow Orchestration, Batch Processing, Analytics Engineering, and Data Modeling."
+      ],
+      "tech": []
+    },
+    {
+      "group": "Backend / Web",
+      "name": "Claude Code Analytics Platform",
+      "subtitle": "",
+      "date": "2026",
+      "note": "",
+      "links": [
+        {
+          "text": "GitHub Repository",
+          "url": "https://github.com/mrprogrammingx/claude-code-analytics-platform",
+          "private": false
+        }
+      ],
+      "bullets": [
+        "Built a complete analytics platform for AI telemetry monitoring using Python, DuckDB, FastAPI, Streamlit, and machine learning workflows.",
+        "Designed ingestion pipelines capable of processing JSONL telemetry logs and employee datasets into analytical warehouse structures.",
+        "Developed ETL workflows for parsing, transforming, and normalizing large-scale telemetry events.",
+        "Implemented DuckDB-based analytical storage optimized for local OLAP workloads.",
+        "Built interactive dashboards using Streamlit to visualize Token usage, Model utilization, Peak activity periods, and User behavior metrics.",
+        "Developed FastAPI services exposing analytics APIs including events, metrics, user insights, and forecasting endpoints.",
+        "Implemented predictive analytics workflows using Scikit-Learn RandomForest models and forecasting pipelines.",
+        "Built real-time simulation tooling for producer-consumer telemetry generation and event streaming demonstrations.",
+        "Developed automated orchestration scripts enabling one-command deployment and execution of the complete analytics pipeline.",
+        "Implemented software quality practices including Pytest, Ruff, Black, Isort, Pre-commit Hooks, and GitHub Actions CI.",
+        "Applied modern Data Engineering and Analytics Engineering practices including ETL Pipelines, Data Warehousing, Analytics APIs, Feature Engineering, Forecasting Models, Dashboard Development, and Data Visualization."
+      ],
+      "tech": []
+    },
+    {
+      "group": "Backend / Web",
+      "name": "Job Hunter",
+      "subtitle": "7-Agent AI Job Search Platform",
+      "date": "2026",
+      "note": "",
+      "links": [
+        {
+          "text": "https://github.com/mrprogrammingx/job-hunter",
+          "url": "https://github.com/mrprogrammingx/job-hunter",
+          "private": false
+        }
+      ],
+      "bullets": [
+        "Architected a production-grade multi-agent job search platform with 7 specialized AI agents handling job discovery, resume tailoring, cover letter generation, company research, outreach drafting, interview prep, and application tracking.",
+        "Built with FastAPI backend, Next.js 14 frontend, JWT authentication, SSE streaming for real-time agent status delivery, and SQLite/PostgreSQL persistence.",
+        "Demonstrates end-to-end agentic AI system design: agent orchestration, tool-calling, inter-agent communication, and async task execution."
+      ],
+      "tech": []
+    },
+    {
+      "group": "Backend / Web",
+      "name": "GDG Yerevan",
+      "subtitle": "Multi-Agent Workshop (Google ADK + A2A)",
+      "date": "Jun 2026",
+      "note": "",
+      "links": [
+        {
+          "text": "GitHub Repository",
+          "url": "https://github.com/mrprogrammingx/adk-cloud-workshop",
+          "private": false
+        }
+      ],
+      "bullets": [
+        "Took part in a hands-on GDG Yerevan (Google Developer Groups) workshop on building multi-agent systems with Google’s Agent Development Kit (ADK) for TypeScript.",
+        "Built three independent AI agents (inventory, orders, and pricing with Google Search), then an orchestrator agent that coordinates them over the A2A (Agent-to-Agent) protocol. Worked with an agent server and debug console that showed every tool call, SSE chat and A2A endpoints, and a seeded SQLite dataset, and checked my work against deterministic tests."
+      ],
+      "tech": [
+        "TypeScript",
+        "Node.js",
+        "Google ADK",
+        "Gemini",
+        "A2A protocol",
+        "SQLite"
+      ]
+    },
+    {
+      "group": "Backend / Web",
+      "name": "News Aggregator API",
+      "subtitle": "",
+      "date": "2025",
+      "note": "",
+      "links": [
+        {
+          "text": "GitHub Repository",
+          "url": "https://github.com/mrprogrammingx/NewsAggregator",
+          "private": false
+        }
+      ],
+      "bullets": [
+        "Developed a production-ready news aggregation platform using Laravel, MySQL, Docker, and PHPUnit.",
+        "Integrated multiple external news providers including NewsAPI, New York Times, and The Guardian.",
+        "Implemented Adapter, Factory, Repository, and Service design patterns to create extensible and maintainable integrations.",
+        "Designed scheduled data ingestion workflows using Laravel Scheduler for automated content synchronization.",
+        "Built advanced filtering, search, pagination, and categorization APIs.",
+        "Implemented comprehensive testing using PHPUnit and Mockery.",
+        "Developed scalable REST APIs supporting frontend news applications.",
+        "Added centralized logging, error handling, and monitoring capabilities."
+      ],
+      "tech": []
+    },
+    {
+      "group": "Backend / Web",
+      "name": "Laravel Queue Performance Benchmark System",
+      "subtitle": "",
+      "date": "2025",
+      "note": "",
+      "links": [
+        {
+          "text": "GitHub Repository",
+          "url": "https://github.com/mrprogrammingx/Queue-sample",
+          "private": false
+        }
+      ],
+      "bullets": [
+        "Built a Laravel-based benchmarking system to compare synchronous and asynchronous processing strategies for large-scale datasets.",
+        "Seeded and processed high-volume datasets including 200,000 Orders, 1,000,000 Items, and 1,000 Products.",
+        "Implemented invoice generation workflows for thousands of orders and evaluated application performance under heavy workloads.",
+        "Compared Laravel Eloquent ORM and Query Builder approaches for large dataset processing.",
+        "Designed queue-based background processing pipelines using Redis and Laravel Queue Workers.",
+        "Integrated Laravel Horizon for queue monitoring, job management, and operational visibility.",
+        "Implemented asynchronous PDF generation workflows using Laravel DomPDF.",
+        "Demonstrated significant reduction in request execution time and elimination of timeout issues through background job processing.",
+        "Applied backend engineering concepts including Asynchronous Processing, Distributed Task Execution, Queue-Based Architectures, Redis, Performance Optimization, Background Job Processing, and Scalability Engineering."
+      ],
+      "tech": []
+    },
+    {
+      "group": "Backend / Web",
+      "name": "Env Loader PHP Package",
+      "subtitle": "",
+      "date": "2025",
+      "note": "",
+      "links": [
+        {
+          "text": "GitHub Repository",
+          "url": "https://github.com/mrprogrammingx/env-loader",
+          "private": false
+        }
+      ],
+      "bullets": [
+        "Developed a lightweight PHP package for parsing and managing .env configuration files in Laravel and PHP applications.",
+        "Implemented a custom environment loader supporting Multi-line environment variables, Quoted values handling, Comment and whitespace parsing, and Robust error handling for malformed inputs.",
+        "Designed a service-based architecture to ensure modularity, extensibility, and clean separation of concerns.",
+        "Built a configuration system allowing structured access to environment values using dot-notation (e.g. file.name.default).",
+        "Implemented factory pattern for flexible instantiation of environment loaders.",
+        "Added custom exception handling for Missing configuration files, Regex parsing errors, and Invalid environment formats.",
+        "Designed the package to be reusable across Laravel and plain PHP applications.",
+        "Applied clean architecture principles and PSR-style modular design.",
+        "Developed unit tests using PHPUnit to ensure reliability of parsing logic and edge cases."
+      ],
+      "tech": []
+    },
+    {
+      "group": "Backend / Web",
+      "name": "Warehouse Management System",
+      "subtitle": "",
+      "date": "2022",
+      "note": "",
+      "links": [
+        {
+          "text": "GitHub Repository",
+          "url": "https://github.com/mrprogrammingx/warehouse",
+          "private": false
+        }
+      ],
+      "bullets": [
+        "Developed enterprise warehouse management solutions using Laravel and MySQL.",
+        "Implemented Repository-Service architecture across the entire application.",
+        "Built integrations with Rayvarz ERP APIs for inventory synchronization and remittance management.",
+        "Developed event-driven status tracking workflows using Laravel Events.",
+        "Automated product synchronization processes through scheduled background jobs.",
+        "Implemented warehouse operations, inventory management, request workflows, and audit logging systems.",
+        "Designed scalable service-layer architecture supporting long-term maintainability.",
+        "Developed administrative modules for warehouse, center, category, and product management."
+      ],
+      "tech": []
+    }
+  ],
+  "training": [
+    {
+      "org": "Epam Systems",
+      "title": "Data Software Engineering Training",
+      "dates": "Sep 2025 – Jan 2026",
+      "bullets": [
+        "Participated in Data Software Engineering training focused on modern backend and data engineering concepts.",
+        "Worked with scalable systems, data workflows, and engineering best practices.",
+        "Improved understanding of production-ready software engineering and distributed systems concepts."
+      ]
+    }
+  ],
+  "certifications": [
+    {
+      "name": "Building AI Agents with Multimodal Models",
+      "issuer": "NVIDIA",
+      "date": "Aug 2026",
+      "items": [],
+      "details": [
+        "NVIDIA Certificate of Competency validating practical proficiency in building AI agents using multimodal AI models"
+      ],
+      "link": "https://learn.nvidia.com/certificates?id=ZgWjNOl7R6yL_7L4afPejg",
+      "additional": false
+    },
+    {
+      "name": "Claude Code in Action",
+      "issuer": "Anthropic",
+      "date": "Jul 2026",
+      "items": [],
+      "details": [],
+      "link": "",
+      "additional": false
+    },
+    {
+      "name": "From Relational Model (SQL) to MongoDB’s Document Model · Building AI-Powered Search with MongoDB Vector Search · Building RAG Apps Using MongoDB",
+      "issuer": "MongoDB",
+      "date": "May 2026",
+      "items": [
+        "From Relational Model (SQL) to MongoDB’s Document Model",
+        "Building AI-Powered Search with MongoDB Vector Search",
+        "Building RAG Apps Using MongoDB"
+      ],
+      "details": [],
+      "link": "",
+      "additional": false
+    },
+    {
+      "name": "Conflict Management & Resolution in IT Teams: From Theory to Practice",
+      "issuer": "DataArt",
+      "date": "May 2026",
+      "items": [],
+      "details": [],
+      "link": "",
+      "additional": false
+    },
+    {
+      "name": "Data Engineering Zoomcamp",
+      "issuer": "DataTalksClub",
+      "date": "Apr 2026",
+      "items": [],
+      "details": [
+        "Completed hands-on Data Engineering program focused on modern data platforms and pipelines.",
+        "Covered workflow orchestration, data lakes, warehouses, batch processing, and analytics systems.",
+        "Worked with modern data engineering tools and cloud concepts."
+      ],
+      "link": "https://certificate.datatalks.club/dezoomcamp/2026/72fe6b43413b989510e7ddbafb4baf42c4cdd842.pdf",
+      "additional": false
+    },
+    {
+      "name": "AI Practitioner – Foundations",
+      "issuer": "AWS Skills Centers",
+      "date": "Apr 2026",
+      "items": [],
+      "details": [
+        "Completed AWS AI Practitioner training focused on generative AI and foundation models.",
+        "Learned concepts related to Amazon Bedrock, prompt engineering, RAG systems, and responsible AI.",
+        "Gained hands-on exposure to AI engineering workflows and cloud AI systems."
+      ],
+      "link": "https://www.credly.com/badges/3b976705-3430-429b-beb6-dd30ff950b3a/public_url",
+      "additional": false
+    },
+    {
+      "name": "Agentic AI on AWS",
+      "issuer": "BeSA Program",
+      "date": "Apr 2026",
+      "items": [],
+      "details": [
+        "Studied AI agents, MCP concepts, agentic workflows, and scalable AI system design.",
+        "Learned concepts around Amazon Bedrock, AI orchestration, and production AI architectures.",
+        "Explored AI-assisted system design and AI workflow automation."
+      ],
+      "link": "https://besa.techexpert.io/certification/amirrezazare5999606/agentic-ai-on-aws-besa-398323",
+      "additional": false
+    },
+    {
+      "name": "Apache Airflow 3 Fundamentals",
+      "issuer": "Astronomer",
+      "date": "Mar 2026",
+      "items": [],
+      "details": [
+        "Completed Apache Airflow fundamentals training focused on workflow orchestration and DAG development.",
+        "Learned orchestration concepts, scheduling, task dependencies, and Airflow best practices."
+      ],
+      "link": "https://www.credly.com/badges/11b32800-6500-4754-bc98-e7cb73ab92c3",
+      "additional": false
+    },
+    {
+      "name": "AWS Cloud Technical Essentials",
+      "issuer": "Coursera",
+      "date": "Nov 2022",
+      "items": [],
+      "details": [],
+      "link": "",
+      "additional": true
+    },
+    {
+      "name": "Mastering Visual Studio Code",
+      "issuer": "Udemy",
+      "date": "Dec 2021",
+      "items": [],
+      "details": [],
+      "link": "",
+      "additional": true
+    },
+    {
+      "name": "Learn Basic Data Science and Python Libraries",
+      "issuer": "Udemy",
+      "date": "Dec 2021",
+      "items": [],
+      "details": [],
+      "link": "",
+      "additional": true
+    },
+    {
+      "name": "Git & GitHub For Beginners",
+      "issuer": "Udemy",
+      "date": "Dec 2021",
+      "items": [],
+      "details": [],
+      "link": "",
+      "additional": true
+    },
+    {
+      "name": "Complete Python Programming for Beginners",
+      "issuer": "Udemy",
+      "date": "Oct 2021",
+      "items": [],
+      "details": [],
+      "link": "",
+      "additional": true
+    },
+    {
+      "name": "Make Laravel and Laravel 8 APIs and Apps Fast with Blueprint",
+      "issuer": "Udemy",
+      "date": "Oct 2021",
+      "items": [],
+      "details": [],
+      "link": "",
+      "additional": true
+    },
+    {
+      "name": "The SQL Programming Essentials 2022 Immersive Training",
+      "issuer": "Udemy",
+      "date": "Sep 2021",
+      "items": [],
+      "details": [],
+      "link": "",
+      "additional": true
+    },
+    {
+      "name": "Python Django Full Social Media Course",
+      "issuer": "Udemy",
+      "date": "Sep 2021",
+      "items": [],
+      "details": [],
+      "link": "",
+      "additional": true
+    }
+  ],
+  "hackathons": [
+    {
+      "title": "AI-Powered Job Assistant",
+      "date": "Jun 2026",
+      "event": "lablab.ai Hackathon — Team Project",
+      "bullets": [
+        "Built a multi-agent AI job assistant in a 1-week hackathon, covering opportunity discovery, resume tailoring, and application guidance using LLM orchestration and multi-agent workflows.",
+        "Integrated external APIs and delivered a working submission under tight deadlines; sponsored by Featherless AI, BAND, and AI/ML API."
+      ],
+      "links": [
+        {
+          "text": "View Project Submission",
+          "url": "https://lnkd.in/d9YQFUSk",
+          "private": false
+        }
+      ]
+    }
+  ],
+  "education": [
+    {
+      "school": "Meybod University",
+      "degree": "Bachelor of Engineering (B.E.)",
+      "field": "Computer Software Engineering",
+      "dates": "2018 – 2022",
+      "bullets": []
+    },
+    {
+      "school": "TUMO Labs",
+      "degree": "",
+      "field": "Machine Learning",
+      "dates": "Feb 2026 – Present",
+      "bullets": [
+        "Led a 4-student team that trained classification and regression models from scratch (supervised and unsupervised) using scikit-learn, TensorFlow and PyTorch."
+      ]
+    }
+  ],
+  "languages": [
+    {
+      "language": "Persian",
+      "level": "Native"
+    },
+    {
+      "language": "English",
+      "level": "Full Professional"
+    },
+    {
+      "language": "German",
+      "level": "Elementary"
+    },
+    {
+      "language": "Armenian",
+      "level": "Limited working proficiency"
+    },
+    {
+      "language": "Russian",
+      "level": "Elementary"
+    }
+  ],
+  "interests": [
+    "Data Platform Engineering",
+    "AI Engineering",
+    "Cloud-native architectures",
+    "Workflow orchestration systems",
+    "Distributed systems",
+    "Modern analytics infrastructure",
+    "Scalable backend engineering",
+    "LLM-powered data applications"
+  ],
+  "community": [
+    {
+      "title": "Python Course — YouTube",
+      "date": "Oct 2026 – Present",
+      "links": [
+        {
+          "text": "GitHub Repository",
+          "url": "https://github.com/mrprogrammingx/python-course-youtube",
+          "private": false
+        },
+        {
+          "text": "https://www.youtube.com/@AmirZareDev",
+          "url": "https://www.youtube.com/@AmirZareDev",
+          "private": false
+        }
+      ],
+      "bullets": [
+        "Create a weekly Python programming course, with code examples for each week and narration produced with my own local voice-cloning tool.",
+        "Create videos of interesting projects, especially about AI."
+      ]
+    }
+  ]
+}

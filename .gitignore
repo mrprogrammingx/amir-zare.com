@@ -3,3 +3,7 @@ screenshots/
 Thumbs.db
 __pycache__/
 drafts/
+
+# Word resumes hold the phone number and personal email: never commit them (tools/import_resume.py reads them from outside the repo)
+*.docx
+~$*.docx

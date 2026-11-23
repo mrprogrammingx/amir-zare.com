@@ -1673,3 +1673,6 @@ html[lang="fa"] .lh-role,html[lang="fa"] .cn-role{letter-spacing:0;text-transfor
 .cmx-video-text p{line-height:1.7}
 @media (max-width:640px){ .cmx-video{flex-direction:column;align-items:stretch} .cmx-video .yt-lite,.cmx-video .yt-frame{flex:none;width:100%;max-width:340px;margin:0 auto} }
 .ab-video{max-width:760px;margin:34px auto 0}.ab-video .yt-lite,.ab-video .yt-frame{margin:0}
+
+/* Embedded live app on a project page (Cookie Cats A/B Test Analyzer) */
+.app-embed { display: block; border: 0; border-radius: 12px; background: #fff; }
