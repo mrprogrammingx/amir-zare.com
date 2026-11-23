@@ -1778,3 +1778,32 @@ html[lang="fa"] .lh-role,html[lang="fa"] .cn-role{letter-spacing:0;text-transfor
   [dir="rtl"] .ask-btn{left:14px}
 }
 @media print{ .ask{display:none !important} }
+
+/* ---------- Header: the brand never wraps; buttons compact instead (701px+, above the mobile menu) ---------- */
+.site-header .logo{white-space:nowrap;flex-shrink:0}
+@media (min-width:701px) and (max-width:1399px){
+  .nav .nav-book{padding:7px 9px;gap:0}
+  .nav .nav-book span{display:none}  /* icon only; the label stays as aria-label and title */
+}
+@media (min-width:701px) and (max-width:1199px){
+  .lang-sw summary{padding:0 7px;gap:3px}
+}
+@media (min-width:1400px){
+  .site-header .header-inner{max-width:1200px}  /* room for the full "Book a call" label; page content keeps its width */
+}
+@media (min-width:701px) and (max-width:1023px){
+  .nav-pill a{padding:8px 10px;font-size:.9rem}
+  .nav-pill .nav-ext{margin-left:6px}
+}
+@media (min-width:701px) and (max-width:899px){
+  .site-header .header-inner{padding-left:16px;padding-right:16px}
+  .nav-pill a{padding:8px 8px;font-size:.86rem}
+  .site-header .connect-label{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+}
+@media (min-width:701px) and (max-width:779px){
+  .nav-pill a{padding:7px 6px;font-size:.8rem}
+  .nav-pill .nav-ext{margin-left:4px}
+  .nav .nav-book{margin-left:4px;padding:6px 7px}
+  .site-header .header-actions{gap:6px}
+  .site-header .header-inner{padding-left:10px;padding-right:10px}
+}
