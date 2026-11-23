@@ -157,10 +157,39 @@
     document.documentElement.setAttribute('data-theme', t);
     if(themeBtn) themeBtn.textContent = t==='light' ? '🌙' : '🌞';
     _safeSetItem('site-theme', t);
+    if (window.Cal && window.Cal.loaded) window.Cal('ui', { theme: t });  // keep an open Cal.com embed in step
   }
   const saved = _safeGetItem('site-theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
   setTheme(saved);
   if(themeBtn){ themeBtn.addEventListener('click', ()=> setTheme(document.documentElement.getAttribute('data-theme')==='light'?'dark':'light')) }
+
+  // Cal.com booking (SITE["booking_url"] in tools/content.py). The embed script is loaded only on demand: when a
+  // "Book a call" link is clicked (popup) or the home "Work with me" section scrolls into view (inline). Without
+  // JavaScript the links simply open cal.com.
+  const calTheme = () => document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+  const loadCal = () => {
+    if (!window.Cal) {
+      (function (C, A, L) { const p = (a, ar) => { a.q.push(ar); }; const d = C.document; C.Cal = C.Cal || function () { const cal = C.Cal; const ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement('script')).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if (typeof namespace === 'string') { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ['initNamespace', namespace]); } else p(cal, ar); return; } p(cal, ar); }; })(window, 'https://app.cal.com/embed/embed.js', 'init');
+      window.Cal('init', { origin: 'https://cal.com' });
+      window.Cal('ui', { theme: calTheme(), layout: 'month_view' });
+    }
+    return window.Cal;
+  };
+  q('a[data-cal-link]').forEach(a => a.addEventListener('click', e => {
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.button) return;  // let "open in new tab" work
+    e.preventDefault();
+    loadCal()('modal', { calLink: a.dataset.calLink, config: { layout: 'month_view', theme: calTheme() } });
+  }));
+  const calBox = document.getElementById('book-inline');
+  if (calBox && 'IntersectionObserver' in window) {
+    const io = new IntersectionObserver(entries => {
+      if (!entries.some(en => en.isIntersecting)) return;
+      io.disconnect();
+      loadCal()('inline', { elementOrSelector: calBox, calLink: calBox.dataset.calLink, config: { layout: 'month_view', theme: calTheme() } });
+      calBox.classList.add('is-loaded');
+    }, { rootMargin: '0px 0px 120px 0px' });
+    io.observe(calBox);
+  }
 
   // Mobile nav toggle (button added in HTML). Toggles `#site-nav.open` and updates aria state.
   (function(){

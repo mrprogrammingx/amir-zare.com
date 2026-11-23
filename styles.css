@@ -1719,3 +1719,28 @@ html[lang="fa"] .lh-role,html[lang="fa"] .cn-role{letter-spacing:0;text-transfor
 
 /* Embedded live app on a project page (Cookie Cats A/B Test Analyzer) */
 .app-embed { display: block; width: 100%; border: 0; border-radius: 12px; background: #fff; }
+
+/* ---------- Cal.com booking: nav button, home "Work with me", resume button ---------- */
+.nav .nav-book{display:inline-flex;align-items:center;gap:6px;margin-left:12px;padding:6px 13px;border-radius:999px;color:var(--text);
+  border:1px solid rgba(110,231,183,.55);background:transparent;white-space:nowrap}
+.nav .nav-book svg{flex:none;color:var(--accent)}
+.nav .nav-book:hover,.nav .nav-book:focus-visible{color:var(--text);border-color:var(--accent);background:rgba(110,231,183,.08)}
+@media (min-width:701px){ .nav-pill .nav-book{margin-left:8px;padding:7px 14px;border-radius:999px} .nav-pill .nav-book:hover{background:rgba(110,231,183,.08)} }
+.nav.open .nav-book{display:flex;justify-content:center;margin:4px 0 0;padding:10px;border-radius:10px;color:var(--text)}
+:root[data-theme='light'] .nav .nav-book{border-color:rgba(4,120,87,.5)}
+:root[data-theme='light'] .nav .nav-book svg{color:#047857}
+.book-sec{padding-top:56px;padding-bottom:56px}
+.book-title{display:flex;align-items:center;gap:12px;margin:0 0 10px;font-size:clamp(1.6rem,3vw,2.1rem)}
+.book-title svg{flex:none;width:44px;height:44px;padding:9px;border-radius:12px;color:var(--accent);background:rgba(110,231,183,.1);border:1px solid rgba(110,231,183,.28)}
+.book-line{margin:0 0 22px;color:var(--muted);max-width:640px}
+.book-inline{min-height:200px;border-radius:16px;border:1px solid var(--panel-border);background:var(--glass);overflow:hidden}
+.book-inline.is-loaded{min-height:560px}
+.book-fallback{margin:0;padding:28px 20px;text-align:center}
+.book-fallback a{display:inline-flex;align-items:center;gap:8px;font-weight:600;color:var(--accent);text-decoration:none}
+.book-fallback a:hover{text-decoration:underline}
+.book-inline.is-loaded .book-fallback{display:none}
+:root[data-theme='light'] .book-title svg{color:#047857;background:rgba(4,120,87,.08);border-color:rgba(4,120,87,.25)}
+:root[data-theme='light'] .book-fallback a{color:#047857}
+.rs-contact .rs-book{border-color:rgba(110,231,183,.55)}
+.rs-contact .rs-book svg{color:#6ee7b7}
+@media print{ .rs-book{display:none !important} }

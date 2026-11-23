@@ -53,8 +53,8 @@ def lpath(lang, key):
 def alts_for(key):
     return {lang: lpath(lang, key) for lang in LANG_ORDER}
 
-CSS_VERSION = "20261124a"
-JS_VERSION = "20261123a"
+CSS_VERSION = "20261124b"
+JS_VERSION = "20261124b"
 LASTMOD = "2026-11-16"
 
 ICONS = {
@@ -137,6 +137,32 @@ def lang_switcher(lang, alts):
             f'<span>{LANG_SHORT[lang]}</span></summary><div class="lang-menu">{links}</div></details>')
 
 
+BOOKING_URL = SITE["booking_url"]
+CAL_LINK = BOOKING_URL.split("://", 1)[1].split("/", 1)[1].strip("/")  # "amirzaredev": what the Cal.com embed opens
+CAL_ICON = ('<svg viewBox="0 0 24 24" width="{s}" height="{s}" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" '
+            'stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16" rx="2"/><path d="M16 2.5v4M8 2.5v4M3 10h18"/>'
+            '<path d="M8 14h.01M12 14h.01M16 14h.01M8 17.5h.01M12 17.5h.01"/></svg>')
+
+
+def book_attrs():
+    """A link to the Cal.com page that script.js opens in the Cal.com popup (the embed script loads on first click)."""
+    return f'href="{BOOKING_URL}" target="_blank" rel="noopener" data-cal-link="{CAL_LINK}"'
+
+
+def book_section(lang="en"):
+    """Home "Work with me": Cal.com inline embed, loaded by script.js only when the section scrolls into view."""
+    u = UI[lang]
+    return f'''<section id="book" class="section book-sec" aria-labelledby="book-title">
+      <div class="container">
+        <h2 id="book-title" class="book-title">{CAL_ICON.format(s=26)}<span>{u["work_with_me"]}</span></h2>
+        <p class="book-line">{u["book_line"]}</p>
+        <div class="book-inline" id="book-inline" data-cal-link="{CAL_LINK}">
+          <p class="book-fallback"><a href="{BOOKING_URL}" target="_blank" rel="noopener">{CAL_ICON.format(s=18)}{u["book_open"]} <span aria-hidden="true">&#8599;</span></a></p>
+        </div>
+      </div>
+    </section>'''
+
+
 def header(home, active=None, lang="en", alts=None):
     """home=True renders in-page anchors with section tracking; otherwise links to pages."""
     u = UI[lang]
@@ -156,6 +182,7 @@ def header(home, active=None, lang="en", alts=None):
         items = [f'          <a href="{h}"{" aria-current=\"page\"" if s == active else ""}>{t}</a>' for t, h, s in links]
         logo = "/"
     items.append(f'          <a href="/resume.html" class="nav-ext" target="_blank" rel="noopener" aria-label="{u["resume"]} ({u["new_tab"]})">{u["resume"]}{ARROW}</a>')
+    items.append(f'          <a class="nav-book" {book_attrs()}>{CAL_ICON.format(s=16)}<span>{u["book_call"]}</span></a>')
     nav = "\n".join(items)
     sw = lang_switcher(lang, alts)
     sw_line = f"          {sw}\n" if sw else ""
@@ -789,11 +816,14 @@ def sync_existing(path, home=False):
     if home:
         out = replace_block(out, r"<!-- build:seo -->", r"<!-- /build:seo -->", "<!-- build:seo -->\n  " + home_seo() + "\n  <!-- /build:seo -->")
         out = re.sub(r"<title>.*?</title>", f"<title>{esc(HOME_TITLE)}</title>", out, count=1)
+        out = replace_block(out, r"<!-- build:book -->", r"<!-- /build:book -->", "<!-- build:book -->\n    " + book_section() + "\n    <!-- /build:book -->")
     if path == "resume.html":
         out = replace_block(out, r"<!-- build:seo -->", r"<!-- /build:seo -->", "<!-- build:seo -->\n  " + resume_seo() + "\n  <!-- /build:seo -->")
         out = re.sub(r"<title>.*?</title>", f"<title>{esc(RESUME_TITLE)}</title>", out, count=1)
         out = re.sub(r'<meta name="description" content="[^"]*"', f'<meta name="description" content="{esc(RESUME_DESC)}"', out, count=1)
         out = replace_block(out, r"<!-- build:resume -->", r"<!-- /build:resume -->", resume_body())
+        out = replace_block(out, r"<!-- build:book -->", r"<!-- /build:book -->",
+                            f'<!-- build:book --><a class="rs-book" {book_attrs()}>{CAL_ICON.format(s=15)}<span>{UI["en"]["book_call"]}</span></a><!-- /build:book -->')
     return out
 
 
@@ -1292,7 +1322,7 @@ def llms_txt():
              "## Frequently asked questions", ""] + [f"### {q}\n\n{a}\n" for q, a in FAQ] + ["## Projects", ""]
     for p in ALL:
         lines.append(f"- [{plain(p['title'])}]({SITE['url']}{ppath(p)}): {plain(p.get('summary_3p', p['summary']))}")
-    lines += ["", "## Contact", "", f"- Email: {SITE['email']}"] + [f"- {u}" for u in SITE["same_as"]] + [f"- Sponsor: {SPONSOR_URL}", ""]
+    lines += ["", "## Contact", "", f"- Email: {SITE['email']}", f"- Book a call: {BOOKING_URL}"] + [f"- {u}" for u in SITE["same_as"]] + [f"- Sponsor: {SPONSOR_URL}", ""]
     for line in lines:  # llms.txt speaks about Amir in the third person (FAQ questions are asked by the reader)
         if not line.startswith("### ") and re.search(r"\b(I|I'm|I've|I'd|me|my|My|mine)\b", re.sub(r"\(?https?://\S+", "", plain(line))):
             raise SystemExit(f"llms.txt: first-person line (add a third-person 'summary_3p' in tools/content.py):\n  {line}")
@@ -1373,6 +1403,7 @@ def connect_page(lang="en"):
       {row("https://linkedin.com/in/binahayat00", brand_icon("linkedin", 20), c["linkedin"])}
       {row("https://t.me/MrProgrammingX", brand_icon("telegram", 20), c["telegram"])}
       {row("mailto:info@amir-zare.com", brand_icon("email", 20), c["email"], ext=False)}
+      {row(BOOKING_URL, CAL_ICON.format(s=20), u["book_call"], extra=f' data-cal-link="{CAL_LINK}"')}
       <div class="cn-row3">
         {row(lpath(lang, "home"), globe, c["site"], ext=False)}
         {row("https://github.com/mrprogrammingx", brand_icon("github", 20), c["code"])}
@@ -1510,6 +1541,7 @@ def local_home(lang):
         </div>
       </div>
     </section>
+    {book_section(lang)}
     <section class="section pg lh-sec" id="contact">
       <div class="container lh-cta">
         <h2 class="lh-h">{h["contact_h"]}</h2>

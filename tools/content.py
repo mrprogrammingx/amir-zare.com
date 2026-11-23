@@ -4,6 +4,7 @@ Edit facts here, then run `python3 tools/build.py`. Text may contain simple HTML
 """
 
 SITE = {
+    "booking_url": "https://cal.com/amirzaredev",  # Cal.com: nav button, home "Work with me", /connect/, resume, llms.txt
     "url": "https://amir-zare.com",
     "name": "Amir Zare",
     "headline": "AI & Data Engineer",
