@@ -53,7 +53,7 @@ def lpath(lang, key):
 def alts_for(key):
     return {lang: lpath(lang, key) for lang in LANG_ORDER}
 
-CSS_VERSION = "20261124c"
+CSS_VERSION = "20261124e"
 JS_VERSION = "20261124d"
 LASTMOD = "2026-11-16"
 
@@ -182,7 +182,7 @@ def header(home, active=None, lang="en", alts=None):
         items = [f'          <a href="{h}"{" aria-current=\"page\"" if s == active else ""}>{t}</a>' for t, h, s in links]
         logo = "/"
     items.append(f'          <a href="/resume.html" class="nav-ext" target="_blank" rel="noopener" aria-label="{u["resume"]} ({u["new_tab"]})">{u["resume"]}{ARROW}</a>')
-    items.append(f'          <a class="nav-book" {book_attrs()}>{CAL_ICON.format(s=16)}<span>{u["book_call"]}</span></a>')
+    items.append(f'          <a class="nav-book" {book_attrs()} aria-label="{u["book_call"]}" title="{u["book_call"]}">{CAL_ICON.format(s=16)}<span>{u["book_call"]}</span></a>')
     nav = "\n".join(items)
     sw = lang_switcher(lang, alts)
     sw_line = f"          {sw}\n" if sw else ""
@@ -195,7 +195,7 @@ def header(home, active=None, lang="en", alts=None):
         <div class="header-actions">
 {sw_line}          <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">🌙</button>
           <div class="connect" id="connect">
-            <button type="button" class="connect-btn" id="connect-btn" aria-expanded="false" aria-controls="connect-panel">
+            <button type="button" class="connect-btn" id="connect-btn" aria-label="{u["connect"]}" aria-expanded="false" aria-controls="connect-panel">
               <span class="connect-label">{u["connect"]}</span>
               <span class="connect-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></span>
             </button>
