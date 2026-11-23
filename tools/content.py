@@ -202,6 +202,7 @@ PROJECTS = [
     },
     {
         "slug": "cookie-cats-ab-test",
+        "embed": {"src": "https://amirzaredev-ab-test-analyzer.static.hf.space/index.html", "height": 1100, "title": "A/B Test Analyzer"},
         "title": "A/B Test Analysis: Cookie Cats",
         "subtitle": "Does moving a game's progress gate hurt retention?",
         "year": "2026", "category": "Analytics", "status": "Published",
