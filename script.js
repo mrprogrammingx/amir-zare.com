@@ -158,6 +158,8 @@
     if(themeBtn) themeBtn.textContent = t==='light' ? '🌙' : '🌞';
     _safeSetItem('site-theme', t);
     if (window.Cal && window.Cal.loaded) window.Cal('ui', { theme: t });  // keep an open Cal.com embed in step
+    const askFrame = document.querySelector('.ask-body iframe');  // and the assistant, once it exists
+    if (askFrame && askFrame.contentWindow) askFrame.contentWindow.postMessage({ type: 'theme', value: t }, new URL(askFrame.src).origin);
   }
   const saved = _safeGetItem('site-theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
   setTheme(saved);
@@ -201,7 +203,9 @@
     const open = () => {
       if (!body.firstChild) {
         const f = document.createElement('iframe');
-        f.src = panel.dataset.src;
+        const src = new URL(panel.dataset.src);
+        src.searchParams.set('theme', document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark');
+        f.src = src.href;
         f.title = document.getElementById('ask-title').textContent;
         f.allow = 'clipboard-write';
         body.appendChild(f);
