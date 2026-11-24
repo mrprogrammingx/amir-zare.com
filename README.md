@@ -9,6 +9,16 @@ Pages included:
 - `analytics/`, `run-walk/`, `classic-web-based-online-chat-application/` — hand-written case studies
 - `kb.json` — the resume as standalone third-person facts, read by the "Ask about Amir" Hugging Face Space
 
+## 🤖 Ask about Amir
+
+An AI assistant on [amir-zare.com](https://amir-zare.com/#ask) that answers questions about my experience using only facts from my resume, with a checked citation for every sentence.
+
+- Retrieval runs in the browser (all-MiniLM-L6-v2 via Transformers.js)
+- Answers come from Llama 3.3 70B on Cloudflare Workers AI ([`ask-worker/`](ask-worker/))
+- Personal questions are refused by rule; $0/month on free tiers
+
+[Try it](https://amir-zare.com/#ask) · [How it works](https://amir-zare.com/projects/ask-about-amir/) · [Hugging Face Space](https://huggingface.co/spaces/amirzaredev/ask-about-amir)
+
 ## Updating the resume (the Word master is the source of truth)
 
 Edit facts only in the Word master resume, then:
