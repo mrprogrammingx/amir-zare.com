@@ -1604,6 +1604,7 @@ def local_home(lang):
       </div>
     </section>
     {book_section(lang)}
+    {ask_section(lang)}
     <section class="section pg lh-sec" id="contact">
       <div class="container lh-cta">
         <h2 class="lh-h">{h["contact_h"]}</h2>
@@ -1615,8 +1616,7 @@ def local_home(lang):
           <a class="cta-btn" href="{lpath(lang, "connect")}">{QR_ICON}{h["card"]}</a>
         </div>
       </div>
-    </section>
-    {ask_section(lang)}'''
+    </section>'''
     graph = local_graph(lang, "home", h["title"], h["desc"])
     return page(h["title"], h["desc"], lpath(lang, "home"), body, og_image("home"), graph, active="home", og_type="profile",
                 lang=lang, alts=alts_for("home"))
