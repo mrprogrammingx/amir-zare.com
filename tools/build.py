@@ -519,6 +519,7 @@ def local_video(p):
         return ""
     return (f'<figure class="pg-video"><video controls muted playsinline preload="none" poster="{v["poster"]}" '
             f'aria-label="{esc(plain(p["title"]))} demo video">'
+            f'<source src="{v["src"]}" type="video/mp4">'
             f'<a href="{v["src"]}" download>Download the demo video (MP4)</a></video></figure>')
 
 
@@ -1929,10 +1930,26 @@ def pdfs_stale():
     return ""
 
 
+def videos_without_source(files):
+    """Every <video> needs a src attribute or a <source> child, or it renders as an empty player that never plays."""
+    bad = []
+    for rel, text in files.items():
+        if not rel.endswith(".html"):
+            continue
+        for m in re.finditer(r"<video\b([^>]*)>(.*?)</video>", text, re.S | re.I):
+            if not re.search(r"\ssrc\s*=", m.group(1)) and not re.search(r"<source\b[^>]*\ssrc\s*=", m.group(2), re.I):
+                bad.append(rel)
+    return bad
+
+
 def main():
     check = "--check" in sys.argv
     stale = []
-    for rel, text in outputs().items():
+    files = outputs()
+    no_source = videos_without_source(files)
+    if no_source:
+        raise SystemExit("<video> without a src or <source> (it would never play):\n  " + "\n  ".join(no_source))
+    for rel, text in files.items():
         target = ROOT / rel
         current = target.read_text() if target.exists() else None
         if current != text:
