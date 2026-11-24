@@ -18,7 +18,7 @@ import sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "tools"))
-from content import ABOUT, CASE_STUDIES, COMMUNITY, CORE_SKILLS, PROJECTS, SHORT_RESUME, SITE  # noqa: E402
+from content import ABOUT, CASE_STUDIES, COMMUNITY, CORE_SKILLS, LINKS, PROJECTS, SHORT_RESUME, SITE  # noqa: E402
 from i18n import CONNECT_EN, FEATURED, LANG_NAME, LANG_ORDER, LANG_SHORT, NAME, OG_LOCALE, RTL, T, UI  # noqa: E402
 
 from import_resume import privacy_check  # noqa: E402
@@ -69,7 +69,7 @@ ICONS = {
 QR_ICON = ('<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" '
            'stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/>'
            '<rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3M21 14v.01M14 21h3M21 18v3M17.5 17.5v3.5"/></svg>')
-TG_CHANNEL = "https://t.me/amirzarecom"
+TG_CHANNEL = LINKS["telegram_channel"]
 SPONSOR_URL = "https://github.com/sponsors/mrprogrammingx"
 HEART = '<svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.7 4.5c2.1 0 3.6 1.2 4.3 2.4h2c.7-1.2 2.2-2.4 4.3-2.4 3.7 0 5.8 3.9 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg>'
 ARROW = '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg>'
@@ -99,8 +99,8 @@ def plain(text):
     return html.unescape(re.sub(r"<[^>]+>", "", text))
 
 
-HF_URL = "https://huggingface.co/amirzaredev"
-KAGGLE_URL = "https://www.kaggle.com/amirzaredev"
+HF_URL = LINKS["huggingface"]
+KAGGLE_URL = LINKS["kaggle"]
 
 
 def brand_icon(name, size=15):
@@ -111,13 +111,13 @@ def brand_icon(name, size=15):
 
 def connect_rows(indent, lang="en"):
     rows = [
-        ("linkedin", "LinkedIn", "https://linkedin.com/in/binahayat00", True),
-        ("telegram", "Telegram", "https://t.me/MrProgrammingX", True),
+        ("linkedin", "LinkedIn", LINKS["linkedin"], True),
+        ("telegram", "Telegram", LINKS["telegram"], True),
         ("email", SITE["email"], "mailto:" + SITE["email"], False),
-        ("github", "GitHub", "https://github.com/mrprogrammingx", True),
+        ("github", "GitHub", LINKS["github"], True),
         ("huggingface", "Hugging Face", HF_URL, True),
         ("kaggle", "Kaggle", KAGGLE_URL, True),
-        ("youtube", "YouTube", "https://www.youtube.com/@AmirZareDev", True),
+        ("youtube", "YouTube", LINKS["youtube"], True),
     ]
     out = []
     for brand, label, href, ext in rows:
@@ -267,7 +267,7 @@ def footer(telegram=True, lang="en"):
         ("DataLayer", "https://usedatalayer.com"),
         ("Evolution Agent", "https://usedatalayer.com/products/evolution-agent"),
     ]) + '\n          <a href="/projects/flowfleet/">FlowFleet</a>'
-    tg = ('          <a href="https://t.me/MrProgrammingX" target="_blank" rel="noopener">' + brand_icon("telegram") + "Telegram</a>\n"
+    tg = ('          <a href="' + LINKS["telegram"] + '" target="_blank" rel="noopener">' + brand_icon("telegram") + "Telegram</a>\n"
           f'          <a href="{TG_CHANNEL}" target="_blank" rel="noopener">' + brand_icon("telegram") + u["telegram_channel"] + "</a>\n") if telegram else ""
     return f'''<footer class="site-footer footer-rich">
     <div class="container">
@@ -288,11 +288,11 @@ def footer(telegram=True, lang="en"):
         </nav>
         <div>
           <h3>{u["connect_h"]}</h3>
-          <a href="https://linkedin.com/in/binahayat00" target="_blank" rel="noopener">{brand_icon("linkedin")}LinkedIn</a>
-{tg}          <a href="https://github.com/mrprogrammingx" target="_blank" rel="noopener">{brand_icon("github")}GitHub</a>
+          <a href="{LINKS["linkedin"]}" target="_blank" rel="noopener">{brand_icon("linkedin")}LinkedIn</a>
+{tg}          <a href="{LINKS["github"]}" target="_blank" rel="noopener">{brand_icon("github")}GitHub</a>
           <a href="{HF_URL}" target="_blank" rel="noopener">{brand_icon("huggingface")}Hugging Face</a>
           <a href="{KAGGLE_URL}" target="_blank" rel="noopener">{brand_icon("kaggle")}Kaggle</a>
-          <a href="https://www.youtube.com/@AmirZareDev" target="_blank" rel="noopener">{brand_icon("youtube")}YouTube</a>
+          <a href="{LINKS["youtube"]}" target="_blank" rel="noopener">{brand_icon("youtube")}YouTube</a>
           <a href="mailto:{SITE["email"]}">{brand_icon("email")}{u["email"]}</a>
           <a class="footer-sponsor" href="{SPONSOR_URL}" target="_blank" rel="noopener">{HEART}{u["sponsor"]}</a>
           <a href="{lpath(lang, "connect")}">{QR_ICON}{u["digital_card"]}</a>
@@ -1130,7 +1130,35 @@ BASE_VERBS = {"Create", "Mentor", "Build", "Lead", "Help", "Run", "Teach", "Writ
 SUBJECT_START = {"The", "This", "These", "Every", "Each", "One", "All", "Both"}
 VOWEL_SOUND = re.compile(r"^(?:[AEIOU]|(?:[FHLMNRSX])[A-Z0-9])")
 PRONOUNS = [(r"\bmy\b", "his"), (r"\bMy\b", "His"), (r"\bI\b", "he"), (r"\bme\b", "him"), (r"\bmyself\b", "himself"), (r"\bmine\b", "his")]
-KB_ALLOWED_URLS = ("linkedin.com/in/binahayat00", "amir-zare.com")
+
+CONNECT_URL = "https://amir-zare.com/connect/"  # printed in the QR code (images/qr-connect.*): never change or remove this path
+
+
+def bare(url):
+    """https://www.kaggle.com/amirzaredev -> kaggle.com/amirzaredev (how links are written in kb.json facts)."""
+    return re.sub(r"^https?://(www\.)?", "", url)
+
+
+# Contact facts come from the same public links as the footer and /connect/ (LINKS in tools/content.py), plus the
+# booking page and the contact card. The phone number and personal email are never in LINKS, so never in kb.json.
+KB_CONTACT_LINKS = [LINKS[k] for k in ("linkedin", "telegram", "github", "huggingface", "kaggle")] + [SITE["booking_url"], CONNECT_URL]
+# The only email address allowed in kb.json is LINKS["email"] (info@amir-zare.com); listed first so it is removed
+# before "amir-zare.com" when kb_check looks for other text that looks like a URL.
+KB_ALLOWED_URLS = (LINKS["email"],) + tuple(bare(u) for u in KB_CONTACT_LINKS) + ("amir-zare.com",)
+
+
+def kb_contact_sentences():
+    """One short fact per link: tested with the Space's retrieval, "What is his GitHub?" / "What is his Telegram?" rank the
+    one-link fact first, while a single sentence listing several profiles lost to e.g. a "Git & GitHub" course."""
+    profiles = [("LinkedIn", "linkedin"), ("GitHub", "github"), ("Hugging Face", "huggingface"), ("Kaggle", "kaggle")]
+    return ([f"Amir can be contacted on LinkedIn ({bare(LINKS['linkedin'])}), on Telegram ({bare(LINKS['telegram'])}), "
+             f"or by booking a call at {bare(SITE['booking_url'])}.",
+             # Starts with the question: in testing, the plain sentence lost "What is his email?" to the Mail.tm
+             # "Temporary Email Service" project; this form ranks first for every email question tried.
+             f"What is Amir's email? His email for professional contact is {LINKS['email']}.",
+             f"Amir's Telegram is {bare(LINKS['telegram'])}."]
+            + [f"Amir's {label} profile is {bare(LINKS[key])}." for label, key in profiles]
+            + [f"All ways to reach Amir are listed at {bare(CONNECT_URL)}."])
 
 
 def lower_first(s, title_case=False):
@@ -1264,7 +1292,7 @@ def kb_entries():
     profile.append(finish("Amir has worked at " + join_items([x["company"] for x in R["experience"]])))
     if R["interests"]:
         profile.append(finish("Amir's professional interests include " + join_items([lower_first(x, title_case=True) for x in R["interests"]])))
-    profile.append(finish("Amir can be contacted through LinkedIn (linkedin.com/in/binahayat00) or amir-zare.com"))
+    profile += kb_contact_sentences()
     out = [{"id": "profile", "title": "Profile", "url": kb_url("/about/"), "sentences": profile}]
 
     skills = []
@@ -1359,7 +1387,13 @@ def join_items(items):
     return items[0] if len(items) == 1 else ", ".join(items[:-1]) + (", and " if len(items) > 2 else " and ") + items[-1]
 
 
+KB_PHONE = re.compile(r"\+\d[\d ()-]{7,}\d|\b\d{3}[ -]\d{3}[ -]\d{3,4}\b")  # same patterns as tools/import_resume.py and make-pdf.mjs
+
+
 def kb_check(eid, sent):
+    emails = re.findall(r"[\w.+-]+@[\w-]+(?:\.[\w-]+)+", sent)
+    if any(e.lower() != LINKS["email"] for e in emails) or KB_PHONE.search(sent):
+        raise SystemExit(f"kb.json: sentence in {eid!r} contains an email other than {LINKS['email']} or a phone number: {sent!r}")
     rest = sent
     for ok in KB_ALLOWED_URLS:
         rest = rest.replace(ok, "")
@@ -1423,7 +1457,6 @@ def llms_txt():
     return "\n".join(lines)
 
 
-CONNECT_URL = "https://amir-zare.com/connect/"  # printed in the QR code (images/qr-connect.*): never change or remove this path
 
 
 def vcard():
@@ -1465,7 +1498,7 @@ def connect_page(lang="en"):
     graph = [{"@type": "ProfilePage", "url": SITE["url"] + path, "name": title, "inLanguage": lang,
               "mainEntity": {"@type": "Person", "name": "Amir Zare", "jobTitle": "AI & Data Engineer", "url": SITE["url"],
                              "image": SITE["url"] + "/images/amir-contact.jpg", "email": "mailto:info@amir-zare.com",
-                             "sameAs": ["https://linkedin.com/in/binahayat00", "https://t.me/MrProgrammingX", "https://github.com/mrprogrammingx", HF_URL, KAGGLE_URL, "https://www.youtube.com/@AmirZareDev"]}}]
+                             "sameAs": [LINKS[k] for k in ("linkedin", "telegram", "github", "huggingface", "kaggle", "youtube")]}}]
     doc = f'''<!doctype html>
 <html lang="{lang}"{' dir="rtl"' if lang in RTL else ""}>
 <head>
@@ -1494,16 +1527,16 @@ def connect_page(lang="en"):
     <p class="cn-hello" id="cn-hello" hidden data-talk="{esc(c["hello_talk"])}" data-workshop="{esc(c["hello_workshop"])}" data-default="{esc(c["hello"])}"></p>
     <div class="cn-actions">
       {row("/connect/amir-zare.vcf", contact, c["save"], primary=True, ext=False, extra=' download="Amir-Zare.vcf" data-save-contact data-p="MjExMzkzNzc0NzMr"')}
-      {row("https://linkedin.com/in/binahayat00", brand_icon("linkedin", 20), c["linkedin"])}
-      {row("https://t.me/MrProgrammingX", brand_icon("telegram", 20), c["telegram"])}
+      {row(LINKS["linkedin"], brand_icon("linkedin", 20), c["linkedin"])}
+      {row(LINKS["telegram"], brand_icon("telegram", 20), c["telegram"])}
       {row("mailto:info@amir-zare.com", brand_icon("email", 20), c["email"], ext=False)}
       {row(BOOKING_URL, CAL_ICON.format(s=20), u["book_call"] + f' <span aria-hidden="true">&#8599;</span>')}
       <div class="cn-row3">
         {row(lpath(lang, "home"), globe, c["site"], ext=False)}
-        {row("https://github.com/mrprogrammingx", brand_icon("github", 20), c["code"])}
+        {row(LINKS["github"], brand_icon("github", 20), c["code"])}
         {row(HF_URL, brand_icon("huggingface", 20), "Hugging Face")}
         {row(KAGGLE_URL, brand_icon("kaggle", 20), "Kaggle")}
-        {row("https://www.youtube.com/@AmirZareDev", brand_icon("youtube", 20), c["videos"])}
+        {row(LINKS["youtube"], brand_icon("youtube", 20), c["videos"])}
         {row(TG_CHANNEL, brand_icon("telegram", 20), c["channel"])}
       </div>
       {row("https://usedatalayer.com", rocket, c["datalayer"])}

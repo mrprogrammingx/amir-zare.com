@@ -3,6 +3,19 @@
 Edit facts here, then run `python3 tools/build.py`. Text may contain simple HTML.
 """
 
+# Public profile and contact links: the one list used by the footer, the header Connect menu, /connect/, JSON-LD sameAs
+# and the contact facts in kb.json. Only links that are public on the site; never the phone number or a personal email.
+LINKS = {
+    "email": "info@amir-zare.com",  # the only public email address (also the only one allowed in kb.json)
+    "linkedin": "https://linkedin.com/in/binahayat00",
+    "telegram": "https://t.me/MrProgrammingX",
+    "github": "https://github.com/mrprogrammingx",
+    "huggingface": "https://huggingface.co/amirzaredev",
+    "kaggle": "https://www.kaggle.com/amirzaredev",
+    "youtube": "https://www.youtube.com/@AmirZareDev",
+    "telegram_channel": "https://t.me/amirzarecom",
+}
+
 SITE = {
     "booking_url": "https://cal.com/amirzaredev",  # Cal.com: nav button, home "Work with me", /connect/, resume, llms.txt
     # "Ask about Amir" assistant (Hugging Face Space): section embed for the home #ask section, and the full Space page
@@ -13,17 +26,9 @@ SITE = {
     "headline": "AI & Data Engineer",
     "description": "Amir Zare is an AI & Data Engineer and the founder of DataLayer, based in Yerevan, Armenia. "
                    "He builds data pipelines, analytics platforms, and production LLM applications.",
-    "email": "info@amir-zare.com",
+    "email": LINKS["email"],
     "location": "Yerevan, Armenia",
-    "same_as": [
-        "https://linkedin.com/in/binahayat00",
-        "https://t.me/MrProgrammingX",
-        "https://github.com/mrprogrammingx",
-        "https://huggingface.co/amirzaredev",
-        "https://www.kaggle.com/amirzaredev",
-        "https://www.youtube.com/@AmirZareDev",
-        "https://t.me/amirzarecom",
-    ],
+    "same_as": [LINKS[k] for k in ("linkedin", "telegram", "github", "huggingface", "kaggle", "youtube", "telegram_channel")],
     "portrait": "/images/amir-portrait.webp",
 }
 
