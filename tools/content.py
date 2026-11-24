@@ -19,6 +19,8 @@ SITE = {
         "https://linkedin.com/in/binahayat00",
         "https://t.me/MrProgrammingX",
         "https://github.com/mrprogrammingx",
+        "https://huggingface.co/amirzaredev",
+        "https://www.kaggle.com/amirzaredev",
         "https://www.youtube.com/@AmirZareDev",
         "https://t.me/amirzarecom",
     ],

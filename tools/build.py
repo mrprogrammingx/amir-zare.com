@@ -53,11 +53,13 @@ def lpath(lang, key):
 def alts_for(key):
     return {lang: lpath(lang, key) for lang in LANG_ORDER}
 
-CSS_VERSION = "20261126b"
+CSS_VERSION = "20261126c"
 JS_VERSION = "20261125b"
 LASTMOD = "2026-11-16"
 
 ICONS = {
+    "huggingface": "M12 1a11 11 0 1 1 0 22a11 11 0 1 1 0-22zM12 3a9 9 0 1 0 0 18a9 9 0 1 0 0-18zM8.5 8a1.5 1.5 0 1 1 0 3a1.5 1.5 0 1 1 0-3zM15.5 8a1.5 1.5 0 1 1 0 3a1.5 1.5 0 1 1 0-3zM7 13.5h10a5 5 0 0 1-10 0z",
+    "kaggle": "M6 2h3v11.2L15.2 7H19l-6.1 6.2L19.5 22h-3.8l-5-6.6L9 17.1V22H6z",
     "linkedin": "M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 24V7h5v17H0zM8 7h4.7v2.3h.1c.7-1.3 2.4-2.7 4.9-2.7C23 6.6 24 9.1 24 13.5V24h-5v-9.6c0-2.3 0-5.3-3.2-5.3-3.2 0-3.7 2.5-3.7 5.1V24H8V7z",
     "email": "M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z",
     "github": "M12 .5C5.7.5.6 5.7.6 12c0 5.1 3.3 9.5 7.9 11 .6.1.8-.3.8-.6v-2.1c-3.2.7-3.8-1.4-3.8-1.4-.5-1.2-1.2-1.6-1.2-1.6-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 .1 1.6.7 2 1.1.1-.9.4-1.5.7-1.8-2.6-.3-5.3-1.3-5.3-6 0-1.3.5-2.4 1.2-3.3-.1-.3-.5-1.6.1-3.3 0 0 1-.3 3.3 1.3 1-.3 2-.4 3-.4s2 .1 3 .4c2.3-1.6 3.3-1.3 3.3-1.3.6 1.7.2 3 .1 3.3.8.9 1.2 2 1.2 3.3 0 4.7-2.7 5.7-5.3 6 .4.3.7 1 .7 2v3c0 .3.2.7.8.6 4.6-1.5 7.9-5.9 7.9-11C23.4 5.7 18.3.5 12 .5z",
@@ -97,6 +99,10 @@ def plain(text):
     return html.unescape(re.sub(r"<[^>]+>", "", text))
 
 
+HF_URL = "https://huggingface.co/amirzaredev"
+KAGGLE_URL = "https://www.kaggle.com/amirzaredev"
+
+
 def brand_icon(name, size=15):
     return f'<svg viewBox="0 0 24 24" fill="currentColor" width="{size}" height="{size}"><path d="{ICONS[name]}"/></svg>'
 
@@ -109,6 +115,8 @@ def connect_rows(indent, lang="en"):
         ("telegram", "Telegram", "https://t.me/MrProgrammingX", True),
         ("email", SITE["email"], "mailto:" + SITE["email"], False),
         ("github", "GitHub", "https://github.com/mrprogrammingx", True),
+        ("huggingface", "Hugging Face", HF_URL, True),
+        ("kaggle", "Kaggle", KAGGLE_URL, True),
         ("youtube", "YouTube", "https://www.youtube.com/@AmirZareDev", True),
     ]
     out = []
@@ -282,6 +290,8 @@ def footer(telegram=True, lang="en"):
           <h3>{u["connect_h"]}</h3>
           <a href="https://linkedin.com/in/binahayat00" target="_blank" rel="noopener">{brand_icon("linkedin")}LinkedIn</a>
 {tg}          <a href="https://github.com/mrprogrammingx" target="_blank" rel="noopener">{brand_icon("github")}GitHub</a>
+          <a href="{HF_URL}" target="_blank" rel="noopener">{brand_icon("huggingface")}Hugging Face</a>
+          <a href="{KAGGLE_URL}" target="_blank" rel="noopener">{brand_icon("kaggle")}Kaggle</a>
           <a href="https://www.youtube.com/@AmirZareDev" target="_blank" rel="noopener">{brand_icon("youtube")}YouTube</a>
           <a href="mailto:{SITE["email"]}">{brand_icon("email")}{u["email"]}</a>
           <a class="footer-sponsor" href="{SPONSOR_URL}" target="_blank" rel="noopener">{HEART}{u["sponsor"]}</a>
@@ -1454,7 +1464,7 @@ def connect_page(lang="en"):
     graph = [{"@type": "ProfilePage", "url": SITE["url"] + path, "name": title, "inLanguage": lang,
               "mainEntity": {"@type": "Person", "name": "Amir Zare", "jobTitle": "AI & Data Engineer", "url": SITE["url"],
                              "image": SITE["url"] + "/images/amir-contact.jpg", "email": "mailto:info@amir-zare.com",
-                             "sameAs": ["https://linkedin.com/in/binahayat00", "https://t.me/MrProgrammingX", "https://github.com/mrprogrammingx", "https://www.youtube.com/@AmirZareDev"]}}]
+                             "sameAs": ["https://linkedin.com/in/binahayat00", "https://t.me/MrProgrammingX", "https://github.com/mrprogrammingx", HF_URL, KAGGLE_URL, "https://www.youtube.com/@AmirZareDev"]}}]
     doc = f'''<!doctype html>
 <html lang="{lang}"{' dir="rtl"' if lang in RTL else ""}>
 <head>
@@ -1490,6 +1500,8 @@ def connect_page(lang="en"):
       <div class="cn-row3">
         {row(lpath(lang, "home"), globe, c["site"], ext=False)}
         {row("https://github.com/mrprogrammingx", brand_icon("github", 20), c["code"])}
+        {row(HF_URL, brand_icon("huggingface", 20), "Hugging Face")}
+        {row(KAGGLE_URL, brand_icon("kaggle", 20), "Kaggle")}
         {row("https://www.youtube.com/@AmirZareDev", brand_icon("youtube", 20), c["videos"])}
         {row(TG_CHANNEL, brand_icon("telegram", 20), c["channel"])}
       </div>
