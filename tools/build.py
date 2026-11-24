@@ -53,7 +53,7 @@ def lpath(lang, key):
 def alts_for(key):
     return {lang: lpath(lang, key) for lang in LANG_ORDER}
 
-CSS_VERSION = "20261124j"
+CSS_VERSION = "20261125a"
 JS_VERSION = "20261124i"
 LASTMOD = "2026-11-16"
 
@@ -157,7 +157,7 @@ def book_section(lang="en"):
     u = UI[lang]
     return f'''<section id="book" class="section book-sec" aria-labelledby="book-title">
       <div class="container">
-        <h2 id="book-title" class="book-title">{CAL_ICON.format(s=26)}<span>{u["work_with_me"]}</span></h2>
+        <h2 id="book-title" class="sec-h">{CAL_ICON.format(s=20)}<span>{u["work_with_me"]}</span></h2>
         <p class="book-line">{u["book_line"]}</p>
         <div class="book-inline" id="book-inline" data-booking-link="{CAL_LINK}">
           <p class="book-fallback"><a href="{BOOKING_URL}" target="_blank" rel="noopener">{CAL_ICON.format(s=18)}{u["book_open"]} <span aria-hidden="true">&#8599;</span></a></p>
@@ -215,9 +215,8 @@ def header(home, active=None, lang="en", alts=None):
     </header>'''
 
 
-ASK_ICON = ('<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" '
-            'stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20.5l1.4-4.7A8 8 0 1 1 21 12z"/>'
-            '<path d="M9.2 9.6a2.8 2.8 0 0 1 5.4 1c0 1.8-2.6 2.2-2.6 3.6M12 16.8h.01"/></svg>')
+ASK_ICON = ('<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-line'
+            'cap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>')
 DOWN_ICON = ('<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" '
              'stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg>')
 
@@ -234,7 +233,7 @@ def ask_section(lang="en"):
     u = UI[lang]
     return f'''<section id="ask" class="section ask-sec" aria-labelledby="ask-heading">
       <div class="container">
-        <h2 id="ask-heading" class="ask-h">{ASK_ICON}<span>{u["ask_me"]}</span></h2>
+        <h2 id="ask-heading" class="sec-h">{ASK_ICON}<span>{u["ask_me"]}</span></h2>
         <p class="ask-line">{u["ask_line"]}</p>
         <div class="ask-frame" data-src="{SITE["assistant_section"]}" data-title="{u["ask_title"]}">
           <p class="ask-fallback"><a href="{SITE["assistant_page"]}" target="_blank" rel="noopener">{u["ask_full"]} <span aria-hidden="true">&#8599;</span></a></p>
