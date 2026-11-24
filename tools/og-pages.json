@@ -35,6 +35,20 @@
     "fit": "cover"
   },
   {
+    "slug": "blog",
+    "title": "Blog",
+    "subtitle": "Notes on data engineering, AI systems, and building in public",
+    "image": "/images/ask-about-amir-cover.jpg",
+    "fit": "cover"
+  },
+  {
+    "slug": "blog-ask-about-amir",
+    "title": "I Added an AI to My Portfolio. Here's How I Stopped It From Making Things Up",
+    "subtitle": "A résumé assistant that answers recruiters in seconds, cites every sentence, and refuses to guess. Built for $0 a month.",
+    "image": "/images/ask-about-amir-cover.jpg",
+    "fit": "cover"
+  },
+  {
     "slug": "datalayer-evolution-agent",
     "title": "DataLayer Evolution Agent",
     "subtitle": "LLM growth intelligence, live in production",

@@ -287,6 +287,7 @@ PROJECTS = [
         "year": "2026", "category": "AI / Agents", "status": "Live",
         "image": "/images/ask-about-amir-poster.jpg", "image_fit": "contain",
         "video": {"src": "/images/ask-about-amir.mp4", "poster": "/images/ask-about-amir-poster.jpg"},
+        "writeup": "/blog/ask-about-amir/",
         "summary": "An AI assistant on my portfolio that answers questions about my experience in a few seconds, using only facts from my resume, with a checked citation for every sentence.",
         "summary_3p": "An AI assistant on Amir&rsquo;s portfolio that answers questions about his experience in a few seconds, using only facts from his resume, with a checked citation for every sentence.",
         "highlights": ["324 resume facts", "Every sentence cited", "$0 / month"],
