@@ -53,7 +53,7 @@ def lpath(lang, key):
 def alts_for(key):
     return {lang: lpath(lang, key) for lang in LANG_ORDER}
 
-CSS_VERSION = "20261125b"
+CSS_VERSION = "20261126a"
 JS_VERSION = "20261125b"
 LASTMOD = "2026-11-16"
 
@@ -574,6 +574,11 @@ def project_page(p):
     return page(title, meta_desc(p["summary"]), path, body, og_image(p["slug"]), graph, active="projects", og_type="article")
 
 
+def all_projects_button():
+    """Home: the button under the selected projects, with the hub's project count."""
+    return f'<p class="proj-all"><a class="cta-btn primary" href="/projects/">See all projects ({len(ALL)}) <span aria-hidden="true">&rarr;</span></a></p>'
+
+
 def projects_hub():
     path = "/projects/"
     trail = [("Home", "/"), ("Projects", path)]
@@ -863,6 +868,8 @@ def sync_existing(path, home=False):
         out = re.sub(r"<title>.*?</title>", f"<title>{esc(HOME_TITLE)}</title>", out, count=1)
         out = replace_block(out, r"<!-- build:book -->", r"<!-- /build:book -->", "<!-- build:book -->\n    " + book_section() + "\n    <!-- /build:book -->")
         out = replace_block(out, r"<!-- build:ask -->", r"<!-- /build:ask -->", "<!-- build:ask -->\n    " + ask_section() + "\n    <!-- /build:ask -->")
+        out = replace_block(out, r"<!-- build:all-projects -->", r"<!-- /build:all-projects -->",
+                            "<!-- build:all-projects -->" + all_projects_button() + "<!-- /build:all-projects -->")
     if path == "resume.html":
         out = replace_block(out, r"<!-- build:seo -->", r"<!-- /build:seo -->", "<!-- build:seo -->\n  " + resume_seo() + "\n  <!-- /build:seo -->")
         out = re.sub(r"<title>.*?</title>", f"<title>{esc(RESUME_TITLE)}</title>", out, count=1)
