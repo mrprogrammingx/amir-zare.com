@@ -6,6 +6,7 @@ Edit facts here, then run `python3 tools/build.py`. Text may contain simple HTML
 # Public profile and contact links: the one list used by the footer, the header Connect menu, /connect/, JSON-LD sameAs
 # and the contact facts in kb.json. Only links that are public on the site; never the phone number or a personal email.
 LINKS = {
+    "email": "info@amir-zare.com",  # the only public email address (also the only one allowed in kb.json)
     "linkedin": "https://linkedin.com/in/binahayat00",
     "telegram": "https://t.me/MrProgrammingX",
     "github": "https://github.com/mrprogrammingx",
@@ -25,7 +26,7 @@ SITE = {
     "headline": "AI & Data Engineer",
     "description": "Amir Zare is an AI & Data Engineer and the founder of DataLayer, based in Yerevan, Armenia. "
                    "He builds data pipelines, analytics platforms, and production LLM applications.",
-    "email": "info@amir-zare.com",
+    "email": LINKS["email"],
     "location": "Yerevan, Armenia",
     "same_as": [LINKS[k] for k in ("linkedin", "telegram", "github", "huggingface", "kaggle", "youtube", "telegram_channel")],
     "portrait": "/images/amir-portrait.webp",

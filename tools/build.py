@@ -1142,15 +1142,20 @@ def bare(url):
 # Contact facts come from the same public links as the footer and /connect/ (LINKS in tools/content.py), plus the
 # booking page and the contact card. The phone number and personal email are never in LINKS, so never in kb.json.
 KB_CONTACT_LINKS = [LINKS[k] for k in ("linkedin", "telegram", "github", "huggingface", "kaggle")] + [SITE["booking_url"], CONNECT_URL]
-KB_ALLOWED_URLS = tuple(bare(u) for u in KB_CONTACT_LINKS) + ("amir-zare.com",)
+# The only email address allowed in kb.json is LINKS["email"] (info@amir-zare.com); listed first so it is removed
+# before "amir-zare.com" when kb_check looks for other text that looks like a URL.
+KB_ALLOWED_URLS = (LINKS["email"],) + tuple(bare(u) for u in KB_CONTACT_LINKS) + ("amir-zare.com",)
 
 
 def kb_contact_sentences():
     """One short fact per link: tested with the Space's retrieval, "What is his GitHub?" / "What is his Telegram?" rank the
     one-link fact first, while a single sentence listing several profiles lost to e.g. a "Git & GitHub" course."""
-    profiles = [("GitHub", "github"), ("Hugging Face", "huggingface"), ("Kaggle", "kaggle")]
+    profiles = [("LinkedIn", "linkedin"), ("GitHub", "github"), ("Hugging Face", "huggingface"), ("Kaggle", "kaggle")]
     return ([f"Amir can be contacted on LinkedIn ({bare(LINKS['linkedin'])}), on Telegram ({bare(LINKS['telegram'])}), "
              f"or by booking a call at {bare(SITE['booking_url'])}.",
+             # Starts with the question: in testing, the plain sentence lost "What is his email?" to the Mail.tm
+             # "Temporary Email Service" project; this form ranks first for every email question tried.
+             f"What is Amir's email? His email for professional contact is {LINKS['email']}.",
              f"Amir's Telegram is {bare(LINKS['telegram'])}."]
             + [f"Amir's {label} profile is {bare(LINKS[key])}." for label, key in profiles]
             + [f"All ways to reach Amir are listed at {bare(CONNECT_URL)}."])
@@ -1382,7 +1387,13 @@ def join_items(items):
     return items[0] if len(items) == 1 else ", ".join(items[:-1]) + (", and " if len(items) > 2 else " and ") + items[-1]
 
 
+KB_PHONE = re.compile(r"\+\d[\d ()-]{7,}\d|\b\d{3}[ -]\d{3}[ -]\d{3,4}\b")  # same patterns as tools/import_resume.py and make-pdf.mjs
+
+
 def kb_check(eid, sent):
+    emails = re.findall(r"[\w.+-]+@[\w-]+(?:\.[\w-]+)+", sent)
+    if any(e.lower() != LINKS["email"] for e in emails) or KB_PHONE.search(sent):
+        raise SystemExit(f"kb.json: sentence in {eid!r} contains an email other than {LINKS['email']} or a phone number: {sent!r}")
     rest = sent
     for ok in KB_ALLOWED_URLS:
         rest = rest.replace(ok, "")
