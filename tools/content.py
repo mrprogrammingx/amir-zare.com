@@ -304,7 +304,7 @@ PROJECTS = [
             "13 Worker tests and a 21-question evaluation set, including questions it must refuse.",
         ],
         "tech": ["JavaScript", "Transformers.js", "all-MiniLM-L6-v2", "Cloudflare Workers", "Workers AI", "Llama 3.3 70B", "Hugging Face Spaces", "Python", "GitHub Pages", "GitHub Actions"],
-        "links": [("Try it on amir-zare.com", "https://amir-zare.com/#ask"), ("Full assistant (Hugging Face)", "https://huggingface.co/spaces/amirzaredev/ask-about-amir"), ("Worker code", "https://github.com/mrprogrammingx/amir-zare.com/tree/main/ask-worker")],
+        "links": [("Try it on amir-zare.com", "https://amir-zare.com/#ask"), ("Article on Medium", "https://medium.com/@amirzaredev/i-added-an-ai-to-my-portfolio-heres-how-i-stopped-it-from-making-things-up-f37db917a5f4?sharedUserId=amirzaredev"), ("Full assistant (Hugging Face)", "https://huggingface.co/spaces/amirzaredev/ask-about-amir"), ("Worker code", "https://github.com/mrprogrammingx/amir-zare.com/tree/main/ask-worker")],
     },
     {
         "slug": "job-hunter",
