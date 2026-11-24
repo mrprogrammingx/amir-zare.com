@@ -194,7 +194,21 @@
   const askSec = document.getElementById('ask');
   const askBox = askSec && askSec.querySelector('.ask-frame');
   const askOrigin = askBox ? new URL(askBox.dataset.src).origin : '';
-  let askIframe = null, askReady = false;
+  let askIframe = null, askReady = false, askShown = false, askSlowTimer = 0;
+  // Loading state: a skeleton of the embed is shown until the Space reports its height (its first "ask-height"
+  // message, which means it has rendered; the iframe "load" event fires earlier). After 15 s without a message, a
+  // link to open the Space directly appears and the iframe is shown as it is.
+  const askSlow = askBox && askBox.querySelector('.ask-slow');
+  if (askBox) { askBox.classList.add('is-waiting'); askBox.setAttribute('aria-busy', 'true'); }
+  const askReadyNow = () => {
+    if (askShown) return;
+    askShown = true;
+    clearTimeout(askSlowTimer);
+    askBox.classList.remove('is-slow');
+    askBox.classList.add('is-ready');
+    askBox.removeAttribute('aria-busy');
+    if (askSlow) askSlow.hidden = true;
+  };
   const loadAsk = () => {
     if (askIframe || !askBox) return askIframe;
     const src = new URL(askBox.dataset.src);
@@ -206,6 +220,11 @@
     askIframe.addEventListener('load', () => { askReady = true; }, { once: true });
     askBox.appendChild(askIframe);
     askBox.classList.add('is-loaded');
+    askSlowTimer = setTimeout(() => {
+      if (askShown) return;
+      askBox.classList.add('is-slow');
+      if (askSlow) askSlow.hidden = false;
+    }, 15000);
     return askIframe;
   };
   window.addEventListener('message', e => {
@@ -214,6 +233,7 @@
     if (d && d.type === 'ask-height') {
       const h = Number(d.value);
       if (h > 0 && h < 20000) askIframe.style.height = Math.ceil(h) + 'px';
+      askReadyNow();
     }
   });
   const askBtn = document.querySelector('[data-ask-jump]');

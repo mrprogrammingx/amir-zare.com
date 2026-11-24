@@ -1,0 +1,4 @@
+# GitHub Pages builds this site with Jekyll (the site itself is plain HTML; nothing else is configured here).
+# Folders listed below are kept in the repository but not published on amir-zare.com.
+exclude:
+  - ask-worker/   # the Cloudflare Worker behind /api/ask, deployed with wrangler, not GitHub Pages

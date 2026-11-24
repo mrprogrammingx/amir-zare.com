@@ -53,8 +53,8 @@ def lpath(lang, key):
 def alts_for(key):
     return {lang: lpath(lang, key) for lang in LANG_ORDER}
 
-CSS_VERSION = "20261124h"
-JS_VERSION = "20261124g"
+CSS_VERSION = "20261124j"
+JS_VERSION = "20261124i"
 LASTMOD = "2026-11-16"
 
 ICONS = {
@@ -238,6 +238,12 @@ def ask_section(lang="en"):
         <p class="ask-line">{u["ask_line"]}</p>
         <div class="ask-frame" data-src="{SITE["assistant_section"]}" data-title="{u["ask_title"]}">
           <p class="ask-fallback"><a href="{SITE["assistant_page"]}" target="_blank" rel="noopener">{u["ask_full"]} <span aria-hidden="true">&#8599;</span></a></p>
+          <div class="ask-skel" aria-hidden="true">
+            <div class="ask-skel-l"><div class="ask-skel-bar"><span class="ask-ph ask-ph-input"></span><span class="ask-ph ask-ph-btn"></span></div>
+              <div class="ask-skel-pills"><span class="ask-ph ask-ph-pill"></span><span class="ask-ph ask-ph-pill"></span><span class="ask-ph ask-ph-pill"></span><span class="ask-ph ask-ph-pill"></span></div></div>
+            <div class="ask-skel-r"><span class="ask-ph ask-ph-line"></span><span class="ask-ph ask-ph-line"></span><span class="ask-ph ask-ph-line"></span></div>
+          </div>
+          <p class="ask-slow" hidden><a href="{SITE["assistant_page"]}" target="_blank" rel="noopener">{u["ask_slow"]} <span aria-hidden="true">&#8599;</span></a></p>
         </div>
       </div>
     </section>'''
