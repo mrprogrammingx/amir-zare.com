@@ -242,13 +242,14 @@
       if (entries.some(en => en.isIntersecting)) { loadAsk(); near.disconnect(); }
     }, { rootMargin: '400px 0px' });
     near.observe(askSec);
-    if (askBtn) {  // hide the floating button while the section itself is on screen
+    if (askBtn) {  // fade the floating button out while at least ~30% of the section is in view
       new IntersectionObserver(entries => {
-        const on = entries.some(en => en.isIntersecting);
+        const en = entries[entries.length - 1];
+        const on = en.isIntersecting && en.intersectionRatio >= 0.3;
         askBtn.classList.toggle('is-hidden', on);
         askBtn.toggleAttribute('aria-hidden', on);
         askBtn.tabIndex = on ? -1 : 0;
-      }).observe(askSec);
+      }, { threshold: [0, 0.3] }).observe(askSec);
     }
   } else if (askSec) {
     loadAsk();

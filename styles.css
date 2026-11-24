@@ -1750,6 +1750,7 @@ html[lang="fa"] .lh-role,html[lang="fa"] .cn-role{letter-spacing:0;text-transfor
 .ask-btn:focus-visible{outline:2px solid var(--accent-2);outline-offset:3px}
 .ask-btn svg{flex:none}
 .ask-btn.is-hidden{opacity:0;pointer-events:none;transform:translateY(8px)}
+@media (prefers-reduced-motion: reduce){ .ask-btn{transition:none} .ask-btn.is-hidden{transform:none} .ask-btn:hover{transform:none} }
 [dir="rtl"] .ask-btn{right:auto;left:20px}
 @media (max-width:600px){
   .ask-btn{right:14px;bottom:14px;padding:13px}

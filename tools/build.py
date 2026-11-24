@@ -53,8 +53,8 @@ def lpath(lang, key):
 def alts_for(key):
     return {lang: lpath(lang, key) for lang in LANG_ORDER}
 
-CSS_VERSION = "20261125a"
-JS_VERSION = "20261124i"
+CSS_VERSION = "20261125b"
+JS_VERSION = "20261125b"
 LASTMOD = "2026-11-16"
 
 ICONS = {
@@ -215,17 +215,22 @@ def header(home, active=None, lang="en", alts=None):
     </header>'''
 
 
-ASK_ICON = ('<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-line'
-            'cap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>')
-DOWN_ICON = ('<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" '
-             'stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg>')
+def bubble_icon(size, stroke):
+    """The "Ask about me" question-bubble icon (section heading and floating button)."""
+    return (f'<svg viewBox="0 0 24 24" width="{size}" height="{size}" fill="none" stroke="currentColor" stroke-width="{stroke}" '
+            'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/>'
+            '<path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>')
+
+
+ASK_ICON = bubble_icon(20, 2)
+ASK_BTN_ICON = bubble_icon(18, 2.2)
 
 
 def ask_widget(lang="en", indent="    "):
     """Floating "Ask about me" link to the home page's #ask section (script.js scrolls there on the home page)."""
     u = UI[lang]
     return (f'{indent}<div class="ask"><a class="ask-btn" href="{lpath(lang, "home")}#ask" data-ask-jump aria-label="{u["ask_me"]} ({u["ask_ai"]})">'
-            f'{DOWN_ICON}<span class="ask-label">{u["ask_me"]}</span></a></div>')
+            f'{ASK_BTN_ICON}<span class="ask-label">{u["ask_me"]}</span></a></div>')
 
 
 def ask_section(lang="en"):
