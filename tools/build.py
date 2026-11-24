@@ -53,7 +53,7 @@ def lpath(lang, key):
 def alts_for(key):
     return {lang: lpath(lang, key) for lang in LANG_ORDER}
 
-CSS_VERSION = "20261124j"
+CSS_VERSION = "20261125a"
 JS_VERSION = "20261124i"
 LASTMOD = "2026-11-16"
 
@@ -157,7 +157,7 @@ def book_section(lang="en"):
     u = UI[lang]
     return f'''<section id="book" class="section book-sec" aria-labelledby="book-title">
       <div class="container">
-        <h2 id="book-title" class="book-title">{CAL_ICON.format(s=26)}<span>{u["work_with_me"]}</span></h2>
+        <h2 id="book-title" class="sec-h">{CAL_ICON.format(s=20)}<span>{u["work_with_me"]}</span></h2>
         <p class="book-line">{u["book_line"]}</p>
         <div class="book-inline" id="book-inline" data-booking-link="{CAL_LINK}">
           <p class="book-fallback"><a href="{BOOKING_URL}" target="_blank" rel="noopener">{CAL_ICON.format(s=18)}{u["book_open"]} <span aria-hidden="true">&#8599;</span></a></p>
@@ -234,7 +234,7 @@ def ask_section(lang="en"):
     u = UI[lang]
     return f'''<section id="ask" class="section ask-sec" aria-labelledby="ask-heading">
       <div class="container">
-        <h2 id="ask-heading" class="ask-h">{ASK_ICON}<span>{u["ask_me"]}</span></h2>
+        <h2 id="ask-heading" class="sec-h">{ASK_ICON}<span>{u["ask_me"]}</span></h2>
         <p class="ask-line">{u["ask_line"]}</p>
         <div class="ask-frame" data-src="{SITE["assistant_section"]}" data-title="{u["ask_title"]}">
           <p class="ask-fallback"><a href="{SITE["assistant_page"]}" target="_blank" rel="noopener">{u["ask_full"]} <span aria-hidden="true">&#8599;</span></a></p>
