@@ -1258,6 +1258,8 @@ section[id]{scroll-margin-top:108px}
 .proj-link:hover{color:var(--accent);background:transparent}
 .sec-more{margin:18px 0 0}
 .sec-more a{padding:0;font-weight:600}
+.proj-all{margin:28px 0 0;text-align:center}
+.proj-all .cta-btn{padding:14px 30px;font-size:1.05rem;font-weight:700;box-shadow:0 10px 28px rgba(2,6,23,.35)}
 .pg-block.wide{grid-column:1 / -1}
 .pg .cm-sub{margin:8px 0 26px}
 
