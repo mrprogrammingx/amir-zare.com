@@ -91,6 +91,13 @@
     "fit": "cover"
   },
   {
+    "slug": "ask-about-amir",
+    "title": "Ask about Amir",
+    "subtitle": "A grounded AI assistant that answers recruiters’ questions from my resume",
+    "image": "/images/ask-about-amir-poster.jpg",
+    "fit": "contain"
+  },
+  {
     "slug": "job-hunter",
     "title": "Job Hunter",
     "subtitle": "A 7-agent AI job search platform",

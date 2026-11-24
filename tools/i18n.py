@@ -25,6 +25,7 @@ UI = {
            "book_open": "Open my booking page on Cal.com",
            "ask_me": "Ask about me", "ask_title": "Ask about Amir", "ask_full": "Open full version", "ask_ai": "AI assistant",
            "ask_line": "Ask about my experience, projects and skills. An AI answers using only my resume, shows its sources, and says so when it doesn’t know.",
+           "ask_how": "How it works",
            "ask_slow": "The assistant is taking longer than usual. Open it directly"},
     "hy": {"privacy": "Գաղտնիություն", "home": "Գլխավոր", "about": "Իմ մասին", "projects": "Նախագծեր", "experience": "Փորձ", "community": "Համայնք",
            "resume": "Ռեզյումե", "connect": "Կապ", "language": "Լեզու", "navigation": "Նավիգացիա", "connect_h": "Կապ",
@@ -37,6 +38,7 @@ UI = {
            "book_open": "Բացել ամրագրման էջը Cal.com-ում",
            "ask_me": "Հարցրեք իմ մասին", "ask_title": "Հարցրեք Ամիրի մասին", "ask_full": "Բացել ամբողջական տարբերակը", "ask_ai": "AI օգնական",
            "ask_line": "Հարցրեք իմ փորձի, նախագծերի և հմտությունների մասին։ Արհեստական բանականությունը պատասխանում է միայն իմ ռեզյումեի հիման վրա, նշում է աղբյուրները և ասում է, երբ պատասխանը չգիտի։",
+           "ask_how": "Ինչպես է այն աշխատում",
            "ask_slow": "Օգնականը սովորականից երկար է բեռնվում։ Բացեք այն անմիջապես"},
     "ru": {"privacy": "Конфиденциальность", "home": "Главная", "about": "Обо мне", "projects": "Проекты", "experience": "Опыт", "community": "Сообщество",
            "resume": "Резюме", "connect": "Связаться", "language": "Язык", "navigation": "Навигация", "connect_h": "Контакты",
@@ -49,6 +51,7 @@ UI = {
            "book_open": "Открыть страницу бронирования на Cal.com",
            "ask_me": "Спросите обо мне", "ask_title": "Спросите об Амире", "ask_full": "Открыть полную версию", "ask_ai": "ИИ-ассистент",
            "ask_line": "Спросите о моём опыте, проектах и навыках. ИИ отвечает только на основе моего резюме, указывает источники и честно говорит, если не знает ответа.",
+           "ask_how": "Как это работает",
            "ask_slow": "Ассистент загружается дольше обычного. Откройте его напрямую"},
     "fa": {"privacy": "حریم خصوصی", "home": "خانه", "about": "درباره من", "projects": "پروژه‌ها", "experience": "تجربه", "community": "جامعه",
            "resume": "رزومه", "connect": "ارتباط", "language": "زبان", "navigation": "ناوبری", "connect_h": "ارتباط",
@@ -61,6 +64,7 @@ UI = {
            "book_open": "باز کردن صفحهٔ رزرو در Cal.com",
            "ask_me": "از من بپرسید", "ask_title": "دربارهٔ امیر بپرسید", "ask_full": "باز کردن نسخهٔ کامل", "ask_ai": "دستیار هوش مصنوعی",
            "ask_line": "دربارهٔ تجربه، پروژه‌ها و مهارت‌هایم بپرسید. هوش مصنوعی فقط بر اساس رزومه‌ام پاسخ می‌دهد، منابعش را نشان می‌دهد و اگر جواب را نداند، همین را می‌گوید.",
+           "ask_how": "چطور کار می‌کند",
            "ask_slow": "دستیار بیشتر از معمول طول می‌کشد. مستقیم بازش کنید"},
     "de": {"privacy": "Datenschutz", "home": "Start", "about": "Über mich", "projects": "Projekte", "experience": "Erfahrung", "community": "Community",
            "resume": "Lebenslauf", "connect": "Kontakt", "language": "Sprache", "navigation": "Navigation", "connect_h": "Kontakt",
@@ -73,6 +77,7 @@ UI = {
            "book_open": "Buchungsseite auf Cal.com öffnen",
            "ask_me": "Frag mich", "ask_title": "Frag nach Amir", "ask_full": "Vollversion öffnen", "ask_ai": "KI-Assistent",
            "ask_line": "Fragen Sie nach meiner Erfahrung, meinen Projekten und Fähigkeiten. Eine KI antwortet ausschließlich anhand meines Lebenslaufs, nennt ihre Quellen und sagt offen, wenn sie etwas nicht weiß.",
+           "ask_how": "So funktioniert es",
            "ask_slow": "Der Assistent braucht länger als üblich. Direkt öffnen"},
 }
 
@@ -107,6 +112,7 @@ T["hy"] = {
             "crypto-analytics-lakehouse": "Կրիպտո վերլուծական lakehouse՝ ժամային Spark ներմուծմամբ, Kafka-ով և dbt մոդելներով։",
             "cookie-cats-ab-test": "90,189 խաղացողի A/B փորձարկման խիստ վիճակագրական վերլուծություն։",
             "job-hunter": "Աշխատանքի որոնման բազմագործակալային հարթակ՝ յոթ մասնագիտացված AI գործակալով։",
+            "ask-about-amir": "AI օգնական իմ պորտֆոլիոյում, որը մի քանի վայրկյանում պատասխանում է իմ փորձի մասին հարցերին՝ օգտագործելով միայն ռեզյումեի փաստերը և ստուգված աղբյուր յուրաքանչյուր նախադասության համար։",
         },
     },
     "about": {
@@ -207,6 +213,7 @@ T["ru"] = {
             "crypto-analytics-lakehouse": "Аналитический lakehouse для криптовалют: ежечасный приём данных на Spark, Kafka и модели dbt.",
             "cookie-cats-ab-test": "Строгий статистический анализ A/B-эксперимента с 90 189 игроками.",
             "job-hunter": "Мультиагентная платформа поиска работы с семью специализированными AI-агентами.",
+            "ask-about-amir": "AI-ассистент в моём портфолио: за несколько секунд отвечает на вопросы о моём опыте, используя только факты из резюме, и подтверждает каждое предложение проверенной ссылкой на источник.",
         },
     },
     "about": {
@@ -307,6 +314,7 @@ T["fa"] = {
             "crypto-analytics-lakehouse": "لیک‌هاوس تحلیلی رمزارز با دریافت ساعتی داده با Spark، به‌همراه Kafka و مدل‌های dbt.",
             "cookie-cats-ab-test": "تحلیل آماری دقیق یک آزمایش A/B با ۹۰٬۱۸۹ بازیکن.",
             "job-hunter": "پلتفرم کاریابی چندعاملی با هفت عامل تخصصی هوش مصنوعی.",
+            "ask-about-amir": "دستیار هوش مصنوعی در پورتفولیوی من که در چند ثانیه به سؤال‌ها درباره تجربه‌ام پاسخ می‌دهد؛ فقط با واقعیت‌های رزومه‌ام و با منبعی بررسی‌شده برای هر جمله.",
         },
     },
     "about": {
@@ -407,6 +415,7 @@ T["de"] = {
             "crypto-analytics-lakehouse": "Krypto-Analyse-Lakehouse mit stündlicher Spark-Ingestion, Kafka und dbt-Modellen.",
             "cookie-cats-ab-test": "Fundierte statistische Analyse eines A/B-Experiments mit 90.189 Spielern.",
             "job-hunter": "Multi-Agent-Plattform für die Jobsuche mit sieben spezialisierten KI-Agenten.",
+            "ask-about-amir": "Ein KI-Assistent in meinem Portfolio, der Fragen zu meiner Erfahrung in wenigen Sekunden beantwortet – nur mit Fakten aus meinem Lebenslauf und einer geprüften Quelle für jeden Satz.",
         },
     },
     "about": {

@@ -53,7 +53,7 @@ def lpath(lang, key):
 def alts_for(key):
     return {lang: lpath(lang, key) for lang in LANG_ORDER}
 
-CSS_VERSION = "20261126a"
+CSS_VERSION = "20261126b"
 JS_VERSION = "20261125b"
 LASTMOD = "2026-11-16"
 
@@ -239,7 +239,7 @@ def ask_section(lang="en"):
     return f'''<section id="ask" class="section ask-sec" aria-labelledby="ask-heading">
       <div class="container">
         <h2 id="ask-heading" class="sec-h">{ASK_ICON}<span>{u["ask_me"]}</span></h2>
-        <p class="ask-line">{u["ask_line"]}</p>
+        <p class="ask-line">{u["ask_line"]} <a class="ask-how" href="/projects/ask-about-amir/"{"" if lang == "en" else ' hreflang="en"'}>{u["ask_how"]}{(" " + u["english"]) if u["english"] else ""} &rarr;</a></p>
         <div class="ask-frame" data-src="{SITE["assistant_section"]}" data-title="{u["ask_title"]}">
           <p class="ask-fallback"><a href="{SITE["assistant_page"]}" target="_blank" rel="noopener">{u["ask_full"]} <span aria-hidden="true">&#8599;</span></a></p>
           <div class="ask-skel" aria-hidden="true">
@@ -501,6 +501,17 @@ def all_project_cards():
     return [(p["title"], ppath(p), p["image"], p["summary"], p["category"], p["year"], p.get("image_fit", "cover")) for p in ALL]
 
 
+def local_video(p):
+    """Optional self-hosted demo video (p["video"] with "src"), shown at the top of the project page instead of the image.
+    (A "video" with "id" is a YouTube tutorial, shown further down.)"""
+    v = p.get("video") or {}
+    if not v.get("src"):
+        return ""
+    return (f'<figure class="pg-video"><video controls muted playsinline preload="none" poster="{v["poster"]}" '
+            f'aria-label="{esc(plain(p["title"]))} demo video">'
+            f'<a href="{v["src"]}" download>Download the demo video (MP4)</a></video></figure>')
+
+
 def project_page(p):
     path = ppath(p)
     trail = [("Home", "/"), ("Projects", "/projects/"), (p["title"], path)]
@@ -527,11 +538,11 @@ def project_page(p):
           {link_buttons(p["links"])}
           {note}
         </header>
-        <figure class="pg-figure{img_class(p.get("image_fit", "cover"))}">
+        {local_video(p) or f'''<figure class="pg-figure{img_class(p.get("image_fit", "cover"))}">
           <img src="{p["image"]}" alt="{esc(plain(p["title"]))}: {esc(plain(p["subtitle"]))}" loading="eager">
-        </figure>
+        </figure>'''}
         {f'<section class="cs-sec"><h2>Try it live</h2><iframe class="app-embed" src="{esc(p["embed"]["src"])}" height="{p["embed"]["height"]}" loading="lazy" title="{esc(p["embed"]["title"])}"></iframe></section>' if p.get("embed") else ""}
-        {f'<section class="cs-sec"><h2>Video tutorial</h2><div class="ab-video">{video_block(p["video"]["label"], p["video"])}</div></section>' if p.get("video") else ""}
+        {f'<section class="cs-sec"><h2>Video tutorial</h2><div class="ab-video">{video_block(p["video"]["label"], p["video"])}</div></section>' if p.get("video", {}).get("id") else ""}
         {extras_top}
         <div class="pg-grid">
           <section class="pg-block wide">
@@ -567,7 +578,7 @@ def project_page(p):
     if code_repo:
         work["codeRepository"] = code_repo
         work["programmingLanguage"] = [t for t in p["tech"] if t.split()[0] in ("Python", "Java", "PHP", "SQL", "TypeScript", "JavaScript")]
-    graph = [work, breadcrumbs(trail), PERSON] + ([video_ld(p["video"])] if p.get("video") else [])
+    graph = [work, breadcrumbs(trail), PERSON] + ([video_ld(p["video"])] if p.get("video", {}).get("id") else [])
     title = f"{plain(p['title'])} — {plain(p['subtitle'])} | Amir Zare"
     if len(title) > 62:
         title = f"{plain(p['title'])} | Amir Zare"
