@@ -22,6 +22,7 @@ from content import ABOUT, CASE_STUDIES, COMMUNITY, CORE_SKILLS, LINKS, PROJECTS
 from i18n import CONNECT_EN, FEATURED, LANG_NAME, LANG_ORDER, LANG_SHORT, NAME, OG_LOCALE, RTL, T, UI  # noqa: E402
 
 from import_resume import privacy_check  # noqa: E402
+import markdown_lite as mdl  # noqa: E402
 
 _RESUME_TEXT = (ROOT / "tools" / "resume_data.json").read_text()
 privacy_check(_RESUME_TEXT)  # no phone number, personal email or credential ID may be published (checked in CI too)
@@ -53,7 +54,7 @@ def lpath(lang, key):
 def alts_for(key):
     return {lang: lpath(lang, key) for lang in LANG_ORDER}
 
-CSS_VERSION = "20261126c"
+CSS_VERSION = "20261125b"
 JS_VERSION = "20261125b"
 LASTMOD = "2026-11-16"
 
@@ -174,22 +175,32 @@ def book_section(lang="en"):
     </section>'''
 
 
+# "Blog" in the header nav: off. Measured on 2026-11-25 at 320-1600px in all 5 languages: it fits on phones (the nav
+# collapses behind the menu button), but at 701px+ the header overflows in Russian (900px and up) and Armenian (701px),
+# which fit without it. The blog is linked from the footer instead.
+NAV_BLOG = False
+
+
 def header(home, active=None, lang="en", alts=None):
     """home=True renders in-page anchors with section tracking; otherwise links to pages."""
     u = UI[lang]
     if lang != "en":
         links = [(u["home"], lpath(lang, "home"), "home"), (u["projects"], "/projects/", "projects"),
                  (u["experience"], lpath(lang, "home") + "#experience", "experience"), (u["community"], lpath(lang, "community"), "community")]
+        if NAV_BLOG:
+            links.append((u["blog"], "/blog/", "blog"))
         items = [f'          <a href="{h}"{" aria-current=\"page\"" if s == active else ""}>{t}</a>' for t, h, s in links]
         logo = lpath(lang, "home")
     elif home:
         links = [("Home", "#", "top"), ("Projects", "#projects", "projects"), ("Experience", "#experience", "experience"),
                  ("Community", "#community", "community")]
         items = [f'          <a href="{h}" data-section="{s}"{" aria-current=\"true\"" if s == "top" else ""}>{t}</a>' for t, h, s in links]
+        if NAV_BLOG:
+            items.append('          <a href="/blog/">Blog</a>')
         logo = "#"
     else:
         links = [("Home", "/", "home"), ("Projects", "/projects/", "projects"), ("Experience", "/#experience", "experience"),
-                 ("Community", "/community/", "community")]
+                 ("Community", "/community/", "community")] + ([("Blog", "/blog/", "blog")] if NAV_BLOG else [])
         items = [f'          <a href="{h}"{" aria-current=\"page\"" if s == active else ""}>{t}</a>' for t, h, s in links]
         logo = "/"
     items.append(f'          <a href="/resume.html" class="nav-ext" target="_blank" rel="noopener" aria-label="{u["resume"]} ({u["new_tab"]})">{u["resume"]}{ARROW}</a>')
@@ -284,6 +295,7 @@ def footer(telegram=True, lang="en"):
           <a href="{lpath(lang, "about")}">{u["about"]}</a>
           <a href="/projects/">{u["projects"]}{(" " + u["english"]) if u["english"] else ""}</a>
           <a href="{lpath(lang, "community")}">{u["community"]}</a>
+          <a href="/blog/">{u["blog"]}{(" " + u["english"]) if u["english"] else ""}</a>
           <a href="/resume.html" target="_blank" rel="noopener" aria-label="{u["resume"]} ({u["new_tab"]})">{u["resume"]} &#8599;</a>
         </nav>
         <div>
@@ -358,8 +370,9 @@ def hreflang_tags(alts):
     return "\n  " + "\n  ".join(tags)
 
 
-def seo_tags(title, description, path, image, og_type="website", alts=None, lang="en"):
+def seo_tags(title, description, path, image, og_type="website", alts=None, lang="en", social_title=None):
     url = SITE["url"] + path
+    title = social_title or title
     img = SITE["url"] + image
     locales = "".join(f'\n  <meta property="og:locale:alternate" content="{OG_LOCALE[c]}">' for c in LANG_ORDER if alts and c in alts and c != lang)
     return f'''<link rel="canonical" href="{url}">{hreflang_tags(alts)}
@@ -382,7 +395,8 @@ FA_FONT = ('<link rel="preconnect" href="https://fonts.googleapis.com">\n  <link
            '  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&amp;display=swap">\n  ')
 
 
-def page(title, description, path, body, og_image, graph, active=None, og_type="website", lang="en", alts=None):
+def page(title, description, path, body, og_image, graph, active=None, og_type="website", lang="en", alts=None, head_extra="",
+         social_title=None):
     dir_attr = ' dir="rtl"' if lang in RTL else ""
     font = FA_FONT if lang == "fa" else ""
     doc = f'''<!doctype html>
@@ -393,7 +407,7 @@ def page(title, description, path, body, og_image, graph, active=None, og_type="
   <meta name="robots" content="index, follow">
   <title>{esc(title)}</title>
   <meta name="description" content="{esc(description)}">
-  {seo_tags(title, description, path, og_image, og_type, alts, lang)}
+  {seo_tags(title, description, path, og_image, og_type, alts, lang, social_title)}{head_extra}
   {font}<link rel="icon" href="/favicon.ico" type="image/x-icon">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/favicon-32x32.png" sizes="32x32" type="image/png">
@@ -525,6 +539,8 @@ def local_video(p):
 
 def project_page(p):
     path = ppath(p)
+    if p.get("writeup") and p["writeup"] not in {f"/blog/{post['slug']}/" for post in POSTS}:
+        raise SystemExit(f"project {p['slug']}: writeup {p['writeup']!r} is not a blog post in content/blog/")
     trail = [("Home", "/"), ("Projects", "/projects/"), (p["title"], path)]
     built = "".join(f"<li>{b}</li>" for b in p["built"])
     impact = "".join(f"<li>{b}</li>" for b in p["impact"])
@@ -547,6 +563,7 @@ def project_page(p):
           <p class="pg-lead">{p["summary"]}</p>
           {chips(p["highlights"], "sk-chips", hot=len(p["highlights"]))}
           {link_buttons(p["links"])}
+          {f'<p class="pg-writeup"><a href="{p["writeup"]}">Read the full write-up &rarr;</a></p>' if p.get("writeup") else ""}
           {note}
         </header>
         {local_video(p) or f'''<figure class="pg-figure{img_class(p.get("image_fit", "cover"))}">
@@ -599,6 +616,240 @@ def project_page(p):
 def all_projects_button():
     """Home: the button under the selected projects, with the hub's project count."""
     return f'<p class="proj-all"><a class="cta-btn primary" href="/projects/">See all projects ({len(ALL)}) <span aria-hidden="true">&rarr;</span></a></p>'
+
+
+# ---------------------------------------------------------------- blog
+#
+# Posts are Markdown files in content/blog/<slug>.md with front matter: title, description, date (YYYY-MM-DD),
+# cover_image and tags (optional: updated, seo_title for a <title> under 70 characters). Keys only dev.to uses (published, canonical_url, series, ...) are ignored:
+# each post's canonical URL is its own page here. Images referenced by a relative path (./x.png, x.png) must be in
+# images/ and are served from /images/. English only.
+
+BLOG_DIR = ROOT / "content" / "blog"
+BLOG_TITLE = "Blog | Amir Zare"
+BLOG_DESC = "Notes from Amir Zare on data engineering, AI systems, and what it takes to make them reliable in production."
+BLOG_FEED = "/blog/feed.xml"
+WORDS_PER_MINUTE = 220
+
+
+def blog_url(url):
+    """Links and images in a post: https://amir-zare.com/... becomes a site path (so the link check covers it), /images/
+    files must exist, and a relative path (./x.png, x.png) points at images/. Anything else is kept."""
+    url = url.strip()
+    if url.startswith(SITE["url"] + "/"):
+        url = url[len(SITE["url"]):]
+    if url.startswith("/images/") and not (ROOT / url.lstrip("/").split("?")[0]).is_file():
+        raise SystemExit(f"blog: {url!r} not found (put the file in images/)")
+    if not url or re.match(r"^(https?:|mailto:|#|/)", url):
+        return url
+    name = url.split("/")[-1]
+    if not (ROOT / "images" / name).is_file():
+        raise SystemExit(f"blog: {url!r} not found in images/ (put the file at images/{name})")
+    return f"/images/{name}"
+
+
+def image_size(path):
+    """(width, height) of a local PNG or JPEG under the repo root, or None."""
+    f = ROOT / path.lstrip("/")
+    if not f.is_file():
+        return None
+    data = f.read_bytes()
+    if data[:8] == b"\x89PNG\r\n\x1a\n":
+        return int.from_bytes(data[16:20], "big"), int.from_bytes(data[20:24], "big")
+    if data[:2] == b"\xff\xd8":
+        i = 2
+        while i + 9 < len(data):
+            if data[i] != 0xFF:
+                i += 1
+                continue
+            marker, length = data[i + 1], int.from_bytes(data[i + 2:i + 4], "big")
+            if marker in (0xC0, 0xC1, 0xC2):
+                return int.from_bytes(data[i + 7:i + 9], "big"), int.from_bytes(data[i + 5:i + 7], "big")
+            i += 2 + length
+    return None
+
+
+def img_dims(src):
+    size = image_size(src) if src.startswith("/") else None
+    return f' width="{size[0]}" height="{size[1]}"' if size else ""
+
+
+def nice_date(d):
+    return f"{d.day} {d.strftime('%B %Y')}"
+
+
+def load_posts():
+    posts = []
+    for f in sorted(BLOG_DIR.glob("*.md")) if BLOG_DIR.is_dir() else []:
+        meta, body = mdl.parse_front_matter(f.read_text())
+        missing = [k for k in ("title", "description", "date") if not meta.get(k)]
+        if missing:
+            raise SystemExit(f"blog: {f.name} is missing {', '.join(missing)} in its front matter")
+        title = str(meta["title"]).strip()
+        try:
+            date = datetime.date.fromisoformat(str(meta["date"]).strip()[:10])
+            updated = datetime.date.fromisoformat(str(meta["updated"]).strip()[:10]) if meta.get("updated") else date
+        except ValueError:
+            raise SystemExit(f"blog: {f.name}: date must be YYYY-MM-DD")
+        tags = meta.get("tags") or []
+        if isinstance(tags, str):
+            tags = [t.strip() for t in tags.split(",") if t.strip()]
+        # A leading "# Title" that repeats the front-matter title would duplicate the page's <h1>.
+        lines = body.lstrip("\n").split("\n")
+        if lines and re.match(r"^#\s+", lines[0]) and lines[0].lstrip("# ").strip() == title:
+            body = "\n".join(lines[1:])
+        for sentence in [title, str(meta["description"])] + body.split("\n"):
+            kb_check_private(f"content/blog/{f.name}", sentence)
+        content, heads = mdl.render(body, blog_url, img_dims)
+        words = len(mdl.plain_text(body).split())
+        cover = blog_url(meta.get("cover_image") or "")
+        posts.append({"slug": f.stem, "title": title, "seo_title": str(meta.get("seo_title") or "").strip(),
+                      "description": str(meta["description"]).strip(), "date": date,
+                      "updated": updated, "tags": tags, "cover": cover, "html": content, "words": words,
+                      "minutes": max(1, round(words / WORDS_PER_MINUTE))})
+    posts.sort(key=lambda p: (p["date"], p["slug"]), reverse=True)
+    return posts
+
+
+
+
+def post_meta(post):
+    return f'<time datetime="{post["date"].isoformat()}">{nice_date(post["date"])}</time> · {post["minutes"]} min read'
+
+
+def feed_link():
+    return f'\n  <link rel="alternate" type="application/rss+xml" title="Amir Zare – Blog" href="{SITE["url"]}{BLOG_FEED}">'
+
+
+def img_tag(src, alt="", eager=False, cls=""):
+    size = image_size(src)
+    dims = f' width="{size[0]}" height="{size[1]}"' if size else ""
+    return (f'<img{f" class={chr(34)}{cls}{chr(34)}" if cls else ""} src="{src}" alt="{esc(alt)}"{dims} '
+            f'loading="{"eager" if eager else "lazy"}" decoding="async">')
+
+
+def post_title(post):
+    """<title> (max 70 characters, checked by html-validate): seo_title from the front matter, else the headline, else
+    its first sentence ("I Added an AI to My Portfolio. Here's How ..." -> "I Added an AI to My Portfolio"). Social
+    previews keep the full headline."""
+    for t in (post["seo_title"], post["title"], re.split(r"(?<=[^.])[.:?!]\s", post["title"])[0]):
+        if t and len(f"{t} | Amir Zare") <= 70:
+            return f"{t} | Amir Zare"
+    raise SystemExit(f"blog: {post['slug']}: title too long for <title>; add a shorter seo_title to the front matter")
+
+
+def blog_post_page(post):
+    path = f"/blog/{post['slug']}/"
+    trail = [("Home", "/"), ("Blog", "/blog/"), (post["title"], path)]
+    tags = "".join(f"<li>{esc(t)}</li>" for t in post["tags"])
+    cover = f'<figure class="post-cover">{img_tag(post["cover"], eager=True)}</figure>' if post["cover"] else ""
+    body = f"""    <article class="section pg post">
+      <div class="container post-wrap">
+        {crumbs_html(trail)}
+        <header class="post-head">
+          <p class="pg-eyebrow">Blog</p>
+          <h1 class="pg-title">{esc(post["title"])}</h1>
+          <p class="post-desc">{esc(post["description"])}</p>
+          <p class="post-meta">{post_meta(post)}</p>
+          {f'<ul class="post-tags">{tags}</ul>' if tags else ""}
+        </header>
+        {cover}
+        <div class="post-body">
+{post["html"]}
+        </div>
+        <footer class="post-foot">
+          <a href="/blog/">&larr; All posts</a>
+          <a href="{BLOG_FEED}">RSS feed</a>
+        </footer>
+      </div>
+    </article>"""
+    url = SITE["url"] + path
+    article = {"@type": "BlogPosting", "headline": post["title"], "description": post["description"], "url": url,
+               "mainEntityOfPage": {"@type": "WebPage", "@id": url}, "datePublished": post["date"].isoformat(),
+               "dateModified": post["updated"].isoformat(), "inLanguage": "en", "wordCount": post["words"],
+               "author": {"@id": SITE["url"] + "/#person"}, "publisher": {"@id": SITE["url"] + "/#person"},
+               "isPartOf": {"@type": "Blog", "@id": SITE["url"] + "/blog/#blog"}}
+    if post["cover"]:
+        article["image"] = SITE["url"] + post["cover"]
+    if post["tags"]:
+        article["keywords"] = ", ".join(post["tags"])
+    head = (feed_link() + f'\n  <meta property="article:published_time" content="{post["date"].isoformat()}">'
+            + f'\n  <meta property="article:modified_time" content="{post["updated"].isoformat()}">'
+            + "".join(f'\n  <meta property="article:tag" content="{esc(t)}">' for t in post["tags"]))
+    og = og_image(f"blog-{post['slug']}") if post["cover"] else og_image("blog")
+    return page(post_title(post), meta_desc(post["description"]), path, body, og, [article, breadcrumbs(trail), PERSON],
+                active="blog", og_type="article", head_extra=head, social_title=post["title"])
+
+
+def blog_index():
+    path = "/blog/"
+    trail = [("Home", "/"), ("Blog", path)]
+    cards = "".join(f"""
+          <a class="pj-card" href="/blog/{post['slug']}/">
+            {f'<span class="pj-media">{img_tag(post["cover"])}</span>' if post["cover"] else ""}
+            <span class="pj-body">
+              <span class="pj-cat">{post_meta(post)}</span>
+              <span class="pj-title">{esc(post["title"])}</span>
+              <span class="pj-sum">{esc(post["description"])}</span>
+              <span class="pj-more">Read post &rarr;</span>
+            </span>
+          </a>""" for post in POSTS)
+    body = f"""    <section class="section pg">
+      <div class="container">
+        {crumbs_html(trail)}
+        <h1 class="grad-title">Blog</h1>
+        <p class="cm-sub">Notes on data engineering, AI systems, and what it takes to make them reliable in production. <a href="{BLOG_FEED}">RSS feed</a></p>
+        <div class="pj-grid blog-grid">{cards}
+        </div>
+      </div>
+    </section>"""
+    blog = {"@type": "Blog", "@id": SITE["url"] + "/blog/#blog", "name": "Amir Zare – Blog", "url": SITE["url"] + path,
+            "description": BLOG_DESC, "inLanguage": "en", "author": {"@id": SITE["url"] + "/#person"},
+            "blogPost": [{"@type": "BlogPosting", "headline": post["title"], "url": f"{SITE['url']}/blog/{post['slug']}/",
+                          "datePublished": post["date"].isoformat()} for post in POSTS]}
+    return page(BLOG_TITLE, BLOG_DESC, path, body, og_image("blog"), [blog, breadcrumbs(trail), PERSON], active="blog",
+                head_extra=feed_link())
+
+
+def rfc822(d):
+    return datetime.datetime(d.year, d.month, d.day, 8, 0, tzinfo=datetime.timezone.utc).strftime("%a, %d %b %Y %H:%M:%S +0000")
+
+
+def absolute_urls(fragment):
+    return re.sub(r'(src|href)="/(?!/)', rf'\1="{SITE["url"]}/', fragment)
+
+
+def blog_feed():
+    """RSS 2.0 with the full post HTML (content:encoded). lastBuildDate is the newest post date, so the file only
+    changes when the posts do (build.py --check stays stable)."""
+    def cdata(s):
+        return "<![CDATA[" + s.replace("]]>", "]]]]><![CDATA[>") + "]]>"
+    items = []
+    for post in POSTS:
+        url = f"{SITE['url']}/blog/{post['slug']}/"
+        cover = f'<p><img src="{post["cover"]}" alt=""></p>\n' if post["cover"] else ""
+        items.append(f"""    <item>
+      <title>{esc(post["title"])}</title>
+      <link>{url}</link>
+      <guid isPermaLink="true">{url}</guid>
+      <pubDate>{rfc822(post["date"])}</pubDate>
+      <description>{esc(post["description"])}</description>
+{"".join(f"      <category>{esc(t)}</category>{chr(10)}" for t in post["tags"])}      <content:encoded>{cdata(absolute_urls(cover + post["html"]))}</content:encoded>
+    </item>""")
+    built = rfc822(POSTS[0]["updated"] if POSTS else datetime.date(2026, 1, 1))
+    return f"""<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Amir Zare – Blog</title>
+    <link>{SITE["url"]}/blog/</link>
+    <description>{esc(BLOG_DESC)}</description>
+    <language>en</language>
+    <lastBuildDate>{built}</lastBuildDate>
+    <atom:link href="{SITE["url"]}{BLOG_FEED}" rel="self" type="application/rss+xml"/>
+{chr(10).join(items)}
+  </channel>
+</rss>
+"""
 
 
 def projects_hub():
@@ -1390,10 +1641,15 @@ def join_items(items):
 KB_PHONE = re.compile(r"\+\d[\d ()-]{7,}\d|\b\d{3}[ -]\d{3}[ -]\d{3,4}\b")  # same patterns as tools/import_resume.py and make-pdf.mjs
 
 
+def kb_check_private(where, text):
+    """No email other than LINKS["email"] and no phone number (kb.json facts and blog posts)."""
+    emails = re.findall(r"[\w.+-]+@[\w-]+(?:\.[\w-]+)+", text)
+    if any(e.lower() != LINKS["email"] for e in emails) or KB_PHONE.search(text):
+        raise SystemExit(f"{where}: contains an email other than {LINKS['email']} or a phone number: {text!r}")
+
+
 def kb_check(eid, sent):
-    emails = re.findall(r"[\w.+-]+@[\w-]+(?:\.[\w-]+)+", sent)
-    if any(e.lower() != LINKS["email"] for e in emails) or KB_PHONE.search(sent):
-        raise SystemExit(f"kb.json: sentence in {eid!r} contains an email other than {LINKS['email']} or a phone number: {sent!r}")
+    kb_check_private(f"kb.json: sentence in {eid!r}", sent)
     rest = sent
     for ok in KB_ALLOWED_URLS:
         rest = rest.replace(ok, "")
@@ -1918,6 +2174,10 @@ def outputs():
     for p in ALL:
         files[ppath(p).strip("/") + "/index.html"] = project_page(p)
     files["projects/index.html"] = projects_hub()
+    for post in POSTS:
+        files[f"blog/{post['slug']}/index.html"] = blog_post_page(post)
+    files["blog/index.html"] = blog_index()
+    files["blog/feed.xml"] = blog_feed()
     files["about/index.html"] = about_page()
     files["community/index.html"] = community_page()
     files["index.html"] = sync_existing("index.html", home=True)
@@ -1926,6 +2186,7 @@ def outputs():
     paths = [("/", "weekly", "1.0"), ("/about/", "monthly", "0.9"), ("/projects/", "weekly", "0.9"), ("/community/", "monthly", "0.8"),
              ("/resume.html", "monthly", "0.8"), ("/privacy/", "yearly", "0.2")]
     paths += [(ppath(p), "monthly", "0.7") for p in ALL]
+    paths += [("/blog/", "weekly", "0.8")] + [(f"/blog/{post['slug']}/", "monthly", "0.7") for post in POSTS]
     paths += [(lpath(lang, key), "monthly", prio) for lang in LOCAL_LANGS for key, prio in (("home", "0.8"), ("about", "0.7"), ("community", "0.6"))]
     files["sitemap.xml"] = sitemap(paths)
     bots = ["*", "Googlebot", "Bingbot", "GPTBot", "OAI-SearchBot", "ChatGPT-User", "ClaudeBot", "Claude-SearchBot", "Claude-User",
@@ -1946,6 +2207,10 @@ def og_specs():
              {"slug": "projects", "title": "Projects", "subtitle": "Streaming platforms, lakehouses, analytics, and AI agents", "image": "/images/flowfleet.webp", "fit": "contain"},
              {"slug": "resume", "title": "Resume", "subtitle": "AI & Data Engineer · 7+ years in data, backend, and AI", "image": "/images/amir-portrait.webp", "fit": "portrait"},
              {"slug": "community", "title": "Community & Events", "subtitle": "Teaching, workshops, and meetups in Yerevan", "image": "/images/gdg-workshop-room.webp", "fit": "cover"}]
+    specs += [{"slug": "blog", "title": "Blog", "subtitle": "Notes on data engineering, AI systems, and building in public",
+               "image": POSTS[0]["cover"] if POSTS else "/images/amir-portrait.webp", "fit": "cover" if POSTS else "portrait"}]
+    specs += [{"slug": f"blog-{post['slug']}", "title": post["title"], "subtitle": post["description"], "image": post["cover"], "fit": "cover"}
+              for post in POSTS if post["cover"]]
     specs += [{"slug": p["slug"], "title": plain(p["title"]), "subtitle": plain(p["subtitle"]), "image": p["image"],
                "fit": "contain" if p.get("image_fit", "").startswith("contain") else "cover"} for p in ALL]
     return specs
@@ -1973,6 +2238,9 @@ def videos_without_source(files):
             if not re.search(r"\ssrc\s*=", m.group(1)) and not re.search(r"<source\b[^>]*\ssrc\s*=", m.group(2), re.I):
                 bad.append(rel)
     return bad
+
+
+POSTS = load_posts()  # after every helper it uses (kb_check_private, blog_url) is defined
 
 
 def main():

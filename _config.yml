@@ -2,3 +2,4 @@
 # Folders listed below are kept in the repository but not published on amir-zare.com.
 exclude:
   - ask-worker/   # the Cloudflare Worker behind /api/ask, deployed with wrangler, not GitHub Pages
+  - content/      # blog sources (Markdown); tools/build.py turns them into /blog/ pages
