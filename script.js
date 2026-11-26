@@ -127,28 +127,6 @@
   }
   typeLoop(document.getElementById('typed'));
 
-  /* Animate skill bars when skills section revealed */
-  const skillsSec = document.getElementById('skills');
-  if(skillsSec && 'IntersectionObserver' in window){
-    const sIO = new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{
-        if(e.isIntersecting){
-          q('.skill').forEach((s, idx)=>{
-            const level = s.dataset.level || 60;
-            const fill = s.querySelector('.fill');
-            // stagger fill
-            setTimeout(()=>{ fill.style.width = level + '%'; }, idx*120);
-          });
-          // animate chips with a small stagger
-          const chips = q('.chip');
-          chips.forEach((c, i)=> setTimeout(()=> c.classList.add('in-chip'), 200 + i*80));
-          sIO.unobserve(e.target);
-        }
-      });
-    },{threshold:0.2});
-    sIO.observe(skillsSec);
-  }
-
   /* Theme toggle (persist in localStorage) + mobile nav toggle */
   const themeBtn = document.getElementById('theme-toggle');
   // Same line icons as MOON_ICON in tools/build.py: the moon offers dark mode, the sun offers light mode
