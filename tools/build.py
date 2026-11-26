@@ -255,7 +255,7 @@ ASK_BTN_ICON = bubble_icon(18, 2.2)
 def ask_widget(lang="en", indent="    "):
     """Floating "Ask about me" link to the home page's #ask section (script.js scrolls there on the home page)."""
     u = UI[lang]
-    return (f'{indent}<div class="ask"><a class="ask-btn" href="{lpath(lang, "home")}#ask" data-ask-jump aria-label="{u["ask_me"]} ({u["ask_ai"]})">'
+    return (f'{indent}<div class="ask"><a class="ask-btn" href="{lpath(lang, "home")}#ask" data-ask-jump aria-label="{u["ask_me"]}">'
             f'{ASK_BTN_ICON}<span class="ask-label">{u["ask_me"]}</span></a></div>')
 
 
