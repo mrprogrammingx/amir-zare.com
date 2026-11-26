@@ -54,8 +54,10 @@ def lpath(lang, key):
 def alts_for(key):
     return {lang: lpath(lang, key) for lang in LANG_ORDER}
 
-CSS_VERSION = "20261125b"
-JS_VERSION = "20261125b"
+# Cache-busting ?v= for the shared CSS/JS (Cloudflare and browsers cache them for hours): a hash of the file, so every
+# change to styles.css or script.js gets a new URL without anyone remembering to bump a version.
+CSS_VERSION = hashlib.sha256((ROOT / "styles.css").read_bytes()).hexdigest()[:10]
+JS_VERSION = hashlib.sha256((ROOT / "script.js").read_bytes()).hexdigest()[:10]
 LASTMOD = "2026-11-16"
 
 ICONS = {
