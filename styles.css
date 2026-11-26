@@ -348,6 +348,9 @@ section[id]{scroll-margin-top:20px}
 /* Theme toggle */
 .theme-toggle{background:transparent;border:none;color:var(--muted);font-size:18px;padding:6px;border-radius:8px;cursor:pointer}
 .theme-toggle:hover{color:var(--text)}
+.theme-toggle svg,#nav-toggle svg{display:block}
+.theme-toggle,#nav-toggle{min-height:36px}  /* the height the emoji glyphs gave these buttons, so the header keeps its size */
+#nav-toggle{padding-inline:5px}
 
 /* Typing effect placeholder */
 #typed{font-weight:600;color:var(--accent-2)}
