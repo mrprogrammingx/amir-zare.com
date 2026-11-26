@@ -241,15 +241,18 @@ def header(home, active=None, lang="en", alts=None):
     </header>'''
 
 
-def bubble_icon(size, stroke):
-    """The "Ask about me" question-bubble icon (section heading and floating button)."""
-    return (f'<svg viewBox="0 0 24 24" width="{size}" height="{size}" fill="none" stroke="currentColor" stroke-width="{stroke}" '
-            'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/>'
-            '<path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>')
+def bubble_icon(size):
+    """The "Ask about me" icon (section heading and floating button): a chat bubble with three typing dots."""
+    return (f'<svg viewBox="0 0 32 32" width="{size}" height="{size}" fill="none" stroke="currentColor" stroke-width="2.2" '
+            'stroke-linejoin="round" stroke-linecap="round" aria-hidden="true">'
+            '<path d="M6 6h20a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H14l-6 5v-5H6a3 3 0 0 1-3-3V9a3 3 0 0 1 3-3z"/>'
+            '<circle cx="11" cy="15" r="1.3" fill="currentColor" stroke="none"/>'
+            '<circle cx="16" cy="15" r="1.3" fill="currentColor" stroke="none"/>'
+            '<circle cx="21" cy="15" r="1.3" fill="currentColor" stroke="none"/></svg>')
 
 
-ASK_ICON = bubble_icon(20, 2)
-ASK_BTN_ICON = bubble_icon(18, 2.2)
+ASK_ICON = bubble_icon(20)
+ASK_BTN_ICON = bubble_icon(18)
 
 
 def ask_widget(lang="en", indent="    "):
