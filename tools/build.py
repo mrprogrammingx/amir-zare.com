@@ -264,7 +264,7 @@ def ask_section(lang="en"):
     u = UI[lang]
     return f'''<section id="ask" class="section ask-sec" aria-labelledby="ask-heading">
       <div class="container">
-        <h2 id="ask-heading" class="sec-h">{ASK_ICON}<span>{u["ask_me"]}</span></h2>
+        <h2 id="ask-heading" class="sec-h">{ASK_ICON}<span>{u["ask_head"]}</span></h2>
         <p class="ask-line">{u["ask_line"]} <a class="ask-how" href="/projects/ask-about-amir/"{"" if lang == "en" else ' hreflang="en"'}>{u["ask_how"]}{(" " + u["english"]) if u["english"] else ""} &rarr;</a></p>
         <div class="ask-frame" data-src="{SITE["assistant_section"]}" data-title="{u["ask_title"]}">
           <p class="ask-fallback"><a href="{SITE["assistant_page"]}" target="_blank" rel="noopener">{u["ask_full"]} <span aria-hidden="true">&#8599;</span></a></p>
