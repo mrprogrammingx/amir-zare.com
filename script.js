@@ -186,8 +186,9 @@
       if (!entries.some(en => en.isIntersecting)) return;
       io.disconnect();
       loadCal()('inline', { elementOrSelector: calBox, calLink: calBox.dataset.bookingLink, config: { layout: 'month_view', theme: calTheme() } });
-      calBox.classList.add('is-loaded');
+      calBox.classList.replace('is-waiting', 'is-loaded');
     }, { rootMargin: '0px 0px 120px 0px' });
+    calBox.classList.add('is-waiting');  // reserves the calendar's height (styles.css)
     io.observe(calBox);
   }
 
@@ -262,7 +263,20 @@
       e.preventDefault();
       const f = loadAsk();
       const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      askSec.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+      const aim = () => askSec.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+      aim();
+      // Content above #ask can still grow on the way down (the Cal.com calendar loads as the scroll passes it), which
+      // would leave the first click short. Re-aim whenever #ask moves, until the user scrolls themselves or 4 s pass.
+      if ('ResizeObserver' in window) {
+        const docTop = () => askSec.getBoundingClientRect().top + window.scrollY;
+        let last = docTop();
+        const ro = new ResizeObserver(() => { const t = docTop(); if (Math.abs(t - last) > 1) { last = t; aim(); } });
+        const inputs = ['wheel', 'touchstart', 'keydown'];
+        const stop = () => { ro.disconnect(); clearTimeout(timer); inputs.forEach(ev => window.removeEventListener(ev, stop)); };
+        const timer = setTimeout(stop, 4000);
+        inputs.forEach(ev => window.addEventListener(ev, stop, { passive: true }));
+        ro.observe(document.body);
+      }
       if (history.replaceState) history.replaceState(null, '', '#ask');
       const focus = () => f.focus({ preventScroll: true });
       if (askReady) setTimeout(focus, reduce ? 0 : 500); else f.addEventListener('load', focus, { once: true });

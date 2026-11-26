@@ -1744,7 +1744,13 @@ html[lang="fa"] .lh-role,html[lang="fa"] .cn-role{letter-spacing:0;text-transfor
 .book-sec{padding-top:56px;padding-bottom:56px;scroll-margin-top:72px}
 .book-line{margin:0 0 22px;color:var(--muted);max-width:640px}
 .book-inline{min-height:200px;border-radius:16px;border:1px solid var(--panel-border);background:var(--glass);overflow:hidden}
-.book-inline.is-loaded{min-height:560px}
+/* Reserve the calendar's height before Cal.com loads it (script.js adds .is-waiting), so the page doesn't grow when
+   it arrives and push #ask down. Loaded heights measured 2026-11-26, box width -> height: 288->830, 343->783,
+   568->717, 668->693, 724+->631. These are lower bounds (a month with fewer rows is shorter); script.js re-aims the
+   Ask button's scroll if the page still moves. */
+.book-inline.is-waiting,.book-inline.is-loaded{min-height:620px}
+@media (max-width:767px){ .book-inline.is-waiting,.book-inline.is-loaded{min-height:680px} }
+@media (max-width:480px){ .book-inline.is-waiting,.book-inline.is-loaded{min-height:760px} }
 .book-fallback{margin:0;padding:28px 20px;text-align:center}
 .book-fallback a{display:inline-flex;align-items:center;gap:8px;font-weight:600;color:var(--accent);text-decoration:none}
 .book-fallback a:hover{text-decoration:underline}
