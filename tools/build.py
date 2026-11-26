@@ -150,6 +150,11 @@ def lang_switcher(lang, alts):
 
 BOOKING_URL = SITE["booking_url"]
 CAL_LINK = BOOKING_URL.split("://", 1)[1].split("/", 1)[1].strip("/")  # "amirzaredev": what the Cal.com embed opens
+# Header buttons, in the same line style as CAL_ICON. script.js has the same moon/sun SVGs and swaps them on toggle
+# (moon in the light theme, sun in the dark one); the server-rendered default is the moon.
+MOON_ICON = '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>'
+MENU_ICON = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>'
+
 CAL_ICON = ('<svg viewBox="0 0 24 24" width="{s}" height="{s}" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" '
             'stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16" rx="2"/><path d="M16 2.5v4M8 2.5v4M3 10h18"/>'
             '<path d="M8 14h.01M12 14h.01M16 14h.01M8 17.5h.01M12 17.5h.01"/></svg>')
@@ -220,7 +225,7 @@ def header(home, active=None, lang="en", alts=None):
 {nav}
         </nav>
         <div class="header-actions">
-{sw_line}          <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">🌙</button>
+{sw_line}          <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">{MOON_ICON}</button>
           <div class="connect" id="connect">
             <button type="button" class="connect-btn" id="connect-btn" aria-label="{u["connect"]}" aria-expanded="false" aria-controls="connect-panel">
               <span class="connect-label">{u["connect"]}</span>
@@ -230,7 +235,7 @@ def header(home, active=None, lang="en", alts=None):
 {connect_rows("              ", lang)}
             </div>
           </div>
-          <button id="nav-toggle" aria-controls="site-nav" aria-expanded="false" class="nav-toggle" aria-label="Open site navigation">☰</button>
+          <button id="nav-toggle" aria-controls="site-nav" aria-expanded="false" class="nav-toggle" aria-label="Open site navigation">{MENU_ICON}</button>
         </div>
       </div>
     </header>'''
