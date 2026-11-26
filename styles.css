@@ -357,12 +357,9 @@ section[id]{scroll-margin-top:20px}
 #typed::after{content:"|";margin-left:6px;opacity:1;animation:blink 900ms steps(2, start) infinite}
 @keyframes blink{50%{opacity:0}}
 
-/* Skill bars */
-.skill-bars{margin-top:16px;display:flex;flex-direction:column;gap:8px}
+/* Skill tiles */
 .skill{display:flex;flex-direction:column;gap:6px}
 .skill span{font-size:0.95rem;color:var(--muted)}
-.bar{height:10px;background:var(--glass);border-radius:999px;overflow:hidden}
-.fill{height:100%;width:0%;background:linear-gradient(90deg,var(--accent),var(--accent-2));transition:width 900ms cubic-bezier(.2,.9,.2,1)}
 
 /* Skills grid: main skills + tools/technologies aside */
 .skills-grid{display:grid;grid-template-columns:1fr 340px;gap:20px;align-items:start}
@@ -375,8 +372,6 @@ section[id]{scroll-margin-top:20px}
   .skills-grid aside{margin-top:12px}
 }
 
-/* animate skill fills based on data-level (JS fills these on load) */
-.skill[data-level] .fill{width:0}
 
 /* Light theme overrides */
 :root[data-theme='light']{
@@ -859,8 +854,7 @@ a:hover,a:focus{background:var(--glass);text-decoration:underline}
 
 /* ---------- Experience timeline: center line, alternating cards ---------- */
 .xp-intro{text-align:center;margin-bottom:32px}
-.section .xp-title{display:block;border:0;padding:0;margin:0 0 8px;font-size:clamp(2rem,4.5vw,3.2rem);font-weight:800;letter-spacing:-.02em;
-  background:linear-gradient(90deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.section .xp-title{display:block;border:0;padding:0;margin:0 0 8px;font-size:clamp(2rem,4.5vw,3.2rem);font-weight:800;letter-spacing:-.02em;color:var(--text)}
 .xp-sub{color:var(--muted);margin:0;font-size:1.05rem}
 .xp-timeline{list-style:none;margin:0;padding:8px 0;position:relative;display:flex;flex-direction:column}
 .xp-timeline::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:3px;transform:translateX(-50%);border-radius:3px;
@@ -898,28 +892,16 @@ a:hover,a:focus{background:var(--glass);text-decoration:underline}
 @media (prefers-reduced-motion: reduce){ .xp-card{transition:none} .xp-card:hover{transform:none} }
 #experience > .container{background:transparent}
 
-/* ---------- About: gradient title, lead, paragraphs, traits row, quote card ---------- */
-.section .grad-title{display:block;width:fit-content;border:0;padding:0;margin:0 0 28px;font-size:clamp(2rem,4.5vw,3.2rem);font-weight:800;letter-spacing:-.02em;
-  background:linear-gradient(90deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+/* ---------- Section titles; About: lead, paragraphs ---------- */
+.section .grad-title{display:block;width:fit-content;border:0;padding:0;margin:0 0 28px;font-size:clamp(2rem,4.5vw,3.2rem);font-weight:800;letter-spacing:-.02em;color:var(--text)}
 .about-grid{align-items:start}
 .about-body .about-lead{font-size:clamp(1.35rem,2.4vw,1.75rem);font-weight:800;line-height:1.28;letter-spacing:-.01em;margin:0 0 18px;color:var(--text)}
 .about-body p{font-size:1.06rem;line-height:1.75;margin:0 0 16px;color:var(--text)}
 .about-body p a{padding:0}
-.about-traits{list-style:none;padding:0;margin:24px 0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
-.about-traits li{display:flex;align-items:center;gap:10px;color:var(--muted);font-size:.98rem;line-height:1.35}
-.trait-icon{flex:none;display:inline-flex}
-.trait-icon.t-blue{color:var(--accent-2)}
-.trait-icon.t-green{color:var(--accent)}
-.about-quote{margin:0;padding:20px 24px;border-radius:14px;border:1px solid rgba(96,165,250,.3);
-  background:linear-gradient(90deg,rgba(96,165,250,.08),rgba(110,231,183,.05));color:#93c5fd;font-style:italic;font-size:1.08rem;line-height:1.5}
-:root[data-theme='light'] .about-quote{color:#1d4ed8;border-color:rgba(29,78,216,.25)}
 @media (max-width:700px){
-  .about-traits{grid-template-columns:1fr;gap:10px}
   .section .grad-title{margin-bottom:20px}
 }
 :root[data-theme='light'] .about-body p a{color:#2563eb}
-:root[data-theme='light'] .trait-icon.t-blue{color:#2563eb}
-:root[data-theme='light'] .trait-icon.t-green{color:#059669}
 
 /* ---------- Community: two highlight cards, event strip, footer line ---------- */
 #community > .container{background:transparent}
@@ -1116,8 +1098,6 @@ section[id]{scroll-margin-top:108px}
 .sk-tile.skill span{color:var(--text);font-size:.82rem}
 .sk-mono{width:38px;height:38px;border-radius:10px;display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;
   color:var(--c);background:color-mix(in srgb,var(--c) 14%,transparent);border:1px solid color-mix(in srgb,var(--c) 40%,transparent)}
-.sk-tile .bar{width:100%;height:5px;margin-top:2px;background:rgba(255,255,255,.08)}
-.sk-tile .fill{background:linear-gradient(90deg,var(--accent),var(--accent-2))}
 /* Neural net with pulsing connections */
 .sk-net{display:block;width:100%;height:76px}
 .sk-edges path{stroke:rgba(167,139,250,.55);stroke-width:1.4;fill:none;stroke-dasharray:6 6;animation:sk-flow 2.4s linear infinite}
@@ -1681,7 +1661,7 @@ body.cn-body::before{display:none}
 
 /* Farsi: Persian font and right-to-left adjustments */
 html[lang="fa"] body,html[lang="fa"] button,html[lang="fa"] .cn-qr-open,html[lang="fa"] .cn-qr-close,html[lang="fa"] .cn-qr-switch button{font-family:Vazirmatn,Tahoma,"Segoe UI",system-ui,sans-serif}
-html[lang="fa"] .lh-name,html[lang="fa"] .grad-title,html[lang="fa"] .cn-name{letter-spacing:0}
+html[lang="fa"] .lh-name,html[lang="fa"] .grad-title,html[lang="fa"] .sec-h,html[lang="fa"] .cn-name{letter-spacing:0}
 html[lang="fa"] .lh-role,html[lang="fa"] .cn-role{letter-spacing:0;text-transform:none}
 [dir="rtl"] .ab-journey{padding:0 18px 0 0;border-left:0;border-right:2px solid rgba(96,165,250,.4)}
 [dir="rtl"] .ab-journey li::before{left:auto;right:-25px}
@@ -1779,11 +1759,8 @@ html[lang="fa"] .lh-role,html[lang="fa"] .cn-role{letter-spacing:0;text-transfor
   [dir="rtl"] .ask-btn{right:auto;left:14px}
 }
 .ask-sec{padding-top:56px;padding-bottom:56px;scroll-margin-top:72px}
-/* Shared home section heading (Work with me, Ask about me): icon box, letter-spaced caps, gradient line */
-.section .sec-h{display:flex;width:100%;padding:0;border:0;align-items:center;gap:14px;margin:0 0 12px;font-size:1.05rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--text)}
-.sec-h svg{flex:none;width:34px;height:34px;padding:7px;border-radius:10px;color:var(--accent);background:rgba(110,231,183,.1);border:1px solid rgba(110,231,183,.28)}
-.sec-h::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,rgba(96,165,250,.4),transparent)}
-[dir="rtl"] .sec-h::after{background:linear-gradient(270deg,rgba(96,165,250,.4),transparent)}
+/* Shared home section heading (Work with me, Ask about me): the same type as .grad-title */
+.section .sec-h{display:block;padding:0;border:0;margin:0 0 12px;font-size:clamp(2rem,4.5vw,3.2rem);font-weight:800;letter-spacing:-.02em;color:var(--text)}
 .ask-line{margin:0 0 18px;color:var(--muted);max-width:720px}
 .ask-frame iframe{display:block;width:100%;height:260px;border:0;background:transparent;color-scheme:normal}
 .ask-fallback{margin:0;padding:20px 0}
@@ -1834,7 +1811,6 @@ html[lang="fa"] .lh-role,html[lang="fa"] .cn-role{letter-spacing:0;text-transfor
   .ask-ph,.ask-ph-btn{animation:none}
   .ask-frame.is-waiting,.ask-frame.is-waiting .ask-skel,.ask-frame iframe{transition:none}
 }
-:root[data-theme='light'] .sec-h svg{color:#047857;background:rgba(4,120,87,.08);border-color:rgba(4,120,87,.25)}
 :root[data-theme='light'] .ask-fallback a{color:#047857}
 @media print{ .ask{display:none !important} }
 

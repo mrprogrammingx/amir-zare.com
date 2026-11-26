@@ -173,7 +173,7 @@ def book_section(lang="en"):
     u = UI[lang]
     return f'''<section id="book" class="section book-sec" aria-labelledby="book-title">
       <div class="container">
-        <h2 id="book-title" class="sec-h">{CAL_ICON.format(s=20)}<span>{u["work_with_me"]}</span></h2>
+        <h2 id="book-title" class="sec-h">{u["work_with_me"]}</h2>
         <p class="book-line">{u["book_line"]}</p>
         <div class="book-inline" id="book-inline" data-booking-link="{CAL_LINK}">
           <p class="book-fallback"><a href="{BOOKING_URL}" target="_blank" rel="noopener">{CAL_ICON.format(s=18)}{u["book_open"]} <span aria-hidden="true">&#8599;</span></a></p>
@@ -242,7 +242,7 @@ def header(home, active=None, lang="en", alts=None):
 
 
 def bubble_icon(size):
-    """The "Ask about me" icon (section heading and floating button): a chat bubble with three typing dots."""
+    """The floating "Ask about me" button's icon: a chat bubble with three typing dots."""
     return (f'<svg viewBox="0 0 32 32" width="{size}" height="{size}" fill="none" stroke="currentColor" stroke-width="2.2" '
             'stroke-linejoin="round" stroke-linecap="round" aria-hidden="true">'
             '<path d="M6 6h20a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H14l-6 5v-5H6a3 3 0 0 1-3-3V9a3 3 0 0 1 3-3z"/>'
@@ -251,7 +251,6 @@ def bubble_icon(size):
             '<circle cx="21" cy="15" r="1.3" fill="currentColor" stroke="none"/></svg>')
 
 
-ASK_ICON = bubble_icon(20)
 ASK_BTN_ICON = bubble_icon(18)
 
 
@@ -267,7 +266,7 @@ def ask_section(lang="en"):
     u = UI[lang]
     return f'''<section id="ask" class="section ask-sec" aria-labelledby="ask-heading">
       <div class="container">
-        <h2 id="ask-heading" class="sec-h">{ASK_ICON}<span>{u["ask_head"]}</span></h2>
+        <h2 id="ask-heading" class="sec-h">{u["ask_head"]}</h2>
         <p class="ask-line">{u["ask_line"]} <a class="ask-how" href="/projects/ask-about-amir/"{"" if lang == "en" else ' hreflang="en"'}>{u["ask_how"]}{(" " + u["english"]) if u["english"] else ""} &rarr;</a></p>
         <div class="ask-frame" data-src="{SITE["assistant_section"]}" data-title="{u["ask_title"]}">
           <p class="ask-fallback"><a href="{SITE["assistant_page"]}" target="_blank" rel="noopener">{u["ask_full"]} <span aria-hidden="true">&#8599;</span></a></p>
