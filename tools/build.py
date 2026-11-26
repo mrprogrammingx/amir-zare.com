@@ -1796,7 +1796,7 @@ def connect_page(lang="en"):
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="robots" content="noindex, follow">
-  <meta name="theme-color" content="#0b1220">
+  <meta name="theme-color" content="#070B14">
   <title>{esc(title)}</title>
   <meta name="description" content="{esc(desc)}">
   {seo_tags(title, desc, path, og_image("home"), alts=alts, lang=lang)}
