@@ -3,6 +3,13 @@
 Supports what the posts use: front matter, ATX headings, paragraphs, emphasis, inline code, links, images
 (a paragraph that is only an image becomes a <figure>), fenced code blocks, block quotes, nested lists,
 horizontal rules and GitHub-style tables. Raw HTML in the source is escaped, not passed through.
+
+One extension: a paragraph that is only
+
+    !video[Caption](/images/demo.mp4 "/images/demo-poster.jpg")
+
+embeds a local video (the poster in the title slot is optional). render() hands it to its video callback;
+without one it becomes a plain link to the file.
 """
 import html
 import re
@@ -94,29 +101,39 @@ HEADING = re.compile(r"^(#{1,6})\s+(.*?)\s*#*\s*$")
 HR = re.compile(r"^\s{0,3}([-*_])(\s*\1){2,}\s*$")
 LIST_ITEM = re.compile(r"^(\s*)([-*+]|\d{1,9}[.)])\s+(.*)$")
 TABLE_SEP = re.compile(r"^\s*\|?\s*:?-{3,}:?\s*(\|\s*:?-{3,}:?\s*)*\|?\s*$")
+VIDEO = re.compile(r'!video\[([^\]]*)\]\(\s*<?([^\s)>]+)>?(?:\s+"([^"]*)")?\s*\)')
 
 
-def render(md, url_for=lambda u: u, img_attrs=lambda src: ""):
+def render(md, url_for=lambda u: u, img_attrs=lambda src: "", video=None):
     """Markdown -> (html, headings[(level, id, text)]). Headings are shifted so the largest one is <h2>
-    (the page title is the only <h1>)."""
+    (the page title is the only <h1>). video(src, poster, caption_html) renders a !video[...] paragraph
+    (src and poster already passed through url_for; poster may be "")."""
     lines = md.replace("\r\n", "\n").replace("\t", "    ").split("\n")
     levels = [len(m.group(1)) for line in lines if (m := HEADING.match(line))]
     shift = 2 - min(levels) if levels else 0
     out, heads, used = [], [], set()
-    _blocks(lines, out, heads, used, shift, (url_for, img_attrs))
+    _blocks(lines, out, heads, used, shift, (url_for, img_attrs, video))
     return "\n".join(out), heads
 
 
 def _blocks(lines, out, heads, used, shift, url_for):
-    # url_for here is the (url_for, img_attrs) pair passed down from render()
+    # url_for here is the (url_for, img_attrs, video) tuple passed down from render()
     i, para = 0, []
-    inline = lambda t: render_inline(t, *url_for)
+    inline = lambda t: render_inline(t, url_for[0], url_for[1])
 
     def flush():
         if para:
             text = "\n".join(para).strip()
+            only_video = VIDEO.fullmatch(text)
             only_img = re.fullmatch(r'!\[[^\]]*\]\(\s*<?[^\s)>]+>?(?:\s+"([^"]*)")?\s*\)', text)
-            if only_img:
+            if only_video:
+                cap, src = only_video.group(1), url_for[0](only_video.group(2))
+                poster = url_for[0](only_video.group(3)) if only_video.group(3) else ""
+                if url_for[2]:
+                    out.append(url_for[2](src, poster, inline(cap) if cap else ""))
+                else:
+                    out.append(f'<p><a href="{html.escape(src)}">{inline(cap) if cap else "Watch the video"}</a></p>')
+            elif only_img:
                 # a paragraph that is only an image becomes a figure; its caption is the image title, if any
                 # (not the alt text, which screen readers already read)
                 cap = only_img.group(1)
@@ -246,6 +263,7 @@ def _list(lines, i, out, heads, used, shift, url_for):
 def plain_text(md):
     """Rough plain text of a Markdown body (for word counts)."""
     md = re.sub(r"```.*?```", " ", md, flags=re.S)
+    md = VIDEO.sub(r"\1", md)
     md = re.sub(r"!\[[^\]]*\]\([^)]*\)", " ", md)
     md = re.sub(r"\[([^\]]+)\]\([^)]*\)", r"\1", md)
     return re.sub(r"[#>*_`|~-]", " ", md)

@@ -1188,6 +1188,8 @@ section[id]{scroll-margin-top:108px}
 .ask-how{white-space:nowrap;font-size:.92em;font-weight:600}
 .pg-video{margin:30px auto;max-width:480px;border-radius:16px;overflow:hidden;border:1px solid rgba(96,165,250,.3);box-shadow:0 0 36px rgba(96,165,250,.12);background:#0b1220}
 .pg-video video{display:block;width:100%;height:auto;aspect-ratio:720/900}
+.pg-video figcaption{padding:10px 16px 12px;border-top:1px solid rgba(96,165,250,.2);text-align:center;font-size:.88rem;line-height:1.5;color:#cbd5e1}
+.post-body .pg-video{margin:1.6em auto}
 .pg-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
 .pg-block,.pg-sec{padding:20px;border-radius:16px;background:var(--card-bg);border:1px solid var(--panel-border)}
 .pg-sec{margin-top:18px}

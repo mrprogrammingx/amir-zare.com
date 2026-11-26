@@ -50,7 +50,7 @@
       "datePublished": "2026-11-25",
       "dateModified": "2026-11-25",
       "inLanguage": "en",
-      "wordCount": 1358,
+      "wordCount": 1371,
       "author": {
         "@id": "https://amir-zare.com/#person"
       },
@@ -211,7 +211,7 @@
 <p>Ask my portfolio "Is he married?" and it politely refuses. Ask "Has he used Airflow?" and you get a short answer in a few seconds, with a citation for every sentence. That refusal is the most important feature I built.</p>
 <p>Recruiters skim a resume in seconds and rarely find the detail they came for. A chatbot on my site could answer their questions, but an LLM that invents a skill, an employer or a date is worse than no chatbot at all. One made-up claim and the whole profile looks dishonest.</p>
 <p>So I set one rule before writing any code: <strong>the model may only say what my resume says, and code checks that it did.</strong> Here is how I built it on <a href="/#ask">amir-zare.com</a>, using free tiers only, and the bug that showed me the design works.</p>
-<p><a href="/projects/ask-about-amir/">Watch the 40-second demo</a></p>
+<figure class="pg-video"><video controls muted playsinline preload="none" poster="/images/ask-about-amir-poster.jpg" aria-label="Demo video"><source src="/images/ask-about-amir.mp4" type="video/mp4"><a href="/images/ask-about-amir.mp4" download>Download the demo video (MP4)</a></video><figcaption>Real questions get cited answers; personal ones get a polite refusal.</figcaption></figure>
 <h2 id="how-it-fits-together">How it fits together</h2>
 <p>The system has two halves: search runs in the visitor's browser, and the answer is written on Cloudflare. Only fact IDs cross between them.</p>
 <figure class="post-fig"><img src="/images/ask-about-amir-architecture.png" alt="Architecture: the browser searches 324 resume facts and sends the question plus 8 fact IDs to a Cloudflare Worker; Llama 3.3 70B writes the answer and code checks every citation before it reaches the page" width="1344" height="848" loading="lazy" decoding="async"></figure>
@@ -260,6 +260,7 @@ Engineer at DataLayer (since Jan 2024).</code></pre>
 <h2 id="try-to-make-it-guess">Try to make it guess</h2>
 <p>Ask it anything about my work, and try to make it say something that isn't on my resume. If you find a question it answers badly, tell me: that's how it gets better.</p>
 <ul><li><strong>Try it:</strong> <a href="/#ask">amir-zare.com/#ask</a></li><li><strong>Project page with the demo video:</strong> <a href="/projects/ask-about-amir/">amir-zare.com/projects/ask-about-amir</a></li><li><strong>The assistant on Hugging Face:</strong> <a href="https://huggingface.co/spaces/amirzaredev/ask-about-amir" target="_blank" rel="noopener">huggingface.co/spaces/amirzaredev/ask-about-amir</a></li><li><strong>Worker code:</strong> <a href="https://github.com/mrprogrammingx/amir-zare.com/tree/main/ask-worker" target="_blank" rel="noopener">github.com/mrprogrammingx/amir-zare.com</a></li></ul>
+<p><strong>Also published on:</strong> <a href="https://medium.com/@amirzaredev/i-added-an-ai-to-my-portfolio-heres-how-i-stopped-it-from-making-things-up-f37db917a5f4" target="_blank" rel="noopener">Medium</a> · <a href="https://dev.to/amirzare/i-added-an-ai-to-my-portfolio-heres-how-i-stopped-it-from-making-things-up-3mfd" target="_blank" rel="noopener">DEV Community</a></p>
 <p><em>I'm an AI and Data Engineer in Yerevan and the founder of DataLayer. I'm open to full-time and contract roles; you can <a href="/#book">book a call</a> or find me on <a href="https://www.linkedin.com/in/binahayat00" target="_blank" rel="noopener">LinkedIn</a>.</em></p>
         </div>
         <footer class="post-foot">

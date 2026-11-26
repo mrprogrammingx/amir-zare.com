@@ -525,16 +525,23 @@ def all_project_cards():
     return [(p["title"], ppath(p), p["image"], p["summary"], p["category"], p["year"], p.get("image_fit", "cover")) for p in ALL]
 
 
+def video_figure(src, poster, label, caption=""):
+    """A self-hosted MP4 in the site's video frame (.pg-video), with a download link for browsers that can't play it.
+    Used by project pages and by !video[...] in blog posts."""
+    return (f'<figure class="pg-video"><video controls muted playsinline preload="none" poster="{poster}" '
+            f'aria-label="{esc(label)}">'
+            f'<source src="{src}" type="video/mp4">'
+            f'<a href="{src}" download>Download the demo video (MP4)</a></video>'
+            + (f"<figcaption>{caption}</figcaption>" if caption else "") + "</figure>")
+
+
 def local_video(p):
     """Optional self-hosted demo video (p["video"] with "src"), shown at the top of the project page instead of the image.
     (A "video" with "id" is a YouTube tutorial, shown further down.)"""
     v = p.get("video") or {}
     if not v.get("src"):
         return ""
-    return (f'<figure class="pg-video"><video controls muted playsinline preload="none" poster="{v["poster"]}" '
-            f'aria-label="{esc(plain(p["title"]))} demo video">'
-            f'<source src="{v["src"]}" type="video/mp4">'
-            f'<a href="{v["src"]}" download>Download the demo video (MP4)</a></video></figure>')
+    return video_figure(v["src"], v["poster"], f"{plain(p['title'])} demo video")
 
 
 def project_page(p):
@@ -623,7 +630,8 @@ def all_projects_button():
 # Posts are Markdown files in content/blog/<slug>.md with front matter: title, description, date (YYYY-MM-DD),
 # cover_image and tags (optional: updated, seo_title for a <title> under 70 characters). Keys only dev.to uses (published, canonical_url, series, ...) are ignored:
 # each post's canonical URL is its own page here. Images referenced by a relative path (./x.png, x.png) must be in
-# images/ and are served from /images/. English only.
+# images/ and are served from /images/. A paragraph that is only !video[Caption](/images/x.mp4 "/images/x-poster.jpg")
+# embeds that video with the project-page player (in the RSS feed it becomes a link). English only.
 
 BLOG_DIR = ROOT / "content" / "blog"
 BLOG_TITLE = "Blog | Amir Zare"
@@ -674,6 +682,23 @@ def img_dims(src):
     return f' width="{size[0]}" height="{size[1]}"' if size else ""
 
 
+def post_video(src, poster, caption):
+    """!video[Caption](/images/x.mp4 "/images/x-poster.jpg") in a post: the project-page player, with a caption."""
+    if not poster:
+        raise SystemExit(f"blog: video {src!r} needs a poster image: !video[Caption]({src} \"/images/....jpg\")")
+    return video_figure(src, poster, "Demo video", caption)
+
+
+def feed_video(post_url):
+    """Feed readers mostly strip <video>, so in the RSS feed a video is a link: to the project page that shows the same
+    video, if there is one, else to the post itself."""
+    def render(src, poster, caption):
+        page = next((ppath(p) for p in ALL if (p.get("video") or {}).get("src") == src), None)
+        href = SITE["url"] + page if page else post_url
+        return f'<p><a href="{href}">Watch the demo video</a>{". " + caption if caption else ""}</p>'
+    return render
+
+
 def nice_date(d):
     return f"{d.day} {d.strftime('%B %Y')}"
 
@@ -700,12 +725,13 @@ def load_posts():
             body = "\n".join(lines[1:])
         for sentence in [title, str(meta["description"])] + body.split("\n"):
             kb_check_private(f"content/blog/{f.name}", sentence)
-        content, heads = mdl.render(body, blog_url, img_dims)
+        content, heads = mdl.render(body, blog_url, img_dims, post_video)
+        feed_html, _ = mdl.render(body, blog_url, img_dims, feed_video(f"{SITE['url']}/blog/{f.stem}/"))
         words = len(mdl.plain_text(body).split())
         cover = blog_url(meta.get("cover_image") or "")
         posts.append({"slug": f.stem, "title": title, "seo_title": str(meta.get("seo_title") or "").strip(),
                       "description": str(meta["description"]).strip(), "date": date,
-                      "updated": updated, "tags": tags, "cover": cover, "html": content, "words": words,
+                      "updated": updated, "tags": tags, "cover": cover, "html": content, "feed_html": feed_html, "words": words,
                       "minutes": max(1, round(words / WORDS_PER_MINUTE))})
     posts.sort(key=lambda p: (p["date"], p["slug"]), reverse=True)
     return posts
@@ -834,7 +860,7 @@ def blog_feed():
       <guid isPermaLink="true">{url}</guid>
       <pubDate>{rfc822(post["date"])}</pubDate>
       <description>{esc(post["description"])}</description>
-{"".join(f"      <category>{esc(t)}</category>{chr(10)}" for t in post["tags"])}      <content:encoded>{cdata(absolute_urls(cover + post["html"]))}</content:encoded>
+{"".join(f"      <category>{esc(t)}</category>{chr(10)}" for t in post["tags"])}      <content:encoded>{cdata(absolute_urls(cover + post["feed_html"]))}</content:encoded>
     </item>""")
     built = rfc822(POSTS[0]["updated"] if POSTS else datetime.date(2026, 1, 1))
     return f"""<?xml version="1.0" encoding="UTF-8"?>

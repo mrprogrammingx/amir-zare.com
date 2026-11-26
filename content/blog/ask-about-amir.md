@@ -14,7 +14,7 @@ Recruiters skim a resume in seconds and rarely find the detail they came for. A 
 
 So I set one rule before writing any code: **the model may only say what my resume says, and code checks that it did.** Here is how I built it on [amir-zare.com](https://amir-zare.com/#ask), using free tiers only, and the bug that showed me the design works.
 
-[Watch the 40-second demo](https://amir-zare.com/projects/ask-about-amir/)
+!video[Real questions get cited answers; personal ones get a polite refusal.](/images/ask-about-amir.mp4 "/images/ask-about-amir-poster.jpg")
 
 ## How it fits together
 
@@ -115,5 +115,7 @@ Ask it anything about my work, and try to make it say something that isn't on my
 - **Project page with the demo video:** [amir-zare.com/projects/ask-about-amir](https://amir-zare.com/projects/ask-about-amir/)
 - **The assistant on Hugging Face:** [huggingface.co/spaces/amirzaredev/ask-about-amir](https://huggingface.co/spaces/amirzaredev/ask-about-amir)
 - **Worker code:** [github.com/mrprogrammingx/amir-zare.com](https://github.com/mrprogrammingx/amir-zare.com/tree/main/ask-worker)
+
+**Also published on:** [Medium](https://medium.com/@amirzaredev/i-added-an-ai-to-my-portfolio-heres-how-i-stopped-it-from-making-things-up-f37db917a5f4) · [DEV Community](https://dev.to/amirzare/i-added-an-ai-to-my-portfolio-heres-how-i-stopped-it-from-making-things-up-3mfd)
 
 *I'm an AI and Data Engineer in Yerevan and the founder of DataLayer. I'm open to full-time and contract roles; you can [book a call](https://amir-zare.com/#book) or find me on [LinkedIn](https://www.linkedin.com/in/binahayat00).*
