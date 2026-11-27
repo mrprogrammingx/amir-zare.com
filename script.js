@@ -146,6 +146,18 @@
   setTheme(saved);
   if(themeBtn){ themeBtn.addEventListener('click', ()=> setTheme(document.documentElement.getAttribute('data-theme')==='light'?'dark':'light')) }
 
+  // Announcement bar (tools/build.py ap_bar): × hides it and remembers that under its versioned key. If storage fails
+  // it is hidden for this page only. The inline script in <head> reads the same key so a dismissed bar never flashes.
+  const apBar = document.getElementById('ap-bar');
+  const apClose = apBar && apBar.querySelector('.ap-bar-x');
+  if (apClose) apClose.addEventListener('click', () => {
+    const hadFocus = document.activeElement === apClose;
+    document.documentElement.classList.add('ap-bar-off');
+    _safeSetItem(apBar.dataset.key, '1');
+    const logo = document.querySelector('.site-header .logo');  // keep keyboard focus on the page, not on <body>
+    if (hadFocus && logo) logo.focus();
+  });
+
   // Cal.com booking (SITE["booking_url"] in tools/content.py). "Book a call" links are plain links (#book on home
   // pages, cal.com in a new tab elsewhere); the only embed is the inline calendar in the home "Work with me" section,
   // whose script loads when that section scrolls into view. There is no popup.

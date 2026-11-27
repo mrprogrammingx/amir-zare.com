@@ -26,7 +26,10 @@ UI = {
            "ask_me": "Ask my AI about me", "ask_head": "Ask about me", "ask_title": "Ask about Amir", "ask_full": "Open full version",
            "ask_line": "Ask about my experience, projects and skills. An AI answers using only my resume, shows its sources, and says so when it doesn’t know.",
            "ask_how": "How it works",
-           "ask_slow": "The assistant is taking longer than usual. Open it directly"},
+           "ask_slow": "The assistant is taking longer than usual. Open it directly",
+           # AgentPages announcement bar above the header (build.py ap_bar). ap_short (+ ap_try_short, if set) is the phone
+           # version and must fit one line at 375px
+           "ap_region": "Announcement", "ap_lead": "Amir&rsquo;s new project:", "ap_long": "free websites for you or your AI agent, in 30 seconds.", "ap_short": "free websites", "ap_try": "Try it", "ap_dismiss": "Dismiss"},
     "hy": {"blog": "Բլոգ", "privacy": "Գաղտնիություն", "home": "Գլխավոր", "about": "Իմ մասին", "projects": "Նախագծեր", "experience": "Փորձ", "community": "Համայնք",
            "resume": "Ռեզյումե", "connect": "Կապ", "language": "Լեզու", "navigation": "Նավիգացիա", "connect_h": "Կապ",
            "built_h": "Ստեղծածս", "sponsor": "Աջակցել", "digital_card": "Թվային այցեքարտ", "telegram_channel": "Telegram ալիք",
@@ -39,7 +42,9 @@ UI = {
            "ask_me": "Հարցրեք իմ AI-ին", "ask_head": "Հարցրեք իմ մասին", "ask_title": "Հարցրեք Ամիրի մասին", "ask_full": "Բացել ամբողջական տարբերակը",
            "ask_line": "Հարցրեք իմ փորձի, նախագծերի և հմտությունների մասին։ Արհեստական բանականությունը պատասխանում է միայն իմ ռեզյումեի հիման վրա, նշում է աղբյուրները և ասում է, երբ պատասխանը չգիտի։",
            "ask_how": "Ինչպես է այն աշխատում",
-           "ask_slow": "Օգնականը սովորականից երկար է բեռնվում։ Բացեք այն անմիջապես"},
+           "ask_slow": "Օգնականը սովորականից երկար է բեռնվում։ Բացեք այն անմիջապես",
+           # AgentPages announcement bar above the header (build.py ap_bar)
+           "ap_region": "Հայտարարություն", "ap_lead": "Ամիրի նոր նախագիծը՝", "ap_long": "անվճար կայքեր ձեզ կամ ձեր AI գործակալի համար՝ 30 վայրկյանում։", "ap_short": "անվճար կայք", "ap_try": "Փորձել", "ap_dismiss": "Փակել"},
     "ru": {"blog": "Блог", "privacy": "Конфиденциальность", "home": "Главная", "about": "Обо мне", "projects": "Проекты", "experience": "Опыт", "community": "Сообщество",
            "resume": "Резюме", "connect": "Связаться", "language": "Язык", "navigation": "Навигация", "connect_h": "Контакты",
            "built_h": "Создано", "sponsor": "Поддержать", "digital_card": "Цифровая визитка", "telegram_channel": "Telegram-канал",
@@ -52,7 +57,9 @@ UI = {
            "ask_me": "Спросите мой ИИ", "ask_head": "Спросите обо мне", "ask_title": "Спросите об Амире", "ask_full": "Открыть полную версию",
            "ask_line": "Спросите о моём опыте, проектах и навыках. ИИ отвечает только на основе моего резюме, указывает источники и честно говорит, если не знает ответа.",
            "ask_how": "Как это работает",
-           "ask_slow": "Ассистент загружается дольше обычного. Откройте его напрямую"},
+           "ask_slow": "Ассистент загружается дольше обычного. Откройте его напрямую",
+           # AgentPages announcement bar above the header (build.py ap_bar)
+           "ap_region": "Объявление", "ap_lead": "Новое от Амира:", "ap_long": "бесплатные сайты для вас или вашего AI-агента, за 30 секунд.", "ap_short": "бесплатные сайты", "ap_try": "Попробовать", "ap_try_short": "Открыть", "ap_dismiss": "Закрыть"},
     "fa": {"blog": "وبلاگ", "privacy": "حریم خصوصی", "home": "خانه", "about": "درباره من", "projects": "پروژه‌ها", "experience": "تجربه", "community": "جامعه",
            "resume": "رزومه", "connect": "ارتباط", "language": "زبان", "navigation": "ناوبری", "connect_h": "ارتباط",
            "built_h": "ساخته‌ها", "sponsor": "حمایت", "digital_card": "کارت ویزیت دیجیتال", "telegram_channel": "کانال تلگرام",
@@ -65,7 +72,9 @@ UI = {
            "ask_me": "از هوش مصنوعی‌ام بپرسید", "ask_head": "از من بپرسید", "ask_title": "دربارهٔ امیر بپرسید", "ask_full": "باز کردن نسخهٔ کامل",
            "ask_line": "دربارهٔ تجربه، پروژه‌ها و مهارت‌هایم بپرسید. هوش مصنوعی فقط بر اساس رزومه‌ام پاسخ می‌دهد، منابعش را نشان می‌دهد و اگر جواب را نداند، همین را می‌گوید.",
            "ask_how": "چطور کار می‌کند",
-           "ask_slow": "دستیار بیشتر از معمول طول می‌کشد. مستقیم بازش کنید"},
+           "ask_slow": "دستیار بیشتر از معمول طول می‌کشد. مستقیم بازش کنید",
+           # AgentPages announcement bar above the header (build.py ap_bar)
+           "ap_region": "اطلاعیه", "ap_lead": "پروژه جدید امیر:", "ap_long": "وب‌سایت رایگان برای شما یا ایجنت هوش مصنوعی‌تان، در ۳۰ ثانیه.", "ap_short": "وب‌سایت رایگان", "ap_try": "امتحان کنید", "ap_dismiss": "بستن"},
     "de": {"blog": "Blog", "privacy": "Datenschutz", "home": "Start", "about": "Über mich", "projects": "Projekte", "experience": "Erfahrung", "community": "Community",
            "resume": "Lebenslauf", "connect": "Kontakt", "language": "Sprache", "navigation": "Navigation", "connect_h": "Kontakt",
            "built_h": "Gebaut", "sponsor": "Unterstützen", "digital_card": "Digitale Visitenkarte", "telegram_channel": "Telegram-Kanal",
@@ -78,7 +87,9 @@ UI = {
            "ask_me": "Frag meine KI", "ask_head": "Frag mich", "ask_title": "Frag nach Amir", "ask_full": "Vollversion öffnen",
            "ask_line": "Fragen Sie nach meiner Erfahrung, meinen Projekten und Fähigkeiten. Eine KI antwortet ausschließlich anhand meines Lebenslaufs, nennt ihre Quellen und sagt offen, wenn sie etwas nicht weiß.",
            "ask_how": "So funktioniert es",
-           "ask_slow": "Der Assistent braucht länger als üblich. Direkt öffnen"},
+           "ask_slow": "Der Assistent braucht länger als üblich. Direkt öffnen",
+           # AgentPages announcement bar above the header (build.py ap_bar)
+           "ap_region": "Ankündigung", "ap_lead": "Amirs neues Projekt:", "ap_long": "kostenlose Websites für Sie oder Ihren AI-Agenten, in 30 Sekunden.", "ap_short": "Gratis-Websites", "ap_try": "Ausprobieren", "ap_try_short": "Testen", "ap_dismiss": "Schließen"},
 }
 
 NAME = {"en": "Amir Zare", "hy": "Ամիր Զարե", "ru": "Амир Заре", "fa": "امیر زارع", "de": "Amir Zare"}
