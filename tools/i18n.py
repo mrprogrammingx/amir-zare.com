@@ -29,7 +29,7 @@ UI = {
            "ask_slow": "The assistant is taking longer than usual. Open it directly",
            # AgentPages announcement bar above the header (build.py ap_bar). ap_short (+ ap_try_short, if set) is the phone
            # version and must fit one line at 375px
-           "ap_region": "Announcement", "ap_lead": "Amir&rsquo;s new project:", "ap_long": "free websites for you or your AI agent, published in 30 seconds.", "ap_short": "free websites", "ap_try": "Try it", "ap_dismiss": "Dismiss"},
+           "ap_region": "Announcement", "ap_lead": "Amir&rsquo;s new project:", "ap_long": "free websites for you or your AI agent, in 30 seconds.", "ap_short": "free websites", "ap_try": "Try it", "ap_dismiss": "Dismiss"},
     "hy": {"blog": "Բլոգ", "privacy": "Գաղտնիություն", "home": "Գլխավոր", "about": "Իմ մասին", "projects": "Նախագծեր", "experience": "Փորձ", "community": "Համայնք",
            "resume": "Ռեզյումե", "connect": "Կապ", "language": "Լեզու", "navigation": "Նավիգացիա", "connect_h": "Կապ",
            "built_h": "Ստեղծածս", "sponsor": "Աջակցել", "digital_card": "Թվային այցեքարտ", "telegram_channel": "Telegram ալիք",
@@ -44,7 +44,7 @@ UI = {
            "ask_how": "Ինչպես է այն աշխատում",
            "ask_slow": "Օգնականը սովորականից երկար է բեռնվում։ Բացեք այն անմիջապես",
            # AgentPages announcement bar above the header (build.py ap_bar)
-           "ap_region": "Հայտարարություն", "ap_lead": "Ամիրի նոր նախագիծը՝", "ap_long": "անվճար կայքեր ձեզ կամ ձեր AI գործակալի համար՝ հրապարակված 30 վայրկյանում։", "ap_short": "անվճար կայք", "ap_try": "Փորձել", "ap_dismiss": "Փակել"},
+           "ap_region": "Հայտարարություն", "ap_lead": "Ամիրի նոր նախագիծը՝", "ap_long": "անվճար կայքեր ձեզ կամ ձեր AI գործակալի համար՝ 30 վայրկյանում։", "ap_short": "անվճար կայք", "ap_try": "Փորձել", "ap_dismiss": "Փակել"},
     "ru": {"blog": "Блог", "privacy": "Конфиденциальность", "home": "Главная", "about": "Обо мне", "projects": "Проекты", "experience": "Опыт", "community": "Сообщество",
            "resume": "Резюме", "connect": "Связаться", "language": "Язык", "navigation": "Навигация", "connect_h": "Контакты",
            "built_h": "Создано", "sponsor": "Поддержать", "digital_card": "Цифровая визитка", "telegram_channel": "Telegram-канал",
@@ -59,7 +59,7 @@ UI = {
            "ask_how": "Как это работает",
            "ask_slow": "Ассистент загружается дольше обычного. Откройте его напрямую",
            # AgentPages announcement bar above the header (build.py ap_bar)
-           "ap_region": "Объявление", "ap_lead": "Новое от Амира:", "ap_long": "бесплатные сайты для вас или вашего AI-агента, опубликованные за 30 секунд.", "ap_short": "бесплатные сайты", "ap_try": "Попробовать", "ap_try_short": "Открыть", "ap_dismiss": "Закрыть"},
+           "ap_region": "Объявление", "ap_lead": "Новое от Амира:", "ap_long": "бесплатные сайты для вас или вашего AI-агента, за 30 секунд.", "ap_short": "бесплатные сайты", "ap_try": "Попробовать", "ap_try_short": "Открыть", "ap_dismiss": "Закрыть"},
     "fa": {"blog": "وبلاگ", "privacy": "حریم خصوصی", "home": "خانه", "about": "درباره من", "projects": "پروژه‌ها", "experience": "تجربه", "community": "جامعه",
            "resume": "رزومه", "connect": "ارتباط", "language": "زبان", "navigation": "ناوبری", "connect_h": "ارتباط",
            "built_h": "ساخته‌ها", "sponsor": "حمایت", "digital_card": "کارت ویزیت دیجیتال", "telegram_channel": "کانال تلگرام",
@@ -74,7 +74,7 @@ UI = {
            "ask_how": "چطور کار می‌کند",
            "ask_slow": "دستیار بیشتر از معمول طول می‌کشد. مستقیم بازش کنید",
            # AgentPages announcement bar above the header (build.py ap_bar)
-           "ap_region": "اطلاعیه", "ap_lead": "پروژه جدید امیر:", "ap_long": "وب‌سایت رایگان برای شما یا ایجنت هوش مصنوعی‌تان، منتشرشده در ۳۰ ثانیه.", "ap_short": "وب‌سایت رایگان", "ap_try": "امتحان کنید", "ap_dismiss": "بستن"},
+           "ap_region": "اطلاعیه", "ap_lead": "پروژه جدید امیر:", "ap_long": "وب‌سایت رایگان برای شما یا ایجنت هوش مصنوعی‌تان، در ۳۰ ثانیه.", "ap_short": "وب‌سایت رایگان", "ap_try": "امتحان کنید", "ap_dismiss": "بستن"},
     "de": {"blog": "Blog", "privacy": "Datenschutz", "home": "Start", "about": "Über mich", "projects": "Projekte", "experience": "Erfahrung", "community": "Community",
            "resume": "Lebenslauf", "connect": "Kontakt", "language": "Sprache", "navigation": "Navigation", "connect_h": "Kontakt",
            "built_h": "Gebaut", "sponsor": "Unterstützen", "digital_card": "Digitale Visitenkarte", "telegram_channel": "Telegram-Kanal",
@@ -89,7 +89,7 @@ UI = {
            "ask_how": "So funktioniert es",
            "ask_slow": "Der Assistent braucht länger als üblich. Direkt öffnen",
            # AgentPages announcement bar above the header (build.py ap_bar)
-           "ap_region": "Ankündigung", "ap_lead": "Amirs neues Projekt:", "ap_long": "kostenlose Websites für Sie oder Ihren AI-Agenten, in 30 Sekunden veröffentlicht.", "ap_short": "Gratis-Websites", "ap_try": "Ausprobieren", "ap_try_short": "Testen", "ap_dismiss": "Schließen"},
+           "ap_region": "Ankündigung", "ap_lead": "Amirs neues Projekt:", "ap_long": "kostenlose Websites für Sie oder Ihren AI-Agenten, in 30 Sekunden.", "ap_short": "Gratis-Websites", "ap_try": "Ausprobieren", "ap_try_short": "Testen", "ap_dismiss": "Schließen"},
 }
 
 NAME = {"en": "Amir Zare", "hy": "Ամիր Զարե", "ru": "Амир Заре", "fa": "امیر زارع", "de": "Amir Zare"}
