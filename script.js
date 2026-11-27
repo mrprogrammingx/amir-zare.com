@@ -150,7 +150,25 @@
   // it is hidden for this page only. The inline script in <head> reads the same key so a dismissed bar never flashes.
   const apBar = document.getElementById('ap-bar');
   const apClose = apBar && apBar.querySelector('.ap-bar-x');
+  const apLink = apBar && apBar.querySelector('a');
+  // agentpages_banner_click / _dismiss to GA4 and Clarity, through the setup at the end of this file (so the same rules:
+  // every visit, never on localhost). Fire-and-forget: nothing waits for it, and if either tool is blocked or not loaded
+  // the call is skipped. device follows the bar's own phone breakpoint (styles.css), i.e. which text the visitor saw.
+  function apTrack(name) {
+    try {
+      const root = document.documentElement;
+      const params = { language: root.lang || 'en', theme: root.getAttribute('data-theme') === 'light' ? 'light' : 'dark',
+                       device: window.matchMedia && window.matchMedia('(max-width:600px)').matches ? 'mobile' : 'desktop' };
+      if (typeof window.gtag === 'function') window.gtag('event', name, params);
+      if (typeof window.clarity === 'function') {
+        window.clarity('event', name);
+        window.clarity('set', name, [params.language, params.theme, params.device]);
+      }
+    } catch (e) {}
+  }
+  if (apLink) apLink.addEventListener('click', () => apTrack('agentpages_banner_click'));
   if (apClose) apClose.addEventListener('click', () => {
+    apTrack('agentpages_banner_dismiss');
     const hadFocus = document.activeElement === apClose;
     document.documentElement.classList.add('ap-bar-off');
     _safeSetItem(apBar.dataset.key, '1');
