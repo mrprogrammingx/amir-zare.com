@@ -259,7 +259,7 @@ def ap_bar(lang="en", indent="  "):
         label = f'<span class="ap-long">{u["ap_try"]}</span><span class="ap-short">{u["ap_try_short"]}</span>'
     return (f'<section class="ap-bar" id="ap-bar" aria-label="{u["ap_region"]}" data-key="{AP_BAR_KEY}">\n'
             f'{indent}  <p class="ap-bar-text"><strong>{u["ap_lead"]}</strong> <span class="ap-long">{u["ap_long"]}</span>'
-            f'<span class="ap-short">{u["ap_short"]} &middot;</span> <a href="{AP_BAR_URL}">{label} <span aria-hidden="true">{arrow}</span></a></p>\n'
+            f'<span class="ap-short">{u["ap_short"]} &middot;</span> <a href="{AP_BAR_URL}" target="_blank" rel="noopener" aria-label="{u["ap_try"]} ({u["new_tab"]})">{label} <span aria-hidden="true">{arrow}</span></a></p>\n'
             f'{indent}  <button type="button" class="ap-bar-x" aria-label="{u["ap_dismiss"]}"><span aria-hidden="true">&times;</span></button>\n'
             f'{indent}</section>')
 
