@@ -241,6 +241,29 @@ def header(home, active=None, lang="en", alts=None):
     </header>'''
 
 
+# Announcement bar above the shared header (every page with it except the 404; /connect/ has no header). Rendered here,
+# not by script.js, so the page doesn't jump. Dismissing stores AP_BAR_KEY; AP_BAR_HEAD runs in <head> before the body is
+# parsed and adds .ap-bar-off to <html>, so a dismissed bar never flashes. Bump the key's -vN for a new announcement.
+AP_BAR_KEY = "ap-bar-dismissed-v1"
+AP_BAR_URL = "https://agentpages.amir-zare.com/?utm_source=amir-zare&amp;utm_medium=banner"
+AP_BAR_HEAD = (f'<script>try{{if(localStorage.getItem("{AP_BAR_KEY}"))document.documentElement.classList.add("ap-bar-off")}}'
+               'catch(e){}</script>')
+
+
+def ap_bar(lang="en", indent="  "):
+    """A <section> with an aria-label is the region landmark (html-validate prefers it to <div role=\"region\">)."""
+    u = UI[lang]
+    arrow = "&larr;" if lang in RTL else "&rarr;"
+    label = u["ap_try"]
+    if u.get("ap_try_short"):  # a shorter link label on phones where "Try it" is long (ru, de)
+        label = f'<span class="ap-long">{u["ap_try"]}</span><span class="ap-short">{u["ap_try_short"]}</span>'
+    return (f'<section class="ap-bar" id="ap-bar" aria-label="{u["ap_region"]}" data-key="{AP_BAR_KEY}">\n'
+            f'{indent}  <p class="ap-bar-text"><strong>{u["ap_lead"]}</strong> <span class="ap-long">{u["ap_long"]}</span>'
+            f'<span class="ap-short">{u["ap_short"]} &middot;</span> <a href="{AP_BAR_URL}">{label} <span aria-hidden="true">{arrow}</span></a></p>\n'
+            f'{indent}  <button type="button" class="ap-bar-x" aria-label="{u["ap_dismiss"]}"><span aria-hidden="true">&times;</span></button>\n'
+            f'{indent}</section>')
+
+
 def bubble_icon(size):
     """The floating "Ask about me" button's icon: a chat bubble with three typing dots."""
     return (f'<svg viewBox="0 0 32 32" width="{size}" height="{size}" fill="none" stroke="currentColor" stroke-width="2.2" '
@@ -405,13 +428,15 @@ FA_FONT = ('<link rel="preconnect" href="https://fonts.googleapis.com">\n  <link
 
 
 def page(title, description, path, body, og_image, graph, active=None, og_type="website", lang="en", alts=None, head_extra="",
-         social_title=None):
+         social_title=None, bar=True):
     dir_attr = ' dir="rtl"' if lang in RTL else ""
     font = FA_FONT if lang == "fa" else ""
+    bar_head = f"\n  {AP_BAR_HEAD}" if bar else ""
+    bar_html = f"{ap_bar(lang)}\n  " if bar else ""
     doc = f'''<!doctype html>
 <html lang="{lang}"{dir_attr}>
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8">{bar_head}
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="robots" content="index, follow">
   <title>{esc(title)}</title>
@@ -428,7 +453,7 @@ def page(title, description, path, body, og_image, graph, active=None, og_type="
 </head>
 <body class="subpage">
   <div id="scroll-progress" aria-hidden="true"></div>
-  {header(home=False, active=active, lang=lang, alts=alts)}
+  {bar_html}{header(home=False, active=active, lang=lang, alts=alts)}
   <main>
 {body}
   </main>
@@ -1165,7 +1190,11 @@ def replace_block(src, start_pat, end_pat, new):
 
 def sync_existing(path, home=False):
     src = (ROOT / path).read_text()
-    out = replace_block(src, r'<header class="site-header">', r"</header>", header(home=home, alts=alts_for("home") if home else None))
+    ind = re.search(r"\n([ \t]*)(?:<(?:div|section) class=\"ap-bar\"|<header class=\"site-header\">)", src).group(1)
+    out = replace_block(src, r'(?:<(?:div|section) class="ap-bar"[^>]*>.*?</(?:div|section)>\s*)?<header class="site-header">', r"</header>",
+                        ap_bar(indent=ind) + "\n" + ind + header(home=home, alts=alts_for("home") if home else None))
+    out = re.sub(r"\n  <script>try\{if\(localStorage\.getItem\(\"ap-bar-[^<]*</script>", "", out)
+    out = re.sub(r"(<meta charset=\"utf-8\" ?/?>)", lambda m: m.group(1) + "\n  " + AP_BAR_HEAD, out, count=1)
     out = replace_block(out, r'<footer class="site-footer[^"]*">', r"</footer>", footer(telegram=path != "resume.html"))
     out = re.sub(r"styles\.css\?v=[0-9a-z]+", f"styles.css?v={CSS_VERSION}", out)
     out = re.sub(r'href="(?:/)?styles\.css"', f'href="/styles.css?v={CSS_VERSION}"', out)
@@ -1871,7 +1900,7 @@ def not_found_page():
       </div>
     </section>'''
     doc = page("Page not found | Amir Zare", "This page doesn't exist. Find Amir Zare's projects, about page, and contact details.",
-               "/404.html", body, og_image("home"), [PERSON])
+               "/404.html", body, og_image("home"), [PERSON], bar=False)
     doc = doc.replace('<meta name="robots" content="index, follow">', '<meta name="robots" content="noindex">')
     return re.sub(r'\s*<link rel="canonical" href="[^"]*">', "", doc, count=1)
 

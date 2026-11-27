@@ -1451,7 +1451,7 @@ section[id]{scroll-margin-top:108px}
   /* Paper is white whatever the screen theme: print with the light theme's accent and muted grey */
   :root,:root[data-theme]{--accent:#1E3A8A;--accent-rgb:30,58,138;--muted:#5b6470;--tint-bg:rgba(30,58,138,.08);--tint-border:rgba(30,58,138,.25)}
   html,body{background:#fff !important}
-  body::before,.site-header,.site-footer,#scroll-progress,.rs-print,.rs-dl,.rs-status,.blobs{display:none !important}
+  body::before,.site-header,.ap-bar,.site-footer,#scroll-progress,.rs-print,.rs-dl,.rs-status,.blobs{display:none !important}
   .rs-page{padding:0}
   .rs-wrap{max-width:none;padding:0}
   .rs-sheet{background:#fff;border:0;box-shadow:none;border-radius:0}
@@ -1896,4 +1896,29 @@ html:not([lang="en"]) .section .sec-h{font-size:clamp(1.5rem,3vw,2rem);letter-sp
   .post-body{font-size:1rem;line-height:1.72}
   .post-body h2{font-size:1.35rem}
   .post-body pre.post-code{padding:12px 14px;font-size:.82rem;border-radius:10px}
+}
+
+/* ---------- AgentPages announcement bar (tools/build.py ap_bar) ----------
+   Above the sticky header, in normal flow: it scrolls away and the header then pins at top:0, so nothing overlaps.
+   Dismissed: <html class="ap-bar-off"> (set in <head> before the body is parsed) removes it and the gap with it.
+   One solid colour per theme; contrast 9.6:1 (dark) and 10.4:1 (light). */
+.ap-bar{position:relative;display:flex;align-items:center;justify-content:center;box-sizing:border-box;min-height:40px;
+  padding-block:6px;padding-inline:48px;background:#93B4FF;color:#070B14;font-size:14px;line-height:1.4;text-align:center}
+:root[data-theme='light'] .ap-bar{background:#1E3A8A;color:#fff}
+.ap-bar-off .ap-bar{display:none}
+.ap-bar-text{margin:0;min-width:0}
+.ap-bar-text strong{font-weight:700}
+.ap-bar a{color:inherit;font-weight:600;text-decoration:underline;text-underline-offset:3px;padding:0 2px;border-radius:3px;white-space:nowrap}
+.ap-bar a:hover{color:inherit;text-decoration-thickness:2px}
+.ap-bar a:focus-visible,.ap-bar-x:focus-visible{outline:2px solid currentColor;outline-offset:2px}
+.ap-short{display:none}
+.ap-bar-x{position:absolute;top:50%;inset-inline-end:6px;transform:translateY(-50%);display:inline-flex;align-items:center;justify-content:center;
+  width:32px;height:32px;padding:0;border:0;border-radius:6px;background:transparent;color:inherit;font-family:inherit;font-size:22px;line-height:1;cursor:pointer}
+.ap-bar-x:hover{background:rgba(7,11,20,.1)}
+:root[data-theme='light'] .ap-bar-x:hover{background:rgba(255,255,255,.15)}
+@media (max-width:600px){  /* the short text: one line at 375px in every language; narrower phones may wrap to two */
+  .ap-bar{padding-inline:8px 36px;font-size:13px}
+  .ap-long{display:none}
+  .ap-short{display:inline}
+  .ap-bar-x{inset-inline-end:2px}
 }
