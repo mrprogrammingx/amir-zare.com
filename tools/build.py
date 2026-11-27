@@ -2152,7 +2152,7 @@ def local_community(lang):
     return page(c["title"], c["desc"], path, body, og_image("community"), graph, active="community", lang=lang, alts=alts_for("community"))
 
 
-PRIVACY_UPDATED = "November 17, 2026"
+PRIVACY_UPDATED = "November 27, 2026"
 
 
 def privacy_page():
@@ -2204,6 +2204,20 @@ def privacy_page():
           </ul>
         </section>
         <section class="pg-sec">
+          <h2>AgentPages</h2>
+          <p><a href="/projects/agentpages/">AgentPages</a> is a project by Amir Zare that publishes websites for people and AI agents. Its home page
+          (agentpages-sites.amir-zare.com) and API page (agentpages-api.amir-zare.com) use the same Google Analytics and Microsoft Clarity
+          measurement described above, with the same retention and choices. Analytics events there record actions such as requesting a trial key or
+          keeping a site, never the API key, email address, or site address itself.</p>
+          <ul class="pg-list">
+            <li>The dashboard (agentpages-api.amir-zare.com/dashboard) uses Google Analytics page views only. Clarity doesn&rsquo;t run there, so it
+            never records API keys.</li>
+            <li>Websites published with AgentPages (addresses under /s/) have no analytics from this site.</li>
+          </ul>
+          <p>This section covers analytics only. For questions about data AgentPages keeps to run the service, such as published sites and API keys,
+          email <a href="mailto:{SITE["email"]}">{SITE["email"]}</a>.</p>
+        </section>
+        <section class="pg-sec">
           <h2>Video and contact card</h2>
           <p>The video on the About page is hosted on YouTube. Nothing from YouTube loads until you press play; it then plays in
           YouTube&rsquo;s privacy-enhanced mode (youtube-nocookie.com), and <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google&rsquo;s
@@ -2217,10 +2231,10 @@ def privacy_page():
         </section>
       </div>
     </section>"""
-    graph = [{"@type": "WebPage", "name": "Privacy Policy — Amir Zare", "url": SITE["url"] + path, "dateModified": "2026-11-17",
+    graph = [{"@type": "WebPage", "name": "Privacy Policy — Amir Zare", "url": SITE["url"] + path, "dateModified": "2026-11-27",
               "isPartOf": {"@id": SITE["url"] + "/#website"}}, breadcrumbs(trail)]
     return page("Privacy Policy | Amir Zare",
-                "How amir-zare.com uses Google Analytics and Microsoft Clarity, what is collected, how long it is kept, and your choices.",
+                "How amir-zare.com and AgentPages use Google Analytics and Microsoft Clarity, what is collected, how long it is kept, and your choices.",
                 path, body, og_image("home"), graph)
 
 
